@@ -1,0 +1,139 @@
+    /*
+    Flaticon icon font: Flaticon
+    Creation date: 22/06/2016 15:21
+    */
+
+    @font-face {
+  font-family: "Flaticon";
+  src: url("./Flaticon.eot");
+  src: url("./Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("./Flaticon.woff") format("woff"),
+       url("./Flaticon.ttf") format("truetype"),
+       url("./Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("./Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+    .fi:before{
+        display: inline-block;
+  font-family: "Flaticon";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-decoration: inherit;
+  text-rendering: optimizeLegibility;
+  text-transform: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+    }
+
+    .flaticon-abdominal-exercises:before { content: "\f100"; }
+.flaticon-arms-extender:before { content: "\f101"; }
+.flaticon-athletic-strap:before { content: "\f102"; }
+.flaticon-bar-exercising:before { content: "\f103"; }
+.flaticon-barbell-bench-press:before { content: "\f104"; }
+.flaticon-barbell-weightlifting:before { content: "\f105"; }
+.flaticon-bench-press-weightlifting:before { content: "\f106"; }
+.flaticon-big-stopwatch:before { content: "\f107"; }
+.flaticon-broccoli-porcion:before { content: "\f108"; }
+.flaticon-carrot-and-apple:before { content: "\f109"; }
+.flaticon-chest-and-legs-exercises:before { content: "\f10a"; }
+.flaticon-chest-expander:before { content: "\f10b"; }
+.flaticon-chest-expanders:before { content: "\f10c"; }
+.flaticon-dumbbells-bar:before { content: "\f10d"; }
+.flaticon-dumbbells-exercise:before { content: "\f10e"; }
+.flaticon-exercise-bike:before { content: "\f10f"; }
+.flaticon-exercise-hang-bar:before { content: "\f110"; }
+.flaticon-exercising-dumbbell:before { content: "\f111"; }
+.flaticon-exercising-with-gymnastic-ball:before { content: "\f112"; }
+.flaticon-female-sportwear:before { content: "\f113"; }
+.flaticon-fitness-bracelet:before { content: "\f114"; }
+.flaticon-gymnastic-ball:before { content: "\f115"; }
+.flaticon-iron-shoot:before { content: "\f116"; }
+.flaticon-lifting-barbell:before { content: "\f117"; }
+.flaticon-lifting-dumbbells:before { content: "\f118"; }
+.flaticon-lifting-weight-with-right-arm:before { content: "\f119"; }
+.flaticon-little-dumbbell:before { content: "\f11a"; }
+.flaticon-man-swimming:before { content: "\f11b"; }
+.flaticon-mat-for-fitness:before { content: "\f11c"; }
+.flaticon-measuring-tape:before { content: "\f11d"; }
+.flaticon-phytonutrients:before { content: "\f11e"; }
+.flaticon-pill-and-tablet:before { content: "\f11f"; }
+.flaticon-power-ball:before { content: "\f120"; }
+.flaticon-protein-shake:before { content: "\f121"; }
+.flaticon-pushups-exercises:before { content: "\f122"; }
+.flaticon-riding-bicycle:before { content: "\f123"; }
+.flaticon-rings-exercises:before { content: "\f124"; }
+.flaticon-running-treadmill:before { content: "\f125"; }
+.flaticon-simulator-for-press:before { content: "\f126"; }
+.flaticon-skipping-rope:before { content: "\f127"; }
+.flaticon-skipping-rope-1:before { content: "\f128"; }
+.flaticon-sport-gloves:before { content: "\f129"; }
+.flaticon-sport-shoe:before { content: "\f12a"; }
+.flaticon-sport-watch:before { content: "\f12b"; }
+.flaticon-stick-man-hoop:before { content: "\f12c"; }
+.flaticon-stretching-leg-exercise:before { content: "\f12d"; }
+.flaticon-tightening-bar:before { content: "\f12e"; }
+.flaticon-training-apparatus:before { content: "\f12f"; }
+.flaticon-weighing-scale:before { content: "\f130"; }
+.flaticon-weight-drive:before { content: "\f131"; }
+    
+    $font-Flaticon-abdominal-exercises: "\f100";
+    $font-Flaticon-arms-extender: "\f101";
+    $font-Flaticon-athletic-strap: "\f102";
+    $font-Flaticon-bar-exercising: "\f103";
+    $font-Flaticon-barbell-bench-press: "\f104";
+    $font-Flaticon-barbell-weightlifting: "\f105";
+    $font-Flaticon-bench-press-weightlifting: "\f106";
+    $font-Flaticon-big-stopwatch: "\f107";
+    $font-Flaticon-broccoli-porcion: "\f108";
+    $font-Flaticon-carrot-and-apple: "\f109";
+    $font-Flaticon-chest-and-legs-exercises: "\f10a";
+    $font-Flaticon-chest-expander: "\f10b";
+    $font-Flaticon-chest-expanders: "\f10c";
+    $font-Flaticon-dumbbells-bar: "\f10d";
+    $font-Flaticon-dumbbells-exercise: "\f10e";
+    $font-Flaticon-exercise-bike: "\f10f";
+    $font-Flaticon-exercise-hang-bar: "\f110";
+    $font-Flaticon-exercising-dumbbell: "\f111";
+    $font-Flaticon-exercising-with-gymnastic-ball: "\f112";
+    $font-Flaticon-female-sportwear: "\f113";
+    $font-Flaticon-fitness-bracelet: "\f114";
+    $font-Flaticon-gymnastic-ball: "\f115";
+    $font-Flaticon-iron-shoot: "\f116";
+    $font-Flaticon-lifting-barbell: "\f117";
+    $font-Flaticon-lifting-dumbbells: "\f118";
+    $font-Flaticon-lifting-weight-with-right-arm: "\f119";
+    $font-Flaticon-little-dumbbell: "\f11a";
+    $font-Flaticon-man-swimming: "\f11b";
+    $font-Flaticon-mat-for-fitness: "\f11c";
+    $font-Flaticon-measuring-tape: "\f11d";
+    $font-Flaticon-phytonutrients: "\f11e";
+    $font-Flaticon-pill-and-tablet: "\f11f";
+    $font-Flaticon-power-ball: "\f120";
+    $font-Flaticon-protein-shake: "\f121";
+    $font-Flaticon-pushups-exercises: "\f122";
+    $font-Flaticon-riding-bicycle: "\f123";
+    $font-Flaticon-rings-exercises: "\f124";
+    $font-Flaticon-running-treadmill: "\f125";
+    $font-Flaticon-simulator-for-press: "\f126";
+    $font-Flaticon-skipping-rope: "\f127";
+    $font-Flaticon-skipping-rope-1: "\f128";
+    $font-Flaticon-sport-gloves: "\f129";
+    $font-Flaticon-sport-shoe: "\f12a";
+    $font-Flaticon-sport-watch: "\f12b";
+    $font-Flaticon-stick-man-hoop: "\f12c";
+    $font-Flaticon-stretching-leg-exercise: "\f12d";
+    $font-Flaticon-tightening-bar: "\f12e";
+    $font-Flaticon-training-apparatus: "\f12f";
+    $font-Flaticon-weighing-scale: "\f130";
+    $font-Flaticon-weight-drive: "\f131";

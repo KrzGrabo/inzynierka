@@ -53,6 +53,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Menu.xaml.cs">
+      <DependentUpon>Menu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Rejestracja.xaml.cs">
+      <DependentUpon>Rejestracja.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Intro.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -61,10 +71,21 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Intro.xaml.cs">
+      <DependentUpon>Intro.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Menu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Rejestracja.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -92,6 +113,100 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Ikony\bag.png" />
+    <Resource Include="Ikony\beverage.png" />
+    <Resource Include="Ikony\bottle-1.png" />
+    <Resource Include="Ikony\bottle.png" />
+    <Resource Include="Ikony\drugs.png" />
+    <Resource Include="Ikony\dumbbell-1.png" />
+    <Resource Include="Ikony\dumbbell-2.png" />
+    <Resource Include="Ikony\dumbbell-3.png" />
+    <Resource Include="Ikony\dumbbell-4.png" />
+    <Resource Include="Ikony\dumbbell-5.png" />
+    <Resource Include="Ikony\dumbbell-6.png" />
+    <Resource Include="Ikony\dumbbell-7.png" />
+    <Resource Include="Ikony\dumbbell.png" />
+    <Resource Include="Ikony\fast-food.png" />
+    <Resource Include="Ikony\gold-medal.png" />
+    <Resource Include="Ikony\gym-1.png" />
+    <Resource Include="Ikony\gym-2.png" />
+    <Resource Include="Ikony\gym.png" />
+    <Resource Include="Ikony\jumping-rope.png" />
+    <Resource Include="Ikony\locker.png" />
+    <Resource Include="Ikony\measuring-tape.png" />
+    <Resource Include="Ikony\proteins-1.png" />
+    <Resource Include="Ikony\proteins.png" />
+    <Resource Include="Ikony\rings.png" />
+    <Resource Include="Ikony\running-1.png" />
+    <Resource Include="Ikony\running.png" />
+    <Resource Include="Ikony\scale.png" />
+    <Resource Include="Ikony\smartwatch.png" />
+    <Resource Include="Ikony\stationary-bicycle.png" />
+    <Resource Include="Ikony\steroids.png" />
+    <Resource Include="Ikony\strenght.png" />
+    <Resource Include="Ikony\tasks.png" />
+    <Resource Include="Ikony\timer-1.png" />
+    <Resource Include="Ikony\timer.png" />
+    <Resource Include="Ikony\weight-1.png" />
+    <Resource Include="Ikony\weight-2.png" />
+    <Resource Include="Ikony\weight-3.png" />
+    <Resource Include="Ikony\weight-4.png" />
+    <Resource Include="Ikony\weight.png" />
+    <Resource Include="Ikony\whistle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Ikonki\abdominal-exercises.png" />
+    <Resource Include="Ikonki\arms-extender.png" />
+    <Resource Include="Ikonki\athletic-strap.png" />
+    <Resource Include="Ikonki\bar-exercising.png" />
+    <Resource Include="Ikonki\barbell-bench-press.png" />
+    <Resource Include="Ikonki\barbell-weightlifting.png" />
+    <Resource Include="Ikonki\bench-press-weightlifting.png" />
+    <Resource Include="Ikonki\big-stopwatch.png" />
+    <Resource Include="Ikonki\broccoli-porcion.png" />
+    <Resource Include="Ikonki\carrot-and-apple.png" />
+    <Resource Include="Ikonki\chest-and-legs-exercises.png" />
+    <Resource Include="Ikonki\chest-expander.png" />
+    <Resource Include="Ikonki\chest-expanders.png" />
+    <Resource Include="Ikonki\dumbbells-bar.png" />
+    <Resource Include="Ikonki\dumbbells-exercise.png" />
+    <Resource Include="Ikonki\exercise-bike.png" />
+    <Resource Include="Ikonki\exercise-hang-bar.png" />
+    <Resource Include="Ikonki\exercising-dumbbell.png" />
+    <Resource Include="Ikonki\exercising-with-gymnastic-ball.png" />
+    <Resource Include="Ikonki\female-sportwear.png" />
+    <Resource Include="Ikonki\fitness-bracelet.png" />
+    <Resource Include="Ikonki\gymnastic-ball.png" />
+    <Resource Include="Ikonki\iron-shoot.png" />
+    <Resource Include="Ikonki\lifting-barbell.png" />
+    <Resource Include="Ikonki\lifting-dumbbells.png" />
+    <Resource Include="Ikonki\lifting-weight-with-right-arm.png" />
+    <Resource Include="Ikonki\little-dumbbell.png" />
+    <Resource Include="Ikonki\man-swimming.png" />
+    <Resource Include="Ikonki\mat-for-fitness.png" />
+    <Resource Include="Ikonki\measuring-tape.png" />
+    <Resource Include="Ikonki\phytonutrients.png" />
+    <Resource Include="Ikonki\pill-and-tablet.png" />
+    <Resource Include="Ikonki\power-ball.png" />
+    <Resource Include="Ikonki\protein-shake.png" />
+    <Resource Include="Ikonki\pushups-exercises.png" />
+    <Resource Include="Ikonki\riding-bicycle.png" />
+    <Resource Include="Ikonki\rings-exercises.png" />
+    <Resource Include="Ikonki\running-treadmill.png" />
+    <Resource Include="Ikonki\simulator-for-press.png" />
+    <Resource Include="Ikonki\skipping-rope-1.png" />
+    <Resource Include="Ikonki\skipping-rope.png" />
+    <Resource Include="Ikonki\sport-gloves.png" />
+    <Resource Include="Ikonki\sport-shoe.png" />
+    <Resource Include="Ikonki\sport-watch.png" />
+    <Resource Include="Ikonki\stick-man-hoop.png" />
+    <Resource Include="Ikonki\stretching-leg-exercise.png" />
+    <Resource Include="Ikonki\tightening-bar.png" />
+    <Resource Include="Ikonki\training-apparatus.png" />
+    <Resource Include="Ikonki\weighing-scale.png" />
+    <Resource Include="Ikonki\weight-drive.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
