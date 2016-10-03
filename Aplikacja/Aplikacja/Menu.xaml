@@ -3,6 +3,16 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Menu" Height="300" Width="300">
     <Grid>
-        
+        <Menu  VerticalAlignment="Top">
+            <MenuItem Header="Program">
+                <MenuItem x:Name="wylogujButton" Header="Wyloguj się" Click="wylogujButton_Click" />
+                <MenuItem x:Name="zakonczButton" Header="Zakończ" Click="zakonczButton_Click" />
+            </MenuItem>
+            <MenuItem Header="Informacje">
+                <MenuItem x:Name="oprogramieButton" Header="O programie" Click="oprogramieButton_Click" />
+                <MenuItem x:Name="oautorachButton" Header="O autorach" Click="oautorachButton_Click" />
+            </MenuItem>
+            <MenuItem x:Name="pomocButton" Header="Pomoc" Click="pomocButton_Click"/>
+        </Menu>
     </Grid>
 </Window>

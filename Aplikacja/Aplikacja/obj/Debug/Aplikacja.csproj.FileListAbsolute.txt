@@ -17,3 +17,9 @@ C:\praca_inz\inzynierka\Aplikacja\Aplikacja\obj\Debug\Menu.baml
 C:\praca_inz\inzynierka\Aplikacja\Aplikacja\obj\Debug\Menu.g.cs
 C:\praca_inz\inzynierka\Aplikacja\Aplikacja\obj\Debug\Rejestracja.baml
 C:\praca_inz\inzynierka\Aplikacja\Aplikacja\obj\Debug\Rejestracja.g.cs
+C:\praca_inz\inzynierka\Aplikacja\Aplikacja\obj\Debug\Autorzy.baml
+C:\praca_inz\inzynierka\Aplikacja\Aplikacja\obj\Debug\Informacje.baml
+C:\praca_inz\inzynierka\Aplikacja\Aplikacja\obj\Debug\Pomoc.baml
+C:\praca_inz\inzynierka\Aplikacja\Aplikacja\obj\Debug\Autorzy.g.cs
+C:\praca_inz\inzynierka\Aplikacja\Aplikacja\obj\Debug\Informacje.g.cs
+C:\praca_inz\inzynierka\Aplikacja\Aplikacja\obj\Debug\Pomoc.g.cs
