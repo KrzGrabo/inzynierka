@@ -53,13 +53,56 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Autorzy.xaml.cs">
+      <DependentUpon>Autorzy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dieta.xaml.cs">
+      <DependentUpon>Dieta.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Informacje.xaml.cs">
+      <DependentUpon>Informacje.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Kalkulatory.xaml.cs">
+      <DependentUpon>Kalkulatory.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Menu.xaml.cs">
       <DependentUpon>Menu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pomoc.xaml.cs">
+      <DependentUpon>Pomoc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Profil.xaml.cs">
+      <DependentUpon>Profil.xaml</DependentUpon>
     </Compile>
     <Compile Include="Rejestracja.xaml.cs">
       <DependentUpon>Rejestracja.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Statystyki.xaml.cs">
+      <DependentUpon>Statystyki.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Suplementacja.xaml.cs">
+      <DependentUpon>Suplementacja.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Trening.xaml.cs">
+      <DependentUpon>Trening.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Autorzy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dieta.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Informacje.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Intro.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Kalkulatory.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -82,7 +125,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pomoc.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Profil.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Rejestracja.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Statystyki.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Suplementacja.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Trening.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -113,48 +176,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Ikony\bag.png" />
-    <Resource Include="Ikony\beverage.png" />
-    <Resource Include="Ikony\bottle-1.png" />
-    <Resource Include="Ikony\bottle.png" />
-    <Resource Include="Ikony\drugs.png" />
-    <Resource Include="Ikony\dumbbell-1.png" />
-    <Resource Include="Ikony\dumbbell-2.png" />
-    <Resource Include="Ikony\dumbbell-3.png" />
-    <Resource Include="Ikony\dumbbell-4.png" />
-    <Resource Include="Ikony\dumbbell-5.png" />
-    <Resource Include="Ikony\dumbbell-6.png" />
-    <Resource Include="Ikony\dumbbell-7.png" />
-    <Resource Include="Ikony\dumbbell.png" />
-    <Resource Include="Ikony\fast-food.png" />
-    <Resource Include="Ikony\gold-medal.png" />
-    <Resource Include="Ikony\gym-1.png" />
-    <Resource Include="Ikony\gym-2.png" />
-    <Resource Include="Ikony\gym.png" />
-    <Resource Include="Ikony\jumping-rope.png" />
-    <Resource Include="Ikony\locker.png" />
-    <Resource Include="Ikony\measuring-tape.png" />
-    <Resource Include="Ikony\proteins-1.png" />
-    <Resource Include="Ikony\proteins.png" />
-    <Resource Include="Ikony\rings.png" />
-    <Resource Include="Ikony\running-1.png" />
-    <Resource Include="Ikony\running.png" />
-    <Resource Include="Ikony\scale.png" />
-    <Resource Include="Ikony\smartwatch.png" />
-    <Resource Include="Ikony\stationary-bicycle.png" />
-    <Resource Include="Ikony\steroids.png" />
-    <Resource Include="Ikony\strenght.png" />
-    <Resource Include="Ikony\tasks.png" />
-    <Resource Include="Ikony\timer-1.png" />
-    <Resource Include="Ikony\timer.png" />
-    <Resource Include="Ikony\weight-1.png" />
-    <Resource Include="Ikony\weight-2.png" />
-    <Resource Include="Ikony\weight-3.png" />
-    <Resource Include="Ikony\weight-4.png" />
-    <Resource Include="Ikony\weight.png" />
-    <Resource Include="Ikony\whistle.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Ikonki\abdominal-exercises.png" />
@@ -207,6 +228,12 @@
     <Resource Include="Ikonki\training-apparatus.png" />
     <Resource Include="Ikonki\weighing-scale.png" />
     <Resource Include="Ikonki\weight-drive.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Ikonki\big-stopwatch2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Ikonki\ikona.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

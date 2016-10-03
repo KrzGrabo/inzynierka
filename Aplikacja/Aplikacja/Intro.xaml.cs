@@ -24,10 +24,41 @@ namespace Aplikacja
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void rejestracjaButton_Click(object sender, RoutedEventArgs e)
         {
             Rejestracja rej = new Rejestracja();
             rej.Show();
+        }
+
+        private void logowanieButton_Click(object sender, RoutedEventArgs e)
+        {
+            string walidacja = "";
+            string login = loginTextbox.Text.Trim();
+            string haslo = hasloTextbox.Text.Trim();
+
+            if (login == "")
+            {
+                walidacja = walidacja + " \nNie wpisałeś loginu";
+            }
+
+            if (haslo == "")
+            {
+                walidacja = walidacja + " \nNie wpisałeś hasła";
+            }
+
+            if (walidacja == "")
+            {
+                Menu menu = new Menu();
+                menu.Show();
+                this.Close();
+
+            }
+            else
+            {
+                walidacja = "Wystąpiły błędy przy logowaniu:" + walidacja;
+                MessageBox.Show(walidacja, "Uwaga", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
+
         }
     }
 }
