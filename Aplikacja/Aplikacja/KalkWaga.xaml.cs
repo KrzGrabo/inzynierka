@@ -15,20 +15,13 @@ using System.Windows.Shapes;
 namespace Aplikacja
 {
     /// <summary>
-    /// Interaction logic for Autorzy.xaml
+    /// Interaction logic for KalkWaga.xaml
     /// </summary>
-    public partial class Autorzy : Window
+    public partial class KalkWaga : Window
     {
-        public Autorzy()
+        public KalkWaga()
         {
             InitializeComponent();
-            Bindowanie();
-        }
-
-        private void Bindowanie()
-        {
-            opis.Text = "Lorem ipsum sialalala";
-
         }
     }
 }

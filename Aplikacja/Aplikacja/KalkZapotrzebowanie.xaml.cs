@@ -15,20 +15,13 @@ using System.Windows.Shapes;
 namespace Aplikacja
 {
     /// <summary>
-    /// Interaction logic for Autorzy.xaml
+    /// Interaction logic for KalkZapotrzebowanie.xaml
     /// </summary>
-    public partial class Autorzy : Window
+    public partial class KalkZapotrzebowanie : Window
     {
-        public Autorzy()
+        public KalkZapotrzebowanie()
         {
             InitializeComponent();
-            Bindowanie();
-        }
-
-        private void Bindowanie()
-        {
-            opis.Text = "Lorem ipsum sialalala";
-
         }
     }
 }

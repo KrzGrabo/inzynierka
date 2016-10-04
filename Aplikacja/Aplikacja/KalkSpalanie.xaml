@@ -1,0 +1,25 @@
+﻿<Window x:Class="Aplikacja.KalkSpalanie"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="KalkSpalanie" Height="300" Width="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label Content="waga:"/>
+        <Label Content="czas:" Grid.Row="1"/>
+        <Label Content="aktywnosc:" Grid.Row="2"/>
+        <TextBox Grid.Column="1"/>
+        <TextBox Grid.Row="1" Grid.Column="1"/>
+        <ComboBox Grid.Column="1" Grid.Row="2"/>
+        <Label Content="wyniki:" Grid.Row="3"/>
+        <Label Content="xxx" Grid.Row="3" Grid.Column="1"/>
+    </Grid>
+</Window>

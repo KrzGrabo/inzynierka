@@ -35,3 +35,11 @@ C:\praca_inz\inzynierka\Aplikacja\Aplikacja\obj\Debug\Profil.g.cs
 C:\praca_inz\inzynierka\Aplikacja\Aplikacja\obj\Debug\Statystyki.g.cs
 C:\praca_inz\inzynierka\Aplikacja\Aplikacja\obj\Debug\Suplementacja.g.cs
 C:\praca_inz\inzynierka\Aplikacja\Aplikacja\obj\Debug\Trening.g.cs
+C:\praca_inz\inzynierka\Aplikacja\Aplikacja\obj\Debug\KalkMaksy.baml
+C:\praca_inz\inzynierka\Aplikacja\Aplikacja\obj\Debug\KalkSpalanie.baml
+C:\praca_inz\inzynierka\Aplikacja\Aplikacja\obj\Debug\KalkWaga.baml
+C:\praca_inz\inzynierka\Aplikacja\Aplikacja\obj\Debug\KalkZapotrzebowanie.baml
+C:\praca_inz\inzynierka\Aplikacja\Aplikacja\obj\Debug\KalkMaksy.g.cs
+C:\praca_inz\inzynierka\Aplikacja\Aplikacja\obj\Debug\KalkSpalanie.g.cs
+C:\praca_inz\inzynierka\Aplikacja\Aplikacja\obj\Debug\KalkWaga.g.cs
+C:\praca_inz\inzynierka\Aplikacja\Aplikacja\obj\Debug\KalkZapotrzebowanie.g.cs

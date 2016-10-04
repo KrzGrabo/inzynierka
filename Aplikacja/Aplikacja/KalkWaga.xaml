@@ -1,0 +1,53 @@
+﻿<Window x:Class="Aplikacja.KalkWaga"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="KalkWaga" Height="600" Width="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <GroupBox Grid.Row="0" Grid.Column="0"  Grid.ColumnSpan="2" Header="Opis:">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <CheckBox Content="BMI" Grid.Column="0" Grid.Row="0"/>
+                <CheckBox Content="Tkanka tłuszczowa" Grid.Column="1" Grid.Row="0" />
+                <CheckBox Content="WHR" Grid.Column="1" Grid.Row="1" />
+                <CheckBox Content="Idealna waga" Grid.Column="0" Grid.Row="1" />
+            </Grid>
+        </GroupBox>
+        
+        <Label Content="waga:" Grid.Row="1"/>
+        <TextBox Grid.Row="1" Grid.Column="1"/>
+        <Label Content="plec:" Grid.Row="2"/>
+        <ComboBox Grid.Column="1" Grid.Row="2"/>
+
+        <Label Grid.Row="3" Content="wzrost:"/>
+        <TextBox Grid.Column="1" Grid.Row="3"/>
+
+        <Label Grid.Row="4" Content="obwód pasa:"/>
+        <TextBox Grid.Column="1" Grid.Row="4"/>
+
+        <Label Grid.Row="5" IsEnabled="False" Content="obwód bioder:"/>
+        <TextBox Grid.Column="1" Grid.Row="5"/>
+
+        <Label Content="wyniki:" Grid.Row="6"/>
+        <Label Content="xxx" Grid.Row="6" Grid.Column="1"/>
+    </Grid>
+</Window>

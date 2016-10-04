@@ -62,8 +62,20 @@
     <Compile Include="Informacje.xaml.cs">
       <DependentUpon>Informacje.xaml</DependentUpon>
     </Compile>
+    <Compile Include="KalkMaksy.xaml.cs">
+      <DependentUpon>KalkMaksy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="KalkSpalanie.xaml.cs">
+      <DependentUpon>KalkSpalanie.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Kalkulatory.xaml.cs">
       <DependentUpon>Kalkulatory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="KalkWaga.xaml.cs">
+      <DependentUpon>KalkWaga.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="KalkZapotrzebowanie.xaml.cs">
+      <DependentUpon>KalkZapotrzebowanie.xaml</DependentUpon>
     </Compile>
     <Compile Include="Menu.xaml.cs">
       <DependentUpon>Menu.xaml</DependentUpon>
@@ -102,7 +114,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="KalkMaksy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="KalkSpalanie.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Kalkulatory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="KalkWaga.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="KalkZapotrzebowanie.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -234,6 +262,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Ikonki\ikona.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Ikonki\eti_logo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

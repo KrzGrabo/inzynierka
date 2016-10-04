@@ -23,5 +23,29 @@ namespace Aplikacja
         {
             InitializeComponent();
         }
+
+        private void wagaButton_Click(object sender, RoutedEventArgs e)
+        {
+            KalkWaga okno = new KalkWaga();
+            okno.Show();
+        }
+
+        private void zapotrzebowanieButton_Click(object sender, RoutedEventArgs e)
+        {
+            KalkZapotrzebowanie okno = new KalkZapotrzebowanie();
+            okno.Show();
+        }
+
+        private void spalanieButton_Click(object sender, RoutedEventArgs e)
+        {
+            KalkSpalanie okno = new KalkSpalanie();
+            okno.Show();
+        }
+
+        private void maksyButton_Click(object sender, RoutedEventArgs e)
+        {
+            KalkMaksy okno = new KalkMaksy();
+            okno.Show();
+        }
     }
 }
