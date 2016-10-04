@@ -4,12 +4,10 @@
         Title="Rejestracja" Height="300" Width="300">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
@@ -17,33 +15,28 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <Grid.Background>
-            <LinearGradientBrush EndPoint="1,1" StartPoint="0.5,0" Opacity="0.5">
-                <GradientStop Color="#FFF2F2F2"/>
-                <GradientStop Color="#FF004B96" Offset="1"/>
-            </LinearGradientBrush>
-        </Grid.Background>
-        <TextBlock Margin="10" Text="Nazwa" Grid.Row="0"/>
-        <TextBox Margin="10" x:Name="nazwaTextbox" Grid.Row="0" Grid.Column="1"/>
-        <TextBlock Margin="10" Text="Opis" Grid.Row="1"/>
-        <TextBox Margin="10" x:Name="opisTextbox" Grid.Row="1" Grid.Column="1"/>
-        <TextBlock Margin="10" Text="Cena" Grid.Row="2"/>
-        <TextBox Margin="10" x:Name="cenaTextbox" Grid.Row="2" Grid.Column="1"  />
-        <RadioButton Content="Dogs" Grid.Row="5" Checked="RadioButton_Checked"   Margin="10"/>
-        <RadioButton Content="Cats" Grid.Row="6" Checked="RadioButton_Checked"    Margin="10"/>
-        <TextBlock Margin="10,10,10,5" Text="jednostka wartości opałowej" Grid.Row="4" TextWrapping="WrapWithOverflow" />
-        <ComboBox ItemsSource="{Binding}" Margin="10,10,10,10" x:Name="jm_woCombo" Grid.Row="4" Grid.Column="1" MaxHeight="22" >
-            <ComboBox.ItemTemplate>
-                <DataTemplate>
 
-                    <TextBlock Text="{Binding nazwa}"/>
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
-        </ComboBox>  
-        <Button Grid.Column="1" Grid.Row="7" Margin="10,10,10,15"  >
+        <Label Margin="10" Content="Login" Grid.Row="0"/>
+        <TextBox Margin="10" x:Name="loginTextbox" Grid.Row="0" Grid.Column="1"/>
+        <Label Margin="10" Content="Hasło" Grid.Row="1"/>
+        <TextBox Margin="10" x:Name="hasloTextbox" Grid.Row="1" Grid.Column="1"/>
+        <Label Margin="10" Content="Powtórz hasło" Grid.Row="2"/>
+        <TextBox Margin="10" x:Name="haslo2Textbox" Grid.Row="2" Grid.Column="1"  />
+        <Label Margin="10" Content="Płeć" Grid.Row="3"/>
+        <RadioButton Content="męska" HorizontalAlignment="Center" Grid.Row="4" Checked="RadioButton_Checked"   Margin="10"/>
+        <RadioButton Content="żeńska" HorizontalAlignment="Center" Grid.Row="4" Grid.Column="2" Checked="RadioButton_Checked"    Margin="10"/>
+
+        <Button x:Name="powrotButton" Grid.Column="0" Grid.Row="7" Margin="10,10,10,15" Click="powrotButton_Click"  >
             <StackPanel Orientation="Horizontal">
                 <!--<Image Source="Zasoby/save2.ico" Height="20" Margin="1"/>-->
-                <TextBlock><Run Text=" Dodaj paliwo "/></TextBlock>
+                <TextBlock><Run Text=" Powrót "/></TextBlock>
+            </StackPanel>
+        </Button>
+
+        <Button x:Name="rejestracjaButton" Grid.Column="1" Grid.Row="7" Margin="10,10,10,15" Click="rejestracjaButton_Click"  >
+            <StackPanel Orientation="Horizontal">
+                <!--<Image Source="Zasoby/save2.ico" Height="20" Margin="1"/>-->
+                <TextBlock><Run Text=" Zarejesruj się "/></TextBlock>
             </StackPanel>
         </Button>
     </Grid>
