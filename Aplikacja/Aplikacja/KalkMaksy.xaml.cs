@@ -15,20 +15,13 @@ using System.Windows.Shapes;
 namespace Aplikacja
 {
     /// <summary>
-    /// Interaction logic for Autorzy.xaml
+    /// Interaction logic for KalkMaksy.xaml
     /// </summary>
-    public partial class Autorzy : Window
+    public partial class KalkMaksy : Window
     {
-        public Autorzy()
+        public KalkMaksy()
         {
             InitializeComponent();
-            Bindowanie();
-        }
-
-        private void Bindowanie()
-        {
-            opis.Text = "Lorem ipsum sialalala";
-
         }
     }
 }

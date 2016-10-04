@@ -22,6 +22,12 @@ namespace Aplikacja
         public Informacje()
         {
             InitializeComponent();
+            Bindowanie();
+        }
+
+        private void Bindowanie(){
+            opis.Text = "Lorem ipsum sialalala";
+
         }
     }
 }
