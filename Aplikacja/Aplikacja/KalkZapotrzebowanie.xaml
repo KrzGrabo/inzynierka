@@ -17,20 +17,20 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Label Content="waga:" Grid.Row="1"/>
-        <TextBox Grid.Row="1" Grid.Column="1"/>
+        <Label Content="waga (kg):" Grid.Row="1"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Name="label_waga" TextChanged="label_waga_TextChanged" />
         <Label Content="plec:" Grid.Row="2"/>
-        <ComboBox Grid.Column="1" Grid.Row="2"/>
+        <ComboBox Grid.Column="1" Grid.Row="2" Name="combo_plec" SelectionChanged="combo_plec_SelectionChanged" />
 
-        <Label Grid.Row="3" Content="wzrost:"/>
-        <TextBox Grid.Column="1" Grid.Row="3"/>
+        <Label Grid.Row="3" Content="wzrost (cm):"/>
+        <TextBox Grid.Column="1" Grid.Row="3" Name="label_wzrost" TextChanged="label_wzrost_TextChanged" />
 
         <Label Grid.Row="4" Content="aktywnosc fizyczna:"/>
-        <ComboBox Grid.Column="1" Grid.Row="4"/>
+        <ComboBox Grid.Column="1" Grid.Row="4" Name="combo_aktywnosc" SelectionChanged="combo_aktywnosc_SelectionChanged" />
 
 
 
-        <Label Content="wyniki:" Grid.Row="6"/>
-        <Label Content="xxx" Grid.Row="6" Grid.Column="1"/>
+        <Label Content="calość:" Grid.Row="6"/>
+        <Label Content="xxx" Grid.Row="6" Grid.Column="1" Name="label_wynik" />
     </Grid>
 </Window>
