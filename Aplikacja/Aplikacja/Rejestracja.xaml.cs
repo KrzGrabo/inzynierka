@@ -40,9 +40,8 @@ namespace Aplikacja
         {
             string walidacja = "";
             string login = loginTextbox.Text.Trim();
-            string haslo = hasloTextbox.Text.Trim();
-            string haslo2 = haslo2Textbox.Text.Trim();
-            
+            string haslo = hasloTextbox.Password.ToString();
+            string haslo2 = haslo2Textbox.Password.ToString();
           
             if(plec==false)
             {

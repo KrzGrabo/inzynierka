@@ -19,9 +19,11 @@
         <Label Margin="10" Content="Login" Grid.Row="0"/>
         <TextBox Margin="10" x:Name="loginTextbox" Grid.Row="0" Grid.Column="1"/>
         <Label Margin="10" Content="Hasło" Grid.Row="1"/>
-        <TextBox Margin="10" x:Name="hasloTextbox" Grid.Row="1" Grid.Column="1"/>
+        <PasswordBox Margin="10" x:Name="hasloTextbox" Grid.Row="1" Grid.Column="1" PasswordChar="*" />
+        
         <Label Margin="10" Content="Powtórz hasło" Grid.Row="2"/>
-        <TextBox Margin="10" x:Name="haslo2Textbox" Grid.Row="2" Grid.Column="1"  />
+        <PasswordBox Margin="10" x:Name="haslo2Textbox" Grid.Row="2" Grid.Column="1" PasswordChar="*" />
+      
         <Label Margin="10" Content="Płeć" Grid.Row="3"/>
         <RadioButton Content="męska" HorizontalAlignment="Center" Grid.Row="4" Checked="RadioButton_Checked"   Margin="10"/>
         <RadioButton Content="żeńska" HorizontalAlignment="Center" Grid.Row="4" Grid.Column="2" Checked="RadioButton_Checked"    Margin="10"/>

@@ -15,12 +15,10 @@ Title="Informacje o autorach" Height="400" Width="400" Icon="Ikonki\ikona.png" W
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" Grid.Column="1" Text="Autorzy:" TextWrapping="WrapWithOverflow"/>
+        <TextBlock Grid.Row="0" Padding="10" Grid.Column="1" Text="Autorzy:" TextWrapping="WrapWithOverflow"/>
 
         <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" Source="Ikonki/eti_logo.png" Stretch="Uniform" />
-        <TextBlock Grid.Row="0" Grid.Column="2" Text="Wiktor Czarnecki" Padding="5" TextWrapping="WrapWithOverflow"/>
-        <TextBlock Grid.Row="1" Grid.Column="2" Text="Krzysztof Grabowski" Padding="5" TextWrapping="WrapWithOverflow"/>
-        <TextBlock Grid.Row="2" Grid.Column="2" Text="Michał Kuś" Padding="5" TextWrapping="WrapWithOverflow"/>
+        <TextBlock Grid.Row="0" Grid.Column="2" Text="Wiktor Czarnecki, Krzysztof Grabowski, Michał Kuś" Padding="5" TextWrapping="WrapWithOverflow"/>
         <GroupBox Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="2" Padding="5" Header="Informacje o autorach:">
             <ScrollViewer>
                 <TextBlock x:Name="opis" Text="{Binding}"  TextWrapping="WrapWithOverflow"/>
