@@ -34,8 +34,8 @@ namespace Aplikacja
         {
             string walidacja = "";
             string login = loginTextbox.Text.Trim();
-            string haslo = hasloTextbox.Text.Trim();
-
+            string haslo = hasloTextbox.Password.ToString();
+            MessageBox.Show(haslo, "Uwaga", MessageBoxButton.OK, MessageBoxImage.Exclamation);
             if (login == "")
             {
                 walidacja = walidacja + " \nNie wpisałeś loginu";
