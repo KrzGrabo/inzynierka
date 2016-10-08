@@ -19,6 +19,7 @@ namespace Aplikacja
     /// </summary>
     public partial class Intro : Window
     {
+
         public Intro()
         {
             InitializeComponent();
@@ -32,26 +33,36 @@ namespace Aplikacja
 
         private void logowanieButton_Click(object sender, RoutedEventArgs e)
         {
+            AplikacjaEntities baza = new AplikacjaEntities();
+            Uzytkownicy u = new Uzytkownicy();
             string walidacja = "";
-            string login = loginTextbox.Text.Trim();
-            string haslo = hasloTextbox.Password.ToString();
-            MessageBox.Show(haslo, "Uwaga", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-            if (login == "")
+            u.Login = loginTextbox.Text.Trim();
+            u.Haslo = hasloTextbox.Password.ToString();
+            //MessageBox.Show(u.Haslo, "Uwaga", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            if (u.Login == "")
             {
                 walidacja = walidacja + " \nNie wpisałeś loginu";
             }
 
-            if (haslo == "")
+            if (u.Haslo == "")
             {
                 walidacja = walidacja + " \nNie wpisałeś hasła";
             }
 
             if (walidacja == "")
             {
-                Menu menu = new Menu();
-                menu.Show();
-                this.Close();
-
+                var uzytkownik = baza.Uzytkownicy.Where(m => m.Login.Equals(u.Login)).FirstOrDefault();
+                if (uzytkownik != null && uzytkownik.Haslo == u.Haslo)
+                {
+                    Menu menu = new Menu();
+                    menu.Show();
+                    this.Close();
+                }
+                else
+                {
+                    walidacja = "Nie ma takiego użytkownika";
+                    MessageBox.Show(walidacja, "Uwaga", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                }
             }
             else
             {
