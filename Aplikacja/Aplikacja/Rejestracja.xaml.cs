@@ -20,6 +20,7 @@ namespace Aplikacja
     public partial class Rejestracja : Window
     {
         bool plec = false;
+
         public Rejestracja()
         {
             InitializeComponent();
@@ -27,7 +28,7 @@ namespace Aplikacja
 
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
-           plec=true;
+            plec = true;
         }
 
         private void powrotButton_Click(object sender, RoutedEventArgs e)
@@ -39,16 +40,19 @@ namespace Aplikacja
         private void rejestracjaButton_Click(object sender, RoutedEventArgs e)
         {
             string walidacja = "";
-            string login = loginTextbox.Text.Trim();
+            AplikacjaEntities baza = new AplikacjaEntities();
+            Uzytkownicy u = new Uzytkownicy();
+            u.Login = loginTextbox.Text.Trim();
             string haslo = hasloTextbox.Password.ToString();
             string haslo2 = haslo2Textbox.Password.ToString();
-          
-            if(plec==false)
+
+
+            if (plec == false)
             {
                 walidacja = walidacja + " \nNie wybrałeś płci";
             }
 
-            if (login == "")
+            if (u.Login == "")
             {
                 walidacja = walidacja + " \nNie wpisałeś loginu";
             }
@@ -62,10 +66,16 @@ namespace Aplikacja
             {
                 walidacja = walidacja + " \nWpisane hasła nie są identyczne";
             }
+            else
+            {
+                u.Haslo = haslo;
+            }
 
             if (walidacja == "")
             {
-
+                u.ID = 0;
+                baza.Uzytkownicy.Add(u);
+                baza.SaveChanges();
                 MessageBox.Show("Twoje konto zostało utworzone poprawnie!", "App", MessageBoxButton.OK, MessageBoxImage.Information);
                 this.Close();
             }
