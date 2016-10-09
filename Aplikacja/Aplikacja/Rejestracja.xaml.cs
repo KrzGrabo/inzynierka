@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Microsoft.AspNet.Identity;
 
 namespace Aplikacja
 {
@@ -41,8 +42,10 @@ namespace Aplikacja
         {
             string walidacja = "";
             AplikacjaEntities baza = new AplikacjaEntities();
-            Uzytkownicy u = new Uzytkownicy();
-            u.Login = loginTextbox.Text.Trim();
+            Uzytkownicy uzytkownik = new Uzytkownicy();
+            PasswordHasher hasher = new PasswordHasher();
+            
+            uzytkownik.Login = loginTextbox.Text.Trim();
             string haslo = hasloTextbox.Password.ToString();
             string haslo2 = haslo2Textbox.Password.ToString();
 
@@ -52,7 +55,7 @@ namespace Aplikacja
                 walidacja = walidacja + " \nNie wybrałeś płci";
             }
 
-            if (u.Login == "")
+            if (uzytkownik.Login == "")
             {
                 walidacja = walidacja + " \nNie wpisałeś loginu";
             }
@@ -68,13 +71,12 @@ namespace Aplikacja
             }
             else
             {
-                u.Haslo = haslo;
+                uzytkownik.Haslo = hasher.HashPassword(haslo).ToString(); ;
             }
 
             if (walidacja == "")
             {
-                u.ID = 0;
-                baza.Uzytkownicy.Add(u);
+                baza.Uzytkownicy.Add(uzytkownik);
                 baza.SaveChanges();
                 MessageBox.Show("Twoje konto zostało utworzone poprawnie!", "App", MessageBoxButton.OK, MessageBoxImage.Information);
                 this.Close();
