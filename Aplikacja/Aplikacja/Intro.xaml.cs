@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Microsoft.AspNet.Identity;
 
 namespace Aplikacja
 {
@@ -34,25 +35,27 @@ namespace Aplikacja
         private void logowanieButton_Click(object sender, RoutedEventArgs e)
         {
             AplikacjaEntities baza = new AplikacjaEntities();
-            Uzytkownicy u = new Uzytkownicy();
+            Uzytkownicy uzytkownik = new Uzytkownicy();
+            PasswordHasher hasher = new PasswordHasher();
+
             string walidacja = "";
-            u.Login = loginTextbox.Text.Trim();
-            u.Haslo = hasloTextbox.Password.ToString();
-            //MessageBox.Show(u.Haslo, "Uwaga", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-            if (u.Login == "")
+            uzytkownik.Login = loginTextbox.Text.Trim();
+            uzytkownik.Haslo = hasloTextbox.Password.ToString();
+            //MessageBox.Show(uzytkownik.Haslo, "Uwaga", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            if (uzytkownik.Login == "")
             {
                 walidacja = walidacja + " \nNie wpisałeś loginu";
             }
 
-            if (u.Haslo == "")
+            if (uzytkownik.Haslo == "")
             {
                 walidacja = walidacja + " \nNie wpisałeś hasła";
             }
 
             if (walidacja == "")
             {
-                var uzytkownik = baza.Uzytkownicy.Where(m => m.Login.Equals(u.Login)).FirstOrDefault();
-                if (uzytkownik != null && uzytkownik.Haslo == u.Haslo)
+                var szukanyUzytkwonik = baza.Uzytkownicy.Where(m => m.Login.Equals(uzytkownik.Login)).FirstOrDefault();
+                if (szukanyUzytkwonik != null && hasher.VerifyHashedPassword(szukanyUzytkwonik.Haslo, uzytkownik.Haslo) == PasswordVerificationResult.Success)
                 {
                     Menu menu = new Menu();
                     menu.Show();
