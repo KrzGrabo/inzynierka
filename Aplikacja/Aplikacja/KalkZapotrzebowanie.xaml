@@ -9,28 +9,44 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
-        <Label Content="waga (kg):" Grid.Row="1"/>
-        <TextBox Grid.Row="1" Grid.Column="1" Name="label_waga" TextChanged="label_waga_TextChanged" />
-        <Label Content="plec:" Grid.Row="2"/>
-        <ComboBox Grid.Column="1" Grid.Row="2" Name="combo_plec" SelectionChanged="combo_plec_SelectionChanged" />
-
-        <Label Grid.Row="3" Content="wzrost (cm):"/>
-        <TextBox Grid.Column="1" Grid.Row="3" Name="label_wzrost" TextChanged="label_wzrost_TextChanged" />
-
-        <Label Grid.Row="4" Content="aktywnosc fizyczna:"/>
-        <ComboBox Grid.Column="1" Grid.Row="4" Name="combo_aktywnosc" SelectionChanged="combo_aktywnosc_SelectionChanged" />
-
-
-
-        <Label Content="calość:" Grid.Row="6"/>
-        <Label Content="xxx" Grid.Row="6" Grid.Column="1" Name="label_wynik" />
+        <Label Content="{Binding}" x:Name="opisLabel" Grid.ColumnSpan="2"/>
+        <Button Content="Dane z profilu" Grid.Row="1" Grid.ColumnSpan="2" x:Name="daneButton" Click="daneButton_Click"/>
+        <Label Content="waga (kg):" Grid.Row="2" />
+        <TextBox Grid.Row="2" Grid.Column="1" x:Name="wagaTextbox"/>
+        <Label Content="wiek:" Grid.Row="3" />
+        <TextBox Grid.Row="3" Grid.Column="1" x:Name="wiekTextbox"  />
+        <Label Content="plec:" Grid.Row="4"/>
+        <ComboBox Grid.Column="1" Grid.Row="4" x:Name="plecCombo">
+            <ComboBoxItem>Męższczyzna</ComboBoxItem>
+            <ComboBoxItem>Kobieta</ComboBoxItem>
+        </ComboBox>
+        <Label Grid.Row="5" Content="wzrost (cm):"/>
+        <TextBox Grid.Column="1" Grid.Row="5" x:Name="wzrostTextbox"/>
+        <Label Grid.Row="6" Content="aktywnosc fizyczna:"/>
+        <ComboBox Grid.Column="1" Grid.Row="6" x:Name="aktywnoscCombo" >
+            <ComboBoxItem>Niska</ComboBoxItem>
+            <ComboBoxItem>Średnia</ComboBoxItem>
+            <ComboBoxItem>Wysoka</ComboBoxItem>
+            <ComboBoxItem>Bardzo wysoka</ComboBoxItem>
+        </ComboBox>
+        <Button Content="Oblicz" Grid.Row="8" Grid.ColumnSpan="2" x:Name="obliczButton" Click="obliczButton_Click" />
+        <Label Content="przemiania materii" Grid.Row="7" />
+        <ComboBox Grid.Column="1" Grid.Row="7" x:Name="przemianaCombo">
+            <ComboBoxItem>Ektomorfik</ComboBoxItem>
+            <ComboBoxItem>Mezomorfik</ComboBoxItem>
+            <ComboBoxItem>Endomorfik</ComboBoxItem>
+        </ComboBox>
+        <Label Content="Twój wynik:" Grid.Row="9"/>
+        <Label Content="{Binding}" Grid.Row="9" Grid.Column="1" Name="wynikLabel" />
     </Grid>
 </Window>
