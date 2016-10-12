@@ -23,5 +23,15 @@ namespace Aplikacja
         {
             InitializeComponent();
         }
+
+        private void okButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void anulujButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

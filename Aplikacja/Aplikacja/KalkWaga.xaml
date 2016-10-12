@@ -9,45 +9,51 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <GroupBox Grid.Row="0" Grid.Column="0"  Grid.ColumnSpan="2" Header="Opis:">
+        <GroupBox Grid.Row="8" Grid.Column="0"  Grid.ColumnSpan="2" Header="Opis:">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
+                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <CheckBox Content="BMI" Grid.Column="0" Grid.Row="0"/>
-                <CheckBox Content="Tkanka tłuszczowa" Grid.Column="1" Grid.Row="0" />
-                <CheckBox Content="WHR" Grid.Column="1" Grid.Row="1" />
-                <CheckBox Content="Idealna waga" Grid.Column="0" Grid.Row="1" />
+                <Label Content="{Binding}" Grid.Column="0" Grid.Row="0" x:Name="bmiLabel" Grid.ColumnSpan="2" />
+                <Label Content="{Binding}" Grid.Row="1" x:Name="tluszczLabel" Grid.ColumnSpan="2"/>
+                <Label Content="{Binding}" Grid.Row="2" x:Name="whrLabel" Grid.ColumnSpan="2"  />
+                <Label Content="{Binding}" Grid.Column="0" Grid.Row="3" x:Name="wagaLabel" Grid.ColumnSpan="2" />
             </Grid>
         </GroupBox>
-        
-        <Label Content="waga:" Grid.Row="1"/>
-        <TextBox Grid.Row="1" Grid.Column="1"/>
-        <Label Content="plec:" Grid.Row="2"/>
-        <ComboBox Grid.Column="1" Grid.Row="2"/>
+        <Label x:Name="opis" Content="opis" Grid.ColumnSpan="2"/>
+        <Label Content="waga:"   Grid.Row="2"/>
+        <TextBox x:Name="wagaTextbox"  Grid.Column="1" Margin="5" Grid.Row="2" KeyDown="WalidacjaTextboxow"/>
 
-        <Label Grid.Row="3" Content="wzrost:"/>
-        <TextBox Grid.Column="1" Grid.Row="3"/>
+        <Label Content="plec:" Grid.Row="3"/>
+        <ComboBox Grid.Column="1" x:Name="plecCombo" Grid.Row="3">
+            <ComboBoxItem>Mężczyzna</ComboBoxItem>
+            <ComboBoxItem>Kobieta</ComboBoxItem>
+        </ComboBox>
 
-        <Label Grid.Row="4" Content="obwód pasa:"/>
-        <TextBox Grid.Column="1" Grid.Row="4"/>
+        <Label Grid.Row="4" Content="wzrost:" />
+        <TextBox Grid.Column="1" Grid.Row="4" x:Name="wzrostTextbox" KeyDown="WalidacjaTextboxow"/>
 
-        <Label Grid.Row="5" IsEnabled="False" Content="obwód bioder:"/>
-        <TextBox Grid.Column="1" Grid.Row="5"/>
+        <Label Grid.Row="5" Content="obwód pasa:" />
+        <TextBox Grid.Column="1" Grid.Row="5" x:Name="pasTextbox" KeyDown="WalidacjaTextboxow" />
 
-        <Label Content="wyniki:" Grid.Row="6"/>
-        <Label Content="xxx" Grid.Row="6" Grid.Column="1"/>
+        <Label Grid.Row="6"   Content="obwód bioder:"/>
+        <TextBox Grid.Column="1" x:Name="biodraTextbox" Grid.Row="6" KeyDown="WalidacjaTextboxow"/>
+        <Button Content="Dane z mojego profilu" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" x:Name="mojedaneButton" Click="mojedaneButton_Click" />
+        <Button Content="Oblicz" Grid.Row="7" Grid.ColumnSpan="2"  x:Name="obliczButton" Click="obliczButton_Click"/>
     </Grid>
 </Window>

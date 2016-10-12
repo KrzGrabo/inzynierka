@@ -12,14 +12,18 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Label Content="waga:"/>
-        <Label Content="czas:" Grid.Row="1"/>
-        <Label Content="aktywnosc:" Grid.Row="2"/>
-        <TextBox Grid.Column="1"/>
-        <TextBox Grid.Row="1" Grid.Column="1"/>
-        <ComboBox Grid.Column="1" Grid.Row="2"/>
-        <Label Content="wyniki:" Grid.Row="3"/>
-        <Label Content="xxx" Grid.Row="3" Grid.Column="1"/>
+        <Label x:Name="opisLabel" Content="{Binding}"  Grid.Row="0" Grid.ColumnSpan="2" />
+        <Label Content="waga:" Grid.Row="1"/>
+        <Label Content="czas:" Grid.Row="2"/>
+        <Label Content="aktywnosc:" Grid.Row="3"/>
+        <TextBox x:Name="czasTextbox" Grid.Column="2" Grid.Row="2" KeyDown="czasTextbox_KeyDown"/>
+        <TextBox x:Name="wagaTextbox" Grid.Row="1" Grid.Column="1" KeyDown="wagaTextbox_KeyDown"/>
+        <ComboBox Grid.Column="1" Grid.Row="3" x:Name="aktywnosciCombo" />
+        <Button x:Name="obliczButton" Grid.Row="4" Grid.ColumnSpan="2" Content="oblicz" Click="obliczButton_Click"  />
+        <Label Content="wyniki:" Grid.Row="5"/>
+        <Label x:Name="wynikLabel"  Content="{Binding}" Grid.Row="5" Grid.Column="1"/>
     </Grid>
 </Window>

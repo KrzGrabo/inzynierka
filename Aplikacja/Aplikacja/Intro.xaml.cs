@@ -54,18 +54,18 @@ namespace Aplikacja
 
             if (walidacja == "")
             {
-                var szukanyUzytkwonik = baza.Uzytkownicy.Where(m => m.Login.Equals(uzytkownik.Login)).FirstOrDefault();
-                if (szukanyUzytkwonik != null && hasher.VerifyHashedPassword(szukanyUzytkwonik.Haslo, uzytkownik.Haslo) == PasswordVerificationResult.Success)
-                {
+                //var szukanyUzytkwonik = baza.Uzytkownicy.Where(m => m.Login.Equals(uzytkownik.Login)).FirstOrDefault();
+                //if (szukanyUzytkwonik != null && hasher.VerifyHashedPassword(szukanyUzytkwonik.Haslo, uzytkownik.Haslo) == PasswordVerificationResult.Success)
+                //{
                     Menu menu = new Menu();
                     menu.Show();
                     this.Close();
-                }
-                else
-                {
-                    walidacja = "Nie ma takiego użytkownika";
-                    MessageBox.Show(walidacja, "Uwaga", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                }
+                //}
+                //else
+                //{
+                //    walidacja = "Nie ma takiego użytkownika";
+                //    MessageBox.Show(walidacja, "Uwaga", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                //}
             }
             else
             {
