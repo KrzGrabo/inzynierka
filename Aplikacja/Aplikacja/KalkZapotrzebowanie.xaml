@@ -18,6 +18,7 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <Label Content="{Binding}" x:Name="opisLabel" Grid.ColumnSpan="2"/>
         <Button Content="Dane z profilu" Grid.Row="1" Grid.ColumnSpan="2" x:Name="daneButton" Click="daneButton_Click"/>
@@ -48,5 +49,6 @@
         </ComboBox>
         <Label Content="Twój wynik:" Grid.Row="9"/>
         <Label Content="{Binding}" Grid.Row="9" Grid.Column="1" Name="wynikLabel" />
+        <Button Content="Przenieś zapotrzebowanie" Grid.Row="10" Grid.ColumnSpan="2" x:Name="dietaButton" Click="dietaButton_Click" />
     </Grid>
 </Window>

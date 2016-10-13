@@ -19,9 +19,28 @@ namespace Aplikacja
     /// </summary>
     public partial class Dieta : Window
     {
+        public static double zapotrzebowanie=0;
         public Dieta()
         {
             InitializeComponent();
+            Bindowanie();
         }
+       
+        private void Bindowanie()
+        {
+            if(zapotrzebowanie!=0)
+            {
+                wynikLabel.Content = zapotrzebowanie.ToString();
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            KalkZapotrzebowanie menu = new KalkZapotrzebowanie();
+
+            menu.Show();
+
+        }
+
     }
 }
