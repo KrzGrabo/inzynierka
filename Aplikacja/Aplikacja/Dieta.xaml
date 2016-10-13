@@ -3,6 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Dieta" Height="300" Width="300">
     <Grid>
-        
+        <StackPanel>
+            <Label x:Name="wynikLabel" Content="{Binding}"/>
+            <Button Content="cost" Click="Button_Click"/>
+        </StackPanel>
     </Grid>
 </Window>

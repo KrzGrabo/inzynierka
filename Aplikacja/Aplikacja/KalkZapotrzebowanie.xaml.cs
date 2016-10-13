@@ -26,26 +26,14 @@ namespace Aplikacja
             Bindowanie();
         }
 
+        double zapotrzebowanko=-1;
+
         private void Bindowanie()
         {
             opisLabel.Content = "opis lalalalalala";
             wynikLabel.Content = "aby uzyskać wynik uzupełnij pola i kliknij oblicz";
         }
-            
-
-        //public double Zapotrzebowanie(double waga, double wzrost, int wiek, int plec, int aktywnosc)
-        //{
-        //    double bmr, epoc, tea, neat = 500, tef;
-        //    int dni;
-        //    dni = this.aktywnosc_dni[aktywnosc];
-        //    bmr = (9.99 * waga) + (6.25 * wzrost) - (4.92 * wiek) + this.plec_wsp[plec]; //podstawowe spalanie
-        //    epoc = dni * 0.07 * bmr;  //pomocnicza do tea
-        //    tea = ((9 * 60 * dni) + epoc) / 7 + this.aktywnosc_wsp[aktywnosc]; //ze wgledu na aktywnosc
-        //    tef = 0.08 * (bmr + epoc + neat); //efekt termiczny pozywienia
-        //    return Math.Round(bmr+epoc+tea+tef, 2);
-        //}
-
-       
+                   
         private void daneButton_Click(object sender, RoutedEventArgs e)
         {
             bool plec = false;
@@ -114,12 +102,22 @@ namespace Aplikacja
                     wynik = bmr + aktywnosc + przemiana;
                 }
                 wynikLabel.Content = "Twoja kalorycznosc: " + wynik.ToString();
+                zapotrzebowanko = wynik;
+
             }
             else
             {
                 walidacja = "Wystąpiły błędy przy wpisywaniu danych:" + walidacja;
                 MessageBox.Show(walidacja, "Uwaga", MessageBoxButton.OK, MessageBoxImage.Exclamation);
             }
+        }
+
+        private void dietaButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (zapotrzebowanko>0)Dieta.zapotrzebowanie = zapotrzebowanko;
+            Dieta dieta = new Dieta();
+            dieta.Show();
+            this.Close();
         }
     }
 }
