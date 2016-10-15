@@ -13,10 +13,10 @@ namespace Aplikacja
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class AplikacjaEntities : DbContext
+    public partial class BazaDanychEntities : DbContext
     {
-        public AplikacjaEntities()
-            : base("name=AplikacjaEntities")
+        public BazaDanychEntities()
+            : base("name=BazaDanychEntities")
         {
         }
     

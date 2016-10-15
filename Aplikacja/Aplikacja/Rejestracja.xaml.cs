@@ -20,8 +20,7 @@ namespace Aplikacja
     /// </summary>
     public partial class Rejestracja : Window
     {
-        bool plec = false;
-
+        bool plec = false;
         public Rejestracja()
         {
             InitializeComponent();
@@ -41,7 +40,7 @@ namespace Aplikacja
         private void rejestracjaButton_Click(object sender, RoutedEventArgs e)
         {
             string walidacja = "";
-            AplikacjaEntities baza = new AplikacjaEntities();
+            BazaDanychEntities db = new BazaDanychEntities();
             Uzytkownicy uzytkownik = new Uzytkownicy();
             PasswordHasher hasher = new PasswordHasher();
             
@@ -73,17 +72,21 @@ namespace Aplikacja
             {
                 uzytkownik.Haslo = hasher.HashPassword(haslo).ToString(); ;
             }
-
+            var szukanyUzytkwonik = db.Uzytkownicy.Where(m => m.Login.Equals(uzytkownik.Login)).FirstOrDefault();
+            if (szukanyUzytkwonik != null)
+            {
+                walidacja = "Użytkownik o podanym loginie już istnieje!";
+            }
             if (walidacja == "")
             {
-                baza.Uzytkownicy.Add(uzytkownik);
-                baza.SaveChanges();
+                db.Uzytkownicy.Add(uzytkownik);
+                db.SaveChanges();
                 MessageBox.Show("Twoje konto zostało utworzone poprawnie!", "App", MessageBoxButton.OK, MessageBoxImage.Information);
                 this.Close();
             }
             else
             {
-                walidacja = "Wystąpiły błędy przy wpisywaniu danych:" + walidacja;
+                walidacja = "Wystąpiły błędy przy wpisywaniu danych: " + walidacja;
                 MessageBox.Show(walidacja, "Uwaga", MessageBoxButton.OK, MessageBoxImage.Exclamation);
             }
         }
