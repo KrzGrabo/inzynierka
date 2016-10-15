@@ -20,7 +20,9 @@ namespace Aplikacja
     /// </summary>
     public partial class Rejestracja : Window
     {
-        bool plec = false;
+        bool plec = false;
+        BazaDanychEntities db = new BazaDanychEntities();
+        Uzytkownicy uzytkownik = new Uzytkownicy();
         public Rejestracja()
         {
             InitializeComponent();
@@ -40,8 +42,6 @@ namespace Aplikacja
         private void rejestracjaButton_Click(object sender, RoutedEventArgs e)
         {
             string walidacja = "";
-            BazaDanychEntities db = new BazaDanychEntities();
-            Uzytkownicy uzytkownik = new Uzytkownicy();
             PasswordHasher hasher = new PasswordHasher();
             
             uzytkownik.Login = loginTextbox.Text.Trim();

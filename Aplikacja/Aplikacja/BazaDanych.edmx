@@ -4,7 +4,17 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="BazaDanychModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="BazaDanychModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Dane">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Imie" Type="varchar" MaxLength="30" />
+          <Property Name="Rocznik" Type="varchar" MaxLength="30" />
+          <Property Name="Plec" Type="varchar" MaxLength="30" />
+          <Property Name="Waga" Type="varchar" MaxLength="30" />
+        </EntityType>
         <EntityType Name="Uzytkownicy">
           <Key>
             <PropertyRef Name="ID" />
@@ -12,12 +22,29 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Login" Type="varchar" MaxLength="30" />
           <Property Name="Haslo" Type="varchar" MaxLength="200" />
+          <Property Name="Id_Profilu" Type="int" />
         </EntityType>
+        <Association Name="FK__Uzytkowni__Id_Pr__47DBAE45">
+          <End Role="Dane" Type="Self.Dane" Multiplicity="0..1" />
+          <End Role="Uzytkownicy" Type="Self.Uzytkownicy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dane">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Uzytkownicy">
+              <PropertyRef Name="Id_Profilu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="BazaDanychModelStoreContainer">
+          <EntitySet Name="Dane" EntityType="Self.Dane" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Uzytkownicy" EntityType="Self.Uzytkownicy" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Uzytkowni__Id_Pr__47DBAE45" Association="Self.FK__Uzytkowni__Id_Pr__47DBAE45">
+            <End Role="Dane" EntitySet="Dane" />
+            <End Role="Uzytkownicy" EntitySet="Uzytkownicy" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BazaDanychModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -28,10 +55,40 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Login" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Haslo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Id_Profilu" Type="Int32" />
+          <NavigationProperty Name="Dane" Relationship="BazaDanychModel.FK__Uzytkowni__Id_Pr__47DBAE45" FromRole="Uzytkownicy" ToRole="Dane" />
         </EntityType>
         <EntityContainer Name="BazaDanychEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Uzytkownicy" EntityType="Self.Uzytkownicy" />
+          <EntitySet Name="Dane" EntityType="BazaDanychModel.Dane" />
+          <AssociationSet Name="FK__Uzytkowni__Id_Pr__47DBAE45" Association="BazaDanychModel.FK__Uzytkowni__Id_Pr__47DBAE45">
+            <End Role="Dane" EntitySet="Dane" />
+            <End Role="Uzytkownicy" EntitySet="Uzytkownicy" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Dane">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Imie" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Rocznik" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Plec" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Uzytkownicy" Relationship="BazaDanychModel.FK__Uzytkowni__Id_Pr__47DBAE45" FromRole="Dane" ToRole="Uzytkownicy" />
+          <Property Name="Waga" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK__Uzytkowni__Id_Pr__47DBAE45">
+          <End Type="BazaDanychModel.Dane" Role="Dane" Multiplicity="0..1" />
+          <End Type="BazaDanychModel.Uzytkownicy" Role="Uzytkownicy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dane">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Uzytkownicy">
+              <PropertyRef Name="Id_Profilu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -41,9 +98,21 @@
           <EntitySetMapping Name="Uzytkownicy">
             <EntityTypeMapping TypeName="BazaDanychModel.Uzytkownicy">
               <MappingFragment StoreEntitySet="Uzytkownicy">
+                <ScalarProperty Name="Id_Profilu" ColumnName="Id_Profilu" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Login" ColumnName="Login" />
                 <ScalarProperty Name="Haslo" ColumnName="Haslo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dane">
+            <EntityTypeMapping TypeName="BazaDanychModel.Dane">
+              <MappingFragment StoreEntitySet="Dane">
+                <ScalarProperty Name="Waga" ColumnName="Waga" />
+                <ScalarProperty Name="Plec" ColumnName="Plec" />
+                <ScalarProperty Name="Rocznik" ColumnName="Rocznik" />
+                <ScalarProperty Name="Imie" ColumnName="Imie" />
+                <ScalarProperty Name="ID" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
