@@ -136,11 +136,15 @@
     <Compile Include="Rejestracja.xaml.cs">
       <DependentUpon>Rejestracja.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Sesja.cs" />
     <Compile Include="Statystyki.xaml.cs">
       <DependentUpon>Statystyki.xaml</DependentUpon>
     </Compile>
     <Compile Include="Suplementacja.xaml.cs">
       <DependentUpon>Suplementacja.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TabelaProduktow.xaml.cs">
+      <DependentUpon>TabelaProduktow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Trening.xaml.cs">
       <DependentUpon>Trening.xaml</DependentUpon>
@@ -221,6 +225,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Suplementacja.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TabelaProduktow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

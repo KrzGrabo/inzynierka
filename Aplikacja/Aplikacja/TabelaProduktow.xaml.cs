@@ -15,23 +15,13 @@ using System.Windows.Shapes;
 namespace Aplikacja
 {
     /// <summary>
-    /// Interaction logic for Profil.xaml
+    /// Interaction logic for TabelaProduktow.xaml
     /// </summary>
-    public partial class Profil : Window
+    public partial class TabelaProduktow : Window
     {
-        public Profil()
+        public TabelaProduktow()
         {
             InitializeComponent();
-        }
-
-        private void okButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void anulujButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
         }
     }
 }

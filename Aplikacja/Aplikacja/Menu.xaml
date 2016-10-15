@@ -29,43 +29,43 @@
 
         <Button Grid.Column="0" x:Name="kalkulatoryButton" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3"  ToolTip="Kalkulatory" Click="kalkulatoryButton_Click">
             <StackPanel Orientation="Horizontal">
-                <Image Source="Ikonki/big-stopwatch.png" Margin="1"/>
+                <Image Source="Ikonki/iron-shoot.png" Margin="1"/>
            
             </StackPanel>
         </Button>
         <Button Grid.Column="1" x:Name="dietaButton" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3"  ToolTip="Dieta" Click="dietaButton_Click">
             <StackPanel Orientation="Horizontal">
-            <Image Source="Ikonki/big-stopwatch2.png" Margin="1"/>
+                <Image Source="Ikonki/carrot-and-apple.png" Margin="1"/>
          
             </StackPanel>
         </Button>
         <Button Grid.Column="2" x:Name="suplementacjaButton" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3"  ToolTip="Suplementacja" Click="suplementacjaButton_Click">
             <StackPanel Orientation="Horizontal">
-                <Image Source="Ikonki/big-stopwatch.png" Margin="1"/>
+                <Image Source="Ikonki/phytonutrients.png" Margin="1"/>
             
             </StackPanel>
         </Button>
         <Button Grid.Column="0" x:Name="profilButton" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3"  ToolTip="Twoje dane" Click="profilButton_Click">
             <StackPanel Orientation="Horizontal">
-                <Image Source="Ikonki/big-stopwatch.png" Margin="1"/>
+                <Image Source="Ikonki/measuring-tape.png" Margin="1"/>
              
             </StackPanel>
         </Button>
         <Button Grid.Column="1" x:Name="treningButton" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3"  ToolTip="Trening" Click="treningButton_Click">
             <StackPanel Orientation="Horizontal">
-                <Image Source="Ikonki/big-stopwatch.png" Margin="1"/>
+                <Image Source="Ikonki/bench-press-weightlifting.png" Margin="1"/>
           
             </StackPanel>
         </Button>
         <Button Grid.Column="2" x:Name="statystykiButton" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3"  ToolTip="Statystyki" Click="statystykiButton_Click">
             <StackPanel Orientation="Horizontal">
-                <Image Source="Ikonki/big-stopwatch.png" Margin="1"/>
+                <Image Source="Ikonki/sport-watch.png" Margin="1"/>
      
             </StackPanel>
         </Button>
-        <Button Grid.Column="0" x:Name="dane3Button" Grid.Row="3"  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3" ToolTip="Kalkulatory">
+        <Button Grid.Column="0" x:Name="produktySpozywczeButton" Grid.Row="3"  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3" ToolTip="Produkty Spożywcze" Click="produktySpozywczeButton_Click">
             <StackPanel Orientation="Horizontal">
-                <Image Source="Ikonki/big-stopwatch.png" Margin="1"/>
+                <Image Source="Ikonki/broccoli-porcion.png" Margin="1"/>
              
             </StackPanel>
         </Button>

@@ -94,6 +94,12 @@ namespace Aplikacja
             okno.Show();
         }
 
+        private void produktySpozywczeButton_Click(object sender, RoutedEventArgs e)
+        {
+            TabelaProduktow okno = new TabelaProduktow();
+            okno.Show();
+        }
+
 
    
     }

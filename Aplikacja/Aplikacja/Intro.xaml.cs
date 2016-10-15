@@ -64,7 +64,6 @@ namespace Aplikacja
                 else
                 {
                     walidacja = "Nie ma takiego użytkownika";
-                    MessageBox.Show(walidacja, "Uwaga", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 }
             }
             else
