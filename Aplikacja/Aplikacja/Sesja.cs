@@ -9,9 +9,9 @@ namespace Aplikacja
     static class Sesja
     {
         static int id_sesji;
-        public static void UstawId()
+        public static void UstawId(int id)
         {
-            id_sesji = 0;
+            id_sesji = id;
         }
         public static int ZwrocId()
         {

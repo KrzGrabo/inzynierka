@@ -26,5 +26,6 @@ namespace Aplikacja
         }
     
         public virtual DbSet<Uzytkownicy> Uzytkownicy { get; set; }
+        public virtual DbSet<Dane> Dane { get; set; }
     }
 }

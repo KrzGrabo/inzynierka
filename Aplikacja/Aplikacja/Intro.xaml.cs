@@ -59,11 +59,13 @@ namespace Aplikacja
                 {
                     Menu menu = new Menu();
                     menu.Show();
+                    Sesja.UstawId(szukanyUzytkwonik.ID);
                     this.Close();
                 }
                 else
                 {
                     walidacja = "Nie ma takiego użytkownika";
+                    MessageBox.Show(walidacja, "Uwaga", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 }
             }
             else

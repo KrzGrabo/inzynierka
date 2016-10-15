@@ -103,6 +103,9 @@
       <DependentUpon>BazaDanych.edmx</DependentUpon>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="Dane.cs">
+      <DependentUpon>BazaDanych.tt</DependentUpon>
+    </Compile>
     <Compile Include="Dieta.xaml.cs">
       <DependentUpon>Dieta.xaml</DependentUpon>
     </Compile>

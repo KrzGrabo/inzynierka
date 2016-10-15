@@ -12,13 +12,19 @@ namespace Aplikacja
     using System;
     using System.Collections.Generic;
     
-    public partial class Uzytkownicy
+    public partial class Dane
     {
-        public int ID { get; set; }
-        public string Login { get; set; }
-        public string Haslo { get; set; }
-        public Nullable<int> Id_Profilu { get; set; }
+        public Dane()
+        {
+            this.Uzytkownicy = new HashSet<Uzytkownicy>();
+        }
     
-        public virtual Dane Dane { get; set; }
+        public int ID { get; set; }
+        public string Imie { get; set; }
+        public string Rocznik { get; set; }
+        public string Plec { get; set; }
+        public string Waga { get; set; }
+    
+        public virtual ICollection<Uzytkownicy> Uzytkownicy { get; set; }
     }
 }
