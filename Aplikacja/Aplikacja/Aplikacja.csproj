@@ -89,16 +89,19 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>BazaDanych.Context.tt</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
     <Compile Include="BazaDanych.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>BazaDanych.tt</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
     <Compile Include="BazaDanych.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>BazaDanych.edmx</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Dieta.xaml.cs">
       <DependentUpon>Dieta.xaml</DependentUpon>
@@ -148,6 +151,7 @@
     </Compile>
     <Compile Include="Uzytkownicy.cs">
       <DependentUpon>BazaDanych.tt</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
     <Page Include="Autorzy.xaml">
       <SubType>Designer</SubType>
@@ -254,19 +258,11 @@
     <EntityDeploy Include="BazaDanych.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>BazaDanych.Designer.cs</LastGenOutput>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EntityDeploy>
-    <None Include="BazaDanych.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BazaDanych.edmx</DependentUpon>
-      <LastGenOutput>BazaDanych.Context.cs</LastGenOutput>
-    </None>
     <None Include="BazaDanych.edmx.diagram">
       <DependentUpon>BazaDanych.edmx</DependentUpon>
-    </None>
-    <None Include="BazaDanych.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BazaDanych.edmx</DependentUpon>
-      <LastGenOutput>BazaDanych.cs</LastGenOutput>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -362,16 +358,31 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Aplikacja.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Aplikacja_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>Aplikacja.mdf</DependentUpon>
-    </Content>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Service References\" />
+    <Folder Include="Properties\DataSources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="BazaDanych.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BazaDanych.edmx</DependentUpon>
+      <LastGenOutput>BazaDanych.Context.cs</LastGenOutput>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="BazaDanych.mdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="BazaDanych.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BazaDanych.edmx</DependentUpon>
+      <LastGenOutput>BazaDanych.cs</LastGenOutput>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="BazaDanych_log.ldf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <DependentUpon>BazaDanych.mdf</DependentUpon>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

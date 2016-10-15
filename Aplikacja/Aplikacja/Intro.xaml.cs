@@ -34,7 +34,7 @@ namespace Aplikacja
 
         private void logowanieButton_Click(object sender, RoutedEventArgs e)
         {
-            AplikacjaEntities baza = new AplikacjaEntities();
+            BazaDanychEntities db = new BazaDanychEntities();
             Uzytkownicy uzytkownik = new Uzytkownicy();
             PasswordHasher hasher = new PasswordHasher();
 
@@ -54,18 +54,17 @@ namespace Aplikacja
 
             if (walidacja == "")
             {
-                //var szukanyUzytkwonik = baza.Uzytkownicy.Where(m => m.Login.Equals(uzytkownik.Login)).FirstOrDefault();
-                //if (szukanyUzytkwonik != null && hasher.VerifyHashedPassword(szukanyUzytkwonik.Haslo, uzytkownik.Haslo) == PasswordVerificationResult.Success)
-                //{
+                var szukanyUzytkwonik = db.Uzytkownicy.Where(m => m.Login.Equals(uzytkownik.Login)).FirstOrDefault();
+                if (szukanyUzytkwonik != null && hasher.VerifyHashedPassword(szukanyUzytkwonik.Haslo, uzytkownik.Haslo) == PasswordVerificationResult.Success)
+                {
                     Menu menu = new Menu();
                     menu.Show();
                     this.Close();
-                //}
-                //else
-                //{
-                //    walidacja = "Nie ma takiego użytkownika";
-                //    MessageBox.Show(walidacja, "Uwaga", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                //}
+                }
+                else
+                {
+                    walidacja = "Nie ma takiego użytkownika";
+                }
             }
             else
             {
