@@ -23,6 +23,7 @@ namespace Aplikacja
         int id = Sesja.ZwrocId();
         Dane przypisaneDane = new Dane();
         Uzytkownicy uzytkownik = new Uzytkownicy();
+        Historia_Danych historia = new Historia_Danych();
         
         public Profil()
         {
@@ -36,16 +37,23 @@ namespace Aplikacja
                 int id_profilu =  uzytkownik.Id_Profilu.GetValueOrDefault();
                 przypisaneDane = db.Dane.Where(m => m.ID.Equals(id_profilu)).FirstOrDefault();
                 imieTextbox.Text = przypisaneDane.Imie;
-                rocznikTextbox.Text = przypisaneDane.Rocznik;
-                wagaTextbox.Text = przypisaneDane.Waga;
+                wiekTextbox.Text = przypisaneDane.Wiek.ToString();
+                wagaTextbox.Text = przypisaneDane.Waga.ToString();
+                wzrostTextbox.Text = przypisaneDane.Wzrost.ToString();
+                obwodPasaTextbox.Text = przypisaneDane.Obwod_Pasa.ToString();
+                obwodBioderTextbox.Text = przypisaneDane.Obwod_Bioder.ToString();
             }
         }
 
         private void okButton_Click(object sender, RoutedEventArgs e)
         {
+            zapiszHistorie();
             przypisaneDane.Imie = imieTextbox.Text.Trim();
-            przypisaneDane.Rocznik = rocznikTextbox.Text.Trim();
-            przypisaneDane.Waga = wagaTextbox.Text.Trim();
+            przypisaneDane.Wiek = int.Parse(wiekTextbox.Text.Trim());
+            przypisaneDane.Waga = double.Parse(wagaTextbox.Text.Trim());
+            przypisaneDane.Wzrost = double.Parse(wzrostTextbox.Text.Trim());
+            przypisaneDane.Obwod_Pasa = double.Parse(obwodPasaTextbox.Text.Trim());
+            przypisaneDane.Obwod_Bioder = double.Parse(obwodBioderTextbox.Text.Trim());
 
             if(uzytkownik != null && uzytkownik.Id_Profilu == null)
             {
@@ -60,6 +68,19 @@ namespace Aplikacja
         private void anulujButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void zapiszHistorie() {
+            historia.Data = DateTime.Now;
+            String.Format("{0:MM/dd/yyyy}", historia.Data);
+            historia.ID_Profilu = przypisaneDane.ID;
+            historia.Obwod_Bioder = przypisaneDane.Obwod_Bioder;
+            historia.Obwod_Pasa = przypisaneDane.Obwod_Pasa;
+            historia.Waga = przypisaneDane.Waga;
+            historia.Wzrost = przypisaneDane.Wzrost;
+            historia.Wiek = historia.Wiek;
+            db.Historia_Danych.Add(historia);
+            db.SaveChanges();
         }
     }
 }

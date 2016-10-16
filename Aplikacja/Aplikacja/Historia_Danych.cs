@@ -12,24 +12,17 @@ namespace Aplikacja
     using System;
     using System.Collections.Generic;
     
-    public partial class Dane
+    public partial class Historia_Danych
     {
-        public Dane()
-        {
-            this.Historia_Danych = new HashSet<Historia_Danych>();
-            this.Uzytkownicy = new HashSet<Uzytkownicy>();
-        }
-    
-        public int ID { get; set; }
-        public string Imie { get; set; }
+        public int Id { get; set; }
+        public Nullable<System.DateTime> Data { get; set; }
         public Nullable<int> Wiek { get; set; }
-        public string Plec { get; set; }
         public Nullable<double> Waga { get; set; }
         public Nullable<double> Wzrost { get; set; }
         public Nullable<double> Obwod_Pasa { get; set; }
         public Nullable<double> Obwod_Bioder { get; set; }
+        public int ID_Profilu { get; set; }
     
-        public virtual ICollection<Historia_Danych> Historia_Danych { get; set; }
-        public virtual ICollection<Uzytkownicy> Uzytkownicy { get; set; }
+        public virtual Dane Dane { get; set; }
     }
 }

@@ -19,6 +19,11 @@ namespace Aplikacja
     /// </summary>
     public partial class KalkWaga : Window
     {
+        BazaDanychEntities db = new BazaDanychEntities();
+        int id = Sesja.ZwrocId();
+        Dane przypisaneDane = new Dane();
+        Uzytkownicy uzytkownik = new Uzytkownicy();
+
         public KalkWaga()
         {
             InitializeComponent();
@@ -126,8 +131,13 @@ namespace Aplikacja
 
         private void mojedaneButton_Click(object sender, RoutedEventArgs e)
         {
+           uzytkownik = db.Uzytkownicy.Where(m => m.ID.Equals(id)).FirstOrDefault();
+           przypisaneDane = uzytkownik.Dane;
            bool plec=false;
-           double aktWaga=1, wzrost=1, aktPas=1, aktBiodra=1; //Do tych zmienny przypisane wartosci z bazy danych z profilu
+           double aktWaga = przypisaneDane.Waga.GetValueOrDefault(), 
+               wzrost = przypisaneDane.Wzrost.GetValueOrDefault(), 
+               aktPas = przypisaneDane.Obwod_Pasa.GetValueOrDefault(), 
+               aktBiodra = przypisaneDane.Obwod_Bioder.GetValueOrDefault();
 
            if (plec == true) plecCombo.SelectedIndex = 0;
            else plecCombo.SelectedIndex = 1;
