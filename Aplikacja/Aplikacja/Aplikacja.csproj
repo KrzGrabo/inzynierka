@@ -109,6 +109,9 @@
     <Compile Include="Dieta.xaml.cs">
       <DependentUpon>Dieta.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Historia_Danych.cs">
+      <DependentUpon>BazaDanych.tt</DependentUpon>
+    </Compile>
     <Compile Include="Informacje.xaml.cs">
       <DependentUpon>Informacje.xaml</DependentUpon>
     </Compile>
@@ -154,7 +157,6 @@
     </Compile>
     <Compile Include="Uzytkownicy.cs">
       <DependentUpon>BazaDanych.tt</DependentUpon>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
     <Page Include="Autorzy.xaml">
       <SubType>Designer</SubType>
