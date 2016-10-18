@@ -40,7 +40,7 @@
           <Property Name="Haslo" Type="varchar" MaxLength="200" />
           <Property Name="Id_Profilu" Type="int" />
         </EntityType>
-        <Association Name="FK__Historia __ID_Pr__503BEA1C">
+        <Association Name="FK__Historia __ID_Pr__286302EC">
           <End Role="Dane" Type="Self.Dane" Multiplicity="1" />
           <End Role="Historia Danych" Type="Self.Historia Danych" Multiplicity="*" />
           <ReferentialConstraint>
@@ -52,7 +52,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Uzytkowni__Id_Pr__4F47C5E3">
+        <Association Name="FK__Uzytkowni__Id_Pr__25869641">
           <End Role="Dane" Type="Self.Dane" Multiplicity="0..1" />
           <End Role="Uzytkownicy" Type="Self.Uzytkownicy" Multiplicity="*" />
           <ReferentialConstraint>
@@ -68,11 +68,11 @@
           <EntitySet Name="Dane" EntityType="Self.Dane" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Historia Danych" EntityType="Self.Historia Danych" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Uzytkownicy" EntityType="Self.Uzytkownicy" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Historia __ID_Pr__503BEA1C" Association="Self.FK__Historia __ID_Pr__503BEA1C">
+          <AssociationSet Name="FK__Historia __ID_Pr__286302EC" Association="Self.FK__Historia __ID_Pr__286302EC">
             <End Role="Dane" EntitySet="Dane" />
             <End Role="Historia Danych" EntitySet="Historia Danych" />
           </AssociationSet>
-          <AssociationSet Name="FK__Uzytkowni__Id_Pr__4F47C5E3" Association="Self.FK__Uzytkowni__Id_Pr__4F47C5E3">
+          <AssociationSet Name="FK__Uzytkowni__Id_Pr__25869641" Association="Self.FK__Uzytkowni__Id_Pr__25869641">
             <End Role="Dane" EntitySet="Dane" />
             <End Role="Uzytkownicy" EntitySet="Uzytkownicy" />
           </AssociationSet>

@@ -19,6 +19,10 @@ namespace Aplikacja
     /// </summary>
     public partial class KalkZapotrzebowanie : Window
     {
+        BazaDanychEntities db = new BazaDanychEntities();
+        int id = Sesja.ZwrocId();
+        Dane przypisaneDane = new Dane();
+        Uzytkownicy uzytkownik = new Uzytkownicy();
 
         public KalkZapotrzebowanie()
         {
@@ -36,13 +40,18 @@ namespace Aplikacja
                    
         private void daneButton_Click(object sender, RoutedEventArgs e)
         {
+            uzytkownik = db.Uzytkownicy.Where(m => m.ID.Equals(id)).FirstOrDefault();
+            przypisaneDane = uzytkownik.Dane;
             bool plec = false;
-            double aktWaga = 1, wzrost = 1; //Do tych zmienny przypisane wartosci z bazy danych z profilu
+            double aktWaga = przypisaneDane.Waga.GetValueOrDefault(),
+                 wzrost = przypisaneDane.Wzrost.GetValueOrDefault(),
+                 wiek = przypisaneDane.Wiek.GetValueOrDefault();
 
             if (plec == true) plecCombo.SelectedIndex = 0;
             else plecCombo.SelectedIndex = 1;
             wagaTextbox.Text = aktWaga.ToString();
             wzrostTextbox.Text = wzrost.ToString();
+            wiekTextbox.Text = wiek.ToString();
         }
 
         private void obliczButton_Click(object sender, RoutedEventArgs e)
