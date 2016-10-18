@@ -123,10 +123,11 @@ namespace Aplikacja
 
         private void dietaButton_Click(object sender, RoutedEventArgs e)
         {
-            if (zapotrzebowanko>0)Dieta.zapotrzebowanie = zapotrzebowanko;
-            Dieta dieta = new Dieta();
-            dieta.Show();
-            this.Close();
+            //ZAKOMENTOWANE DO WYWALENIA, TRZEBA PO PROSTU ZAPISYWAC DO BAZY ZAPOTRZEBOWANKO
+            //if (zapotrzebowanko>0)Dieta.zapotrzebowanie = zapotrzebowanko;
+            //Dieta dieta = new Dieta();
+            //dieta.Show();
+            //this.Close();
         }
     }
 }

@@ -3,9 +3,127 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Dieta" Height="300" Width="300">
     <Grid>
-        <StackPanel>
-            <Label x:Name="wynikLabel" Content="{Binding}"/>
-            <Button Content="cost" Click="Button_Click"/>
-        </StackPanel>
+        <TabControl>
+            <TabItem Header="Krok I">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+
+                    </Grid.RowDefinitions>
+
+                    <Label x:Name="opis1Label" Content="{Binding}" Grid.ColumnSpan="2"/>
+                    <Label Content="waga:"   Grid.Row="2"/>
+                    <TextBox x:Name="wagaTextbox"  Grid.Column="1"  Grid.Row="2" KeyDown="WalidacjaTextboxow"/>
+
+                    <Label Content="plec:" Grid.Row="3"/>
+                    <ComboBox Grid.Column="1" x:Name="plecCombo" Grid.Row="3">
+                        <ComboBoxItem>Mężczyzna</ComboBoxItem>
+                        <ComboBoxItem>Kobieta</ComboBoxItem>
+                    </ComboBox>
+
+                    <Label Grid.Row="4" Content="zapotrzebowanie:" />
+                    <TextBox Grid.Column="1" Grid.Row="4" x:Name="zapotrzebowanieTextbox" KeyDown="WalidacjaTextboxow"/>
+
+
+                    <Button Content="Dane z mojego profilu" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" x:Name="mojedaneButton" Click="mojedaneButton_Click" />
+                    <Button Content="dalej" Grid.Row="5" Grid.ColumnSpan="2"  x:Name="dalej1Button" Click="dalej1Button_Click" />
+
+                </Grid>
+
+            </TabItem>
+
+            <TabItem Header="Krok II" IsEnabled="True">
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Label x:Name="opis2Label" Content="{Binding}" Grid.ColumnSpan="2"/>
+                    <Label Content="cel:"   Grid.Row="1"/>
+                    <ComboBox Grid.Column="1" x:Name="celCombo" Grid.Row="1">
+                        <ComboBoxItem>masa</ComboBoxItem>
+                        <ComboBoxItem>0</ComboBoxItem>
+                        <ComboBoxItem>redukcja</ComboBoxItem>
+                        <ComboBoxItem>ciecie wagi</ComboBoxItem>
+                    </ComboBox>
+
+                    <Label Content="typ sportu:" Grid.Row="2"/>
+                    <ComboBox Grid.Column="1" x:Name="sportCombo" Grid.Row="2">
+                        <ComboBoxItem>Szybkosciowy/Silowy</ComboBoxItem>
+                        <ComboBoxItem>Wytrzymalosciowy</ComboBoxItem>
+                        <ComboBoxItem>Sztuki Walki</ComboBoxItem>
+                        <ComboBoxItem>Ogolnorozwojowy</ComboBoxItem>
+                    </ComboBox>
+                    <Label Content="wegle-tluszcze:"   Grid.Row="3"/>
+                    <Button Content="info" Grid.Row="3"  Grid.Column="1" x:Name="porownanieButton" Click="porownanieButton_Click" />
+                    <Slider Maximum="95" Minimum="5"  Value="50" Grid.ColumnSpan="2" Grid.Row="4" x:Name="podzialSlider" TickPlacement="BottomRight" TickFrequency="10" IsSnapToTickEnabled="True" ValueChanged="podzialSlider_ValueChanged" />
+
+                    <Button Content="powrot" Grid.Row="5"  Grid.Column="0" x:Name="powrot2Button" Click="powrot2Button_Click" />
+                    <Button Content="dalej" Grid.Row="5" Grid.Column="1"  x:Name="dalej2Button" Click="dalej2Button_Click" />
+
+                </Grid>
+
+            </TabItem>
+
+            <TabItem Header="Krok III" IsEnabled="True">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+
+                    </Grid.RowDefinitions>
+
+                    <Label x:Name="opis3Label" Content="{Binding}" Grid.ColumnSpan="2"/>
+                    <Label Content="data startowa" Grid.Row="1"/>
+                    <DatePicker  Grid.Row="1" Grid.Column="1" x:Name="startDatapicker"  SelectedDateChanged="startDatapicker_SelectedDateChanged"/>
+                    <Label Content="data koncowa" Grid.Row="2"/>
+                    <DatePicker  Grid.Row="2" Grid.Column="1" x:Name="koniecDatapicker"  SelectedDateChanged="koniecDatapicker_SelectedDateChanged"/>
+                    <Label Content="ilosc posilkow:" Grid.Row="3"/>
+                    <ComboBox Grid.Column="1" x:Name="sportC22ombo" Grid.Row="3">
+                        <ComboBoxItem>1</ComboBoxItem>
+                        <ComboBoxItem>2</ComboBoxItem>
+                        <ComboBoxItem>3</ComboBoxItem>
+                        <ComboBoxItem>4</ComboBoxItem>
+                        <ComboBoxItem>5</ComboBoxItem>
+                        <ComboBoxItem>6</ComboBoxItem>
+                    </ComboBox>
+
+                    <Button Content="powrot" Grid.Row="4"  Grid.Column="0" x:Name="powrot3Button" Click="powrot3Button_Click" />
+                    <Button Content="dalej" Grid.Row="4" Grid.Column="1"  x:Name="dalej3Button" Click="dalej3Button_Click" />
+
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Podsumowanie" IsEnabled="False">
+
+            </TabItem>
+
+        </TabControl>
     </Grid>
 </Window>

@@ -136,6 +136,9 @@
     <Compile Include="Pomoc.xaml.cs">
       <DependentUpon>Pomoc.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Porownanie.xaml.cs">
+      <DependentUpon>Porownanie.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Profil.xaml.cs">
       <DependentUpon>Profil.xaml</DependentUpon>
     </Compile>
@@ -214,6 +217,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pomoc.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Porownanie.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
