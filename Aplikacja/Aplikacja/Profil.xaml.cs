@@ -47,7 +47,10 @@ namespace Aplikacja
 
         private void okButton_Click(object sender, RoutedEventArgs e)
         {
-            zapiszHistorie();
+            if (uzytkownik.Id_Profilu != null)
+            {
+                zapiszHistorie();
+            }
             przypisaneDane.Imie = imieTextbox.Text.Trim();
             przypisaneDane.Wiek = int.Parse(wiekTextbox.Text.Trim());
             przypisaneDane.Waga = double.Parse(wagaTextbox.Text.Trim());
