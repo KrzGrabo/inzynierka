@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -28,6 +30,7 @@ namespace Aplikacja
        
         private void Bindowanie()
         {
+            podzialLabel.Content = "50:50";
             if(zapotrzebowanie!=0)
             {
                // wynikLabel.Content = zapotrzebowanie.ToString();
@@ -52,36 +55,87 @@ namespace Aplikacja
 
         private void dalej1Button_Click(object sender, RoutedEventArgs e)
         {
+            string walidacja = "";
 
+            if(walidacja=="")
+            {
+                krok2Tab.IsEnabled = true;
+                krok1Tab.IsEnabled = false;
+                oknoTabcontrol.SelectedIndex = 1;           
+            }
+            else 
+            {
+                walidacja = "Wystąpiły błędy przy wpisywaniu danych:" + walidacja;
+                MessageBox.Show(walidacja, "Uwaga", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
         }
 
         private void dalej2Button_Click(object sender, RoutedEventArgs e)
         {
+            string walidacja = "";
 
-        }
-
-        private void powrot2Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void powrot3Button_Click(object sender, RoutedEventArgs e)
-        {
-
+            if (walidacja == "")
+            {
+                krok3Tab.IsEnabled = true;
+                krok2Tab.IsEnabled = false;
+                oknoTabcontrol.SelectedIndex = 2;
+            }
+            else
+            {
+                walidacja = "Wystąpiły błędy przy wpisywaniu danych:" + walidacja;
+                MessageBox.Show(walidacja, "Uwaga", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
         }
 
         private void dalej3Button_Click(object sender, RoutedEventArgs e)
         {
+            string walidacja = "";
 
+            if (walidacja == "")
+            {
+                podsumowanieTab.IsEnabled = true;
+                krok3Tab.IsEnabled = false;
+                oknoTabcontrol.SelectedIndex = 3;
+            }
+            else
+            {
+                walidacja = "Wystąpiły błędy przy wpisywaniu danych:" + walidacja;
+                MessageBox.Show(walidacja, "Uwaga", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
         }
+
+        private void powrot2Button_Click(object sender, RoutedEventArgs e)
+        {
+            krok1Tab.IsEnabled = true;
+            krok2Tab.IsEnabled = false;
+            oknoTabcontrol.SelectedIndex = 0;
+        }
+
+        private void powrot3Button_Click(object sender, RoutedEventArgs e)
+        {
+            krok2Tab.IsEnabled = true;
+            krok3Tab.IsEnabled = false;
+            oknoTabcontrol.SelectedIndex = 1;
+        }
+
+
 
         private void podzialSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             var slider = sender as Slider;
             double value = slider.Value;
-            
-            //this.Title = "Value: " + value.ToString("0.0") + "/" + slider.Maximum;
+            string tlusz = "", wegle = "";
+            tlusz = value.ToString();
+            wegle = (100 - value).ToString();
+            string tekstowa = tlusz + ":" + wegle;
+            if (podzialLabel != null)
+            {
+                podzialLabel.Content = tekstowa;
+            }
+
         }
+
+
 
         private void mojedaneButton_Click(object sender, RoutedEventArgs e)
         {
@@ -132,6 +186,24 @@ namespace Aplikacja
             }
         }
 
+
+        private async void obliczButton_Click(object sender, RoutedEventArgs e)
+        {
+            var progress = new Progress<int>(value => pbStatus.Value = value);
+            await Task.Run(() =>
+            {
+                for (int i = 0; i <= 100; i++)
+                {
+                    ((IProgress<int>)progress).Report(i);
+                    Thread.Sleep(10);
+                }
+            });
+            opis4Label.Content = "Dieta zostala wyliczona";
+
+        }
+
+
+       
 
     }
 }
