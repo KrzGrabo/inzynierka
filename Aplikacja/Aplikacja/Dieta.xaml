@@ -3,8 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Dieta" Height="300" Width="300">
     <Grid>
-        <TabControl>
-            <TabItem Header="Krok I">
+        <TabControl x:Name="oknoTabcontrol">
+            <TabItem Header="Krok I" x:Name="krok1Tab">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -41,7 +41,7 @@
 
             </TabItem>
 
-            <TabItem Header="Krok II" IsEnabled="True">
+            <TabItem Header="Krok II" x:Name="krok2Tab" IsEnabled="False">
 
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -50,6 +50,7 @@
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
+                        <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
@@ -75,16 +76,16 @@
                     </ComboBox>
                     <Label Content="wegle-tluszcze:"   Grid.Row="3"/>
                     <Button Content="info" Grid.Row="3"  Grid.Column="1" x:Name="porownanieButton" Click="porownanieButton_Click" />
-                    <Slider Maximum="95" Minimum="5"  Value="50" Grid.ColumnSpan="2" Grid.Row="4" x:Name="podzialSlider" TickPlacement="BottomRight" TickFrequency="10" IsSnapToTickEnabled="True" ValueChanged="podzialSlider_ValueChanged" />
-
-                    <Button Content="powrot" Grid.Row="5"  Grid.Column="0" x:Name="powrot2Button" Click="powrot2Button_Click" />
-                    <Button Content="dalej" Grid.Row="5" Grid.Column="1"  x:Name="dalej2Button" Click="dalej2Button_Click" />
+                    <Slider Maximum="95" Minimum="5"  Value="50" Grid.ColumnSpan="2" Grid.Row="4" x:Name="podzialSlider" TickPlacement="Both"  TickFrequency="10" IsSnapToTickEnabled="True" ValueChanged="podzialSlider_ValueChanged"  />
+                    <Label x:Name="podzialLabel" Content="{Binding}" Grid.Row="5" HorizontalAlignment="Center" Grid.ColumnSpan="2"/>
+                    <Button Content="powrot" Grid.Row="6"  Grid.Column="0" x:Name="powrot2Button" Click="powrot2Button_Click" />
+                    <Button Content="dalej" Grid.Row="6" Grid.Column="1"  x:Name="dalej2Button" Click="dalej2Button_Click" />
 
                 </Grid>
 
             </TabItem>
 
-            <TabItem Header="Krok III" IsEnabled="True">
+            <TabItem Header="Krok III" x:Name="krok3Tab" IsEnabled="False">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -120,8 +121,27 @@
                 </Grid>
             </TabItem>
 
-            <TabItem Header="Podsumowanie" IsEnabled="False">
+            <TabItem Header="Podsumowanie" x:Name="podsumowanieTab" IsEnabled="False">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
 
+                    </Grid.RowDefinitions>
+                    <Label x:Name="opis4Label" Content="Wszystko dobrze wprowadzone wylicz diete" Grid.ColumnSpan="3"/>
+                    <Button Content="dsadsa" x:Name="obliczButton" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1"  Click="obliczButton_Click"/>
+                    <ProgressBar Minimum="0" Maximum="100" Grid.Row="2" Grid.ColumnSpan="4" Name="pbStatus" Height="22" />
+                    <Label Grid.Row="3" Content="WYNIKI" Grid.Column="1"/>
+                </Grid>
             </TabItem>
 
         </TabControl>
