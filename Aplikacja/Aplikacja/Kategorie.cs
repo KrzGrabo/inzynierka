@@ -12,13 +12,16 @@ namespace Aplikacja
     using System;
     using System.Collections.Generic;
     
-    public partial class Uzytkownicy
+    public partial class Kategorie
     {
-        public int ID { get; set; }
-        public string Login { get; set; }
-        public string Haslo { get; set; }
-        public Nullable<int> ID_Profilu { get; set; }
+        public Kategorie()
+        {
+            this.Produkty = new HashSet<Produkty>();
+        }
     
-        public virtual Dane Dane { get; set; }
+        public int ID { get; set; }
+        public string Nazwa { get; set; }
+    
+        public virtual ICollection<Produkty> Produkty { get; set; }
     }
 }

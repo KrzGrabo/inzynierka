@@ -28,7 +28,7 @@
         <TextBox Grid.Row="3" Grid.Column="1" x:Name="wiekTextbox"  />
         <Label Content="plec:" Grid.Row="4"/>
         <ComboBox Grid.Column="1" Grid.Row="4" x:Name="plecCombo">
-            <ComboBoxItem>Męższczyzna</ComboBoxItem>
+            <ComboBoxItem>Mężczyzna</ComboBoxItem>
             <ComboBoxItem>Kobieta</ComboBoxItem>
         </ComboBox>
         <Label Grid.Row="5" Content="wzrost (cm):"/>

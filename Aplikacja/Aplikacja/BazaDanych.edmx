@@ -31,6 +31,25 @@
           <Property Name="Obwod Bioder" Type="float" />
           <Property Name="ID_Profilu" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="Kategorie">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Nazwa" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Produkty">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nazwa" Type="varchar" MaxLength="200" />
+          <Property Name="Bialko" Type="varchar" MaxLength="30" />
+          <Property Name="Tluszcze" Type="varchar" MaxLength="30" />
+          <Property Name="Węglodowany" Type="varchar" MaxLength="30" />
+          <Property Name="Wartosc_Energetyczna" Type="varchar" MaxLength="30" />
+          <Property Name="ID_Kategori" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Uzytkownicy">
           <Key>
             <PropertyRef Name="ID" />
@@ -52,6 +71,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Produkty__ID_Kat__6E01572D">
+          <End Role="Kategorie" Type="Self.Kategorie" Multiplicity="1" />
+          <End Role="Produkty" Type="Self.Produkty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategorie">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Produkty">
+              <PropertyRef Name="ID_Kategori" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Uzytkowni__Id_Pr__25869641">
           <End Role="Dane" Type="Self.Dane" Multiplicity="0..1" />
           <End Role="Uzytkownicy" Type="Self.Uzytkownicy" Multiplicity="*" />
@@ -67,10 +98,16 @@
         <EntityContainer Name="BazaDanychModelStoreContainer">
           <EntitySet Name="Dane" EntityType="Self.Dane" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Historia Danych" EntityType="Self.Historia Danych" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kategorie" EntityType="Self.Kategorie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Produkty" EntityType="Self.Produkty" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Uzytkownicy" EntityType="Self.Uzytkownicy" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Historia __ID_Pr__286302EC" Association="Self.FK__Historia __ID_Pr__286302EC">
             <End Role="Dane" EntitySet="Dane" />
             <End Role="Historia Danych" EntitySet="Historia Danych" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Produkty__ID_Kat__6E01572D" Association="Self.FK__Produkty__ID_Kat__6E01572D">
+            <End Role="Kategorie" EntitySet="Kategorie" />
+            <End Role="Produkty" EntitySet="Produkty" />
           </AssociationSet>
           <AssociationSet Name="FK__Uzytkowni__Id_Pr__25869641" Association="Self.FK__Uzytkowni__Id_Pr__25869641">
             <End Role="Dane" EntitySet="Dane" />
@@ -88,7 +125,7 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Login" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Haslo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="Id_Profilu" Type="Int32" />
+          <Property Name="ID_Profilu" Type="Int32" />
           <NavigationProperty Name="Dane" Relationship="BazaDanychModel.FK__Uzytkowni__Id_Pr__4F47C5E3" FromRole="Uzytkownicy" ToRole="Dane" />
           </EntityType>
         <EntityContainer Name="BazaDanychEntities" annotation:LazyLoadingEnabled="true">
@@ -102,6 +139,12 @@
           <AssociationSet Name="FK__Uzytkowni__Id_Pr__4F47C5E3" Association="BazaDanychModel.FK__Uzytkowni__Id_Pr__4F47C5E3">
             <End Role="Dane" EntitySet="Dane" />
             <End Role="Uzytkownicy" EntitySet="Uzytkownicy" />
+          </AssociationSet>
+          <EntitySet Name="Kategorie" EntityType="BazaDanychModel.Kategorie" />
+          <EntitySet Name="Produkty" EntityType="BazaDanychModel.Produkty" />
+          <AssociationSet Name="FK__Produkty__ID_Kat__6383C8BA" Association="BazaDanychModel.FK__Produkty__ID_Kat__6383C8BA">
+            <End Role="Kategorie" EntitySet="Kategorie" />
+            <End Role="Produkty" EntitySet="Produkty" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="Dane">
@@ -153,7 +196,40 @@
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Uzytkownicy">
-              <PropertyRef Name="Id_Profilu" />
+              <PropertyRef Name="ID_Profilu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Kategorie">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Nazwa" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Produkty" Relationship="BazaDanychModel.FK__Produkty__ID_Kat__6383C8BA" FromRole="Kategorie" ToRole="Produkty" />
+        </EntityType>
+        <EntityType Name="Produkty">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nazwa" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Bialko" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Tluszcze" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Węglodowany" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Wartosc_Energetyczna" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ID_Kategori" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Kategorie" Relationship="BazaDanychModel.FK__Produkty__ID_Kat__6383C8BA" FromRole="Produkty" ToRole="Kategorie" />
+        </EntityType>
+        <Association Name="FK__Produkty__ID_Kat__6383C8BA">
+          <End Type="BazaDanychModel.Kategorie" Role="Kategorie" Multiplicity="1" />
+          <End Type="BazaDanychModel.Produkty" Role="Produkty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategorie">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Produkty">
+              <PropertyRef Name="ID_Kategori" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -166,7 +242,7 @@
           <EntitySetMapping Name="Uzytkownicy">
             <EntityTypeMapping TypeName="BazaDanychModel.Uzytkownicy">
               <MappingFragment StoreEntitySet="Uzytkownicy">
-                <ScalarProperty Name="Id_Profilu" ColumnName="Id_Profilu" />
+                <ScalarProperty Name="ID_Profilu" ColumnName="Id_Profilu" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Login" ColumnName="Login" />
                 <ScalarProperty Name="Haslo" ColumnName="Haslo" />
@@ -198,6 +274,27 @@
                 <ScalarProperty Name="Wiek" ColumnName="Wiek" />
                 <ScalarProperty Name="Data" ColumnName="Data" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kategorie">
+            <EntityTypeMapping TypeName="BazaDanychModel.Kategorie">
+              <MappingFragment StoreEntitySet="Kategorie">
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Produkty">
+            <EntityTypeMapping TypeName="BazaDanychModel.Produkty">
+              <MappingFragment StoreEntitySet="Produkty">
+                <ScalarProperty Name="ID_Kategori" ColumnName="ID_Kategori" />
+                <ScalarProperty Name="Wartosc_Energetyczna" ColumnName="Wartosc_Energetyczna" />
+                <ScalarProperty Name="Węglodowany" ColumnName="Węglodowany" />
+                <ScalarProperty Name="Tluszcze" ColumnName="Tluszcze" />
+                <ScalarProperty Name="Bialko" ColumnName="Bialko" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

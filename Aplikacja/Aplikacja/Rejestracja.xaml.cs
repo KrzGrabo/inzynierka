@@ -20,17 +20,11 @@ namespace Aplikacja
     /// </summary>
     public partial class Rejestracja : Window
     {
-        bool plec = false;
         BazaDanychEntities db = new BazaDanychEntities();
         Uzytkownicy uzytkownik = new Uzytkownicy();
         public Rejestracja()
         {
             InitializeComponent();
-        }
-
-        private void RadioButton_Checked(object sender, RoutedEventArgs e)
-        {
-            plec = true;
         }
 
         private void powrotButton_Click(object sender, RoutedEventArgs e)
@@ -47,12 +41,6 @@ namespace Aplikacja
             uzytkownik.Login = loginTextbox.Text.Trim();
             string haslo = hasloTextbox.Password.ToString();
             string haslo2 = haslo2Textbox.Password.ToString();
-
-
-            if (plec == false)
-            {
-                walidacja = walidacja + " \nNie wybrałeś płci";
-            }
 
             if (uzytkownik.Login == "")
             {
@@ -75,7 +63,7 @@ namespace Aplikacja
             var szukanyUzytkwonik = db.Uzytkownicy.Where(m => m.Login.Equals(uzytkownik.Login)).FirstOrDefault();
             if (szukanyUzytkwonik != null)
             {
-                walidacja = "Użytkownik o podanym loginie już istnieje!";
+                walidacja = "\nUżytkownik o podanym loginie już istnieje!";
             }
             if (walidacja == "")
             {
