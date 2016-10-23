@@ -130,6 +130,9 @@
     <Compile Include="KalkZapotrzebowanie.xaml.cs">
       <DependentUpon>KalkZapotrzebowanie.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Kategorie.cs">
+      <DependentUpon>BazaDanych.tt</DependentUpon>
+    </Compile>
     <Compile Include="Menu.xaml.cs">
       <DependentUpon>Menu.xaml</DependentUpon>
     </Compile>
@@ -138,6 +141,9 @@
     </Compile>
     <Compile Include="Porownanie.xaml.cs">
       <DependentUpon>Porownanie.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Produkty.cs">
+      <DependentUpon>BazaDanych.tt</DependentUpon>
     </Compile>
     <Compile Include="Profil.xaml.cs">
       <DependentUpon>Profil.xaml</DependentUpon>
@@ -277,6 +283,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\Dane.datasource" />
+    <None Include="Properties\DataSources\Kategorie.datasource" />
+    <None Include="Properties\DataSources\Produkty.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -372,9 +381,7 @@
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Properties\DataSources\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="BazaDanych.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

@@ -24,6 +24,7 @@ namespace Aplikacja
         Dane przypisaneDane = new Dane();
         Uzytkownicy uzytkownik = new Uzytkownicy();
         Historia_Danych historia = new Historia_Danych();
+        string wiadomosc = "";
         
         public Profil()
         {
@@ -32,40 +33,37 @@ namespace Aplikacja
             uzytkownik = db.Uzytkownicy.Where(m => m.ID.Equals(id)).FirstOrDefault();
             loginTextbox.Text = uzytkownik.Login;
 
-            if (uzytkownik != null && uzytkownik.Id_Profilu != null)
+            if (uzytkownik != null && uzytkownik.ID_Profilu != null)
             {
-                int id_profilu =  uzytkownik.Id_Profilu.GetValueOrDefault();
-                przypisaneDane = db.Dane.Where(m => m.ID.Equals(id_profilu)).FirstOrDefault();
-                imieTextbox.Text = przypisaneDane.Imie;
-                wiekTextbox.Text = przypisaneDane.Wiek.ToString();
-                wagaTextbox.Text = przypisaneDane.Waga.ToString();
-                wzrostTextbox.Text = przypisaneDane.Wzrost.ToString();
-                obwodPasaTextbox.Text = przypisaneDane.Obwod_Pasa.ToString();
-                obwodBioderTextbox.Text = przypisaneDane.Obwod_Bioder.ToString();
+                wczytajDane();
             }
         }
 
         private void okButton_Click(object sender, RoutedEventArgs e)
         {
-            if (uzytkownik.Id_Profilu != null)
-            {
-                zapiszHistorie();
-            }
-            przypisaneDane.Imie = imieTextbox.Text.Trim();
-            przypisaneDane.Wiek = int.Parse(wiekTextbox.Text.Trim());
-            przypisaneDane.Waga = double.Parse(wagaTextbox.Text.Trim());
-            przypisaneDane.Wzrost = double.Parse(wzrostTextbox.Text.Trim());
-            przypisaneDane.Obwod_Pasa = double.Parse(obwodPasaTextbox.Text.Trim());
-            przypisaneDane.Obwod_Bioder = double.Parse(obwodBioderTextbox.Text.Trim());
+            zapiszDane();
 
-            if(uzytkownik != null && uzytkownik.Id_Profilu == null)
+            if (walidacja())
             {
-                db.Dane.Add(przypisaneDane);
-                uzytkownik.Id_Profilu = przypisaneDane.ID;
-            }
+                if (uzytkownik.ID_Profilu != null)
+                {
+                    zapiszHistorie();
+                }
 
-            db.SaveChanges();
-            this.Close();
+                if (uzytkownik != null && uzytkownik.ID_Profilu == null)
+                {
+                    db.Dane.Add(przypisaneDane);
+                    uzytkownik.ID_Profilu = przypisaneDane.ID;
+                }
+
+                db.SaveChanges();
+                this.Close();
+            }
+            else
+            {
+                wiadomosc = "Nie uzupełniłeś poprawnie wszystkich pól: " + wiadomosc;
+                MessageBox.Show(wiadomosc, "Uwaga", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
         }
 
         private void anulujButton_Click(object sender, RoutedEventArgs e)
@@ -84,6 +82,69 @@ namespace Aplikacja
             historia.Wiek = historia.Wiek;
             db.Historia_Danych.Add(historia);
             db.SaveChanges();
+        }
+
+        private void zapiszPlec()
+        {
+            if (plecCombo.SelectedIndex == 0)
+            {
+                przypisaneDane.Plec = "M";
+            }
+            else if (plecCombo.SelectedIndex == 1)
+            {
+                przypisaneDane.Plec = "K";
+            }
+        }
+
+        private bool walidacja()
+        {
+            bool result = true;
+            if (plecCombo.SelectedIndex == -1)
+            {
+                wiadomosc +=" \nMusisz wybrać płeć";
+                result = false;
+            }
+            return result;
+        }
+
+        private void wczytajDane()
+        {
+            int id_profilu = uzytkownik.ID_Profilu.GetValueOrDefault();
+            przypisaneDane = db.Dane.Where(m => m.ID.Equals(id_profilu)).FirstOrDefault();
+            imieTextbox.Text = przypisaneDane.Imie;
+            wiekTextbox.Text = przypisaneDane.Wiek.ToString();
+            wagaTextbox.Text = przypisaneDane.Waga.ToString();
+            wzrostTextbox.Text = przypisaneDane.Wzrost.ToString();
+            obwodPasaTextbox.Text = przypisaneDane.Obwod_Pasa.ToString();
+            obwodBioderTextbox.Text = przypisaneDane.Obwod_Bioder.ToString();
+
+            if (przypisaneDane.Plec == "M")
+            {
+                plecCombo.SelectedIndex = 0;
+            }
+            else if (przypisaneDane.Plec == "K")
+            {
+                plecCombo.SelectedIndex = 1;
+            }
+        }
+
+        private void zapiszDane()
+        {
+            przypisaneDane.Imie = imieTextbox.Text.Trim();
+            przypisaneDane.Wiek = int.Parse(wiekTextbox.Text.Trim());
+            przypisaneDane.Waga = double.Parse(wagaTextbox.Text.Trim());
+            przypisaneDane.Wzrost = double.Parse(wzrostTextbox.Text.Trim());
+            przypisaneDane.Obwod_Pasa = double.Parse(obwodPasaTextbox.Text.Trim());
+            przypisaneDane.Obwod_Bioder = double.Parse(obwodBioderTextbox.Text.Trim());
+
+            if (plecCombo.SelectedIndex == 0)
+            {
+                przypisaneDane.Plec = "M";
+            }
+            else if (plecCombo.SelectedIndex == 1)
+            {
+                przypisaneDane.Plec = "K";
+            }
         }
     }
 }

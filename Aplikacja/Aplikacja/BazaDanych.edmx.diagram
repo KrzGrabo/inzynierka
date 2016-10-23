@@ -10,6 +10,9 @@
         <EntityTypeShape EntityType="BazaDanychModel.Historia_Danych" Width="1.5" PointX="6.875" PointY="0.625" />
         <AssociationConnector Association="BazaDanychModel.FK__Historia___ID_Pr__503BEA1C" />
         <AssociationConnector Association="BazaDanychModel.FK__Uzytkowni__Id_Pr__4F47C5E3" />
+        <EntityTypeShape EntityType="BazaDanychModel.Kategorie" Width="1.5" PointX="2.25" PointY="5.5" />
+        <EntityTypeShape EntityType="BazaDanychModel.Produkty" Width="1.5" PointX="4.5" PointY="5.125" />
+        <AssociationConnector Association="BazaDanychModel.FK__Produkty__ID_Kat__6383C8BA" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

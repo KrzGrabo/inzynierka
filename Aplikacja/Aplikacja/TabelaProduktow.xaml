@@ -1,8 +1,23 @@
-﻿<Window x:Class="Aplikacja.TabelaProduktow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="TabelaProduktow" Height="300" Width="300">
-    <Grid>
-        
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:Aplikacja" mc:Ignorable="d" x:Class="Aplikacja.TabelaProduktow"
+        Title="TabelaProduktow" Height="800" Width="700" Loaded="Window_Loaded">
+    <Window.Resources>
+        <CollectionViewSource x:Key="kategorieViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Kategorie}, CreateList=True}"/>
+        <CollectionViewSource x:Key="produktyViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Produkty}, CreateList=True}"/>
+    </Window.Resources>
+
+    <Grid DataContext="{StaticResource kategorieViewSource}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <ComboBox x:Name="kategoriaCombobox" Grid.Row="0" TextSearch.TextPath = "nazwa" ItemsSource="{Binding}" Margin="1" SelectionChanged="kategoriaCombobox_SelectionChanged" DisplayMemberPath="Nazwa" Grid.ColumnSpan="2"/>
+        <DataGrid ItemsSource="{Binding Source={StaticResource produktyViewSource}}" Grid.Row="1" />
     </Grid>
 </Window>

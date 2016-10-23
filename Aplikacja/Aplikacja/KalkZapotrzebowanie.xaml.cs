@@ -42,13 +42,11 @@ namespace Aplikacja
         {
             uzytkownik = db.Uzytkownicy.Where(m => m.ID.Equals(id)).FirstOrDefault();
             przypisaneDane = uzytkownik.Dane;
-            bool plec = false;
             double aktWaga = przypisaneDane.Waga.GetValueOrDefault(),
                  wzrost = przypisaneDane.Wzrost.GetValueOrDefault(),
                  wiek = przypisaneDane.Wiek.GetValueOrDefault();
 
-            if (plec == true) plecCombo.SelectedIndex = 0;
-            else plecCombo.SelectedIndex = 1;
+            ustawPlec();
             wagaTextbox.Text = aktWaga.ToString();
             wzrostTextbox.Text = wzrost.ToString();
             wiekTextbox.Text = wiek.ToString();
@@ -128,6 +126,18 @@ namespace Aplikacja
             //Dieta dieta = new Dieta();
             //dieta.Show();
             //this.Close();
+        }
+
+        private void ustawPlec()
+        {
+            if (przypisaneDane.Plec == "M")
+            {
+                plecCombo.SelectedIndex = 0;
+            }
+            else if (przypisaneDane.Plec == "K")
+            {
+                plecCombo.SelectedIndex = 1;
+            }
         }
     }
 }

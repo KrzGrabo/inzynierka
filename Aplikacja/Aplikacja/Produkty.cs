@@ -12,13 +12,16 @@ namespace Aplikacja
     using System;
     using System.Collections.Generic;
     
-    public partial class Uzytkownicy
+    public partial class Produkty
     {
         public int ID { get; set; }
-        public string Login { get; set; }
-        public string Haslo { get; set; }
-        public Nullable<int> ID_Profilu { get; set; }
+        public string Nazwa { get; set; }
+        public string Bialko { get; set; }
+        public string Tluszcze { get; set; }
+        public string Węglodowany { get; set; }
+        public string Wartosc_Energetyczna { get; set; }
+        public int ID_Kategori { get; set; }
     
-        public virtual Dane Dane { get; set; }
+        public virtual Kategorie Kategorie { get; set; }
     }
 }
