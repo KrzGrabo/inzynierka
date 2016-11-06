@@ -14,7 +14,7 @@ namespace Aplikacja
     
     public partial class Historia_Danych
     {
-        public int Id { get; set; }
+        public int ID { get; set; }
         public Nullable<System.DateTime> Data { get; set; }
         public Nullable<int> Wiek { get; set; }
         public Nullable<double> Waga { get; set; }

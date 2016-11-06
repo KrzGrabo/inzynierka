@@ -42,8 +42,8 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Nazwa" Type="varchar" MaxLength="200" />
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Nazwa" Type="nvarchar" MaxLength="200" />
           <Property Name="Bialko" Type="varchar" MaxLength="30" />
           <Property Name="Tluszcze" Type="varchar" MaxLength="30" />
           <Property Name="Węglodowany" Type="varchar" MaxLength="30" />
@@ -71,7 +71,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Produkty__ID_Kat__6E01572D">
+        <Association Name="FK__Produkty__ID_Kat__1AD3FDA4">
           <End Role="Kategorie" Type="Self.Kategorie" Multiplicity="1" />
           <End Role="Produkty" Type="Self.Produkty" Multiplicity="*" />
           <ReferentialConstraint>
@@ -105,7 +105,7 @@
             <End Role="Dane" EntitySet="Dane" />
             <End Role="Historia Danych" EntitySet="Historia Danych" />
           </AssociationSet>
-          <AssociationSet Name="FK__Produkty__ID_Kat__6E01572D" Association="Self.FK__Produkty__ID_Kat__6E01572D">
+          <AssociationSet Name="FK__Produkty__ID_Kat__1AD3FDA4" Association="Self.FK__Produkty__ID_Kat__1AD3FDA4">
             <End Role="Kategorie" EntitySet="Kategorie" />
             <End Role="Produkty" EntitySet="Produkty" />
           </AssociationSet>
@@ -164,9 +164,9 @@
         </EntityType>
         <EntityType Name="Historia_Danych">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Data" Type="DateTime" Precision="0" />
           <Property Name="Wiek" Type="Int32" />
           <Property Name="Waga" Type="Double" />
@@ -213,7 +213,7 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nazwa" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Nazwa" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="Bialko" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Tluszcze" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Węglodowany" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
@@ -273,7 +273,7 @@
                 <ScalarProperty Name="Waga" ColumnName="Waga" />
                 <ScalarProperty Name="Wiek" ColumnName="Wiek" />
                 <ScalarProperty Name="Data" ColumnName="Data" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ID" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
