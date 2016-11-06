@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+
 namespace Aplikacja
 {
     /// <summary>
@@ -32,9 +33,12 @@ namespace Aplikacja
 
         private void obliczButton_Click(object sender, RoutedEventArgs e)
         {
-            string walidacja = "";
-            bool plec = true;
+            string walidacja = "", plec;
             double wzrost = 0, waga = 0, pas = 0, biodra = 0;
+            if (plecCombo.SelectedIndex == 0)
+                plec = "M";
+            else
+                plec = "K";
             if (plecCombo.SelectedIndex == -1)
             {
                 walidacja = walidacja + " \nMusisz wybrać płeć";
@@ -94,7 +98,7 @@ namespace Aplikacja
 
                 if (wagaBool == true && wzrostBool == true)
                 {
-                    bmiLabel.Content = "Twoje BMI to: " + BmiFun(plec, waga, wzrost);
+                    bmiLabel.Content = "Twoje BMI to: " + String.Format("{0:N2}",BmiFun(waga, wzrost));
                 }
                 else bmiLabel.Content = "Aby wylicz swoje BMI, musisz uzupełnić pola: płeć, waga, wzrost";
 
@@ -106,13 +110,13 @@ namespace Aplikacja
 
                 if (pasBool == true && biodraBool == true)
                 {
-                    whrLabel.Content = "Twoje WHR to: " + WhrFun(plec, biodra, pas);
+                    whrLabel.Content = "Twoje WHR to: " + WhrFun(biodra, pas);
                 }
                 else whrLabel.Content = "Aby wylicz swoje WHR, musisz uzupełnić pola: płeć, obwód pasa, obwód bioder";
 
                 if (wagaBool == true && pasBool == true)
                 {
-                    tluszczLabel.Content = "Twój poziom tłuszczu to: " + TluszczFun(plec, waga, pas);
+                    tluszczLabel.Content = "Twój poziom tłuszczu to: " + String.Format("{0:N2}", TluszczFun(plec, waga, pas)) + "%";
                 }
                 else tluszczLabel.Content = "Aby wylicz swój poziom tłuszczu, musisz uzupełnić pola: płeć, waga, obwód pasa";
 
@@ -133,13 +137,13 @@ namespace Aplikacja
         {
            uzytkownik = db.Uzytkownicy.Where(m => m.ID.Equals(id)).FirstOrDefault();
            przypisaneDane = uzytkownik.Dane;
-           bool plec=false;
+           string plec = przypisaneDane.Plec;
            double aktWaga = przypisaneDane.Waga.GetValueOrDefault(), 
                wzrost = przypisaneDane.Wzrost.GetValueOrDefault(), 
                aktPas = przypisaneDane.Obwod_Pasa.GetValueOrDefault(), 
                aktBiodra = przypisaneDane.Obwod_Bioder.GetValueOrDefault();
 
-           if (plec == true) plecCombo.SelectedIndex = 0;
+           if (plec == "M") plecCombo.SelectedIndex = 0;
            else plecCombo.SelectedIndex = 1;
            wagaTextbox.Text = aktWaga.ToString();
            wzrostTextbox.Text = wzrost.ToString();
@@ -147,31 +151,39 @@ namespace Aplikacja
            biodraTextbox.Text = aktBiodra.ToString();
         }
 
-        private double BmiFun(bool plec, double waga, double wzrost)
+        private double BmiFun(double waga, double wzrost)
         {
             double wynik = 0;
-            wynik = waga * wzrost; ///wzorek na bmi
+            wynik = waga / Math.Pow(wzrost / 100, 2); ///wzorek na bmi
             return wynik;
         }
 
-        private double IdealnaWagaFun(bool plec, double wzrost)
+        private double IdealnaWagaFun(string plec, double wzrost)
         {
             double wynik = 0;
-            wynik = 2 * wzrost; ///wzorek na idealna wage, wg roznych tam wspolczynnikow
+            if(plec == "M")
+                wynik = (wzrost - 100) * 0.9; ///wzorek na idealna wage, wg roznych tam wspolczynnikow
+            else
+                wynik = (wzrost - 100) * 0.85;
             return wynik;
         }
 
-        private double WhrFun(bool plec, double biodra, double pas)
+        private double WhrFun(double biodra, double pas)
         {
             double wynik = 0;
-            wynik = 2 * pas* biodra; ///wzorek na whr
+            wynik = pas / biodra; ///wzorek na whr
             return wynik;
         }
 
-        private double TluszczFun(bool plec, double waga, double pas)
+        private double TluszczFun(string plec, double waga, double pas)
         {
             double wynik = 0;
-            wynik = waga*pas; ///wzorek na tłuszcz
+            double pasPom = (4.15 * pas) / 2.54;
+            double masaPom = 0.082 * waga * 2.2;
+            if (plec == "M")
+                wynik = (pasPom - masaPom - 98.42) / (waga * 2.2) * 100; ///wzorek na tłuszcz
+            else
+                wynik = (pasPom - masaPom - 76.76) / (waga * 2.2) * 100;
             return wynik;
         }
 
