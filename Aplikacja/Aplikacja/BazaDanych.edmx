@@ -17,6 +17,7 @@
           <Property Name="Wzrost" Type="float" />
           <Property Name="Obwod Pasa" Type="float" />
           <Property Name="Obwod Bioder" Type="float" />
+          <Property Name="Zapotrzebowanie" Type="float" />
         </EntityType>
         <EntityType Name="Historia Danych">
           <Key>
@@ -71,7 +72,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Produkty__ID_Kat__1AD3FDA4">
+        <Association Name="FK__Produkty__ID_Kat__2B0A656D">
           <End Role="Kategorie" Type="Self.Kategorie" Multiplicity="1" />
           <End Role="Produkty" Type="Self.Produkty" Multiplicity="*" />
           <ReferentialConstraint>
@@ -105,7 +106,7 @@
             <End Role="Dane" EntitySet="Dane" />
             <End Role="Historia Danych" EntitySet="Historia Danych" />
           </AssociationSet>
-          <AssociationSet Name="FK__Produkty__ID_Kat__1AD3FDA4" Association="Self.FK__Produkty__ID_Kat__1AD3FDA4">
+          <AssociationSet Name="FK__Produkty__ID_Kat__2B0A656D" Association="Self.FK__Produkty__ID_Kat__2B0A656D">
             <End Role="Kategorie" EntitySet="Kategorie" />
             <End Role="Produkty" EntitySet="Produkty" />
           </AssociationSet>
@@ -161,6 +162,7 @@
           <Property Name="Obwod_Bioder" Type="Double" />
           <NavigationProperty Name="Historia_Danych" Relationship="BazaDanychModel.FK__Historia___ID_Pr__503BEA1C" FromRole="Dane" ToRole="Historia_Danych" />
           <NavigationProperty Name="Uzytkownicy" Relationship="BazaDanychModel.FK__Uzytkowni__Id_Pr__4F47C5E3" FromRole="Dane" ToRole="Uzytkownicy" />
+          <Property Name="Zapotrzebowanie" Type="Double" />
         </EntityType>
         <EntityType Name="Historia_Danych">
           <Key>
@@ -252,6 +254,7 @@
           <EntitySetMapping Name="Dane">
             <EntityTypeMapping TypeName="BazaDanychModel.Dane">
               <MappingFragment StoreEntitySet="Dane">
+                <ScalarProperty Name="Zapotrzebowanie" ColumnName="Zapotrzebowanie" />
                 <ScalarProperty Name="Obwod_Bioder" ColumnName="Obwod Bioder" />
                 <ScalarProperty Name="Obwod_Pasa" ColumnName="Obwod Pasa" />
                 <ScalarProperty Name="Wzrost" ColumnName="Wzrost" />

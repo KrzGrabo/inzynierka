@@ -22,6 +22,11 @@ namespace Aplikacja
     public partial class Dieta : Window
     {
         public static double zapotrzebowanie=0;
+        BazaDanychEntities db = new BazaDanychEntities();
+        int id = Sesja.ZwrocId();
+        Dane przypisaneDane = new Dane();
+        Uzytkownicy uzytkownik = new Uzytkownicy();
+
         public Dieta()
         {
             InitializeComponent();
@@ -139,7 +144,16 @@ namespace Aplikacja
 
         private void mojedaneButton_Click(object sender, RoutedEventArgs e)
         {
+            uzytkownik = db.Uzytkownicy.Where(m => m.ID.Equals(id)).FirstOrDefault();
+            przypisaneDane = uzytkownik.Dane;
+            double aktWaga = przypisaneDane.Waga.GetValueOrDefault(),
+                 wzrost = przypisaneDane.Wzrost.GetValueOrDefault(),
+                 wiek = przypisaneDane.Wiek.GetValueOrDefault();
+            zapotrzebowanie = przypisaneDane.Zapotrzebowanie.GetValueOrDefault();
 
+            ustawPlec();
+            wagaTextbox.Text = aktWaga.ToString();
+            zapotrzebowanieTextbox.Text = zapotrzebowanie.ToString();
         }
 
         private void porownanieButton_Click(object sender, RoutedEventArgs e)
@@ -200,6 +214,18 @@ namespace Aplikacja
             });
             opis4Label.Content = "Dieta zostala wyliczona";
 
+        }
+
+        private void ustawPlec()
+        {
+            if (przypisaneDane.Plec == "M")
+            {
+                plecCombo.SelectedIndex = 0;
+            }
+            else if (przypisaneDane.Plec == "K")
+            {
+                plecCombo.SelectedIndex = 1;
+            }
         }
 
 
