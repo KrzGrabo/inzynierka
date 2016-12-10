@@ -110,6 +110,8 @@ namespace Aplikacja
                 }
                 wynikLabel.Content = "Twoja kalorycznosc: " + wynik.ToString();
                 zapotrzebowanko = wynik;
+                przypisaneDane.Zapotrzebowanie = zapotrzebowanko;
+                db.SaveChanges();
 
             }
             else
