@@ -1,8 +1,158 @@
 ﻿<Window x:Class="Aplikacja.Trening"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Trening" Height="300" Width="300">
+        Title="Trening" Height="315" Width="400">
     <Grid>
-        
+        <TabControl x:Name="oknoTabcontrol">
+            <TabItem Header="Krok I" x:Name="krok1Tab">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+
+                    </Grid.RowDefinitions>
+
+                    <Label x:Name="opis1Label" Content="{Binding}" Grid.ColumnSpan="2"/>
+                    <Label Content="waga:"   Grid.Row="2"/>
+                    <TextBox x:Name="wagaTextbox"  Grid.Column="1"  Grid.Row="2" KeyDown="WalidacjaTextboxow"/>
+
+                    <Label Content="plec:" Grid.Row="3"/>
+                    <ComboBox Grid.Column="1" x:Name="plecCombo" Grid.Row="3">
+                        <ComboBoxItem>Mężczyzna</ComboBoxItem>
+                        <ComboBoxItem>Kobieta</ComboBoxItem>
+                    </ComboBox>
+
+                    <Label Grid.Row="4" Content="wiek:" />
+                    <TextBox Grid.Column="1" Grid.Row="4" x:Name="wiekTextbox" KeyDown="WalidacjaTextboxow"/>
+
+
+                    <Button Content="Dane z mojego profilu" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" x:Name="mojedaneButton" Click="mojedaneButton_Click" />
+                    <Button Content="dalej" Grid.Row="5" Grid.ColumnSpan="2"  x:Name="dalej1Button" Click="dalej1Button_Click" />
+
+                </Grid>
+
+            </TabItem>
+
+            <TabItem Header="Krok II" x:Name="krok2Tab" IsEnabled="False">
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Label x:Name="opis2Label" Content="{Binding}" Grid.ColumnSpan="2"/>
+                    <Label Content="cel:"   Grid.Row="1"/>
+                    <ComboBox Grid.Column="1" x:Name="celCombo" Grid.Row="1">
+                        <ComboBoxItem>masa</ComboBoxItem>
+                        <ComboBoxItem>redukcja</ComboBoxItem>
+                        <ComboBoxItem>ciecie wagi</ComboBoxItem>
+                    </ComboBox>
+
+                    <Label Content="Preferowanie aktywności:" Grid.Row="2"/>
+                    <ListBox Grid.Column="0" x:Name="sportList" Grid.Row="3" SelectionMode="Multiple">
+                        <ListBoxItem Grid.Row="0" Grid.Column="0">Pływanie</ListBoxItem>
+                        <ListBoxItem Grid.Row="0" Grid.Column="1">Bieganie</ListBoxItem>
+                        <ListBoxItem Grid.Row="1" Grid.Column="0">Jazda na rowerze</ListBoxItem>
+                        <ListBoxItem Grid.Row="1" Grid.Column="1">Jazda na rolkach</ListBoxItem>
+                        <ListBoxItem Grid.Row="2" Grid.Column="0">Siłownia</ListBoxItem>
+                        <ListBoxItem Grid.Row="2" Grid.Column="1">Tenis</ListBoxItem>
+                        <ListBoxItem Grid.Row="3" Grid.Column="0">Pływanie</ListBoxItem>
+                        <ListBoxItem Grid.Row="3" Grid.Column="1">Wspinaczka</ListBoxItem>
+
+                    </ListBox>
+
+                    <Button Content="powrot" Grid.Row="6"  Grid.Column="0" x:Name="powrot2Button" Click="powrot2Button_Click" />
+                    <Button Content="dalej" Grid.Row="6" Grid.Column="1"  x:Name="dalej2Button" Click="dalej2Button_Click" />
+
+
+                </Grid>
+
+            </TabItem>
+
+
+            <TabItem Header="Krok III" x:Name="krok3Tab" IsEnabled="False">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+
+                    </Grid.RowDefinitions>
+
+                    <Label x:Name="opis3Label" Content="{Binding}" Grid.ColumnSpan="2"/>
+                    <Label Content="Data startowa" Grid.Row="1"/>
+                    <DatePicker  Grid.Row="1" Grid.Column="1" x:Name="startDatapicker"  SelectedDateChanged="startDatapicker_SelectedDateChanged"/>
+                    <Label Content="Data koncowa" Grid.Row="2"/>
+                    <DatePicker  Grid.Row="2" Grid.Column="1" x:Name="koniecDatapicker"  SelectedDateChanged="koniecDatapicker_SelectedDateChanged"/>
+                    <Label Content="Dzienna liczba godzin(h)" Grid.Row="3"/>
+                    <TextBox x:Name="godzinyTextbox" Grid.Row="3" Grid.Column="1" />
+
+                    <Button Content="powrot" Grid.Row="4"  Grid.Column="0" x:Name="powrot3Button" Click="powrot3Button_Click" />
+                    <Button Content="dalej" Grid.Row="4" Grid.Column="1"  x:Name="dalej3Button" Click="dalej3Button_Click" />
+
+                </Grid>
+
+            </TabItem>
+
+            <TabItem Header="Podsumowanie" x:Name="podsumowanieTab" IsEnabled="False">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Margin="10" Content="Cel Treningu: " Grid.Row="0"/>
+                    <Label Margin="10" x:Name="celLabel"  Grid.Row="0" Grid.Column="1"/>
+
+                    <Label Margin="10" Content="Preferowane aktywności: " Grid.Row="1"/>
+                    <Label Margin="10" x:Name="aktywnosciLabel"  Grid.Row="1" Grid.Column="1"/>
+
+                    <Label Margin="10" Content="Data rozpoczęcia: " Grid.Row="2"/>
+                    <Label Margin="10" x:Name="dataPoczLabel"  Grid.Row="2" Grid.Column="1"/>
+
+                    <Label Margin="10" Content="Data zakończenia: " Grid.Row="3"/>
+                    <Label Margin="10" x:Name="dataZakLabel"  Grid.Row="3" Grid.Column="1"/>
+
+                    <Label Margin="10" Content="Dzienna ilość godzin: " Grid.Row="4"/>
+                    <Label Margin="10" x:Name="godzinyLabel"  Grid.Row="4" Grid.Column="1"/>
+
+                    <Button Content="Wylicz treningi" x:Name="obliczButton" Grid.ColumnSpan="2" Grid.Row="5"  Click="obliczButton_Click" Margin="69,0,74,5"/>
+                </Grid>
+            </TabItem>
+
+
+        </TabControl>
+
     </Grid>
 </Window>
