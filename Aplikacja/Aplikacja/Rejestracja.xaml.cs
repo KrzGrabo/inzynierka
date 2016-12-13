@@ -21,7 +21,8 @@ namespace Aplikacja
     public partial class Rejestracja : Window
     {
         BazaDanychEntities db = new BazaDanychEntities();
-        Uzytkownicy uzytkownik = new Uzytkownicy();
+        Uzytkownicy uzytkownik = new Uzytkownicy();
+
         public Rejestracja()
         {
             InitializeComponent();

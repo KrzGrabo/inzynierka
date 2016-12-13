@@ -59,20 +59,18 @@
                     </Grid.RowDefinitions>
 
                     <Label x:Name="opis2Label" Content="{Binding}" Grid.ColumnSpan="2"/>
-                    <Label Content="cel:"   Grid.Row="1"/>
+                    <Label Content="cel wagowy:"   Grid.Row="1"/>
                     <ComboBox Grid.Column="1" x:Name="celCombo" Grid.Row="1">
-                        <ComboBoxItem>masa</ComboBoxItem>
-                        <ComboBoxItem>0</ComboBoxItem>
-                        <ComboBoxItem>redukcja</ComboBoxItem>
-                        <ComboBoxItem>ciecie wagi</ComboBoxItem>
+                        <ComboBoxItem>Redukcja</ComboBoxItem>
+                        <ComboBoxItem>Utrzymanie</ComboBoxItem>
+                        <ComboBoxItem>Zwiększenie</ComboBoxItem>
                     </ComboBox>
 
                     <Label Content="typ sportu:" Grid.Row="2"/>
                     <ComboBox Grid.Column="1" x:Name="sportCombo" Grid.Row="2">
-                        <ComboBoxItem>Szybkosciowy/Silowy</ComboBoxItem>
                         <ComboBoxItem>Wytrzymalosciowy</ComboBoxItem>
-                        <ComboBoxItem>Sztuki Walki</ComboBoxItem>
-                        <ComboBoxItem>Ogolnorozwojowy</ComboBoxItem>
+                        <ComboBoxItem>Wytrzymalosciowo-siłowy/szybkościowy</ComboBoxItem>
+                        <ComboBoxItem>Szybkosciowy/Silowy</ComboBoxItem>
                     </ComboBox>
                     <Label Content="wegle-tluszcze:"   Grid.Row="3"/>
                     <Button Content="info" Grid.Row="3"  Grid.Column="1" x:Name="porownanieButton" Click="porownanieButton_Click" />
@@ -106,7 +104,7 @@
                     <Label Content="data koncowa" Grid.Row="2"/>
                     <DatePicker  Grid.Row="2" Grid.Column="1" x:Name="koniecDatapicker"  SelectedDateChanged="koniecDatapicker_SelectedDateChanged"/>
                     <Label Content="ilosc posilkow:" Grid.Row="3"/>
-                    <ComboBox Grid.Column="1" x:Name="sportC22ombo" Grid.Row="3">
+                    <ComboBox Grid.Column="1" x:Name="posilkiCombo" Grid.Row="3">
                         <ComboBoxItem>1</ComboBoxItem>
                         <ComboBoxItem>2</ComboBoxItem>
                         <ComboBoxItem>3</ComboBoxItem>
@@ -130,17 +128,19 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
                         <RowDefinition Height="*"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
 
                     </Grid.RowDefinitions>
                     <Label x:Name="opis4Label" Content="Wszystko dobrze wprowadzone wylicz diete" Grid.ColumnSpan="3"/>
                     <Button Content="dsadsa" x:Name="obliczButton" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1"  Click="obliczButton_Click"/>
                     <ProgressBar Minimum="0" Maximum="100" Grid.Row="2" Grid.ColumnSpan="4" Name="pbStatus" Height="22" />
-                    <Label Grid.Row="3" Content="WYNIKI" Grid.Column="1"/>
+                    <StackPanel Grid.Row="3" Height="26" VerticalAlignment="Top" >
+                        <Label Content="WYNIKI" Grid.Column="1"/>
+                        <TextBlock TextWrapping="WrapWithOverflow" Text="{Binding}" x:Name="wynikiTextbox"/>
+                    </StackPanel>
                 </Grid>
             </TabItem>
 

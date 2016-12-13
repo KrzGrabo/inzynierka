@@ -32,7 +32,13 @@ namespace Aplikacja
             InitializeComponent();
             Bindowanie();
         }
+
+        double wagaPom=0, kaloriePom=0, bialkoPom, weglowodanyPom, tluszczePom, podzialPom;
+        //bialko,wegle,tluszcze to wyliczona ilosc danego skladnika w diecie, podzialPom to procentowy udzial wegli do tluszczy zakres<5,95>
+        double kalorieBialko, kalorieTluszcz, kalorieWeglowodany;
+        //ile kalori dostarczamy z poczegolnych makroskladnikow
        
+ 
         private void Bindowanie()
         {
             podzialLabel.Content = "50:50";
@@ -50,6 +56,38 @@ namespace Aplikacja
 
         }
 
+        public void Algorytm()
+        {
+            double pozostaleKalorie, ileBialka ;
+
+
+            if (sportCombo.SelectedIndex == 0) ileBialka = 1.3;
+            else
+            {
+                if (sportCombo.SelectedIndex == 1) ileBialka = 1.6;
+                else
+                {
+                    if (sportCombo.SelectedIndex == 2) ileBialka = 2;
+                    else ileBialka = 2;
+                }
+            }
+
+           if (celCombo.SelectedIndex == 0)
+           {
+               kaloriePom = kaloriePom - 300;
+               ileBialka = ileBialka + 0.5;
+           }
+           if (celCombo.SelectedIndex == 2) kaloriePom = kaloriePom+500;
+
+           bialkoPom = ileBialka * wagaPom;
+           kalorieBialko =4 * bialkoPom;
+           pozostaleKalorie = kaloriePom - kalorieBialko;
+           kalorieWeglowodany = pozostaleKalorie * podzialPom / 100;
+           kalorieTluszcz = pozostaleKalorie - kalorieWeglowodany;
+           weglowodanyPom = kalorieWeglowodany / 4;
+           tluszczePom = kalorieTluszcz / 9;
+        }
+
         private void WalidacjaTextboxow(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.OemComma || e.Key == Key.Delete || e.Key == Key.D0 || e.Key == Key.Back || e.Key == Key.D1 || e.Key == Key.D2 || e.Key == Key.D3 || e.Key == Key.D4 || e.Key == Key.D5 || e.Key == Key.D6 || e.Key == Key.D7 || e.Key == Key.D8 || e.Key == Key.D9 || e.Key == Key.NumPad1 || e.Key == Key.NumPad0 || e.Key == Key.NumPad2 || e.Key == Key.NumPad3 || e.Key == Key.NumPad4 || e.Key == Key.NumPad5 || e.Key == Key.NumPad6 || e.Key == Key.NumPad7 || e.Key == Key.NumPad8 || e.Key == Key.NumPad9)
@@ -60,7 +98,29 @@ namespace Aplikacja
 
         private void dalej1Button_Click(object sender, RoutedEventArgs e)
         {
+            
+ 
             string walidacja = "";
+
+            
+            try
+            {
+                wagaPom = double.Parse(wagaTextbox.Text.Trim());
+            }
+            catch (Exception)
+            {
+                walidacja = walidacja + " \nWpisałeś błędną wartość w pole waga";
+            }
+            
+            try
+            {
+                kaloriePom = double.Parse(zapotrzebowanieTextbox.Text.Trim());
+            }
+            catch (Exception)
+            {
+                walidacja = walidacja + " \nWpisałeś błędną wartość w pole waga";
+            }
+
 
             if(walidacja=="")
             {
@@ -79,6 +139,12 @@ namespace Aplikacja
         {
             string walidacja = "";
 
+            if (podzialLabel.Content == "50:50") walidacja = walidacja + " \nNie ustawiłeś suwaka proporcji";
+
+            if (celCombo.SelectedIndex == -1) walidacja = walidacja + " \nNie ustawiłeś celu diety";
+        
+            if (sportCombo.SelectedIndex == -1) walidacja = walidacja + " \nNie wybrałeś kategorii sportu"; 
+
             if (walidacja == "")
             {
                 krok3Tab.IsEnabled = true;
@@ -96,6 +162,10 @@ namespace Aplikacja
         {
             string walidacja = "";
 
+            if (startDatapicker.SelectedDate == null) walidacja = walidacja + " \nNie wybrałeś daty początkowej";
+            if (koniecDatapicker.SelectedDate == null) walidacja = walidacja + " \nNie wybrałeś daty końcowej"; 
+            if (posilkiCombo.SelectedIndex == -1) walidacja = walidacja + " \nNie wybrałeś ilości posiłków"; 
+            //TRZEBA DODAC SPRAWDZENIE CZY KONCOWA JEST POZNIEJ NIZ POCZATKOWA
             if (walidacja == "")
             {
                 podsumowanieTab.IsEnabled = true;
@@ -123,12 +193,13 @@ namespace Aplikacja
             oknoTabcontrol.SelectedIndex = 1;
         }
 
-
+        
 
         private void podzialSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             var slider = sender as Slider;
             double value = slider.Value;
+            podzialPom = value;
             string tlusz = "", wegle = "";
             tlusz = value.ToString();
             wegle = (100 - value).ToString();
@@ -203,6 +274,7 @@ namespace Aplikacja
 
         private async void obliczButton_Click(object sender, RoutedEventArgs e)
         {
+            Algorytm();
             var progress = new Progress<int>(value => pbStatus.Value = value);
             await Task.Run(() =>
             {
@@ -213,7 +285,8 @@ namespace Aplikacja
                 }
             });
             opis4Label.Content = "Dieta zostala wyliczona";
-
+            string tekst = "Twoje zapotrzebowanie to: " + zapotrzebowanie.ToString() + " Kaloryczność twojej diety to: " + kaloriePom.ToString() + " Ilość białka w twojej diecie: " + bialkoPom.ToString() + " (to " + kalorieBialko.ToString() + " kalorii)" + " Ilość tluszczu w twojej diecie: " + tluszczePom.ToString() + " (to " + kalorieTluszcz.ToString() + " kalorii)" + " Ilość weglowodanow w twojej diecie: " + weglowodanyPom.ToString() + " (to " + kalorieWeglowodany.ToString() + " kalorii)";
+            MessageBox.Show(tekst);
         }
 
         private void ustawPlec()

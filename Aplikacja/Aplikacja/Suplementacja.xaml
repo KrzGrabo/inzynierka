@@ -2,7 +2,62 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Suplementacja" Height="300" Width="300">
-    <Grid>
-        
-    </Grid>
+    <TabControl x:Name="oknoTabcontrol">
+        <TabItem Header="Suplementacja" x:Name="krok1Tab">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+
+                </Grid.RowDefinitions>
+
+                <Label x:Name="opis1Label" Content="{Binding}" Grid.ColumnSpan="2"/>
+                <!--<Label Content="waga:"   Grid.Row="2"/>
+                <TextBox x:Name="wagaTextbox"  Grid.Column="1"  Grid.Row="2" KeyDown="WalidacjaTextboxow"/>-->
+
+                <Label Content="cel:" Grid.Row="3"/>
+                <ComboBox Grid.Column="1" x:Name="celCombo" Grid.Row="3">
+                    <ComboBoxItem>x</ComboBoxItem>
+                    <ComboBoxItem>y</ComboBoxItem>
+                </ComboBox>
+
+           
+                <Button Content="dalej" Grid.Row="5" Grid.ColumnSpan="2"  x:Name="dalej1Button"/>
+
+            </Grid>
+
+        </TabItem>
+
+        <TabItem Header="Odżywki" x:Name="krok2Tab">
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+               
+            </Grid>
+
+        </TabItem>
+
+       
+    </TabControl>
 </Window>
