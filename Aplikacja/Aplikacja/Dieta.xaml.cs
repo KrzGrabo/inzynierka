@@ -32,13 +32,13 @@ namespace Aplikacja
             InitializeComponent();
             Bindowanie();
         }
-
+        int iloscPosilkow;
         double wagaPom=0, kaloriePom=0, bialkoPom, weglowodanyPom, tluszczePom, podzialPom;
         //bialko,wegle,tluszcze to wyliczona ilosc danego skladnika w diecie, podzialPom to procentowy udzial wegli do tluszczy zakres<5,95>
         double kalorieBialko, kalorieTluszcz, kalorieWeglowodany;
         //ile kalori dostarczamy z poczegolnych makroskladnikow
-       
- 
+        double bialkoNaKg, tluszczNaKg, weglowodanyNaKg;
+        //ile danego makroskladnika na kg masy ciala
         private void Bindowanie()
         {
             podzialLabel.Content = "50:50";
@@ -86,6 +86,10 @@ namespace Aplikacja
            kalorieTluszcz = pozostaleKalorie - kalorieWeglowodany;
            weglowodanyPom = kalorieWeglowodany / 4;
            tluszczePom = kalorieTluszcz / 9;
+           bialkoNaKg = ileBialka;
+           tluszczNaKg = tluszczePom / wagaPom;
+           weglowodanyNaKg = weglowodanyPom / wagaPom;
+
         }
 
         private void WalidacjaTextboxow(object sender, KeyEventArgs e)
@@ -168,9 +172,13 @@ namespace Aplikacja
             //TRZEBA DODAC SPRAWDZENIE CZY KONCOWA JEST POZNIEJ NIZ POCZATKOWA
             if (walidacja == "")
             {
+                iloscPosilkow = posilkiCombo.SelectedIndex + 1;
                 podsumowanieTab.IsEnabled = true;
                 krok3Tab.IsEnabled = false;
                 oknoTabcontrol.SelectedIndex = 3;
+    
+                this.Width = 800;
+                this.Height = 800;
             }
             else
             {
@@ -285,8 +293,26 @@ namespace Aplikacja
                 }
             });
             opis4Label.Content = "Dieta zostala wyliczona";
-            string tekst = "Twoje zapotrzebowanie to: " + zapotrzebowanie.ToString() + " Kaloryczność twojej diety to: " + kaloriePom.ToString() + " Ilość białka w twojej diecie: " + bialkoPom.ToString() + " (to " + kalorieBialko.ToString() + " kalorii)" + " Ilość tluszczu w twojej diecie: " + tluszczePom.ToString() + " (to " + kalorieTluszcz.ToString() + " kalorii)" + " Ilość weglowodanow w twojej diecie: " + weglowodanyPom.ToString() + " (to " + kalorieWeglowodany.ToString() + " kalorii)";
-            MessageBox.Show(tekst);
+            string zapotrzebowanieObliczone = Math.Round(zapotrzebowanie, 0).ToString();
+            zapotrzebowaniePodLabel.Content = zapotrzebowanieObliczone;
+            
+            string kalorieObliczone = Math.Round(kaloriePom, 0).ToString() + "  (kalorie z białka: " + Math.Round(kalorieBialko, 0) + ";  kalorie z tłuszczów: " + Math.Round(kalorieTluszcz, 0) + ";  kalorie z węglowodanów: " + Math.Round(kalorieWeglowodany, 0) + ")";
+            kaloriePodLabel.Content = kalorieObliczone;
+
+            string bialkoObliczone = Math.Round(bialkoPom, 0).ToString() + "    (" + Math.Round(bialkoNaKg, 2).ToString() + " gram/kilogram masy ciała)";
+            bialkoPodLabel.Content = bialkoObliczone;
+
+            string tluszczObliczone = Math.Round(tluszczePom, 0).ToString() + "     (" + Math.Round(tluszczNaKg, 2).ToString() + " gram/kilogram masy ciała)";
+            tluszczPodLabel.Content = tluszczObliczone;
+
+            string weglowowdanyObliczone = Math.Round(weglowodanyPom, 0).ToString() + "     (" + Math.Round(weglowodanyNaKg, 2).ToString() + " gram/kilogram masy ciała)";
+            weglowodanyPodLabel.Content = weglowowdanyObliczone;
+
+            double temp= kaloriePom/iloscPosilkow;
+            string posilkiObliczone = iloscPosilkow.ToString() + "    ( średnio " + Math.Round(temp, 0).ToString() + " kalorii na posiłek)";
+            posilkiPodLabel.Content = posilkiObliczone;
+            // string tekst = "Twoje zapotrzebowanie to: " + zapotrzebowanie.ToString() + " Kaloryczność twojej diety to: " + kaloriePom.ToString() + " Ilość białka w twojej diecie: " + bialkoPom.ToString() + " (to " + Math.Round(kalorieBialko, 2).ToString() + " kalorii)" + " Ilość tluszczu w twojej diecie: " + Math.Round(tluszczePom, 2).ToString() + " (to " + kalorieTluszcz.ToString() + " kalorii)" + " Ilość weglowodanow w twojej diecie: " + weglowodanyPom.ToString() + " (to " + kalorieWeglowodany.ToString() + " kalorii)";
+            //MessageBox.Show(tekst);
         }
 
         private void ustawPlec()
