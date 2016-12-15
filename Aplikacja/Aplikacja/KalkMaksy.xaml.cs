@@ -31,8 +31,8 @@ namespace Aplikacja
         private void Bindowanie()
         {
             powtorzeniaCombo.ItemsSource = powtorzenia.ToList();
-            opisLabel.Content = "opis lalalalalaalalalaal";
-            label_wynik.Content = "Uzupełnij pola i kliknij oblicz aby uzyskać wynik";
+            opisLabel.Text = "'Kalkulator maksymalnego powtórzenia' umożliwia oszacowanie maksymalnego powtórzenia na podstawie kilku powtórzeń z lżejszym obciążeniem. Rzeczywista wartość może nieznacznie różnic się od wyświetlonego wyniku(do 5%). Aby skorzystać z kalkulatora wprowadź ciężar obciążenia, a następnie ilość poprawnych powtórzeń danego ćwiczenia(działa dla każdego ćwiczenia), które jesteś w stanie z nim wykonać. ";
+           
         }
 
         private void obliczButton_Click(object sender, RoutedEventArgs e)
@@ -61,7 +61,7 @@ namespace Aplikacja
                //tekst = tekst + powtorzen.ToString() + indeks.ToString()+ ciezar.ToString();
                //MessageBox.Show(tekst, "Uwaga", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                wynik = powtorzen * ciezar;
-               label_wynik.Content = wynik.ToString();
+                wynikLabel.Text = wynik.ToString()+ " kg";
             }
             else
             {

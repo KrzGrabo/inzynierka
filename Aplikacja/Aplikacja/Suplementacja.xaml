@@ -19,11 +19,11 @@
 
                 </Grid.RowDefinitions>
 
-                <Label x:Name="opis1Label" Content="{Binding}" Grid.ColumnSpan="2"/>
+                <TextBlock x:Name="opis1Label" Text="{Binding}" Grid.ColumnSpan="2"/>
                 <!--<Label Content="waga:"   Grid.Row="2"/>
                 <TextBox x:Name="wagaTextbox"  Grid.Column="1"  Grid.Row="2" KeyDown="WalidacjaTextboxow"/>-->
 
-                <Label Content="cel:" Grid.Row="1"/>
+                <Label Content="Cel:" Grid.Row="1"/>
                 <ComboBox Grid.Column="1" x:Name="celCombo" Grid.Row="1">
                     <ComboBoxItem>x</ComboBoxItem>
                     <ComboBoxItem>y</ComboBoxItem>
@@ -43,8 +43,8 @@
                     <ComboBoxItem>Bardzo wysoki</ComboBoxItem>
                 </ComboBox>
 
-                <Button Content="Dobierz suplementację" Grid.Row="4" Grid.ColumnSpan="2"  x:Name="okButton" Click="okButton_Click"/>
-                <GroupBox Grid.ColumnSpan="2" Grid.Row="5" Header="Propozycje dla ciebie">
+                <Button Content="Dobierz suplementacje" Grid.Row="4" Grid.ColumnSpan="2"  x:Name="okButton" Click="okButton_Click"/>
+                <GroupBox Grid.ColumnSpan="2" Grid.Row="5" Header="Propozycje">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
