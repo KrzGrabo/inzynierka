@@ -23,5 +23,27 @@ namespace Aplikacja
         {
             InitializeComponent();
         }
+
+
+        public class Suple
+        {
+            public string Tytul { get; set; }
+        }
+
+
+        private void okButton_Click(object sender, RoutedEventArgs e)
+        {
+            List<Suple> items = new List<Suple>();
+            items.Add(new Suple() { Tytul = "Complete this WPF tutorial" });
+            items.Add(new Suple() { Tytul = "Learn C#" });
+            items.Add(new Suple() { Tytul = "Wash the car" });
+
+            SupleList.ItemsSource = items;
+        }
+
+        private void infoButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
