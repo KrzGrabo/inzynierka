@@ -20,20 +20,20 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <Label Content="{Binding}" x:Name="opisLabel" Grid.ColumnSpan="2"/>
-        <Button Content="Dane z profilu" Grid.Row="1" Grid.ColumnSpan="2" x:Name="daneButton" Click="daneButton_Click"/>
-        <Label Content="waga (kg):" Grid.Row="2" />
+        <TextBlock TextWrapping="WrapWithOverflow" Text="{Binding}" x:Name="opisLabel" Grid.ColumnSpan="2"/>
+        <Button Content="Pobierz dane z profilu" Grid.Row="1" Grid.ColumnSpan="2" x:Name="daneButton" Click="daneButton_Click"/>
+        <Label Content="Waga [kg]:" Grid.Row="2" />
         <TextBox Grid.Row="2" Grid.Column="1" x:Name="wagaTextbox"/>
-        <Label Content="wiek:" Grid.Row="3" />
+        <Label Content="Wiek:" Grid.Row="3" />
         <TextBox Grid.Row="3" Grid.Column="1" x:Name="wiekTextbox"  />
-        <Label Content="plec:" Grid.Row="4"/>
+        <Label Content="Płeć:" Grid.Row="4"/>
         <ComboBox Grid.Column="1" Grid.Row="4" x:Name="plecCombo">
             <ComboBoxItem>Mężczyzna</ComboBoxItem>
             <ComboBoxItem>Kobieta</ComboBoxItem>
         </ComboBox>
-        <Label Grid.Row="5" Content="wzrost (cm):"/>
+        <Label Grid.Row="5" Content="Wzrost [cm]:"/>
         <TextBox Grid.Column="1" Grid.Row="5" x:Name="wzrostTextbox"/>
-        <Label Grid.Row="6" Content="aktywnosc fizyczna:"/>
+        <Label Grid.Row="6" Content="Aktywnosc fizyczna:"/>
         <ComboBox Grid.Column="1" Grid.Row="6" x:Name="aktywnoscCombo" >
             <ComboBoxItem>Niska</ComboBoxItem>
             <ComboBoxItem>Średnia</ComboBoxItem>
@@ -41,13 +41,13 @@
             <ComboBoxItem>Bardzo wysoka</ComboBoxItem>
         </ComboBox>
         <Button Content="Oblicz" Grid.Row="8" Grid.ColumnSpan="2" x:Name="obliczButton" Click="obliczButton_Click" />
-        <Label Content="przemiania materii" Grid.Row="7" />
+        <Label Content="Somatotyp:" Grid.Row="7" />
         <ComboBox Grid.Column="1" Grid.Row="7" x:Name="przemianaCombo">
             <ComboBoxItem>Ektomorfik</ComboBoxItem>
             <ComboBoxItem>Mezomorfik</ComboBoxItem>
             <ComboBoxItem>Endomorfik</ComboBoxItem>
         </ComboBox>
-        <Label Content="Twój wynik:" Grid.Row="9"/>
+        <Label Content="Wyliczone zapotrzebowanie:" Grid.Row="9"/>
         <Label Content="{Binding}" Grid.Row="9" Grid.Column="1" Name="wynikLabel" />
         <Button Content="Przenieś zapotrzebowanie" Grid.Row="10" Grid.ColumnSpan="2" x:Name="dietaButton" Click="dietaButton_Click" />
     </Grid>

@@ -18,7 +18,7 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <GroupBox Grid.Row="8" Grid.Column="0"  Grid.ColumnSpan="2" Header="Opis:">
+        <GroupBox Grid.Row="8" Grid.Column="0"  Grid.ColumnSpan="2" Header="Wyniki:">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -35,25 +35,25 @@
                 <Label Content="{Binding}" Grid.Column="0" Grid.Row="3" x:Name="wagaLabel" Grid.ColumnSpan="2" />
             </Grid>
         </GroupBox>
-        <Label x:Name="opis" Content="opis" Grid.ColumnSpan="2"/>
-        <Label Content="waga:"   Grid.Row="2"/>
+        <TextBlock TextWrapping="WrapWithOverflow" x:Name="opisTextblock" Text="{Binding}" Grid.ColumnSpan="2"/>
+        <Label Content="Waga [kg]:"   Grid.Row="2"/>
         <TextBox x:Name="wagaTextbox"  Grid.Column="1" Margin="5" Grid.Row="2" KeyDown="WalidacjaTextboxow"/>
 
-        <Label Content="plec:" Grid.Row="3"/>
+        <Label Content="Płeć" Grid.Row="3"/>
         <ComboBox Grid.Column="1" x:Name="plecCombo" Grid.Row="3">
             <ComboBoxItem>Mężczyzna</ComboBoxItem>
             <ComboBoxItem>Kobieta</ComboBoxItem>
         </ComboBox>
 
-        <Label Grid.Row="4" Content="wzrost:" />
+        <Label Grid.Row="4" Content="Wzrost [cm]:" />
         <TextBox Grid.Column="1" Grid.Row="4" x:Name="wzrostTextbox" KeyDown="WalidacjaTextboxow"/>
 
-        <Label Grid.Row="5" Content="obwód pasa:" />
+        <Label Grid.Row="5" Content="Obwód pasa [cm]:" />
         <TextBox Grid.Column="1" Grid.Row="5" x:Name="pasTextbox" KeyDown="WalidacjaTextboxow" />
 
-        <Label Grid.Row="6"   Content="obwód bioder:"/>
+        <Label Grid.Row="6"   Content="Obwód bioder [cm]:"/>
         <TextBox Grid.Column="1" x:Name="biodraTextbox" Grid.Row="6" KeyDown="WalidacjaTextboxow"/>
-        <Button Content="Dane z mojego profilu" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" x:Name="mojedaneButton" Click="mojedaneButton_Click" />
+        <Button Content="Pobierz dane z profilu" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" x:Name="mojedaneButton" Click="mojedaneButton_Click" />
         <Button Content="Oblicz" Grid.Row="7" Grid.ColumnSpan="2"  x:Name="obliczButton" Click="obliczButton_Click"/>
     </Grid>
 </Window>

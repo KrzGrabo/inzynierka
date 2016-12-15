@@ -14,6 +14,9 @@ using System.Windows.Shapes;
 
 namespace Aplikacja
 {
+
+
+    ////ZROBIONY WYGLAD DORZUCIC ALGORYTM LICZENIA
     /// <summary>
     /// Interaction logic for KalkSpalanie.xaml
     /// </summary>
@@ -29,10 +32,9 @@ namespace Aplikacja
 
         private void Bindowanie()
         {
-            opisLabel.Content = "opis lalalalalaalalalaal";
+            opisLabel.Text = "'Kalkulator spalania kalorii' pozwala na obliczenie ilości spalonych kalorii podczas różnych aktywności. Wyniki mogą w małym stopniu odbiegać od wartości rzeczywistych. Aby otrzymać wynik uzupełnij swoje dane i wybierz jedną z dostępnych aktywności.";
             aktywnosciCombo.ItemsSource = aktywnosci.ToList();
-            wynikLabel.Content = "Uzupełnij pola i kliknij oblicz aby sprawdzić spalanie";
-        }
+           }
 
 
         private void wagaTextbox_KeyDown(object sender, KeyEventArgs e)
@@ -81,7 +83,7 @@ namespace Aplikacja
             if (walidacja == "")
             {
                 aktywnosc = wspolczynniki[indeks]; 
-                wynikLabel.Content = "Twoja spalanie: "+Spalanie(aktywnosc,waga,czas);
+                wynikLabel.Content = Spalanie(aktywnosc,waga,czas).ToString();
             }
             else
             {

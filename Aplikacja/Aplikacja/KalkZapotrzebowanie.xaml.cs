@@ -34,8 +34,8 @@ namespace Aplikacja
 
         private void Bindowanie()
         {
-            opisLabel.Content = "opis lalalalalala";
-            wynikLabel.Content = "aby uzyskać wynik uzupełnij pola i kliknij oblicz";
+            opisLabel.Text = "Kalkulator zapotrzebowania wyliczy twoje zapotrzebowanie energetyczne. Uzupełnij wszystkie pola aby uzyskać wynik.";
+            wynikLabel.Content = "0";
         }
                    
         private void daneButton_Click(object sender, RoutedEventArgs e)
@@ -108,7 +108,7 @@ namespace Aplikacja
                     bmr = 10 * waga + 6.25 * wzrost - 4.92 * wiek - 161;
                     wynik = bmr + aktywnosc + przemiana;
                 }
-                wynikLabel.Content = "Twoja kalorycznosc: " + wynik.ToString();
+                wynikLabel.Content = wynik.ToString()+" kcal.";
                 zapotrzebowanko = wynik;
                 przypisaneDane.Zapotrzebowanie = zapotrzebowanko;
                 db.SaveChanges();
@@ -123,11 +123,7 @@ namespace Aplikacja
 
         private void dietaButton_Click(object sender, RoutedEventArgs e)
         {
-            //ZAKOMENTOWANE DO WYWALENIA, TRZEBA PO PROSTU ZAPISYWAC DO BAZY ZAPOTRZEBOWANKO
-            //if (zapotrzebowanko>0)Dieta.zapotrzebowanie = zapotrzebowanko;
-            //Dieta dieta = new Dieta();
-            //dieta.Show();
-            //this.Close();
+         // tutaj powinno być zapisanie do bazy
         }
 
         private void ustawPlec()
