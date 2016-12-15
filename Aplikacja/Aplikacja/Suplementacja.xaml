@@ -10,12 +10,12 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
                     <RowDefinition Height="*"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
 
                 </Grid.RowDefinitions>
 
@@ -23,40 +23,61 @@
                 <!--<Label Content="waga:"   Grid.Row="2"/>
                 <TextBox x:Name="wagaTextbox"  Grid.Column="1"  Grid.Row="2" KeyDown="WalidacjaTextboxow"/>-->
 
-                <Label Content="cel:" Grid.Row="3"/>
-                <ComboBox Grid.Column="1" x:Name="celCombo" Grid.Row="3">
+                <Label Content="cel:" Grid.Row="1"/>
+                <ComboBox Grid.Column="1" x:Name="celCombo" Grid.Row="1">
                     <ComboBoxItem>x</ComboBoxItem>
                     <ComboBoxItem>y</ComboBoxItem>
                 </ComboBox>
+                <Label Content="Stopień umięśnienia:" Grid.Row="2" />
+                <ComboBox Grid.Column="1" x:Name="poziomMiesniCombo" Grid.Row="2" ToolTip="wybór niewymagany" >
+                    <ComboBoxItem>Niski</ComboBoxItem>
+                    <ComboBoxItem>Średni</ComboBoxItem>
+                    <ComboBoxItem>Wysoki</ComboBoxItem>
+                    <ComboBoxItem>Bardzo wysoki</ComboBoxItem>
+                </ComboBox>
+                <Label Content="Stopień zatłuszczenia:" Grid.Row="3" />
+                <ComboBox Grid.Column="1" x:Name="poziomTluszczuCombo" Grid.Row="3" ToolTip="wybór niewymagany" >
+                    <ComboBoxItem>Niski</ComboBoxItem>
+                    <ComboBoxItem>Średni</ComboBoxItem>
+                    <ComboBoxItem>Wysoki</ComboBoxItem>
+                    <ComboBoxItem>Bardzo wysoki</ComboBoxItem>
+                </ComboBox>
 
-           
-                <Button Content="dalej" Grid.Row="5" Grid.ColumnSpan="2"  x:Name="dalej1Button"/>
-
-            </Grid>
-
-        </TabItem>
-
-        <TabItem Header="Odżywki" x:Name="krok2Tab">
-
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                </Grid.RowDefinitions>
-
+                <Button Content="Dobierz suplementację" Grid.Row="4" Grid.ColumnSpan="2"  x:Name="okButton" Click="okButton_Click"/>
+                <GroupBox Grid.ColumnSpan="2" Grid.Row="5" Header="Propozycje dla ciebie">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                    <ListBox x:Name="SupleList">
+                      
+                    <ListBox.ItemTemplate>
                
+                        <DataTemplate>
+                            <Grid Margin="5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="{Binding Tytul}" Grid.Column="0" />
+                                 </Grid>
+                        </DataTemplate>
+                          
+                        </ListBox.ItemTemplate>
+                 
+                    </ListBox>
+                        <Button Grid.Column="1" Height="77" Width="77" x:Name="infoButton" Grid.Row="2" VerticalAlignment="Center" ToolTip="Info" Click="infoButton_Click" >
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="Ikonki/ikona.png" Margin="5"/>
+
+                            </StackPanel>
+                        </Button>
+                    </Grid>
+                </GroupBox>
             </Grid>
 
         </TabItem>
+
 
        
     </TabControl>

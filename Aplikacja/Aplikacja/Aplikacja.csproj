@@ -158,6 +158,9 @@
     <Compile Include="Suplementacja.xaml.cs">
       <DependentUpon>Suplementacja.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SuplementacjaInfo.xaml.cs">
+      <DependentUpon>SuplementacjaInfo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TabelaProduktow.xaml.cs">
       <DependentUpon>TabelaProduktow.xaml</DependentUpon>
     </Compile>
@@ -243,6 +246,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Suplementacja.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SuplementacjaInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
