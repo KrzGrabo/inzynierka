@@ -19,14 +19,18 @@
 
                 </Grid.RowDefinitions>
 
-                <TextBlock x:Name="opis1Label" Text="{Binding}" Grid.ColumnSpan="2"/>
+                <TextBlock x:Name="opis1Label" Text="{Binding}" TextWrapping="WrapWithOverflow" Grid.ColumnSpan="2"/>
                 <!--<Label Content="waga:"   Grid.Row="2"/>
                 <TextBox x:Name="wagaTextbox"  Grid.Column="1"  Grid.Row="2" KeyDown="WalidacjaTextboxow"/>-->
 
                 <Label Content="Cel:" Grid.Row="1"/>
                 <ComboBox Grid.Column="1" x:Name="celCombo" Grid.Row="1">
-                    <ComboBoxItem>x</ComboBoxItem>
-                    <ComboBoxItem>y</ComboBoxItem>
+                    <ComboBoxItem>Witalność / Zdrowie</ComboBoxItem>
+                    <ComboBoxItem>Masa mięśniowa</ComboBoxItem>
+                    <ComboBoxItem>Odchudzanie</ComboBoxItem>
+                    <ComboBoxItem>Wytrzymałość</ComboBoxItem>
+                    <ComboBoxItem>Siła</ComboBoxItem>
+                    <ComboBoxItem>Pobudzenie / Stymulacja</ComboBoxItem>
                 </ComboBox>
                 <Label Content="Stopień umięśnienia:" Grid.Row="2" />
                 <ComboBox Grid.Column="1" x:Name="poziomMiesniCombo" Grid.Row="2" ToolTip="wybór niewymagany" >
@@ -48,7 +52,7 @@
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                     <ListBox x:Name="SupleList">
                       

@@ -38,17 +38,84 @@ namespace Aplikacja
 
         private void okButton_Click(object sender, RoutedEventArgs e)
         {
-            List<Suple> items = new List<Suple>();
-            items.Add(new Suple() { Tytul = "Complete this WPF tutorial" });
-            items.Add(new Suple() { Tytul = "Learn C#" });
-            items.Add(new Suple() { Tytul = "Wash the car" });
+            string walidacja = "";
 
-            SupleList.ItemsSource = items;
-        }
+            if (celCombo.SelectedIndex == -1)
+            {
+                walidacja = walidacja + " \nMusisz wybrać cel";
+            }
+
+            if (poziomMiesniCombo.SelectedIndex == -1)
+            {
+                walidacja = walidacja + " \nMusisz wybrać stopień umięśnienia";
+            }
+
+            if (poziomTluszczuCombo.SelectedIndex == -1)
+            {
+                walidacja = walidacja + " \nMusisz wybrać stopień zatłuszczenia";
+            }
+            if (walidacja == "")
+            {
+                List<Suple> items = new List<Suple>();
+                if(celCombo.SelectedIndex==0)
+                {
+                    items.Add(new Suple() { Tytul = "Omega-3" });
+                    items.Add(new Suple() { Tytul = "Witamina D" });
+                    items.Add(new Suple() { Tytul = "ZMA" });
+                    items.Add(new Suple() { Tytul = "Glutamina" });
+                }
+
+                if (celCombo.SelectedIndex == 1)
+                {
+                    items.Add(new Suple() { Tytul = "Kreatyna" });
+                    items.Add(new Suple() { Tytul = "Tribulus terrestris" });
+                    items.Add(new Suple() { Tytul = "HMB" });
+                }
+
+                if (celCombo.SelectedIndex == 2)
+                {
+                    items.Add(new Suple() { Tytul = "L-karnityna" });
+                    items.Add(new Suple() { Tytul = "Termogeniki" });
+                    items.Add(new Suple() { Tytul = "CLA" });
+                    items.Add(new Suple() { Tytul = "Ekstrakt z zielonej herbaty" });
+
+                }
+
+                if (celCombo.SelectedIndex == 3)
+                {
+                    items.Add(new Suple() { Tytul = "Beta-alanina" });
+                    items.Add(new Suple() { Tytul = "Arginina" });
+                    items.Add(new Suple() { Tytul = "BCAA" });
+               
+                }
+
+                if (celCombo.SelectedIndex == 4)
+                {
+                    items.Add(new Suple() { Tytul = "Arginina" });
+                    items.Add(new Suple() { Tytul = "Kreatyna" });
+                    items.Add(new Suple() { Tytul = "Tribulus terrestris" });
+                }
+
+                if (celCombo.SelectedIndex == 5)
+                {
+                    items.Add(new Suple() { Tytul = "Kofeina" });
+                    items.Add(new Suple() { Tytul = "Tauryna" });
+                    items.Add(new Suple() { Tytul = "Żeńszeń" });
+                }
+
+                SupleList.ItemsSource = items;
+            }
+            else
+            {
+                walidacja = "Wystąpiły błędy przy wpisywaniu danych:" + walidacja;
+                MessageBox.Show(walidacja, "Uwaga", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
+         }
 
         private void infoButton_Click(object sender, RoutedEventArgs e)
         {
-
+            SuplementacjaInfo okno = new SuplementacjaInfo();
+            okno.Show();
         }
     }
 }
