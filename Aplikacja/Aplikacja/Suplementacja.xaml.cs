@@ -54,6 +54,12 @@ namespace Aplikacja
             {
                 walidacja = walidacja + " \nMusisz wybrać stopień zatłuszczenia";
             }
+
+            if (stazCombo.SelectedIndex == -1)
+            {
+                walidacja = walidacja + " \nMusisz wybrać staż treningowy";
+            }
+
             if (walidacja == "")
             {
                 List<Suple> items = new List<Suple>();
@@ -75,7 +81,6 @@ namespace Aplikacja
                 if (celCombo.SelectedIndex == 2)
                 {
                     items.Add(new Suple() { Tytul = "L-karnityna" });
-                    items.Add(new Suple() { Tytul = "Termogeniki" });
                     items.Add(new Suple() { Tytul = "CLA" });
                     items.Add(new Suple() { Tytul = "Ekstrakt z zielonej herbaty" });
 
@@ -98,9 +103,10 @@ namespace Aplikacja
 
                 if (celCombo.SelectedIndex == 5)
                 {
+                    items.Add(new Suple() { Tytul = "Arginina" });
                     items.Add(new Suple() { Tytul = "Kofeina" });
                     items.Add(new Suple() { Tytul = "Tauryna" });
-                    items.Add(new Suple() { Tytul = "Żeńszeń" });
+                    items.Add(new Suple() { Tytul = "Żeń-szeń" });
                 }
 
                 SupleList.ItemsSource = items;
