@@ -22,7 +22,7 @@
         </GroupBox>
  
         <TextBlock Grid.Row="0" Grid.Column="1" Text="Nazwa suplementu:" Padding="5" TextWrapping="WrapWithOverflow"/>
-        <TextBlock Grid.Row="1" Grid.Column="1" Text="Dawkowanie:" Padding="5" TextWrapping="WrapWithOverflow"/>
+        <TextBlock Grid.Row="1" Grid.Column="1" Text="Sposób użycia:" Padding="5" TextWrapping="WrapWithOverflow"/>
         <TextBlock Grid.Row="2" Grid.Column="1" Text="Obszar działania:" Padding="5" TextWrapping="WrapWithOverflow"/>
     
         <TextBlock Grid.Row="0" Grid.Column="2" Text="{Binding}" Padding="5" TextWrapping="WrapWithOverflow"/>
