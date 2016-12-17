@@ -19,9 +19,21 @@ namespace Aplikacja
     /// </summary>
     public partial class SuplementacjaInfo : Window
     {
+        BazaDanychEntities dane = new BazaDanychEntities();
+
         public SuplementacjaInfo()
         {
             InitializeComponent();
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
+            System.Windows.Data.CollectionViewSource suplementyViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("suplementyViewSource")));
+            // Load data by setting the CollectionViewSource.Source property:
+            // suplementyViewSource.Source = [generic data source]
+            suplementyViewSource.Source = dane.Suplementy.ToList();
+        }
+
     }
 }
