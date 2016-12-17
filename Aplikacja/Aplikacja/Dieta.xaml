@@ -166,7 +166,7 @@
                         
                         <!--<TextBlock TextWrapping="WrapWithOverflow" Text="{Binding}" x:Name="wynikiTextbox"/>-->
                     </GroupBox>
-                    <Button Content="Zapisz dietę do bazy" x:Name="zapiszButton" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="4"  />
+                    <Button Content="Zapisz dietę do bazy" x:Name="zapiszButton" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="4" Click="zapiszButton_Click"  />
                 </Grid>
             </TabItem>
 

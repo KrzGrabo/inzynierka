@@ -14,11 +14,17 @@ namespace Aplikacja
     
     public partial class Uzytkownicy
     {
+        public Uzytkownicy()
+        {
+            this.Diety = new HashSet<Diety>();
+        }
+    
         public int ID { get; set; }
         public string Login { get; set; }
         public string Haslo { get; set; }
         public Nullable<int> ID_Profilu { get; set; }
     
         public virtual Dane Dane { get; set; }
+        public virtual ICollection<Diety> Diety { get; set; }
     }
 }

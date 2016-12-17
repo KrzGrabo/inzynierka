@@ -109,6 +109,9 @@
     <Compile Include="Dieta.xaml.cs">
       <DependentUpon>Dieta.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Diety.cs">
+      <DependentUpon>BazaDanych.tt</DependentUpon>
+    </Compile>
     <Compile Include="Historia_Danych.cs">
       <DependentUpon>BazaDanych.tt</DependentUpon>
     </Compile>

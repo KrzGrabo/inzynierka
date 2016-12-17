@@ -30,5 +30,6 @@ namespace Aplikacja
         public virtual DbSet<Historia_Danych> Historia_Danych { get; set; }
         public virtual DbSet<Kategorie> Kategorie { get; set; }
         public virtual DbSet<Produkty> Produkty { get; set; }
+        public virtual DbSet<Diety> Diety { get; set; }
     }
 }
