@@ -109,6 +109,9 @@
     <Compile Include="Dieta.xaml.cs">
       <DependentUpon>Dieta.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Diety.cs">
+      <DependentUpon>BazaDanych.tt</DependentUpon>
+    </Compile>
     <Compile Include="Historia_Danych.cs">
       <DependentUpon>BazaDanych.tt</DependentUpon>
     </Compile>
@@ -160,6 +163,9 @@
     </Compile>
     <Compile Include="SuplementacjaInfo.xaml.cs">
       <DependentUpon>SuplementacjaInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Suplementy.cs">
+      <DependentUpon>BazaDanych.tt</DependentUpon>
     </Compile>
     <Compile Include="TabelaProduktow.xaml.cs">
       <DependentUpon>TabelaProduktow.xaml</DependentUpon>
@@ -293,6 +299,7 @@
     <None Include="Properties\DataSources\Dane.datasource" />
     <None Include="Properties\DataSources\Kategorie.datasource" />
     <None Include="Properties\DataSources\Produkty.datasource" />
+    <None Include="Properties\DataSources\Suplementy.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

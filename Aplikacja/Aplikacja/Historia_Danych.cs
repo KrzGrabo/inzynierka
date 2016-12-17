@@ -22,6 +22,7 @@ namespace Aplikacja
         public Nullable<double> Obwod_Pasa { get; set; }
         public Nullable<double> Obwod_Bioder { get; set; }
         public int ID_Profilu { get; set; }
+        public Nullable<double> Zapotrzebowanie { get; set; }
     
         public virtual Dane Dane { get; set; }
     }

@@ -1,8 +1,12 @@
-﻿<Window x:Class="Aplikacja.SuplementacjaInfo"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="SuplementacjaInfo" Height="300" Width="500">
-    <Grid Margin="5" >
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:Aplikacja" mc:Ignorable="d" x:Class="Aplikacja.SuplementacjaInfo"
+        Title="SuplementacjaInfo" Height="300" Width="500" Loaded="Window_Loaded">
+    <Window.Resources>
+        <CollectionViewSource x:Key="suplementyViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Suplementy}, CreateList=True}"/>
+    </Window.Resources>
+    <Grid Margin="5" DataContext="{StaticResource suplementyViewSource}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="Auto"/>
@@ -16,23 +20,22 @@
         </Grid.RowDefinitions>
         <GroupBox Header="Suplementy" Grid.RowSpan="3">
             <StackPanel>
-            <TextBlock Text="Wybierz interesujący cię produkt:" Padding="5" TextWrapping="WrapWithOverflow"/>
-                <ComboBox x:Name="supleCombo" />
+                <TextBlock Text="Wybierz interesujący cię produkt:" Padding="5" TextWrapping="WrapWithOverflow"/>
+                <ComboBox x:Name="supleCombo" DisplayMemberPath="Nazwa" ItemsSource="{Binding}"/>
             </StackPanel>
         </GroupBox>
- 
+
         <TextBlock Grid.Row="0" Grid.Column="1" Text="Nazwa suplementu:" Padding="5" TextWrapping="WrapWithOverflow"/>
         <TextBlock Grid.Row="1" Grid.Column="1" Text="Sposób użycia:" Padding="5" TextWrapping="WrapWithOverflow"/>
         <TextBlock Grid.Row="2" Grid.Column="1" Text="Obszar działania:" Padding="5" TextWrapping="WrapWithOverflow"/>
-    
-        <TextBlock Grid.Row="0" Grid.Column="2" Text="{Binding}" Padding="5" TextWrapping="WrapWithOverflow"/>
-        <TextBlock Grid.Row="1" Grid.Column="2" Text="{Binding}" Padding="5" TextWrapping="WrapWithOverflow"/>
-        <TextBlock Grid.Row="2" Grid.Column="2" Text="{Binding}" Padding="5" TextWrapping="WrapWithOverflow"/>
+
+        <TextBlock Grid.Row="0" Grid.Column="2" Padding="5" TextWrapping="WrapWithOverflow" Text="{Binding Nazwa, Source={StaticResource suplementyViewSource}}"/>
+        <TextBlock Grid.Row="1" Grid.Column="2" Text="{Binding Dawkowanie, Source={StaticResource suplementyViewSource}}" Padding="5" TextWrapping="WrapWithOverflow"/>
+        <TextBlock Grid.Row="2" Grid.Column="2" Text="{Binding Dzialanie, Source={StaticResource suplementyViewSource}}" Padding="5" TextWrapping="WrapWithOverflow"/>
         <GroupBox Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="2" Padding="5" Header="Opis:">
             <ScrollViewer>
                 <TextBlock x:Name="opis" Text="{Binding}"  TextWrapping="WrapWithOverflow"/>
             </ScrollViewer>
         </GroupBox>
-
     </Grid>
 </Window>

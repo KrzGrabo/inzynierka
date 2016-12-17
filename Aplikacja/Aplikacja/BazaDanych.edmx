@@ -19,6 +19,21 @@
           <Property Name="Obwod Bioder" Type="float" />
           <Property Name="Zapotrzebowanie" Type="float" />
         </EntityType>
+        <EntityType Name="Diety">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Zapotrzebowanie" Type="int" />
+          <Property Name="BiaLko" Type="float" />
+          <Property Name="Weglowodany" Type="float" />
+          <Property Name="Tluszcz" Type="float" />
+          <Property Name="Kalorycznosc" Type="float" />
+          <Property Name="Ilosc_Posilkow" Type="int" />
+          <Property Name="Data_Rozpoczecia" Type="date" />
+          <Property Name="Data_Zakonczenia" Type="date" />
+          <Property Name="ID_Uzytkownika" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Historia Danych">
           <Key>
             <PropertyRef Name="Id" />
@@ -30,6 +45,7 @@
           <Property Name="Wzrost" Type="float" />
           <Property Name="Obwod Pasa" Type="float" />
           <Property Name="Obwod Bioder" Type="float" />
+          <Property Name="Zapotrzebowanie" Type="float" />
           <Property Name="ID_Profilu" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Kategorie">
@@ -51,6 +67,15 @@
           <Property Name="Wartosc_Energetyczna" Type="varchar" MaxLength="30" />
           <Property Name="ID_Kategori" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="Suplementy">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Nazwa" Type="varchar" MaxLength="30" />
+          <Property Name="Dawkowanie" Type="varchar" MaxLength="100" />
+          <Property Name="Dzialanie" Type="varchar" MaxLength="100" />
+        </EntityType>
         <EntityType Name="Uzytkownicy">
           <Key>
             <PropertyRef Name="ID" />
@@ -60,7 +85,19 @@
           <Property Name="Haslo" Type="varchar" MaxLength="200" />
           <Property Name="Id_Profilu" Type="int" />
         </EntityType>
-        <Association Name="FK__Historia __ID_Pr__286302EC">
+        <Association Name="FK__Diety__ID_Uzytko__4F47C5E3">
+          <End Role="Uzytkownicy" Type="Self.Uzytkownicy" Multiplicity="1" />
+          <End Role="Diety" Type="Self.Diety" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uzytkownicy">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Diety">
+              <PropertyRef Name="ID_Uzytkownika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Historia __ID_Pr__0880433F">
           <End Role="Dane" Type="Self.Dane" Multiplicity="1" />
           <End Role="Historia Danych" Type="Self.Historia Danych" Multiplicity="*" />
           <ReferentialConstraint>
@@ -98,11 +135,17 @@
         </Association>
         <EntityContainer Name="BazaDanychModelStoreContainer">
           <EntitySet Name="Dane" EntityType="Self.Dane" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Diety" EntityType="Self.Diety" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Historia Danych" EntityType="Self.Historia Danych" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Kategorie" EntityType="Self.Kategorie" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Produkty" EntityType="Self.Produkty" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Suplementy" EntityType="Self.Suplementy" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Uzytkownicy" EntityType="Self.Uzytkownicy" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Historia __ID_Pr__286302EC" Association="Self.FK__Historia __ID_Pr__286302EC">
+          <AssociationSet Name="FK__Diety__ID_Uzytko__4F47C5E3" Association="Self.FK__Diety__ID_Uzytko__4F47C5E3">
+            <End Role="Uzytkownicy" EntitySet="Uzytkownicy" />
+            <End Role="Diety" EntitySet="Diety" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Historia __ID_Pr__0880433F" Association="Self.FK__Historia __ID_Pr__0880433F">
             <End Role="Dane" EntitySet="Dane" />
             <End Role="Historia Danych" EntitySet="Historia Danych" />
           </AssociationSet>
@@ -128,6 +171,7 @@
           <Property Name="Haslo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="ID_Profilu" Type="Int32" />
           <NavigationProperty Name="Dane" Relationship="BazaDanychModel.FK__Uzytkowni__Id_Pr__4F47C5E3" FromRole="Uzytkownicy" ToRole="Dane" />
+          <NavigationProperty Name="Diety" Relationship="BazaDanychModel.FK__Diety__ID_Uzytko__4F47C5E3" FromRole="Uzytkownicy" ToRole="Diety" />
           </EntityType>
         <EntityContainer Name="BazaDanychEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Uzytkownicy" EntityType="Self.Uzytkownicy" />
@@ -147,6 +191,12 @@
             <End Role="Kategorie" EntitySet="Kategorie" />
             <End Role="Produkty" EntitySet="Produkty" />
           </AssociationSet>
+          <EntitySet Name="Diety" EntityType="BazaDanychModel.Diety" />
+          <AssociationSet Name="FK__Diety__ID_Uzytko__4F47C5E3" Association="BazaDanychModel.FK__Diety__ID_Uzytko__4F47C5E3">
+            <End Role="Uzytkownicy" EntitySet="Uzytkownicy" />
+            <End Role="Diety" EntitySet="Diety" />
+          </AssociationSet>
+          <EntitySet Name="Suplementy" EntityType="BazaDanychModel.Suplementy" />
           </EntityContainer>
         <EntityType Name="Dane">
           <Key>
@@ -177,6 +227,7 @@
           <Property Name="Obwod_Bioder" Type="Double" />
           <Property Name="ID_Profilu" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Dane" Relationship="BazaDanychModel.FK__Historia___ID_Pr__503BEA1C" FromRole="Historia_Danych" ToRole="Dane" />
+          <Property Name="Zapotrzebowanie" Type="Double" />
         </EntityType>
         <Association Name="FK__Historia___ID_Pr__503BEA1C">
           <End Type="BazaDanychModel.Dane" Role="Dane" Multiplicity="1" />
@@ -235,6 +286,43 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Diety">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Zapotrzebowanie" Type="Int32" />
+          <Property Name="Bialko" Type="Double" />
+          <Property Name="Weglowodany" Type="Double" />
+          <Property Name="Tluszcz" Type="Double" />
+          <Property Name="Kalorycznosc" Type="Double" />
+          <Property Name="Ilosc_Posilkow" Type="Int32" />
+          <Property Name="Data_Rozpoczecia" Type="DateTime" Precision="0" />
+          <Property Name="Data_Zakonczenia" Type="DateTime" Precision="0" />
+          <Property Name="ID_Uzytkownika" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Uzytkownicy" Relationship="BazaDanychModel.FK__Diety__ID_Uzytko__4F47C5E3" FromRole="Diety" ToRole="Uzytkownicy" />
+        </EntityType>
+        <Association Name="FK__Diety__ID_Uzytko__4F47C5E3">
+          <End Type="BazaDanychModel.Uzytkownicy" Role="Uzytkownicy" Multiplicity="1" />
+          <End Type="BazaDanychModel.Diety" Role="Diety" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uzytkownicy">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Diety">
+              <PropertyRef Name="ID_Uzytkownika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Suplementy">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Nazwa" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Dawkowanie" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Dzialanie" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -269,6 +357,7 @@
           <EntitySetMapping Name="Historia_Danych">
             <EntityTypeMapping TypeName="BazaDanychModel.Historia_Danych">
               <MappingFragment StoreEntitySet="Historia Danych">
+                <ScalarProperty Name="Zapotrzebowanie" ColumnName="Zapotrzebowanie" />
                 <ScalarProperty Name="ID_Profilu" ColumnName="ID_Profilu" />
                 <ScalarProperty Name="Obwod_Bioder" ColumnName="Obwod Bioder" />
                 <ScalarProperty Name="Obwod_Pasa" ColumnName="Obwod Pasa" />
@@ -298,6 +387,32 @@
                 <ScalarProperty Name="Bialko" ColumnName="Bialko" />
                 <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Diety">
+            <EntityTypeMapping TypeName="BazaDanychModel.Diety">
+              <MappingFragment StoreEntitySet="Diety">
+                <ScalarProperty Name="ID_Uzytkownika" ColumnName="ID_Uzytkownika" />
+                <ScalarProperty Name="Data_Zakonczenia" ColumnName="Data_Zakonczenia" />
+                <ScalarProperty Name="Data_Rozpoczecia" ColumnName="Data_Rozpoczecia" />
+                <ScalarProperty Name="Ilosc_Posilkow" ColumnName="Ilosc_Posilkow" />
+                <ScalarProperty Name="Kalorycznosc" ColumnName="Kalorycznosc" />
+                <ScalarProperty Name="Tluszcz" ColumnName="Tluszcz" />
+                <ScalarProperty Name="Weglowodany" ColumnName="Weglowodany" />
+                <ScalarProperty Name="Bialko" ColumnName="BiaLko" />
+                <ScalarProperty Name="Zapotrzebowanie" ColumnName="Zapotrzebowanie" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Suplementy">
+            <EntityTypeMapping TypeName="BazaDanychModel.Suplementy">
+              <MappingFragment StoreEntitySet="Suplementy">
+                <ScalarProperty Name="Dzialanie" ColumnName="Dzialanie" />
+                <ScalarProperty Name="Dawkowanie" ColumnName="Dawkowanie" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

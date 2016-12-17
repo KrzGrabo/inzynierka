@@ -10,9 +10,12 @@
         <EntityTypeShape EntityType="BazaDanychModel.Historia_Danych" Width="1.5" PointX="6.875" PointY="0.625" />
         <AssociationConnector Association="BazaDanychModel.FK__Historia___ID_Pr__503BEA1C" />
         <AssociationConnector Association="BazaDanychModel.FK__Uzytkowni__Id_Pr__4F47C5E3" />
-        <EntityTypeShape EntityType="BazaDanychModel.Kategorie" Width="1.5" PointX="2.5" PointY="4.5" />
-        <EntityTypeShape EntityType="BazaDanychModel.Produkty" Width="1.5" PointX="5.125" PointY="4.25" />
+        <EntityTypeShape EntityType="BazaDanychModel.Kategorie" Width="1.5" PointX="6.125" PointY="4.75" />
+        <EntityTypeShape EntityType="BazaDanychModel.Produkty" Width="1.5" PointX="8.375" PointY="4.125" />
         <AssociationConnector Association="BazaDanychModel.FK__Produkty__ID_Kat__6383C8BA" />
+        <EntityTypeShape EntityType="BazaDanychModel.Diety" Width="1.5" PointX="1.25" PointY="3.875" />
+        <AssociationConnector Association="BazaDanychModel.FK__Diety__ID_Uzytko__4F47C5E3" />
+        <EntityTypeShape EntityType="BazaDanychModel.Suplementy" Width="1.5" PointX="3.875" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

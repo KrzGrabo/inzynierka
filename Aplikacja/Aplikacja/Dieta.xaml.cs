@@ -25,7 +25,10 @@ namespace Aplikacja
         BazaDanychEntities db = new BazaDanychEntities();
         int id = Sesja.ZwrocId();
         Dane przypisaneDane = new Dane();
+        Diety dieta = new Diety();
         Uzytkownicy uzytkownik = new Uzytkownicy();
+        DateTime dataPocz;
+        DateTime dataKon;
 
         public Dieta()
         {
@@ -255,12 +258,11 @@ namespace Aplikacja
             if (date == null)
             {
                 // ... A null object.
-                this.Title = "No date";
             }
             else
             {
                 // ... No need to display the time.
-                this.Title = date.Value.ToShortDateString();
+                dataPocz = date.GetValueOrDefault();
             }
         }
 
@@ -273,13 +275,11 @@ namespace Aplikacja
             DateTime? date = picker.SelectedDate;
             if (date == null)
             {
-                // ... A null object.
-                this.Title = "No date";
             }
             else
             {
                 // ... No need to display the time.
-                this.Title = date.Value.ToShortDateString();
+                dataKon = date.GetValueOrDefault();
             }
         }
 
@@ -329,6 +329,21 @@ namespace Aplikacja
             {
                 plecCombo.SelectedIndex = 1;
             }
+        }
+
+        private void zapiszButton_Click(object sender, RoutedEventArgs e)
+        {
+            dieta.ID_Uzytkownika = uzytkownik.ID;
+            dieta.Ilosc_Posilkow = iloscPosilkow;
+            dieta.Kalorycznosc = kaloriePom;
+            dieta.Tluszcz = tluszczePom;
+            dieta.Weglowodany = weglowodanyPom;
+            dieta.Bialko = bialkoPom;
+            dieta.Zapotrzebowanie = Int32.Parse(zapotrzebowaniePodLabel.Content.ToString());
+            dieta.Data_Rozpoczecia = dataPocz;
+            dieta.Data_Zakonczenia = dataKon;
+            db.Diety.Add(dieta);
+            db.SaveChanges();
         }
 
 

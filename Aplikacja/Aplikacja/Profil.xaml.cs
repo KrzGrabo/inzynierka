@@ -79,7 +79,8 @@ namespace Aplikacja
             historia.Obwod_Pasa = przypisaneDane.Obwod_Pasa;
             historia.Waga = przypisaneDane.Waga;
             historia.Wzrost = przypisaneDane.Wzrost;
-            historia.Wiek = historia.Wiek;
+            historia.Wiek = przypisaneDane.Wiek;
+            historia.Zapotrzebowanie = przypisaneDane.Zapotrzebowanie;
             db.Historia_Danych.Add(historia);
             db.SaveChanges();
         }

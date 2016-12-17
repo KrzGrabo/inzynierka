@@ -22,6 +22,7 @@ namespace Aplikacja
         BazaDanychEntities db = new BazaDanychEntities();
         int id = Sesja.ZwrocId();
         Dane przypisaneDane = new Dane();
+        Historia_Danych historia = new Historia_Danych();
         Uzytkownicy uzytkownik = new Uzytkownicy();
 
         public KalkZapotrzebowanie()
@@ -110,8 +111,6 @@ namespace Aplikacja
                 }
                 wynikLabel.Content = wynik.ToString()+" kcal.";
                 zapotrzebowanko = wynik;
-                przypisaneDane.Zapotrzebowanie = zapotrzebowanko;
-                db.SaveChanges();
 
             }
             else
@@ -123,7 +122,27 @@ namespace Aplikacja
 
         private void dietaButton_Click(object sender, RoutedEventArgs e)
         {
-         // tutaj powinno być zapisanie do bazy
+            if (przypisaneDane.Zapotrzebowanie != null)
+            {
+                zapiszHistorie();
+            }
+            przypisaneDane.Zapotrzebowanie = zapotrzebowanko;
+            db.SaveChanges();
+        }
+
+        private void zapiszHistorie()
+        {
+            historia.Data = DateTime.Now;
+            String.Format("{0:MM/dd/yyyy}", historia.Data);
+            historia.ID_Profilu = przypisaneDane.ID;
+            historia.Obwod_Bioder = przypisaneDane.Obwod_Bioder;
+            historia.Obwod_Pasa = przypisaneDane.Obwod_Pasa;
+            historia.Waga = przypisaneDane.Waga;
+            historia.Wzrost = przypisaneDane.Wzrost;
+            historia.Wiek = przypisaneDane.Wiek;
+            historia.Zapotrzebowanie = przypisaneDane.Zapotrzebowanie;
+            db.Historia_Danych.Add(historia);
+            db.SaveChanges();
         }
 
         private void ustawPlec()
