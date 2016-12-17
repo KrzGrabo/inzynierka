@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
 
+///DO Dokonczenia algorytmy+uzupelnienie wyswietlania wynikow
+
 namespace Aplikacja
 {
     /// <summary>
@@ -130,7 +132,8 @@ namespace Aplikacja
 
         private void Bindowanie()
         {
-            bmiLabel.Content = "Uzupełnij pola i kliknij oblicz, aby uzyskać wyniki";
+            opisTextblock.Text = "Kalkulator wagi, korzystając z listy wejściowych danych, oblicza kilka wskaźników opisujących ciało. Ze względu na brak możliwości szczegółowego pobrania danych poprzez interfejs programu wyniki mogą nieznacznie odbiegać od rzeczywistych wartości. Poszczególne wskaźniki są opisane w szczegółowy sposób niżej- w sekcji 'wyniki'. Uzupełnij wszystkie pola aby uzyskać wyniki.";
+        
         }
 
         private void mojedaneButton_Click(object sender, RoutedEventArgs e)

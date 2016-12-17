@@ -15,40 +15,51 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
                     <RowDefinition Height="*"/>
 
                 </Grid.RowDefinitions>
 
-                <Label x:Name="opis1Label" Content="{Binding}" Grid.ColumnSpan="2"/>
+                <TextBlock x:Name="opis1Label" Text="{Binding}" TextWrapping="WrapWithOverflow" Grid.ColumnSpan="2"/>
                 <!--<Label Content="waga:"   Grid.Row="2"/>
                 <TextBox x:Name="wagaTextbox"  Grid.Column="1"  Grid.Row="2" KeyDown="WalidacjaTextboxow"/>-->
 
-                <Label Content="cel:" Grid.Row="1"/>
+                <Label Content="Cel:" Grid.Row="1"/>
                 <ComboBox Grid.Column="1" x:Name="celCombo" Grid.Row="1">
-                    <ComboBoxItem>x</ComboBoxItem>
-                    <ComboBoxItem>y</ComboBoxItem>
+                    <ComboBoxItem>Witalność / Zdrowie</ComboBoxItem>
+                    <ComboBoxItem>Masa mięśniowa</ComboBoxItem>
+                    <ComboBoxItem>Odchudzanie</ComboBoxItem>
+                    <ComboBoxItem>Wytrzymałość</ComboBoxItem>
+                    <ComboBoxItem>Siła</ComboBoxItem>
+                    <ComboBoxItem>Pobudzenie / Stymulacja</ComboBoxItem>
                 </ComboBox>
                 <Label Content="Stopień umięśnienia:" Grid.Row="2" />
-                <ComboBox Grid.Column="1" x:Name="poziomMiesniCombo" Grid.Row="2" ToolTip="wybór niewymagany" >
+                <ComboBox Grid.Column="1" x:Name="poziomMiesniCombo" Grid.Row="2"  >
                     <ComboBoxItem>Niski</ComboBoxItem>
                     <ComboBoxItem>Średni</ComboBoxItem>
                     <ComboBoxItem>Wysoki</ComboBoxItem>
                     <ComboBoxItem>Bardzo wysoki</ComboBoxItem>
                 </ComboBox>
                 <Label Content="Stopień zatłuszczenia:" Grid.Row="3" />
-                <ComboBox Grid.Column="1" x:Name="poziomTluszczuCombo" Grid.Row="3" ToolTip="wybór niewymagany" >
+                <ComboBox Grid.Column="1" x:Name="poziomTluszczuCombo" Grid.Row="3" >
                     <ComboBoxItem>Niski</ComboBoxItem>
                     <ComboBoxItem>Średni</ComboBoxItem>
                     <ComboBoxItem>Wysoki</ComboBoxItem>
                     <ComboBoxItem>Bardzo wysoki</ComboBoxItem>
                 </ComboBox>
-
-                <Button Content="Dobierz suplementację" Grid.Row="4" Grid.ColumnSpan="2"  x:Name="okButton" Click="okButton_Click"/>
-                <GroupBox Grid.ColumnSpan="2" Grid.Row="5" Header="Propozycje dla ciebie">
+                <Label Content="Staż treningowy:" Grid.Row="4" />
+                <ComboBox Grid.Column="1" x:Name="stazCombo" Grid.Row="4"  >
+                    <ComboBoxItem>Początkujący</ComboBoxItem>
+                    <ComboBoxItem>Średnio-zaawansowany</ComboBoxItem>
+                    <ComboBoxItem>Zaawansowany</ComboBoxItem>
+                
+                </ComboBox>
+                <Button Content="Dobierz suplementacje" Grid.Row="5" Grid.ColumnSpan="2"  x:Name="okButton" Click="okButton_Click"/>
+                <GroupBox Grid.ColumnSpan="2" Grid.Row="6" Header="Propozycje">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                     <ListBox x:Name="SupleList">
                       

@@ -19,23 +19,25 @@
                         <RowDefinition Height="auto"/>
 
                     </Grid.RowDefinitions>
-
-                    <Label x:Name="opis1Label" Content="{Binding}" Grid.ColumnSpan="2"/>
-                    <Label Content="waga:"   Grid.Row="2"/>
+                    <StackPanel Grid.ColumnSpan="2">
+                        <Label x:Name="opis1Label" Content="{Binding}" Grid.ColumnSpan="2"/>
+                        <TextBlock TextWrapping="WrapWithOverflow" Text="{Binding}" x:Name="opis1Textblock"/>
+                    </StackPanel>
+                    <Label Content="Waga[kg]:"   Grid.Row="2"/>
                     <TextBox x:Name="wagaTextbox"  Grid.Column="1"  Grid.Row="2" KeyDown="WalidacjaTextboxow"/>
 
-                    <Label Content="plec:" Grid.Row="3"/>
+                    <Label Content="Płeć:" Grid.Row="3"/>
                     <ComboBox Grid.Column="1" x:Name="plecCombo" Grid.Row="3">
                         <ComboBoxItem>Mężczyzna</ComboBoxItem>
                         <ComboBoxItem>Kobieta</ComboBoxItem>
                     </ComboBox>
 
-                    <Label Grid.Row="4" Content="zapotrzebowanie:" />
+                    <Label Grid.Row="4" Content="Zapotrzebowanie energetyczne[kcal]:" />
                     <TextBox Grid.Column="1" Grid.Row="4" x:Name="zapotrzebowanieTextbox" KeyDown="WalidacjaTextboxow"/>
 
 
-                    <Button Content="Dane z mojego profilu" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" x:Name="mojedaneButton" Click="mojedaneButton_Click" />
-                    <Button Content="dalej" Grid.Row="5" Grid.ColumnSpan="2"  x:Name="dalej1Button" Click="dalej1Button_Click" />
+                    <Button Content="Pobierz dane z profilu" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" x:Name="mojedaneButton" Click="mojedaneButton_Click" />
+                    <Button Content="Dalej" Grid.Row="5" Grid.ColumnSpan="2"  x:Name="dalej1Button" Click="dalej1Button_Click" />
 
                 </Grid>
 
@@ -56,28 +58,30 @@
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
 
-                    <Label x:Name="opis2Label" Content="{Binding}" Grid.ColumnSpan="2"/>
-                    <Label Content="cel wagowy:"   Grid.Row="1"/>
+                    <TextBlock x:Name="opis2Label" Text="{Binding}" Grid.ColumnSpan="2"/>
+                    <Label Content="Cel:"   Grid.Row="1"/>
                     <ComboBox Grid.Column="1" x:Name="celCombo" Grid.Row="1">
                         <ComboBoxItem>Redukcja</ComboBoxItem>
                         <ComboBoxItem>Utrzymanie</ComboBoxItem>
                         <ComboBoxItem>Zwiększenie</ComboBoxItem>
                     </ComboBox>
 
-                    <Label Content="typ sportu:" Grid.Row="2"/>
+                    <Label Content="Typ aktywności:" Grid.Row="2"/>
                     <ComboBox Grid.Column="1" x:Name="sportCombo" Grid.Row="2">
                         <ComboBoxItem>Wytrzymalosciowy</ComboBoxItem>
                         <ComboBoxItem>Wytrzymalosciowo-siłowy/szybkościowy</ComboBoxItem>
                         <ComboBoxItem>Szybkosciowy/Silowy</ComboBoxItem>
                     </ComboBox>
-                    <Label Content="wegle-tluszcze:"   Grid.Row="3"/>
+                    <Label Content="Proporcje źródła energi:"   Grid.Row="3"/>
                     <Button Content="info" Grid.Row="3"  Grid.Column="1" x:Name="porownanieButton" Click="porownanieButton_Click" />
                     <Slider Maximum="95" Minimum="5"  Value="50" Grid.ColumnSpan="2" Grid.Row="4" x:Name="podzialSlider" TickPlacement="Both"  TickFrequency="10" IsSnapToTickEnabled="True" ValueChanged="podzialSlider_ValueChanged"  />
                     <Label x:Name="podzialLabel" Content="{Binding}" Grid.Row="5" HorizontalAlignment="Center" Grid.ColumnSpan="2"/>
-                    <Button Content="powrot" Grid.Row="6"  Grid.Column="0" x:Name="powrot2Button" Click="powrot2Button_Click" />
-                    <Button Content="dalej" Grid.Row="6" Grid.Column="1"  x:Name="dalej2Button" Click="dalej2Button_Click" />
+                    <Label Margin="5" Grid.ColumnSpan="2" Content="węglowodany : tłuszcze    " HorizontalAlignment="Center" Grid.Row="6"/>
+                    <Button Content="Powrót" Grid.Row="7"  Grid.Column="0" x:Name="powrot2Button" Click="powrot2Button_Click" />
+                    <Button Content="Dalej" Grid.Row="7" Grid.Column="1"  x:Name="dalej2Button" Click="dalej2Button_Click" />
 
                 </Grid>
 
@@ -98,12 +102,12 @@
 
                     </Grid.RowDefinitions>
 
-                    <Label x:Name="opis3Label" Content="{Binding}" Grid.ColumnSpan="2"/>
-                    <Label Content="data startowa" Grid.Row="1"/>
+                    <TextBlock x:Name="opis3Label" Text="{Binding}" Grid.ColumnSpan="2"/>
+                    <Label Content="Początek diety" Grid.Row="1"/>
                     <DatePicker  Grid.Row="1" Grid.Column="1" x:Name="startDatapicker"  SelectedDateChanged="startDatapicker_SelectedDateChanged"/>
-                    <Label Content="data koncowa" Grid.Row="2"/>
+                    <Label Content="Zakończenie diety" Grid.Row="2"/>
                     <DatePicker  Grid.Row="2" Grid.Column="1" x:Name="koniecDatapicker"  SelectedDateChanged="koniecDatapicker_SelectedDateChanged"/>
-                    <Label Content="ilosc posilkow:" Grid.Row="3"/>
+                    <Label Content="Liczba posiłków:" Grid.Row="3"/>
                     <ComboBox Grid.Column="1" x:Name="posilkiCombo" Grid.Row="3">
                         <ComboBoxItem>1</ComboBoxItem>
                         <ComboBoxItem>2</ComboBoxItem>
@@ -113,8 +117,8 @@
                         <ComboBoxItem>6</ComboBoxItem>
                     </ComboBox>
 
-                    <Button Content="powrot" Grid.Row="4"  Grid.Column="0" x:Name="powrot3Button" Click="powrot3Button_Click" />
-                    <Button Content="dalej" Grid.Row="4" Grid.Column="1"  x:Name="dalej3Button" Click="dalej3Button_Click" />
+                    <Button Content="Powrót" Grid.Row="4"  Grid.Column="0" x:Name="powrot3Button" Click="powrot3Button_Click" />
+                    <Button Content="Dalej" Grid.Row="4" Grid.Column="1"  x:Name="dalej3Button" Click="dalej3Button_Click" />
 
                 </Grid>
             </TabItem>
@@ -135,8 +139,8 @@
                         <RowDefinition Height="auto"/>
 
                     </Grid.RowDefinitions>
-                    <Label x:Name="opis4Label" Content="Wszystko dobrze wprowadzone wylicz diete" Grid.ColumnSpan="3"/>
-                    <Button Content="Wylicz dietę" x:Name="obliczButton" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1"  Click="obliczButton_Click"/>
+                    <Label x:Name="opis4Label" Content="Wszystko dane zostały wprowadzone poprawnie." Grid.ColumnSpan="4"/>
+                    <Button Content="Stwórz dietę" x:Name="obliczButton" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1"  Click="obliczButton_Click"/>
                     <ProgressBar Minimum="0" Maximum="100" Grid.Row="2" Grid.ColumnSpan="4" Name="pbStatus" Height="22" />
                     <GroupBox Grid.Row="3" Grid.ColumnSpan="4" Header="Podsumowanie" >
                         <Grid>
@@ -166,7 +170,8 @@
                         
                         <!--<TextBlock TextWrapping="WrapWithOverflow" Text="{Binding}" x:Name="wynikiTextbox"/>-->
                     </GroupBox>
-                    <Button Content="Zapisz dietę do bazy" x:Name="zapiszButton" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="4" Click="zapiszButton_Click"  />
+                    <Button Content="Zapisz dietę do kalendarza" x:Name="zapiszButton" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="4"  />
+
                 </Grid>
             </TabItem>
 

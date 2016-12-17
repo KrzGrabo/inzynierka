@@ -11,25 +11,25 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-        <Button Grid.Column="0" x:Name="wagaButton" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3"  ToolTip="waga" Click="wagaButton_Click">
+        <Button Grid.Column="0" x:Name="wagaButton" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3"  ToolTip="Kalkulator wagowy" Click="wagaButton_Click">
             <StackPanel Orientation="Horizontal">
                 <Image Source="Ikonki/weighing-scale.png" Margin="1"/>
 
             </StackPanel>
         </Button>
-        <Button Grid.Column="1" x:Name="zapotrzebowanieButton" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3"  ToolTip="zapotrzebowanie" Click="zapotrzebowanieButton_Click">
+        <Button Grid.Column="1" x:Name="zapotrzebowanieButton" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3"  ToolTip="Kalkulator zapotrzebowania energetycznego" Click="zapotrzebowanieButton_Click">
             <StackPanel Orientation="Horizontal">
                 <Image Source="Ikonki/protein-shake.png" Margin="1"/>
 
             </StackPanel>
         </Button>
-        <Button Grid.Column="2" x:Name="spalanieButton" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3"  ToolTip="spalanie" Click="spalanieButton_Click">
+        <Button Grid.Column="2" x:Name="spalanieButton" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3"  ToolTip="Kalkulator spalania kalorii" Click="spalanieButton_Click">
             <StackPanel Orientation="Horizontal">
                 <Image Source="Ikonki/skipping-rope-1.png" Margin="1"/>
 
             </StackPanel>
         </Button>
-        <Button Grid.Column="0" x:Name="maksyButton" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3"  ToolTip="maksy" Click="maksyButton_Click">
+        <Button Grid.Column="0" x:Name="maksyButton" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3"  ToolTip="Kalkulator maksymalnego powtórzenia" Click="maksyButton_Click">
             <StackPanel Orientation="Horizontal">
                 <Image Source="Ikonki/lifting-barbell.png" Margin="1"/>
 

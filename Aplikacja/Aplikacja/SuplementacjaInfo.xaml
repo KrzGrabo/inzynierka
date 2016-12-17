@@ -4,7 +4,7 @@
         Title="SuplementacjaInfo" Height="300" Width="500">
     <Grid Margin="5" >
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
@@ -14,7 +14,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <GroupBox Header="Wejście" Grid.RowSpan="3">
+        <GroupBox Header="Suplementy" Grid.RowSpan="3">
             <StackPanel>
             <TextBlock Text="Wybierz interesujący cię produkt:" Padding="5" TextWrapping="WrapWithOverflow"/>
                 <ComboBox x:Name="supleCombo" />
@@ -22,12 +22,12 @@
         </GroupBox>
  
         <TextBlock Grid.Row="0" Grid.Column="1" Text="Nazwa suplementu:" Padding="5" TextWrapping="WrapWithOverflow"/>
-        <TextBlock Grid.Row="1" Grid.Column="1" Text="Dawkowanie:" Padding="5" TextWrapping="WrapWithOverflow"/>
-        <TextBlock Grid.Row="2" Grid.Column="1" Text="Działanie:" Padding="5" TextWrapping="WrapWithOverflow"/>
+        <TextBlock Grid.Row="1" Grid.Column="1" Text="Sposób użycia:" Padding="5" TextWrapping="WrapWithOverflow"/>
+        <TextBlock Grid.Row="2" Grid.Column="1" Text="Obszar działania:" Padding="5" TextWrapping="WrapWithOverflow"/>
     
-        <TextBlock Grid.Row="0" Grid.Column="2" Text="x" Padding="5" TextWrapping="WrapWithOverflow"/>
-        <TextBlock Grid.Row="1" Grid.Column="2" Text="x" Padding="5" TextWrapping="WrapWithOverflow"/>
-        <TextBlock Grid.Row="2" Grid.Column="2" Text="x" Padding="5" TextWrapping="WrapWithOverflow"/>
+        <TextBlock Grid.Row="0" Grid.Column="2" Text="{Binding}" Padding="5" TextWrapping="WrapWithOverflow"/>
+        <TextBlock Grid.Row="1" Grid.Column="2" Text="{Binding}" Padding="5" TextWrapping="WrapWithOverflow"/>
+        <TextBlock Grid.Row="2" Grid.Column="2" Text="{Binding}" Padding="5" TextWrapping="WrapWithOverflow"/>
         <GroupBox Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="2" Padding="5" Header="Opis:">
             <ScrollViewer>
                 <TextBlock x:Name="opis" Text="{Binding}"  TextWrapping="WrapWithOverflow"/>

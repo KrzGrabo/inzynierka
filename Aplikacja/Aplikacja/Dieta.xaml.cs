@@ -44,6 +44,10 @@ namespace Aplikacja
         //ile danego makroskladnika na kg masy ciala
         private void Bindowanie()
         {
+            opis1Label.Content = "Kreator diety";
+            opis1Textblock.Text = "Kreator diety dopasuje, dostosowaną pod twoje cele i preferencje dietę. Następnie będziesz miał możliwość dodania jej do bazy w wybranym przedziale czasowym. Postępuj zgodnie z poleceniami w kolejnych krokach, w pierwszym uzupełnij podstawowe dane, na których będzie bazować kreator.";
+            opis2Label.Text = "W drugim kroku uzupełnij dane, dzięki którym kreator będzie mógł szczegółowo dobrać parametry diety pod twoje potrzeby.";
+            opis3Label.Text = "Trzeci krok skupia się na technicznych aspektach diety- wybierz jaką ilość posiłków dziennie preferujesz, a także na jaki okres planujesz dietę.";
             podzialLabel.Content = "50:50";
             if(zapotrzebowanie!=0)
             {
@@ -292,7 +296,7 @@ namespace Aplikacja
                     Thread.Sleep(10);
                 }
             });
-            opis4Label.Content = "Dieta zostala wyliczona";
+            opis4Label.Content = "Dieta zostala utworzona.";
             string zapotrzebowanieObliczone = Math.Round(zapotrzebowanie, 0).ToString();
             zapotrzebowaniePodLabel.Content = zapotrzebowanieObliczone;
             

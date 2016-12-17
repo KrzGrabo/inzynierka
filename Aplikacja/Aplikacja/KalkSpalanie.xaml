@@ -15,15 +15,15 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Label x:Name="opisLabel" Content="{Binding}"  Grid.Row="0" Grid.ColumnSpan="2" />
-        <Label Content="waga:" Grid.Row="1"/>
-        <Label Content="czas:" Grid.Row="2"/>
-        <Label Content="aktywnosc:" Grid.Row="3"/>
+        <TextBlock x:Name="opisLabel" TextWrapping="WrapWithOverflow" Text="{Binding}"  Grid.Row="0" Grid.ColumnSpan="2" />
+        <Label Content="Waga [kg]:" Grid.Row="1"/>
+        <Label Content="Czas [min]:" Grid.Row="2"/>
+        <Label Content="Aktywność:" Grid.Row="3"/>
         <TextBox x:Name="czasTextbox" Grid.Column="2" Grid.Row="2" KeyDown="czasTextbox_KeyDown"/>
         <TextBox x:Name="wagaTextbox" Grid.Row="1" Grid.Column="1" KeyDown="wagaTextbox_KeyDown"/>
         <ComboBox Grid.Column="1" Grid.Row="3" x:Name="aktywnosciCombo" />
-        <Button x:Name="obliczButton" Grid.Row="4" Grid.ColumnSpan="2" Content="oblicz" Click="obliczButton_Click"  />
-        <Label Content="wyniki:" Grid.Row="5"/>
-        <Label x:Name="wynikLabel"  Content="{Binding}" Grid.Row="5" Grid.Column="1"/>
+        <Button x:Name="obliczButton" Grid.Row="4" Grid.ColumnSpan="2" Content="Oblicz" Click="obliczButton_Click"  />
+        <Label Content="Spalone kalorie:" Grid.Row="5"/>
+        <Label x:Name="wynikLabel"  Content="0" Grid.Row="5" Grid.Column="1"/>
     </Grid>
 </Window>
