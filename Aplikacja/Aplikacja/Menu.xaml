@@ -59,7 +59,7 @@
         </Button>
         <Button Grid.Column="2" x:Name="statystykiButton" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3"  ToolTip="Statystyki" Click="statystykiButton_Click">
             <StackPanel Orientation="Horizontal">
-                <Image Source="Ikonki/sport-watch.png" Margin="1"/>
+                <Image Source="Ikonki/running-treadmill.png" Margin="1"/>
      
             </StackPanel>
         </Button>
@@ -69,9 +69,9 @@
              
             </StackPanel>
         </Button>
-        <Button Grid.Column="1" x:Name="dane4Button" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3" ToolTip="Kalkulatory">
+        <Button Grid.Column="1" x:Name="dziennikButton" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3" ToolTip="Dziennik" Click="dziennikButton_Click">
             <StackPanel Orientation="Horizontal">
-                <Image Source="Ikonki/big-stopwatch.png" Margin="1"/>
+                <Image Source="Ikonki/sport-watch.png" Margin="1"/>
              
             </StackPanel>
         </Button>
