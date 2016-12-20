@@ -87,6 +87,12 @@ namespace Aplikacja
             {
                 walidacja = walidacja + " \nWpisałeś błędną wartość w pole wiek";
             }
+
+               if (wiek > 100 || wiek < 10) walidacja = walidacja + "  \nWartość podana w polu 'wiek' jest z poza zakresu. Dostępny zakres to (10,100)";
+               if (waga > 300 || waga < 30) walidacja = walidacja + "  \nWartość podana w polu 'waga' jest z poza zakresu. Dostępny zakres to (30,300)";
+               if (wzrost > 250 || wzrost < 100) walidacja = walidacja + "  \nWartość podana w polu 'wzrost' jest z poza zakresu. Dostępny zakres to (100,250)";
+              
+
             if(walidacja=="")
             {
                 if (przemianaCombo.SelectedIndex == 0) przemiana = 800;
@@ -109,7 +115,7 @@ namespace Aplikacja
                     bmr = 10 * waga + 6.25 * wzrost - 4.92 * wiek - 161;
                     wynik = bmr + aktywnosc + przemiana;
                 }
-                wynikLabel.Content = wynik.ToString()+" kcal.";
+                wynikLabel.Content = wynik.ToString()+" kcal";
                 zapotrzebowanko = wynik;
 
             }

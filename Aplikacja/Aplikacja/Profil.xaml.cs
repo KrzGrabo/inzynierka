@@ -41,29 +41,88 @@ namespace Aplikacja
 
         private void okButton_Click(object sender, RoutedEventArgs e)
         {
+
+            ///OGARNIJ CZY SOBIE TO DOBRZE ZAPISUJESZ BO POPRAWIELEM WALIDACJE
             zapiszDane();
 
-            if (walidacja())
-            {
-                if (uzytkownik.ID_Profilu != null)
+                string walid = "";
+                double wzrostTest = -1, wagaTest = -1, pasTest = -1, biodraTest = -1;
+                int wiekTest = -1;
+
+                try
                 {
-                    zapiszHistorie();
+                    wzrostTest = double.Parse(wzrostTextbox.Text.Trim());
+                }
+                catch (Exception)
+                {
+                    walid = walid + " \nWpisałeś błędną wartość w pole wzrost";
                 }
 
-                if (uzytkownik != null && uzytkownik.ID_Profilu == null)
+                try
                 {
-                    db.Dane.Add(przypisaneDane);
-                    uzytkownik.ID_Profilu = przypisaneDane.ID;
+                    pasTest = double.Parse(obwodPasaTextbox.Text.Trim());
+                }
+                catch (Exception)
+                {
+                    walid = walid + " \nWpisałeś błędną wartość w pole obwód pasa";
                 }
 
-                db.SaveChanges();
-                this.Close();
-            }
-            else
-            {
-                wiadomosc = "Nie uzupełniłeś poprawnie wszystkich pól: " + wiadomosc;
-                MessageBox.Show(wiadomosc, "Uwaga", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-            }
+                try
+                {
+                    biodraTest = double.Parse(obwodBioderTextbox.Text.Trim());
+                }
+                catch (Exception)
+                {
+                    walid = walid + " \nWpisałeś błędną wartość w pole obwód bioder";
+                }
+
+                try
+                {
+                    wagaTest = double.Parse(wagaTextbox.Text.Trim());
+                }
+                catch (Exception)
+                {
+                    walid = walid + " \nWpisałeś błędną wartość w pole waga";
+                }
+
+            
+                try
+                {
+                    wiekTest = int.Parse(wzrostTextbox.Text.Trim());
+                }
+                catch (Exception)
+                {
+                    walid = walid + " \nWpisałeś błędną wartość w pole wiek";
+                }
+                if (wiekTest > 100 || wiekTest < 10) walid  = walid  + "  \nWartość podana w polu 'wiek' jest z poza zakresu. Dostępny zakres to (10,100)";
+                if (biodraTest > 300 || biodraTest < 50) walid  = walid  + "  \nWartość podana w polu 'biodra' jest z poza zakresu. Dostępny zakres to (50,300)";
+                if (wagaTest > 300 || wagaTest < 30) walid  = walid  + "  \nWartość podana w polu 'waga' jest z poza zakresu. Dostępny zakres to (30,300)";
+                if (wzrostTest > 250 || wzrostTest < 100) walid = walid  + "  \nWartość podana w polu 'wzrost' jest z poza zakresu. Dostępny zakres to (100,250)";
+                if (pasTest > 300 || pasTest < 50) walid = walid + "  \nWartość podana w polu 'pas' jest z poza zakresu. Dostępny zakres to (50,300)";
+
+                if (walid == "")
+                {
+                    if (uzytkownik.ID_Profilu != null)
+                    {
+                        zapiszHistorie();
+                    }
+
+                    if (uzytkownik != null && uzytkownik.ID_Profilu == null)
+                    {
+                        db.Dane.Add(przypisaneDane);
+                        uzytkownik.ID_Profilu = przypisaneDane.ID;
+                    }
+
+                    db.SaveChanges();
+                    this.Close();
+                }
+                else
+                {
+                    walid = "Wystąpiły błędy przy wpisywaniu danych:" + walid;
+                    MessageBox.Show(walid, "Uwaga", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                }
+           
+           
         }
 
         private void anulujButton_Click(object sender, RoutedEventArgs e)
@@ -97,15 +156,14 @@ namespace Aplikacja
             }
         }
 
-        private bool walidacja()
+
+
+        private void WalidacjaTextboxow(object sender, KeyEventArgs e)
         {
-            bool result = true;
-            if (plecCombo.SelectedIndex == -1)
-            {
-                wiadomosc +=" \nMusisz wybrać płeć";
-                result = false;
-            }
-            return result;
+            if (e.Key == Key.OemComma || e.Key == Key.Delete || e.Key == Key.D0 || e.Key == Key.Back || e.Key == Key.D1 || e.Key == Key.D2 || e.Key == Key.D3 || e.Key == Key.D4 || e.Key == Key.D5 || e.Key == Key.D6 || e.Key == Key.D7 || e.Key == Key.D8 || e.Key == Key.D9 || e.Key == Key.NumPad1 || e.Key == Key.NumPad0 || e.Key == Key.NumPad2 || e.Key == Key.NumPad3 || e.Key == Key.NumPad4 || e.Key == Key.NumPad5 || e.Key == Key.NumPad6 || e.Key == Key.NumPad7 || e.Key == Key.NumPad8 || e.Key == Key.NumPad9)
+                e.Handled = false;
+            else
+                e.Handled = true;
         }
 
         private void wczytajDane()

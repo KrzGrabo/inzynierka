@@ -3,6 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Porownanie" Height="300" Width="300">
     <Grid>
-        
+        <Label Content="Tłuszcze czy węglowodany- oto jest pytanie"/>
     </Grid>
 </Window>
