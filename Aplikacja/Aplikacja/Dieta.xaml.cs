@@ -44,8 +44,10 @@ namespace Aplikacja
         //ile danego makroskladnika na kg masy ciala
         private void Bindowanie()
         {
-            opis1Label.Content = "Kreator diety";
+            opis1Label.Content = "Kreator diety- krok I";
             opis1Textblock.Text = "Kreator diety dopasuje, dostosowaną pod twoje cele i preferencje dietę. Następnie będziesz miał możliwość dodania jej do bazy w wybranym przedziale czasowym. Postępuj zgodnie z poleceniami w kolejnych krokach, w pierwszym uzupełnij podstawowe dane, na których będzie bazować kreator.";
+            opis2aLabel.Content = "Kreator diety- krok II";
+            opis3aLabel.Content = "Kreator diety- krok III";
             opis2Label.Text = "W drugim kroku uzupełnij dane, dzięki którym kreator będzie mógł szczegółowo dobrać parametry diety pod twoje potrzeby.";
             opis3Label.Text = "Trzeci krok skupia się na technicznych aspektach diety- wybierz jaką ilość posiłków dziennie preferujesz, a także na jaki okres planujesz dietę.";
             podzialLabel.Content = "50:50";
@@ -132,7 +134,8 @@ namespace Aplikacja
                 walidacja = walidacja + " \nWpisałeś błędną wartość w pole waga";
             }
 
-
+            if (wagaPom > 300 || wagaPom < 30) walidacja = walidacja + " \nWpisałeś wartość z poza zakresu w pole waga, dostępne wartości(30,300)";
+            if (kaloriePom > 10000 || kaloriePom < 500) walidacja = walidacja + " \nWpisałeś wartość z poza zakresu w pole zapotrzebowanie, dostępne wartości(500,10'000)";
             if(walidacja=="")
             {
                 krok2Tab.IsEnabled = true;
@@ -149,6 +152,8 @@ namespace Aplikacja
         private void dalej2Button_Click(object sender, RoutedEventArgs e)
         {
             string walidacja = "";
+
+           
 
             if (podzialLabel.Content == "50:50") walidacja = walidacja + " \nNie ustawiłeś suwaka proporcji";
 
@@ -183,9 +188,8 @@ namespace Aplikacja
                 podsumowanieTab.IsEnabled = true;
                 krok3Tab.IsEnabled = false;
                 oknoTabcontrol.SelectedIndex = 3;
-    
-                this.Width = 800;
-                this.Height = 800;
+                this.Height = 600;
+                this.Width = 600;
             }
             else
             {

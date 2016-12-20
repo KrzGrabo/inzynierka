@@ -1,7 +1,7 @@
 ﻿<Window x:Class="Aplikacja.Kalkulatory"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Kalkulatory" Height="300" Width="300">
+        Title="Kalkulatory" Height="300" Width="270" WindowStartupLocation="CenterScreen">
     <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
