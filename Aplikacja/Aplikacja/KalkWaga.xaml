@@ -1,7 +1,8 @@
 ﻿<Window x:Class="Aplikacja.KalkWaga"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="KalkWaga" Height="600" Width="300">
+        Title="KalkWaga" FontSize="14" Height="400" Width="400">
+    <ScrollViewer>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -36,24 +37,46 @@
             </Grid>
         </GroupBox>
         <TextBlock TextWrapping="WrapWithOverflow" x:Name="opisTextblock" Text="{Binding}" Grid.ColumnSpan="2"/>
-        <Label Content="Waga [kg]:"   Grid.Row="2"/>
+        <WrapPanel Grid.Row="2">
+            <Image Source="Ikonki/1482266010_Info.png" Height="25" Margin="1" ToolTip="Wpisz swoją wagę w kilogramach. Podana wartość musi być liczbowa i należeć do zakresu (30, 300)."/>
+            <Label Content="Waga:"   Grid.Row="2"/>
+        </WrapPanel>
+      
         <TextBox x:Name="wagaTextbox"  Grid.Column="1" Margin="5" Grid.Row="2" KeyDown="WalidacjaTextboxow"/>
 
-        <Label Content="Płeć" Grid.Row="3"/>
+        <WrapPanel Grid.Row="3">
+            <Image Source="Ikonki/1482266010_Info.png" Height="25" Margin="1" ToolTip="Wybierz swoją płeć z listy."/>
+            <Label Content="Płeć" Grid.Row="3"/>
+        </WrapPanel>
+     
         <ComboBox Grid.Column="1" x:Name="plecCombo" Grid.Row="3">
             <ComboBoxItem>Mężczyzna</ComboBoxItem>
             <ComboBoxItem>Kobieta</ComboBoxItem>
         </ComboBox>
 
-        <Label Grid.Row="4" Content="Wzrost [cm]:" />
+        <WrapPanel Grid.Row="4">
+            <Image Source="Ikonki/1482266010_Info.png" Height="25" Margin="1" ToolTip="Wpisz swój wzrost w centymetrach. Podana wartość musi być liczbowa i należeć do zakresu (100, 250)."/>
+            <Label Grid.Row="4" Content="Wzrost:" />
+        </WrapPanel>
+       
         <TextBox Grid.Column="1" Grid.Row="4" x:Name="wzrostTextbox" KeyDown="WalidacjaTextboxow"/>
 
-        <Label Grid.Row="5" Content="Obwód pasa [cm]:" />
+        <WrapPanel Grid.Row="5">
+            <Image Source="Ikonki/1482266010_Info.png" Height="25" Margin="1" ToolTip="Wpisz obwód swojego pasa w centymetrach. Podana wartość musi być liczbowa i należeć do zakresu (50, 300)."/>
+            <Label Grid.Row="5" Content="Pas:" />
+        </WrapPanel>
+
+        <WrapPanel Grid.Row="6">
+            <Image Source="Ikonki/1482266010_Info.png" Height="25" Margin="1" ToolTip="Wpisz obwód swoich bioder w centymetrach. Podana wartość musi być liczbowa i należeć do zakresu (50, 300)."/>
+            <Label Grid.Row="6"   Content="Biodra:"/>
+        </WrapPanel>
+        
         <TextBox Grid.Column="1" Grid.Row="5" x:Name="pasTextbox" KeyDown="WalidacjaTextboxow" />
 
-        <Label Grid.Row="6"   Content="Obwód bioder [cm]:"/>
+  
         <TextBox Grid.Column="1" x:Name="biodraTextbox" Grid.Row="6" KeyDown="WalidacjaTextboxow"/>
         <Button Content="Pobierz dane z profilu" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" x:Name="mojedaneButton" Click="mojedaneButton_Click" />
         <Button Content="Oblicz" Grid.Row="7" Grid.ColumnSpan="2"  x:Name="obliczButton" Click="obliczButton_Click"/>
     </Grid>
+    </ScrollViewer>
 </Window>

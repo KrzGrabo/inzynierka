@@ -86,7 +86,7 @@
                 <StackPanel>
                     <TextBlock FontWeight="Bold" FontSize="16" Margin="1,1,1,4" Text="Twoje dane"/>
                     <TextBlock FontSize="14">
-                       W tym oknie uzupełnisz swoje dane, takie jak parametry swojego ciała czy osiągi sportowe,
+                       W tym oknie uzupełnisz swoje dane, np. parametry swojego ciała,
                         <LineBreak />
                        posłużą one jako dane wejściowe do innych modułów
                     </TextBlock>

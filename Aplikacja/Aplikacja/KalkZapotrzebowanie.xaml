@@ -1,8 +1,9 @@
 ﻿<Window x:Class="Aplikacja.KalkZapotrzebowanie"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="KalkZapotrzebowanie" Height="300" Width="300">
-    <Grid>
+        Title="KalkZapotrzebowanie" WindowStartupLocation="CenterScreen"  FontSize="14" Height="400" Width="400">
+    <ScrollViewer>
+        <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
@@ -22,18 +23,38 @@
         </Grid.RowDefinitions>
         <TextBlock TextWrapping="WrapWithOverflow" Text="{Binding}" x:Name="opisLabel" Grid.ColumnSpan="2"/>
         <Button Content="Pobierz dane z profilu" Grid.Row="1" Grid.ColumnSpan="2" x:Name="daneButton" Click="daneButton_Click"/>
-        <Label Content="Waga [kg]:" Grid.Row="2" />
+      
+        <WrapPanel Grid.Row="2">
+            <Image Source="Ikonki/1482266010_Info.png" Height="25" Margin="1" ToolTip="Wpisz swoją wagę w kilogramach. Podana wartość musi być liczbowa i należeć do zakresu (30, 300)."/>
+            <Label Content="Waga:"   Grid.Row="2"/>
+        </WrapPanel>
         <TextBox Grid.Row="2" Grid.Column="1" x:Name="wagaTextbox"/>
-        <Label Content="Wiek:" Grid.Row="3" />
+
+        <WrapPanel Grid.Row="3">
+            <Image Source="Ikonki/1482266010_Info.png" Height="25" Margin="1" ToolTip="Wpisz swój wiek. Podana wartość musi być liczbowa i należeć do zakresu (10, 100)."/>
+            <Label Content="Wiek:" Grid.Row="3" />
+        </WrapPanel>
+     
         <TextBox Grid.Row="3" Grid.Column="1" x:Name="wiekTextbox"  />
-        <Label Content="Płeć:" Grid.Row="4"/>
+
+        <WrapPanel Grid.Row="4">
+            <Image Source="Ikonki/1482266010_Info.png" Height="25" Margin="1" ToolTip="Wybierz swoją płeć z listy."/>
+            <Label Content="Płeć" Grid.Row="3"/>
+        </WrapPanel>
         <ComboBox Grid.Column="1" Grid.Row="4" x:Name="plecCombo">
             <ComboBoxItem>Mężczyzna</ComboBoxItem>
             <ComboBoxItem>Kobieta</ComboBoxItem>
         </ComboBox>
-        <Label Grid.Row="5" Content="Wzrost [cm]:"/>
+        <WrapPanel Grid.Row="5">
+            <Image Source="Ikonki/1482266010_Info.png" Height="25" Margin="1" ToolTip="Wpisz swój wzrost w centymetrach. Podana wartość musi być liczbowa i należeć do zakresu (100, 250)."/>
+            <Label Grid.Row="4" Content="Wzrost:" />
+        </WrapPanel>
         <TextBox Grid.Column="1" Grid.Row="5" x:Name="wzrostTextbox"/>
-        <Label Grid.Row="6" Content="Aktywnosc fizyczna:"/>
+        <WrapPanel Grid.Row="6">
+            <Image Source="Ikonki/1482266010_Info.png" Height="25" Margin="1" ToolTip="Wybierz stopień swojej aktywności fizycznej. 1: siędzący tryb pracy, brak aktywności sportowej-> wartości przejściowe -> 4: wyczynowe uprawianie sportu."/>
+            <Label Grid.Row="6" Content="Aktywność:"/>
+        </WrapPanel>
+       
         <ComboBox Grid.Column="1" Grid.Row="6" x:Name="aktywnoscCombo" >
             <ComboBoxItem>Niska</ComboBoxItem>
             <ComboBoxItem>Średnia</ComboBoxItem>
@@ -41,14 +62,21 @@
             <ComboBoxItem>Bardzo wysoka</ComboBoxItem>
         </ComboBox>
         <Button Content="Oblicz" Grid.Row="8" Grid.ColumnSpan="2" x:Name="obliczButton" Click="obliczButton_Click" />
-        <Label Content="Somatotyp:" Grid.Row="7" />
+
+        <WrapPanel Grid.Row="7">
+            <Image Source="Ikonki/1482266010_Info.png" Height="25" Margin="1" ToolTip="Wybierz swój somatotyp z listy(jeśli nie wiesz co wybrać odwiedź stronę: http://www.fabrykasily.pl/treningi/somatotypy-sprawdz-jaki-posiadasz)."/>
+            <Label Content="Somatotyp:" Grid.Row="7" />
+        </WrapPanel>
+        
         <ComboBox Grid.Column="1" Grid.Row="7" x:Name="przemianaCombo">
             <ComboBoxItem>Ektomorfik</ComboBoxItem>
             <ComboBoxItem>Mezomorfik</ComboBoxItem>
             <ComboBoxItem>Endomorfik</ComboBoxItem>
         </ComboBox>
-        <Label Content="Wyliczone zapotrzebowanie:" Grid.Row="9"/>
-        <Label Content="{Binding}" Grid.Row="9" Grid.Column="1" Name="wynikLabel" />
+        <TextBlock TextWrapping="WrapWithOverflow" Text="Twoje zapotrzebowanie energetyczne:" Grid.Row="9"/>
+        <Label Content="0 kcal" Grid.Row="9" Grid.Column="1" Name="wynikLabel" />
         <Button Content="Przenieś zapotrzebowanie" Grid.Row="10" Grid.ColumnSpan="2" x:Name="dietaButton" Click="dietaButton_Click" />
     </Grid>
+    </ScrollViewer>
+
 </Window>

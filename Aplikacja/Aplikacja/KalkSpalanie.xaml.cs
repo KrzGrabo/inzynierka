@@ -68,6 +68,7 @@ namespace Aplikacja
             {
                 walidacja = walidacja + " \nWpisałeś błędną wartość w pole waga";
             }
+            if (waga > 300 || waga < 30) walidacja = walidacja + " \nWartość podana w polu 'waga' jest z poza zakresu. Dostępny zakres to (30,300)";
             try
             {
                 czas = double.Parse(czasTextbox.Text.Trim());
@@ -76,6 +77,7 @@ namespace Aplikacja
             {
                 walidacja = walidacja + " \nWpisałeś błędną wartość w pole czas";
             }
+            if (czas > 10000 || waga < 1) walidacja = walidacja + " \nWartość podana w polu 'czas' jest z poza zakresu. Dostępny zakres to (1,10'000)";
             if(aktywnosciCombo.SelectedIndex==-1)
             {
                 walidacja = walidacja + " \nNie wybrałeś żadnej aktywności";

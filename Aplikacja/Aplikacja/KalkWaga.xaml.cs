@@ -89,6 +89,12 @@ namespace Aplikacja
                     walidacja = walidacja + " \nWpisałeś błędną wartość w pole obwód bioder";
                 }
             }
+            if (biodra > 300 || biodra < 50) walidacja = walidacja + "  \nWartość podana w polu 'biodra' jest z poza zakresu. Dostępny zakres to (50,300)";
+            if (waga > 300 || waga < 30) walidacja = walidacja + "  \nWartość podana w polu 'waga' jest z poza zakresu. Dostępny zakres to (30,300)";
+            if (wzrost > 250 || wzrost < 100) walidacja = walidacja + "  \nWartość podana w polu 'wzrost' jest z poza zakresu. Dostępny zakres to (100,250)";
+            if (pas > 300 || pas < 50) walidacja = walidacja + "  \nWartość podana w polu 'pas' jest z poza zakresu. Dostępny zakres to (50,300)";
+  
+
             if (walidacja == "")
             {
 

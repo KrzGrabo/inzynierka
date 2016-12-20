@@ -1,7 +1,8 @@
 ﻿<Window x:Class="Aplikacja.KalkMaksy"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="KalkMaksy" Height="250" Width="300" FontSize="14">
+        Title="KalkMaksy" Height="400" Width="400" FontSize="14" WindowStartupLocation="CenterScreen">
+    <ScrollViewer>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -15,12 +16,21 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <TextBlock x:Name="opisLabel" Text="{Binding}" TextWrapping="WrapWithOverflow"  Grid.Row="0" Grid.ColumnSpan="2" />
-        <Label Content="Ciężar obciążenia[kg]:" Grid.Row="2" />
-        <Label Content="Ilość powtórzeń:" Grid.Row="1"/>
+        <WrapPanel Grid.Row="1">
+            <Image Source="Ikonki/1482266010_Info.png" Height="25" Margin="1" ToolTip="Wybierz maksymalną ilość powtórzeń, jaką jesteś w stanie wykonać na wybranym ciężarze."/>
+            <Label Content="Ilość powtórzeń:" Grid.Row="1"/>
+        </WrapPanel>
+        <WrapPanel Grid.Row="2">
+            <Image Source="Ikonki/1482266010_Info.png" Height="25" Margin="1" ToolTip="Wpisz ciężar obciążenia, którym wykonujesz ćwiczenie(jednostką jest kilogram). Wpisz wartość liczbową z zakresu (1,1000)."/>
+            <Label Content="Ciężar:" Grid.Row="2" />
+        </WrapPanel>
+     
+
         <TextBox Grid.Column="1" Grid.Row="2" x:Name="ciezarTextbox" KeyDown="ciezarTextbox_KeyDown"  />
         <ComboBox Grid.Column="1" ItemsSource="{Binding}" Grid.Row="1" x:Name="powtorzeniaCombo" />
         <Button Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Content="Oblicz" x:Name="obliczButton" Click="obliczButton_Click" />
-        <Label Content="Wynik:" Grid.Row="4"/>
+        <TextBlock Text="Twój rekord(jedno maksymalne powtórzenie) to:" TextWrapping="WrapWithOverflow" Grid.Row="4"/>
         <TextBlock TextWrapping="WrapWithOverflow" Text="0 kg" Grid.Row="4" Grid.Column="1" x:Name="wynikLabel" />
     </Grid>
+    </ScrollViewer>
 </Window>

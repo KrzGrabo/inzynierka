@@ -2,7 +2,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:Aplikacja" mc:Ignorable="d" x:Class="Aplikacja.Profil"
-        Title="Profil" Height="450" Width="300">
+        Title="Profil" FontSize="14" Height="400" Width="400">
     <Window.Resources>
         <ControlTemplate x:Key="errorTemplate">
             <DockPanel LastChildFill="true">
@@ -27,6 +27,7 @@
         </Style>
         <CollectionViewSource x:Key="daneViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Dane}, CreateList=True}"/>
     </Window.Resources>
+    <ScrollViewer>
     <Grid DataContext="{StaticResource daneViewSource}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -42,44 +43,83 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
+  
+        <TextBlock TextWrapping="WrapWithOverflow" Grid.ColumnSpan="2" Text="Oto twój profil, uzupełnij dane w celu pełnego uaktywnienia wszystkich modułów i poprawienia ich działania."/>
+            <WrapPanel Grid.Row="1">
+                <Image Source="Ikonki/1482266010_Info.png" Height="25" Margin="1" ToolTip="Ustalony przez ciebie login(podczas rejestracji), raz wybrany nie może zostać zmieniony."/>
+                <Label Content="Login" Grid.Row="1"/>
+            </WrapPanel>
+   
+        <TextBox Margin="10,5.5,10,10" x:Name="loginTextbox" Grid.Row="1" Grid.Column="1" IsEnabled="False" />
 
-        <Label Margin="10" Content="Login" Grid.Row="0"/>
-        <TextBox Margin="10" x:Name="loginTextbox" Grid.Row="0" Grid.Column="1" IsEnabled="False" />
-        <Label Margin="10" Content="Imie" Grid.Row="1"/>
-        <TextBox Margin="10" x:Name="imieTextbox" Grid.Row="1" Grid.Column="1" />
+            <WrapPanel Grid.Row="2">
+                <Image Source="Ikonki/1482266010_Info.png" Height="25" Margin="1" ToolTip="Wpisz swoje imie."/>
+                <Label  Content="Imie:" Grid.Row="2"/>
+            </WrapPanel>
+            
+        <TextBox Margin="10" x:Name="imieTextbox" Grid.Row="2" Grid.Column="1" KeyDown="WalidacjaTextboxow" />
 
-        <Label Margin="10" Content="Wiek" Grid.Row="2"/>
-        <TextBox Margin="10" x:Name="wiekTextbox" Grid.Row="2" Grid.Column="1" />
-        <Label Margin="10" Content="Waga" Grid.Row="3"/>
-        <TextBox Margin="10" x:Name="wagaTextbox" Grid.Row="3" Grid.Column="1" />
-        <Label Margin="10" Content="Wzrost" Grid.Row="4"/>
-        <TextBox Margin="10" x:Name="wzrostTextbox" Grid.Row="4" Grid.Column="1" />
-        <Label Margin="10" Content="Obwód Pasa" Grid.Row="5"/>
-        <TextBox Margin="10" x:Name="obwodPasaTextbox" Grid.Row="5" Grid.Column="1" />
-        <Label Margin="10" Content="Obwód Bioder" Grid.Row="6"/>
-        <TextBox Margin="10" x:Name="obwodBioderTextbox" Grid.Row="6" Grid.Column="1" />
+            <WrapPanel Grid.Row="3">
+                <Image Source="Ikonki/1482266010_Info.png" Height="25" Margin="1" ToolTip="Wpisz swój wiek. Podana wartość musi być liczbowa i należeć do zakresu (10, 100)."/>
+                <Label Content="Wiek:" Grid.Row="3" />
+            </WrapPanel>
 
-        <Label Margin="10" Content="Płeć" Grid.Row="7"/>
-        <ComboBox Margin="10" Grid.Column="1" Grid.Row="7" x:Name="plecCombo">
+            <TextBox Margin="10" x:Name="wiekTextbox" Grid.Row="3" Grid.Column="1" KeyDown="WalidacjaTextboxow" />
+
+            <WrapPanel Grid.Row="4">
+                <Image Source="Ikonki/1482266010_Info.png" Height="25" Margin="1" ToolTip="Wpisz swoją wagę w kilogramach. Podana wartość musi być liczbowa i należeć do zakresu (30, 300)."/>
+                <Label   Content="Waga:" Grid.Row="4"/>
+            </WrapPanel>
+
+            <TextBox Margin="10" x:Name="wagaTextbox" Grid.Row="4" Grid.Column="1" KeyDown="WalidacjaTextboxow" />
+
+            <WrapPanel Grid.Row="5">
+                <Image Source="Ikonki/1482266010_Info.png" Height="25" Margin="1" ToolTip="Wpisz swój wzrost w centymetrach. Podana wartość musi być liczbowa i należeć do zakresu (100, 250)."/>
+                <Label Content="Wzrost:" Grid.Row="5"/>
+            </WrapPanel>
+
+            <TextBox Margin="10" x:Name="wzrostTextbox" Grid.Row="5" Grid.Column="1" KeyDown="WalidacjaTextboxow" />
+
+            <WrapPanel Grid.Row="6">
+                <Image Source="Ikonki/1482266010_Info.png" Height="25" Margin="1" ToolTip="Wpisz obwód swojego pasa w centymetrach. Podana wartość musi być liczbowa i należeć do zakresu (50, 300)."/>
+                <Label Content="Pas:" Grid.Row="6"/>
+            </WrapPanel>
+
+            <TextBox Margin="10" x:Name="obwodPasaTextbox" KeyDown="WalidacjaTextboxow" Grid.Row="6" Grid.Column="1" />
+
+            <WrapPanel Grid.Row="7">
+                <Image Source="Ikonki/1482266010_Info.png" Height="25" Margin="1" ToolTip="Wpisz obwód swoich bioder w centymetrach. Podana wartość musi być liczbowa i należeć do zakresu (50, 300)."/>
+                <Label Content="Biodra:" Grid.Row="7"/>
+            </WrapPanel>
+
+            <TextBox Margin="10" x:Name="obwodBioderTextbox" KeyDown="WalidacjaTextboxow" Grid.Row="7" Grid.Column="1" />
+
+            <WrapPanel Grid.Row="8">
+                <Image Source="Ikonki/1482266010_Info.png" Height="25" Margin="1" ToolTip="Wybierz swoją płeć z listy."/>
+                <Label  Content="Płeć" Grid.Row="8"/>
+            </WrapPanel>
+ 
+        <ComboBox Margin="10" Grid.Column="1" Grid.Row="8" x:Name="plecCombo">
             <ComboBoxItem Content="Mężczyzna"/>
             <ComboBoxItem Content="Kobieta"/>
         </ComboBox>
 
-        <Button x:Name="okButton" Grid.Column="0" Grid.Row="8" Margin="10,10,10,15" Click="okButton_Click"  >
+        <Button x:Name="okButton" Grid.Column="0" Grid.Row="9" Margin="10,10,10,15" Click="okButton_Click"  >
             <StackPanel Orientation="Horizontal">
                 <!--<Image Source="Zasoby/save2.ico" Height="20" Margin="1"/>-->
                 <TextBlock><Run Text=" Zapisz "/></TextBlock>
             </StackPanel>
         </Button>
 
-        <Button x:Name="anulujButton" Grid.Column="1" Grid.Row="8" Margin="10,10,10,15" Click="anulujButton_Click"  >
+        <Button x:Name="anulujButton" Grid.Column="1" Grid.Row="9" Margin="10,10,10,15" Click="anulujButton_Click"  >
             <StackPanel Orientation="Horizontal">
                 <!--<Image Source="Zasoby/save2.ico" Height="20" Margin="1"/>-->
                 <TextBlock><Run Text=" Anuluj "/></TextBlock>
             </StackPanel>
         </Button>
-
+        
     </Grid>
-
+    </ScrollViewer>
 </Window>
