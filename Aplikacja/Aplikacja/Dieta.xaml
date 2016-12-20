@@ -1,7 +1,7 @@
 ﻿<Window x:Class="Aplikacja.Dieta"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Dieta" Height="300" Width="300" >
+        Title="Dieta" Height="400" Width="450" FontSize="14" WindowStartupLocation="CenterScreen">
     <Grid>
         <TabControl x:Name="oknoTabcontrol">
             <TabItem Header="Krok I" x:Name="krok1Tab">
@@ -20,20 +20,33 @@
 
                     </Grid.RowDefinitions>
                     <StackPanel Grid.ColumnSpan="2">
-                        <Label x:Name="opis1Label" Content="{Binding}" Grid.ColumnSpan="2"/>
+                        <Label x:Name="opis1Label" Content="{Binding}" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
                         <TextBlock TextWrapping="WrapWithOverflow" Text="{Binding}" x:Name="opis1Textblock"/>
                     </StackPanel>
-                    <Label Content="Waga[kg]:"   Grid.Row="2"/>
-                    <TextBox x:Name="wagaTextbox"  Grid.Column="1"  Grid.Row="2" KeyDown="WalidacjaTextboxow"/>
+                    <WrapPanel Grid.Row="2">
+                      
+                     <Image Source="Ikonki/1482266010_Info.png" Height="25" Margin="1" ToolTip="Podaj swoją wagę w kilogramach. Wartość liczbowa z zakresu 30-300."/>
 
-                    <Label Content="Płeć:" Grid.Row="3"/>
+                        <Label Content="Waga:"/>
+
+                    </WrapPanel>
+                        <TextBox x:Name="wagaTextbox"  Grid.Column="1"  Grid.Row="2" KeyDown="WalidacjaTextboxow"/>
+
+                    <WrapPanel Grid.Row="3">
+                        <Image Source="Ikonki/1482266010_Info.png" Height="25" Margin="1" ToolTip="Wybierz swoją płeć z listy."/>
+                        <Label Content="Płeć:" />
+                    </WrapPanel>
+                    
                     <ComboBox Grid.Column="1" x:Name="plecCombo" Grid.Row="3">
                         <ComboBoxItem>Mężczyzna</ComboBoxItem>
                         <ComboBoxItem>Kobieta</ComboBoxItem>
                     </ComboBox>
+                    <WrapPanel Grid.Row="4">
+                        <Image Source="Ikonki/1482266010_Info.png" Height="25" Margin="1" ToolTip="Wpisz swoje zapotrzebowanie energetyczne[kcal]. Wartość liczbowa z zakresu 500-10000"/>
 
-                    <Label Grid.Row="4" Content="Zapotrzebowanie energetyczne[kcal]:" />
-                    <TextBox Grid.Column="1" Grid.Row="4" x:Name="zapotrzebowanieTextbox" KeyDown="WalidacjaTextboxow"/>
+                        <Label  Content="Zapotrzebowanie:" />
+                    </WrapPanel>
+                        <TextBox Grid.Column="1" Grid.Row="4" x:Name="zapotrzebowanieTextbox" KeyDown="WalidacjaTextboxow"/>
 
 
                     <Button Content="Pobierz dane z profilu" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" x:Name="mojedaneButton" Click="mojedaneButton_Click" />
@@ -60,23 +73,44 @@
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
-
-                    <TextBlock x:Name="opis2Label" Text="{Binding}" Grid.ColumnSpan="2"/>
-                    <Label Content="Cel:"   Grid.Row="1"/>
+                    <StackPanel Grid.ColumnSpan="2">
+                        <Label x:Name="opis2aLabel" Content="{Binding}" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
+                        <TextBlock x:Name="opis2Label" Text="{Binding}" Grid.ColumnSpan="2"/>
+                    </StackPanel>
+                    <WrapPanel Grid.Row="1">
+                        <Image Source="Ikonki/1482266010_Info.png" Height="25" Margin="1" ToolTip="Wybierz swoją cel dietetyczny z listy."/>
+                        <Label Content="Cel:"   />
+                    </WrapPanel>
                     <ComboBox Grid.Column="1" x:Name="celCombo" Grid.Row="1">
                         <ComboBoxItem>Redukcja</ComboBoxItem>
                         <ComboBoxItem>Utrzymanie</ComboBoxItem>
                         <ComboBoxItem>Zwiększenie</ComboBoxItem>
                     </ComboBox>
-
-                    <Label Content="Typ aktywności:" Grid.Row="2"/>
+                    <WrapPanel Grid.Row="2">
+                        <Image Source="Ikonki/1482266010_Info.png" Height="25" Margin="1" >
+                            <Image.ToolTip>
+                                <StackPanel>
+                                <TextBlock FontSize="14">
+                        Wybierz, z listy, skategoryzowany typ aktywności którą uprawiasz,
+                        <LineBreak />
+                        niektóre z nich to- zapotrzebowanie kaloryczne, BMI czy spalone kalorie podczas różnych aktywności.
+                              </TextBlock>
+                                </StackPanel>
+                            </Image.ToolTip>
+                        </Image>
+                        <Label Content="Typ aktywności:" Grid.Row="2"/>
+                    </WrapPanel>
                     <ComboBox Grid.Column="1" x:Name="sportCombo" Grid.Row="2">
                         <ComboBoxItem>Wytrzymalosciowy</ComboBoxItem>
                         <ComboBoxItem>Wytrzymalosciowo-siłowy/szybkościowy</ComboBoxItem>
                         <ComboBoxItem>Szybkosciowy/Silowy</ComboBoxItem>
                     </ComboBox>
-                    <Label Content="Proporcje źródła energi:"   Grid.Row="3"/>
-                    <Button Content="info" Grid.Row="3"  Grid.Column="1" x:Name="porownanieButton" Click="porownanieButton_Click" />
+                    <WrapPanel Grid.Row="3">
+                        <Image Source="Ikonki/1482266010_Info.png" Height="25" Margin="1" ToolTip="Wybierz co ma być źródłem energii w diecie.(przesuwanie w lewo daje niższy udział węglowodanów, przy większym tłuszczów. Analogicznie dla przesuwania suwaka w prawo)"/>
+                        <Label Content="Proporcje źródła energi:"  />
+                    </WrapPanel>
+                   
+                    <Button Margin="5" Content="co wybrać?" Grid.Row="3"  Grid.Column="1" x:Name="porownanieButton" Click="porownanieButton_Click" />
                     <Slider Maximum="95" Minimum="5"  Value="50" Grid.ColumnSpan="2" Grid.Row="4" x:Name="podzialSlider" TickPlacement="Both"  TickFrequency="10" IsSnapToTickEnabled="True" ValueChanged="podzialSlider_ValueChanged"  />
                     <Label x:Name="podzialLabel" Content="{Binding}" Grid.Row="5" HorizontalAlignment="Center" Grid.ColumnSpan="2"/>
                     <Label Margin="5" Grid.ColumnSpan="2" Content="węglowodany : tłuszcze    " HorizontalAlignment="Center" Grid.Row="6"/>
@@ -102,12 +136,27 @@
 
                     </Grid.RowDefinitions>
 
-                    <TextBlock x:Name="opis3Label" Text="{Binding}" Grid.ColumnSpan="2"/>
-                    <Label Content="Początek diety" Grid.Row="1"/>
+                    <StackPanel Grid.ColumnSpan="2">
+                        <Label x:Name="opis3aLabel" Content="{Binding}" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
+                        <TextBlock x:Name="opis3Label" Text="{Binding}" Grid.ColumnSpan="2"/>
+                    </StackPanel>
+                    <WrapPanel Grid.Row="1">
+                        <Image Source="Ikonki/1482266010_Info.png" Height="25" Margin="1" ToolTip="Wybierz datę rozpoczęcia cyklu dietetycznego."/>
+                        <Label Content="Początek diety" Grid.Row="1"/>
+                    </WrapPanel>
+                   
                     <DatePicker  Grid.Row="1" Grid.Column="1" x:Name="startDatapicker"  SelectedDateChanged="startDatapicker_SelectedDateChanged"/>
-                    <Label Content="Zakończenie diety" Grid.Row="2"/>
+                    <WrapPanel Grid.Row="2">
+                        <Image Source="Ikonki/1482266010_Info.png" Height="25" Margin="1" ToolTip="Wybierz datę zakończenia cyklu dietetycznego."/>
+                        <Label Content="Zakończenie diety" Grid.Row="2"/>
+                    </WrapPanel>
+                    
                     <DatePicker  Grid.Row="2" Grid.Column="1" x:Name="koniecDatapicker"  SelectedDateChanged="koniecDatapicker_SelectedDateChanged"/>
-                    <Label Content="Liczba posiłków:" Grid.Row="3"/>
+                    <WrapPanel Grid.Row="3">
+                        <Image Source="Ikonki/1482266010_Info.png" Height="25" Margin="1" ToolTip="Wybierz preferowaną ilość posiłków na dzień."/>
+                        <Label Content="Liczba posiłków:" Grid.Row="3"/>
+                    </WrapPanel>
+                   
                     <ComboBox Grid.Column="1" x:Name="posilkiCombo" Grid.Row="3">
                         <ComboBoxItem>1</ComboBoxItem>
                         <ComboBoxItem>2</ComboBoxItem>

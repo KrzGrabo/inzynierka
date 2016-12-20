@@ -54,6 +54,8 @@ namespace Aplikacja
             {
                 walidacja = walidacja + " \nNie wybrałeś ilości powtórzeń";
             }
+            if (ciezar > 1000 || ciezar < 1) walidacja = walidacja + " \nW polu ciężar wpisałeś wartość z poza zakresu. Wpisz wartość z zakresu (1,1000)";
+
             if (walidacja == "")
             {
                powtorzen = wspolczynnik[indeks];

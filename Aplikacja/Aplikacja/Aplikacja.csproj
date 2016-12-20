@@ -423,6 +423,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DependentUpon>BazaDanych.mdf</DependentUpon>
     </Content>
+    <Resource Include="Ikonki\1482266010_Info.png" />
     <Resource Include="Ikonki\1482194166_Info.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,7 +1,7 @@
 ﻿<Window x:Class="Aplikacja.Menu"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Menu" Height="900" Width="900" WindowState="Maximized">
+        Title="Menu" Height="650" Width="600" WindowStartupLocation="CenterScreen" >
     <Grid>
         
             <Grid.ColumnDefinitions>
@@ -27,59 +27,151 @@
             <MenuItem x:Name="pomocButton" Header="Pomoc" Click="pomocButton_Click"/>
         </Menu>
 
-        <Button Grid.Column="0" x:Name="kalkulatoryButton" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3"  ToolTip="Kalkulatory" Click="kalkulatoryButton_Click">
+        <Button ToolTipService.ShowDuration="24000" Grid.Column="0" x:Name="kalkulatoryButton" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3"   Click="kalkulatoryButton_Click">
             <StackPanel Orientation="Horizontal">
                 <Image Source="Ikonki/iron-shoot.png" Margin="1"/>
-           
             </StackPanel>
+            <Button.ToolTip>
+                <StackPanel>
+                    <TextBlock FontWeight="Bold" FontSize="16" Margin="1,1,1,4" Text="Kalkulatory"/>
+                    <TextBlock FontSize="14">
+                        W tym module otrzymasz wiele przydatnych kalkulacji na podstawie wprowadzonych przez ciebie danych,
+                        <LineBreak />
+                        niektóre z nich to- zapotrzebowanie kaloryczne, BMI czy spalone kalorie podczas różnych aktywności. 
+                    </TextBlock>
+                </StackPanel>
+            </Button.ToolTip>
         </Button>
-        <Button Grid.Column="1" x:Name="dietaButton" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3"  ToolTip="Dieta" Click="dietaButton_Click">
+        <Button ToolTipService.ShowDuration="24000" Grid.Column="1" x:Name="dietaButton" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3"  Click="dietaButton_Click">
+
+            <Button.ToolTip>
+                <StackPanel>
+                    <TextBlock FontWeight="Bold" FontSize="16" Margin="1,1,1,4" Text="Dieta"/>
+                    <TextBlock FontSize="14">
+                        Tutaj wygenerujesz dedykowaną pod swoje potrzeby dietę,
+                        <LineBreak />
+                        którą następnie będziesz mógł dodać do swojego dziennika.
+                    </TextBlock>
+                </StackPanel>
+            </Button.ToolTip>
             <StackPanel Orientation="Horizontal">
                 <Image Source="Ikonki/carrot-and-apple.png" Margin="1"/>
          
             </StackPanel>
         </Button>
-        <Button Grid.Column="2" x:Name="suplementacjaButton" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3"  ToolTip="Suplementacja" Click="suplementacjaButton_Click">
+        <Button ToolTipService.ShowDuration="24000" Grid.Column="2" x:Name="suplementacjaButton" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3"  Click="suplementacjaButton_Click">
             <StackPanel Orientation="Horizontal">
                 <Image Source="Ikonki/phytonutrients.png" Margin="1"/>
             
             </StackPanel>
+
+            <Button.ToolTip>
+                <StackPanel>
+                    <TextBlock FontWeight="Bold" FontSize="16" Margin="1,1,1,4" Text="Suplementacja"/>
+                    <TextBlock FontSize="14">
+                        Okno suplementacja, służy do dopasowania suplementów pod twoje cele i priorytety,
+                        <LineBreak />
+                        możesz tu również przeglądać bazę suplementów zawierająca podstawowe informacje na ich temat.
+                    </TextBlock>
+                </StackPanel>
+            </Button.ToolTip>
         </Button>
-        <Button Grid.Column="0" x:Name="profilButton" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3"  ToolTip="Twoje dane" Click="profilButton_Click">
+        <Button ToolTipService.ShowDuration="24000" Grid.Column="0" x:Name="profilButton" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3"  Click="profilButton_Click">
             <StackPanel Orientation="Horizontal">
                 <Image Source="Ikonki/measuring-tape.png" Margin="1"/>
              
             </StackPanel>
+
+            <Button.ToolTip>
+                <StackPanel>
+                    <TextBlock FontWeight="Bold" FontSize="16" Margin="1,1,1,4" Text="Twoje dane"/>
+                    <TextBlock FontSize="14">
+                       W tym oknie uzupełnisz swoje dane, takie jak parametry swojego ciała czy osiągi sportowe,
+                        <LineBreak />
+                       posłużą one jako dane wejściowe do innych modułów
+                    </TextBlock>
+                </StackPanel>
+            </Button.ToolTip>
         </Button>
-        <Button Grid.Column="1" x:Name="treningButton" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3"  ToolTip="Trening" Click="treningButton_Click">
+        <Button ToolTipService.ShowDuration="24000" Grid.Column="1" x:Name="treningButton" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3"  Click="treningButton_Click">
             <StackPanel Orientation="Horizontal">
                 <Image Source="Ikonki/bench-press-weightlifting.png" Margin="1"/>
           
             </StackPanel>
+            <Button.ToolTip>
+                <StackPanel>
+                    <TextBlock FontWeight="Bold" FontSize="16" Margin="1,1,1,4" Text="Trening"/>
+                    <TextBlock FontSize="14">
+                       Moduł 'Trening' służy doborowi dopasowanego do ciebie cyklu treningowego,
+                        <LineBreak />
+                        który następnie będziesz mógł dodać do swojego dziennika.
+                    </TextBlock>
+                </StackPanel>
+            </Button.ToolTip>
         </Button>
-        <Button Grid.Column="2" x:Name="statystykiButton" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3"  ToolTip="Statystyki" Click="statystykiButton_Click">
+        <Button ToolTipService.ShowDuration="24000" Grid.Column="2" x:Name="statystykiButton" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3"  Click="statystykiButton_Click">
             <StackPanel Orientation="Horizontal">
                 <Image Source="Ikonki/running-treadmill.png" Margin="1"/>
      
             </StackPanel>
+            <Button.ToolTip>
+                <StackPanel>
+                    <TextBlock FontWeight="Bold" FontSize="16" Margin="1,1,1,4" Text="Statystyki"/>
+                    <TextBlock FontSize="14">
+                      Tutaj zwizualizowane są twoje statystki,
+                        <LineBreak />
+                        zbierane są na podstawie twojego dziennika i wprowadzanych wyników.
+                    </TextBlock>
+                </StackPanel>
+            </Button.ToolTip>
         </Button>
-        <Button Grid.Column="0" x:Name="produktySpozywczeButton" Grid.Row="3"  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3" ToolTip="Produkty Spożywcze" Click="produktySpozywczeButton_Click">
+        <Button ToolTipService.ShowDuration="24000" Grid.Column="0" x:Name="produktySpozywczeButton" Grid.Row="3"  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3"   Click="produktySpozywczeButton_Click">
             <StackPanel Orientation="Horizontal">
                 <Image Source="Ikonki/broccoli-porcion.png" Margin="1"/>
              
             </StackPanel>
+            <Button.ToolTip>
+                <StackPanel>
+                    <TextBlock FontWeight="Bold" FontSize="16" Margin="1,1,1,4" Text="Produkty spożywcze"/>
+                    <TextBlock FontSize="14">
+                       W tym oknie podejrzysz tabelę produktów spożywczych z podanymi makroelementami i kalorycznościa,
+                        <LineBreak />
+                       produkty są posortowane według kategorii.
+                    </TextBlock>
+                </StackPanel>
+            </Button.ToolTip>
         </Button>
-        <Button Grid.Column="1" x:Name="dziennikButton" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3" ToolTip="Dziennik" Click="dziennikButton_Click">
+        <Button ToolTipService.ShowDuration="24000" Grid.Column="1" x:Name="dziennikButton" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3"   Click="dziennikButton_Click">
             <StackPanel Orientation="Horizontal">
                 <Image Source="Ikonki/sport-watch.png" Margin="1"/>
              
             </StackPanel>
+            <Button.ToolTip>
+                <StackPanel>
+                    <TextBlock FontWeight="Bold" FontSize="16" Margin="1,1,1,4" Text="Dziennik"/>
+                    <TextBlock FontSize="14">
+                       'Dziennik' jest sercem aplikacji, to w tym oknie będziesz monitorował swój reżim,
+                        <LineBreak />
+                       a także aktualizował informację na temat swoich postępów i wyników.
+                    </TextBlock>
+                </StackPanel>
+            </Button.ToolTip>
         </Button>
-        <Button Grid.Column="2" x:Name="dane5Button" Grid.Row="3"  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3" ToolTip="Kalkulatory">
+        <Button ToolTipService.ShowDuration="24000" Grid.Column="2" x:Name="dane5Button" Grid.Row="3"  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3">
             <StackPanel Orientation="Horizontal">
                 <Image Source="Ikonki/big-stopwatch.png" Margin="1"/>
                 
             </StackPanel>
+            <Button.ToolTip>
+                <StackPanel>
+                    <TextBlock FontWeight="Bold" FontSize="16" Margin="1,1,1,4" Text="Dziennik"/>
+                    <TextBlock FontSize="14">
+                       'Dziennik' jest sercem aplikacji, to w tym oknie będziesz monitorował swój reżim,
+                        <LineBreak />
+                       a także aktualizował informację na temat swoich postępów i wyników.
+                    </TextBlock>
+                </StackPanel>
+            </Button.ToolTip>
         </Button>
     </Grid>
 </Window>
