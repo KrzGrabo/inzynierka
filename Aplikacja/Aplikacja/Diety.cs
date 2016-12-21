@@ -14,6 +14,11 @@ namespace Aplikacja
     
     public partial class Diety
     {
+        public Diety()
+        {
+            this.Posilki = new HashSet<Posilki>();
+        }
+    
         public int Id { get; set; }
         public Nullable<int> Zapotrzebowanie { get; set; }
         public Nullable<double> Bialko { get; set; }
@@ -26,5 +31,6 @@ namespace Aplikacja
         public int ID_Uzytkownika { get; set; }
     
         public virtual Uzytkownicy Uzytkownicy { get; set; }
+        public virtual ICollection<Posilki> Posilki { get; set; }
     }
 }

@@ -4,18 +4,21 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="fefe58f2fb094629b23e313914b3391a" Name="Diagram1" ZoomLevel="112">
+      <Diagram DiagramId="fefe58f2fb094629b23e313914b3391a" Name="Diagram1" ZoomLevel="83">
         <EntityTypeShape EntityType="BazaDanychModel.Uzytkownicy" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BazaDanychModel.Dane" Width="1.5" PointX="4" PointY="0.5" />
         <EntityTypeShape EntityType="BazaDanychModel.Historia_Danych" Width="1.5" PointX="6.875" PointY="0.625" />
         <AssociationConnector Association="BazaDanychModel.FK__Historia___ID_Pr__503BEA1C" />
         <AssociationConnector Association="BazaDanychModel.FK__Uzytkowni__Id_Pr__4F47C5E3" />
-        <EntityTypeShape EntityType="BazaDanychModel.Kategorie" Width="1.5" PointX="6.125" PointY="4.75" />
-        <EntityTypeShape EntityType="BazaDanychModel.Produkty" Width="1.5" PointX="8.375" PointY="4.125" />
+        <EntityTypeShape EntityType="BazaDanychModel.Kategorie" Width="1.5" PointX="8.25" PointY="4.625" />
+        <EntityTypeShape EntityType="BazaDanychModel.Produkty" Width="1.5" PointX="10.75" PointY="4.375" />
         <AssociationConnector Association="BazaDanychModel.FK__Produkty__ID_Kat__6383C8BA" />
         <EntityTypeShape EntityType="BazaDanychModel.Diety" Width="1.5" PointX="1.25" PointY="3.875" />
         <AssociationConnector Association="BazaDanychModel.FK__Diety__ID_Uzytko__4F47C5E3" />
-        <EntityTypeShape EntityType="BazaDanychModel.Suplementy" Width="1.5" PointX="3.875" PointY="4.75" />
+        <EntityTypeShape EntityType="BazaDanychModel.Suplementy" Width="1.5" PointX="9.75" PointY="1.375" />
+        <EntityTypeShape EntityType="BazaDanychModel.Jedzenie" Width="1.5" PointX="6" PointY="4.75" />
+        <EntityTypeShape EntityType="BazaDanychModel.Posilki" Width="1.5" PointX="3.5" PointY="4.5" />
+        <AssociationConnector Association="BazaDanychModel.FK__Posilki__ID_Diet__54CB950F" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
