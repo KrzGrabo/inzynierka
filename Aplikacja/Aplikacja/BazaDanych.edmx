@@ -48,12 +48,32 @@
           <Property Name="Zapotrzebowanie" Type="float" />
           <Property Name="ID_Profilu" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="Jedzenie">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Potrawa" Type="nvarchar" MaxLength="300" />
+          <Property Name="Kalorycznosc" Type="float" />
+          <Property Name="BiaLko" Type="float" />
+          <Property Name="Weglowodany" Type="float" />
+          <Property Name="Tluszcz" Type="float" />
+        </EntityType>
         <EntityType Name="Kategorie">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" Nullable="false" />
-          <Property Name="Nazwa" Type="varchar" MaxLength="100" />
+          <Property Name="Nazwa" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Posilki">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Data" Type="date" />
+          <Property Name="Posilek" Type="varchar" MaxLength="300" />
+          <Property Name="ID_Diety" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Produkty">
           <Key>
@@ -109,6 +129,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Posilki__ID_Diet__54CB950F">
+          <End Role="Diety" Type="Self.Diety" Multiplicity="1" />
+          <End Role="Posilki" Type="Self.Posilki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Diety">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Posilki">
+              <PropertyRef Name="ID_Diety" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Produkty__ID_Kat__2B0A656D">
           <End Role="Kategorie" Type="Self.Kategorie" Multiplicity="1" />
           <End Role="Produkty" Type="Self.Produkty" Multiplicity="*" />
@@ -137,7 +169,9 @@
           <EntitySet Name="Dane" EntityType="Self.Dane" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Diety" EntityType="Self.Diety" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Historia Danych" EntityType="Self.Historia Danych" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Jedzenie" EntityType="Self.Jedzenie" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Kategorie" EntityType="Self.Kategorie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Posilki" EntityType="Self.Posilki" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Produkty" EntityType="Self.Produkty" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Suplementy" EntityType="Self.Suplementy" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Uzytkownicy" EntityType="Self.Uzytkownicy" Schema="dbo" store:Type="Tables" />
@@ -148,6 +182,10 @@
           <AssociationSet Name="FK__Historia __ID_Pr__0880433F" Association="Self.FK__Historia __ID_Pr__0880433F">
             <End Role="Dane" EntitySet="Dane" />
             <End Role="Historia Danych" EntitySet="Historia Danych" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Posilki__ID_Diet__54CB950F" Association="Self.FK__Posilki__ID_Diet__54CB950F">
+            <End Role="Diety" EntitySet="Diety" />
+            <End Role="Posilki" EntitySet="Posilki" />
           </AssociationSet>
           <AssociationSet Name="FK__Produkty__ID_Kat__2B0A656D" Association="Self.FK__Produkty__ID_Kat__2B0A656D">
             <End Role="Kategorie" EntitySet="Kategorie" />
@@ -197,6 +235,12 @@
             <End Role="Diety" EntitySet="Diety" />
           </AssociationSet>
           <EntitySet Name="Suplementy" EntityType="BazaDanychModel.Suplementy" />
+          <EntitySet Name="Jedzenie" EntityType="BazaDanychModel.Jedzenie" />
+          <EntitySet Name="Posilki" EntityType="BazaDanychModel.Posilki" />
+          <AssociationSet Name="FK__Posilki__ID_Diet__54CB950F" Association="BazaDanychModel.FK__Posilki__ID_Diet__54CB950F">
+            <End Role="Diety" EntitySet="Diety" />
+            <End Role="Posilki" EntitySet="Posilki" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="Dane">
           <Key>
@@ -258,7 +302,7 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="Nazwa" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Nazwa" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Produkty" Relationship="BazaDanychModel.FK__Produkty__ID_Kat__6383C8BA" FromRole="Kategorie" ToRole="Produkty" />
         </EntityType>
         <EntityType Name="Produkty">
@@ -301,6 +345,7 @@
           <Property Name="Data_Zakonczenia" Type="DateTime" Precision="0" />
           <Property Name="ID_Uzytkownika" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Uzytkownicy" Relationship="BazaDanychModel.FK__Diety__ID_Uzytko__4F47C5E3" FromRole="Diety" ToRole="Uzytkownicy" />
+          <NavigationProperty Name="Posilki" Relationship="BazaDanychModel.FK__Posilki__ID_Diet__54CB950F" FromRole="Diety" ToRole="Posilki" />
         </EntityType>
         <Association Name="FK__Diety__ID_Uzytko__4F47C5E3">
           <End Type="BazaDanychModel.Uzytkownicy" Role="Uzytkownicy" Multiplicity="1" />
@@ -323,6 +368,39 @@
           <Property Name="Dawkowanie" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Dzialanie" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="Jedzenie">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Potrawa" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Kalorycznosc" Type="Double" />
+          <Property Name="Bialko" Type="Double" />
+          <Property Name="Weglowodany" Type="Double" />
+          <Property Name="Tluszcz" Type="Double" />
+        </EntityType>
+        <EntityType Name="Posilki">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Data" Type="DateTime" Precision="0" />
+          <Property Name="Posilek" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="ID_Diety" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Diety" Relationship="BazaDanychModel.FK__Posilki__ID_Diet__54CB950F" FromRole="Posilki" ToRole="Diety" />
+        </EntityType>
+        <Association Name="FK__Posilki__ID_Diet__54CB950F">
+          <End Type="BazaDanychModel.Diety" Role="Diety" Multiplicity="1" />
+          <End Type="BazaDanychModel.Posilki" Role="Posilki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Diety">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Posilki">
+              <PropertyRef Name="ID_Diety" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -412,6 +490,28 @@
                 <ScalarProperty Name="Dzialanie" ColumnName="Dzialanie" />
                 <ScalarProperty Name="Dawkowanie" ColumnName="Dawkowanie" />
                 <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Jedzenie">
+            <EntityTypeMapping TypeName="BazaDanychModel.Jedzenie">
+              <MappingFragment StoreEntitySet="Jedzenie">
+                <ScalarProperty Name="Tluszcz" ColumnName="Tluszcz" />
+                <ScalarProperty Name="Weglowodany" ColumnName="Weglowodany" />
+                <ScalarProperty Name="Bialko" ColumnName="BiaLko" />
+                <ScalarProperty Name="Kalorycznosc" ColumnName="Kalorycznosc" />
+                <ScalarProperty Name="Potrawa" ColumnName="Potrawa" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Posilki">
+            <EntityTypeMapping TypeName="BazaDanychModel.Posilki">
+              <MappingFragment StoreEntitySet="Posilki">
+                <ScalarProperty Name="ID_Diety" ColumnName="ID_Diety" />
+                <ScalarProperty Name="Posilek" ColumnName="Posilek" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

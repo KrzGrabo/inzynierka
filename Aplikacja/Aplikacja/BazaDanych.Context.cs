@@ -32,5 +32,7 @@ namespace Aplikacja
         public virtual DbSet<Produkty> Produkty { get; set; }
         public virtual DbSet<Diety> Diety { get; set; }
         public virtual DbSet<Suplementy> Suplementy { get; set; }
+        public virtual DbSet<Jedzenie> Jedzenie { get; set; }
+        public virtual DbSet<Posilki> Posilki { get; set; }
     }
 }

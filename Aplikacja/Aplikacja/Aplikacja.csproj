@@ -118,6 +118,9 @@
     <Compile Include="Informacje.xaml.cs">
       <DependentUpon>Informacje.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Jedzenie.cs">
+      <DependentUpon>BazaDanych.tt</DependentUpon>
+    </Compile>
     <Compile Include="KalkMaksy.xaml.cs">
       <DependentUpon>KalkMaksy.xaml</DependentUpon>
     </Compile>
@@ -144,6 +147,9 @@
     </Compile>
     <Compile Include="Porownanie.xaml.cs">
       <DependentUpon>Porownanie.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Posilki.cs">
+      <DependentUpon>BazaDanych.tt</DependentUpon>
     </Compile>
     <Compile Include="Produkty.cs">
       <DependentUpon>BazaDanych.tt</DependentUpon>
