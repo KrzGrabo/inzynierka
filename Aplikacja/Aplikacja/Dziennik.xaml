@@ -1,8 +1,8 @@
-﻿<Window x:Class="Aplikacja.Porownanie"
+﻿<Window x:Class="Aplikacja.Dziennik"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Porownanie" Height="300" Width="300">
+        Title="Dziennik" Height="300" Width="300">
     <Grid>
-        <Label Content="Tłuszcze czy węglowodany- oto jest pytanie"/>
+        <Calendar></Calendar>
     </Grid>
 </Window>

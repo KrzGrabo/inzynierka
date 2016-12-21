@@ -33,7 +33,9 @@ namespace Aplikacja
             // Load data by setting the CollectionViewSource.Source property:
             // suplementyViewSource.Source = [generic data source]
             suplementyViewSource.Source = dane.Suplementy.ToList();
+            supleCombo.SelectedIndex = -1;
         }
+
 
     }
 }

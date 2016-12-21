@@ -112,6 +112,9 @@
     <Compile Include="Diety.cs">
       <DependentUpon>BazaDanych.tt</DependentUpon>
     </Compile>
+    <Compile Include="Dziennik.xaml.cs">
+      <DependentUpon>Dziennik.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Historia_Danych.cs">
       <DependentUpon>BazaDanych.tt</DependentUpon>
     </Compile>
@@ -187,6 +190,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Dieta.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dziennik.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -422,6 +429,8 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DependentUpon>BazaDanych.mdf</DependentUpon>
     </Content>
+    <Resource Include="Ikonki\1482266010_Info.png" />
+    <Resource Include="Ikonki\1482194166_Info.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

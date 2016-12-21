@@ -100,6 +100,12 @@ namespace Aplikacja
             okno.Show();
         }
 
+        private void dziennikButton_Click(object sender, RoutedEventArgs e)
+        {
+            Dziennik okno = new Dziennik();
+            okno.Show();
+        }
+
 
    
     }
