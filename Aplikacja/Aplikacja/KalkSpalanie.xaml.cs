@@ -22,19 +22,19 @@ namespace Aplikacja
     /// </summary>
     public partial class KalkSpalanie : Window
     {
+        BazaDanychEntities db = new BazaDanychEntities();
+
         public KalkSpalanie()
         {
             InitializeComponent();
-            Bindowanie();
+            Opis();
         }
-        private string[] aktywnosci = { "akt1", "akt2", "akt3", "akt4" };
-        private double[] wspolczynniki = { 1, 2, 3, 4 };
 
-        private void Bindowanie()
+
+        private void Opis()
         {
             opisLabel.Text = "'Kalkulator spalania kalorii' pozwala na obliczenie ilości spalonych kalorii podczas różnych aktywności. Wyniki mogą w małym stopniu odbiegać od wartości rzeczywistych. Aby otrzymać wynik uzupełnij swoje dane i wybierz jedną z dostępnych aktywności.";
-            aktywnosciCombo.ItemsSource = aktywnosci.ToList();
-           }
+        }
 
 
         private void wagaTextbox_KeyDown(object sender, KeyEventArgs e)
@@ -84,8 +84,7 @@ namespace Aplikacja
             }
             if (walidacja == "")
             {
-                aktywnosc = wspolczynniki[indeks]; 
-                wynikLabel.Content = Spalanie(aktywnosc,waga,czas).ToString();
+                wynikLabel.Content = Spalanie(waga,czas).ToString();
             }
             else
             {
@@ -94,11 +93,20 @@ namespace Aplikacja
             }
         }
 
-        private double Spalanie(double aktywnosc, double waga, double czas)
+        private double Spalanie(double waga, double czas)
         {
             double wynik = 0;
-            wynik = aktywnosc * waga * czas;
+            Spalanie aktywnosc = (Spalanie)aktywnosciCombo.SelectedItem;
+            wynik = 0.0175 * aktywnosc.MET.GetValueOrDefault() * waga * czas;
             return wynik;
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Data.CollectionViewSource spalanieViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("spalanieViewSource")));
+            // Load data by setting the CollectionViewSource.Source property:
+            // spalanieViewSource.Source = [generic data source]
+            spalanieViewSource.Source = db.Spalanie.ToList();
         }
 
     }

@@ -16,9 +16,11 @@
         <EntityTypeShape EntityType="BazaDanychModel.Diety" Width="1.5" PointX="1.25" PointY="3.875" />
         <AssociationConnector Association="BazaDanychModel.FK__Diety__ID_Uzytko__4F47C5E3" />
         <EntityTypeShape EntityType="BazaDanychModel.Suplementy" Width="1.5" PointX="9.75" PointY="1.375" />
-        <EntityTypeShape EntityType="BazaDanychModel.Jedzenie" Width="1.5" PointX="6" PointY="4.75" />
-        <EntityTypeShape EntityType="BazaDanychModel.Posilki" Width="1.5" PointX="3.5" PointY="4.5" />
-        <AssociationConnector Association="BazaDanychModel.FK__Posilki__ID_Diet__54CB950F" />
+        <EntityTypeShape EntityType="BazaDanychModel.Posilek" Width="1.5" PointX="5.875" PointY="5.25" />
+        <EntityTypeShape EntityType="BazaDanychModel.Spis_Posilkow" Width="1.5" PointX="3.625" PointY="5.25" />
+        <AssociationConnector Association="BazaDanychModel.FK__Spis_Posi__ID_Di__7CD98669" />
+        <AssociationConnector Association="BazaDanychModel.FK__Spis_Posi__ID_Po__7DCDAAA2" />
+        <EntityTypeShape EntityType="BazaDanychModel.Spalanie" Width="1.5" PointX="8.25" PointY="7.25" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
