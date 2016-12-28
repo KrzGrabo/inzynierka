@@ -3,6 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Dziennik" Height="300" Width="300">
     <Grid>
-        <Calendar></Calendar>
+        <Calendar Name="Kalendarz" SelectedDatesChanged="Cal_SelectedDatesChanged"/>
     </Grid>
 </Window>

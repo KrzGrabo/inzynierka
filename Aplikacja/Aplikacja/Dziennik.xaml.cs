@@ -23,5 +23,15 @@ namespace Aplikacja
         {
             InitializeComponent();
         }
+
+        private void Cal_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
+        {
+            EdytorDnia edytor = new EdytorDnia();
+            edytor.ustawDate(Kalendarz.SelectedDate.GetValueOrDefault());
+            edytor.Show();
+        }
+
+
+
     }
 }

@@ -90,7 +90,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Data" Type="date" />
           <Property Name="ID_Posilku" Type="int" Nullable="false" />
           <Property Name="ID_Diety" Type="int" Nullable="false" />
@@ -149,7 +149,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Spis_Posi__ID_Di__7CD98669">
+        <Association Name="FK__Spis_Posi__ID_Di__2116E6DF">
           <End Role="Diety" Type="Self.Diety" Multiplicity="1" />
           <End Role="Spis_Posilkow" Type="Self.Spis_Posilkow" Multiplicity="*" />
           <ReferentialConstraint>
@@ -161,7 +161,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Spis_Posi__ID_Po__7DCDAAA2">
+        <Association Name="FK__Spis_Posi__ID_Po__220B0B18">
           <End Role="Posilek" Type="Self.Posilek" Multiplicity="1" />
           <End Role="Spis_Posilkow" Type="Self.Spis_Posilkow" Multiplicity="*" />
           <ReferentialConstraint>
@@ -208,11 +208,11 @@
             <End Role="Kategorie" EntitySet="Kategorie" />
             <End Role="Produkty" EntitySet="Produkty" />
           </AssociationSet>
-          <AssociationSet Name="FK__Spis_Posi__ID_Di__7CD98669" Association="Self.FK__Spis_Posi__ID_Di__7CD98669">
+          <AssociationSet Name="FK__Spis_Posi__ID_Di__2116E6DF" Association="Self.FK__Spis_Posi__ID_Di__2116E6DF">
             <End Role="Diety" EntitySet="Diety" />
             <End Role="Spis_Posilkow" EntitySet="Spis_Posilkow" />
           </AssociationSet>
-          <AssociationSet Name="FK__Spis_Posi__ID_Po__7DCDAAA2" Association="Self.FK__Spis_Posi__ID_Po__7DCDAAA2">
+          <AssociationSet Name="FK__Spis_Posi__ID_Po__220B0B18" Association="Self.FK__Spis_Posi__ID_Po__220B0B18">
             <End Role="Posilek" EntitySet="Posilek" />
             <End Role="Spis_Posilkow" EntitySet="Spis_Posilkow" />
           </AssociationSet>
@@ -405,7 +405,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Potrawa" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
           <Property Name="Kalorycznosc" Type="Double" />
-          <Property Name="BiaLko" Type="Double" />
+          <Property Name="Bialko" Type="Double" />
           <Property Name="Weglowodany" Type="Double" />
           <Property Name="Tluszcz" Type="Double" />
           <NavigationProperty Name="Spis_Posilkow" Relationship="BazaDanychModel.FK__Spis_Posi__ID_Po__7DCDAAA2" FromRole="Posilek" ToRole="Spis_Posilkow" />
@@ -551,7 +551,7 @@
               <MappingFragment StoreEntitySet="Posilek">
                 <ScalarProperty Name="Tluszcz" ColumnName="Tluszcz" />
                 <ScalarProperty Name="Weglowodany" ColumnName="Weglowodany" />
-                <ScalarProperty Name="BiaLko" ColumnName="BiaLko" />
+                <ScalarProperty Name="Bialko" ColumnName="BiaLko" />
                 <ScalarProperty Name="Kalorycznosc" ColumnName="Kalorycznosc" />
                 <ScalarProperty Name="Potrawa" ColumnName="Potrawa" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
