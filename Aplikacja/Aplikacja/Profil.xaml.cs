@@ -24,7 +24,6 @@ namespace Aplikacja
         Dane przypisaneDane = new Dane();
         Uzytkownicy uzytkownik = new Uzytkownicy();
         Historia_Danych historia = new Historia_Danych();
-        string wiadomosc = "";
         
         public Profil()
         {
