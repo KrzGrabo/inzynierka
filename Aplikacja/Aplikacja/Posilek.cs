@@ -22,7 +22,7 @@ namespace Aplikacja
         public int Id { get; set; }
         public string Potrawa { get; set; }
         public Nullable<double> Kalorycznosc { get; set; }
-        public Nullable<double> Bialko { get; set; }
+        public Nullable<double> BiaLko { get; set; }
         public Nullable<double> Weglowodany { get; set; }
         public Nullable<double> Tluszcz { get; set; }
     
