@@ -22,6 +22,24 @@ namespace Aplikacja
         public Statystyki()
         {
             InitializeComponent();
+            Bindowanie();
         }
+        public void Bindowanie()
+        {
+            List<Danee> dana = new List<Danee>();
+            dana.Add(new Danee() { nazwa = "nazwa", numerek = 2 });
+            dana.Add(new Danee() { nazwa = "n21azwa", numerek = 3 });
+            dana.Add(new Danee() { nazwa = "na21232zwa", numerek = 5 });
+            dana.Add(new Danee() { nazwa = "naz3232wa", numerek = 1 });
+            columnChart.DataContext = dana;
+            pieChart.DataContext = dana;
+        }
+
     }
+    public class Danee
+    {
+        public string nazwa { get; set; }
+        public int numerek { get; set; }
+    }
+
 }
