@@ -25,17 +25,17 @@ namespace Aplikacja
         Uzytkownicy uzytkownik = new Uzytkownicy();
         Diety dieta = new Diety();
         Spis_Posilkow spis = new Spis_Posilkow();
-        DateTime dataZapisz = new DateTime();
-        bool walidacja;
+        DateTime wybranaData = new DateTime();
+        bool walidacja = true;
 
         public EdytorDnia()
         {
             InitializeComponent();
         }
 
-        public void ustawDate(DateTime data)
+        public void przekazDane(DateTime data)
         {
-            dataZapisz = data;
+            wybranaData = data;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -45,12 +45,12 @@ namespace Aplikacja
             // posilekViewSource.Source = [generic data source]
             posilekViewSource.Source = db.Posilek.ToList();
             uzytkownik = db.Uzytkownicy.Where(m => m.ID.Equals(id)).FirstOrDefault();
-            dieta = uzytkownik.Diety.FirstOrDefault();
+            znajdzDiete();
+
             kalorieLabel.Content = dieta.Zapotrzebowanie;
             bialkoLabel.Content = ((int)dieta.Bialko).ToString();
             weglowodanyLabel.Content = ((int)dieta.Weglowodany).ToString();
             tluszczeLabel.Content = ((int)dieta.Tluszcz).ToString();
-
         }
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs  e)
@@ -85,19 +85,40 @@ namespace Aplikacja
                 string msg = "Przekroczyłeś dopuszczalne progi swojej diety. Zmień posiłki, tak aby wszystkie wartości były większe od zera.";
                 MessageBox.Show(msg, "Uwaga", MessageBoxButton.OK, MessageBoxImage.Exclamation);
             }
+            else if(potrawyBox.SelectedItems.Count == 0)
+            {
+                string msg = "Nie wybrano żadnych posiłków.";
+                MessageBox.Show(msg, "Uwaga", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
             else
             {
-                db.Spis_Posilkow.RemoveRange(db.Spis_Posilkow.Where(m => m.Data == dataZapisz));
+                db.Spis_Posilkow.RemoveRange(db.Spis_Posilkow.Where(m => m.Data == wybranaData));
 
                 foreach (Posilek posilek in potrawyBox.SelectedItems)
                 {
-                    spis.Data = dataZapisz;
+                    spis.Data = wybranaData;
                     spis.ID_Diety = dieta.Id;
                     spis.ID_Posilku = posilek.Id;
                     db.Spis_Posilkow.Add(spis);
                     db.SaveChanges();
                 }
+                string msg = "Posiłki zostały poprawnie zapisane.";
+                MessageBox.Show(msg, "Informacja", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
+
+        private void znajdzDiete()
+        {
+            var diety = uzytkownik.Diety.ToList();
+            foreach (Diety szukana in diety)
+            {
+                if (szukana.Data_Rozpoczecia <= wybranaData && szukana.Data_Zakonczenia >= wybranaData)
+                {
+                    dieta = szukana;
+                }
+            }
+
+        }
+
     }
 }

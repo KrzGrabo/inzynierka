@@ -12,6 +12,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
@@ -19,21 +20,24 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <ListBox Grid.Row="0" Name="potrawyBox" SelectionChanged="ListBox_SelectionChanged" SelectionMode="Multiple" DisplayMemberPath="Potrawa" ItemsSource="{Binding}">
+
+        <Label Margin="10" Content="Wybierz posiłki na dany dzień: " Grid.Row="0"/>
+
+        <ListBox Grid.Row="1" Name="potrawyBox" SelectionChanged="ListBox_SelectionChanged" SelectionMode="Multiple" DisplayMemberPath="Potrawa" ItemsSource="{Binding}">
         </ListBox>
 
-        <Label Margin="10" Content="Pozostała ilość kalorii: " Grid.Row="1"/>
-        <Label Margin="10" x:Name="kalorieLabel"  Grid.Row="1" Grid.Column="1"/>
+        <Label Margin="10" Content="Pozostała ilość kalorii: " Grid.Row="2"/>
+        <Label Margin="10" x:Name="kalorieLabel"  Grid.Row="2" Grid.Column="1"/>
 
-        <Label Margin="10" Content="Pozostała ilość białka: " Grid.Row="2"/>
-        <Label Margin="10" x:Name="bialkoLabel"  Grid.Row="2" Grid.Column="1"/>
+        <Label Margin="10" Content="Pozostała ilość białka: " Grid.Row="3"/>
+        <Label Margin="10" x:Name="bialkoLabel"  Grid.Row="3" Grid.Column="1"/>
 
-        <Label Margin="10" Content="Pozostała ilość węglowodanów: " Grid.Row="3"/>
-        <Label Margin="10" x:Name="weglowodanyLabel"  Grid.Row="3" Grid.Column="1"/>
+        <Label Margin="10" Content="Pozostała ilość węglowodanów: " Grid.Row="4"/>
+        <Label Margin="10" x:Name="weglowodanyLabel"  Grid.Row="4" Grid.Column="1"/>
 
-        <Label Margin="10" Content="Pozostała ilość tłuszczów: " Grid.Row="4"/>
-        <Label Margin="10" x:Name="tluszczeLabel"  Grid.Row="4" Grid.Column="1"/>
+        <Label Margin="10" Content="Pozostała ilość tłuszczów: " Grid.Row="5"/>
+        <Label Margin="10" x:Name="tluszczeLabel"  Grid.Row="5" Grid.Column="1"/>
 
-        <Button Content="Zapisz posiłki na dany dzień" x:Name="zapiszButton" Grid.Row="4" Grid.ColumnSpan="2" Margin="122,45.4,124.6,0.4" Grid.RowSpan="2" Click="zapiszButton_Click"  />
+        <Button Content="Zapisz posiłki na dany dzień" x:Name="zapiszButton" Grid.Row="6" Grid.ColumnSpan="2" Margin="122,45.4,124.6,0.4" Grid.RowSpan="2" Click="zapiszButton_Click"  />
     </Grid>
 </Window>
