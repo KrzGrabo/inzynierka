@@ -34,6 +34,7 @@ namespace Aplikacja
         {
             InitializeComponent();
             Bindowanie();
+            czyszczenieDiet();
         }
         int iloscPosilkow;
         double wagaPom=0, kaloriePom=0, bialkoPom, weglowodanyPom, tluszczePom, podzialPom;
@@ -51,6 +52,7 @@ namespace Aplikacja
             opis2Label.Text = "W drugim kroku uzupełnij dane, dzięki którym kreator będzie mógł szczegółowo dobrać parametry diety pod twoje potrzeby.";
             opis3Label.Text = "Trzeci krok skupia się na technicznych aspektach diety- wybierz jaką ilość posiłków dziennie preferujesz, a także na jaki okres planujesz dietę.";
             podzialLabel.Content = "50:50";
+            uzytkownik = db.Uzytkownicy.Where(m => m.ID.Equals(id)).FirstOrDefault();
             if(zapotrzebowanie!=0)
             {
                // wynikLabel.Content = zapotrzebowanie.ToString();
@@ -153,10 +155,6 @@ namespace Aplikacja
         {
             string walidacja = "";
 
-           
-
-            if (podzialLabel.Content == "50:50") walidacja = walidacja + " \nNie ustawiłeś suwaka proporcji";
-
             if (celCombo.SelectedIndex == -1) walidacja = walidacja + " \nNie ustawiłeś celu diety";
         
             if (sportCombo.SelectedIndex == -1) walidacja = walidacja + " \nNie wybrałeś kategorii sportu"; 
@@ -178,10 +176,12 @@ namespace Aplikacja
         {
             string walidacja = "";
 
-            if (startDatapicker.SelectedDate == null) walidacja = walidacja + " \nNie wybrałeś daty początkowej";
-            if (koniecDatapicker.SelectedDate == null) walidacja = walidacja + " \nNie wybrałeś daty końcowej"; 
-            if (posilkiCombo.SelectedIndex == -1) walidacja = walidacja + " \nNie wybrałeś ilości posiłków"; 
-            //TRZEBA DODAC SPRAWDZENIE CZY KONCOWA JEST POZNIEJ NIZ POCZATKOWA
+            if (startDatapicker.SelectedDate == null) walidacja = walidacja + " \nNie wybrałeś daty początkowej.";
+            if (koniecDatapicker.SelectedDate == null) walidacja = walidacja + " \nNie wybrałeś daty końcowej.";
+            if (startDatapicker.SelectedDate > koniecDatapicker.SelectedDate) walidacja = walidacja + "\nData początkowa jest późniejsza niż końcowa. Zmień date końcową na poprawną.";
+            if (posilkiCombo.SelectedIndex == -1) walidacja = walidacja + " \nNie wybrałeś ilości posiłków.";
+            if (startDatapicker.SelectedDate < DateTime.Now.AddDays(-1)) walidacja = walidacja + "\nDieta może się zaczynać najwcześniej od dzisiaj. Zmień date początkową.";
+            if (startDatapicker.SelectedDate != null && koniecDatapicker.SelectedDate != null && znajdzDiete()) walidacja = walidacja + "\nW podanym okresie jest już zapisana dieta. Wybierz inny okres.";
             if (walidacja == "")
             {
                 iloscPosilkow = posilkiCombo.SelectedIndex + 1;
@@ -348,9 +348,40 @@ namespace Aplikacja
             dieta.Data_Zakonczenia = dataKon;
             db.Diety.Add(dieta);
             db.SaveChanges();
+            zapiszButton.IsEnabled = false;
+            string msg = "Dieta zapisana poprawnie.";
+            MessageBox.Show(msg, "Informacja", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
+        private bool znajdzDiete()
+        {
+            var diety = uzytkownik.Diety.ToList();
+            DateTime dataPocz = startDatapicker.SelectedDate.GetValueOrDefault();
+            DateTime dataKon = koniecDatapicker.SelectedDate.GetValueOrDefault();
+            foreach (Diety szukana in diety)
+            {
+                if (szukana.Data_Rozpoczecia <= dataPocz && szukana.Data_Zakonczenia >= dataPocz || szukana.Data_Rozpoczecia <= dataKon && szukana.Data_Zakonczenia >= dataKon)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
 
+        private void czyszczenieDiet()
+        {
+            var diety = uzytkownik.Diety.ToList();
+            DateTime data = DateTime.Now;
+            foreach (Diety rekord in diety)
+            {
+                if (rekord.Data_Zakonczenia < data.AddDays(-1))
+                {
+                    db.Spis_Posilkow.RemoveRange(db.Spis_Posilkow.Where(m => m.ID_Diety == rekord.Id));
+                    db.Diety.Remove(rekord);
+                }
+            }
+            db.SaveChanges();
+        }
        
 
     }

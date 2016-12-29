@@ -145,6 +145,9 @@
     <Compile Include="Menu.xaml.cs">
       <DependentUpon>Menu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PlanDnia.xaml.cs">
+      <DependentUpon>PlanDnia.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pomoc.xaml.cs">
       <DependentUpon>Pomoc.xaml</DependentUpon>
     </Compile>
@@ -254,6 +257,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="PlanDnia.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pomoc.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -324,6 +331,7 @@
     <None Include="Properties\DataSources\Posilek.datasource" />
     <None Include="Properties\DataSources\Produkty.datasource" />
     <None Include="Properties\DataSources\Spalanie.datasource" />
+    <None Include="Properties\DataSources\Spis_Posilkow.datasource" />
     <None Include="Properties\DataSources\Suplementy.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
