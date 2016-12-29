@@ -1,8 +1,19 @@
 ﻿<Window x:Class="Aplikacja.Statystyki"
+        xmlns:chartingToolkit="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Statystyki" Height="300" Width="300">
     <Grid>
-        
+        <StackPanel>
+            <chartingToolkit:Chart  Name="columnChart" >
+                <chartingToolkit:ColumnSeries DependentValuePath="numerek" 
+		IndependentValuePath="nazwa" ItemsSource="{Binding}" />
+            </chartingToolkit:Chart>
+            <chartingToolkit:Chart  Name="pieChart" Title="Pie Series Demo" VerticalAlignment="Top" >
+                <chartingToolkit:PieSeries ItemsSource="{Binding}" DependentValuePath="numerek" IndependentValuePath="nazwa"/>
+            </chartingToolkit:Chart>
+
+
+        </StackPanel>
     </Grid>
 </Window>
