@@ -127,6 +127,10 @@ namespace Aplikacja
                     tluszczLabel.Content = "Twój poziom tłuszczu to: " + String.Format("{0:N2}", TluszczFun(plec, waga, pas)) + "%";
                 }
                 else tluszczLabel.Content = "Aby wylicz swój poziom tłuszczu, musisz uzupełnić pola: płeć, waga, obwód pasa";
+                ToolTipService.SetIsEnabled(bmiLabel, true);
+                ToolTipService.SetIsEnabled(tluszczLabel, true);
+                ToolTipService.SetIsEnabled(wagaLabel, true);
+                ToolTipService.SetIsEnabled(whrLabel, true);
 
             }
             else
@@ -138,7 +142,7 @@ namespace Aplikacja
 
         private void Bindowanie()
         {
-            opisTextblock.Text = "Kalkulator wagi, korzystając z listy wejściowych danych, oblicza kilka wskaźników opisujących ciało. Ze względu na brak możliwości szczegółowego pobrania danych poprzez interfejs programu wyniki mogą nieznacznie odbiegać od rzeczywistych wartości. Poszczególne wskaźniki są opisane w szczegółowy sposób niżej- w sekcji 'wyniki'. Uzupełnij wszystkie pola aby uzyskać wyniki.";
+            opisTextblock.Text = "Kalkulator wagi, korzystając z listy wejściowych danych, oblicza kilka wskaźników opisujących ciało. Ze względu na brak możliwości szczegółowego zbadania ciała użytkownika(tylko poprzez wprowadzone do interfejsu wartości liczbowe) wyniki mogą nieznacznie odbiegać od rzeczywistych wartości. Poszczególne wskaźniki są opisane w szczegółowy sposób niżej- w sekcji 'wyniki'. Uzupełnij wszystkie pola aby uzyskać wyniki.";
         
         }
 
