@@ -6,7 +6,7 @@
     <Grid>
         <TabControl>
             <TabItem Header="Profil">
-                <ScrollViewer>
+                <ScrollViewer HorizontalScrollBarVisibility="Visible">
                     <StackPanel>
                         <chartingToolkit:Chart  Name="columnChart" >
                             <chartingToolkit:ColumnSeries DependentValuePath="numerek" IndependentValuePath="nazwa" ItemsSource="{Binding}" />
@@ -19,12 +19,12 @@
             </TabItem>
             
             <TabItem Header="Dieta">
-                <ScrollViewer>
+                <ScrollViewer HorizontalScrollBarVisibility="Visible">
                 </ScrollViewer>
             </TabItem>
             
             <TabItem Header="Trening">
-                <ScrollViewer>
+                <ScrollViewer HorizontalScrollBarVisibility="Visible">
                 </ScrollViewer>
             </TabItem>
         </TabControl>
