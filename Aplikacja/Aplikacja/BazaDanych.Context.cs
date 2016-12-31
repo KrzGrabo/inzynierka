@@ -35,5 +35,7 @@ namespace Aplikacja
         public virtual DbSet<Posilek> Posilek { get; set; }
         public virtual DbSet<Spis_Posilkow> Spis_Posilkow { get; set; }
         public virtual DbSet<Spalanie> Spalanie { get; set; }
+        public virtual DbSet<DzienTreningowy> DzienTreningowy { get; set; }
+        public virtual DbSet<Treningi> Treningi { get; set; }
     }
 }

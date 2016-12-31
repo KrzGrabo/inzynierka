@@ -27,11 +27,13 @@ namespace Aplikacja
         int id = Sesja.ZwrocId();
         Dane przypisaneDane = new Dane();
         Uzytkownicy uzytkownik = new Uzytkownicy();
+        Treningi trening = new Treningi();
+        DzienTreningowy dzienTren = new DzienTreningowy();
         ArrayList wybor = new ArrayList();
         String dataPocz;
         String dataKon;
         private string[] typyTrening = { "odpoczynek", "siłowy", "wytrzymałościowy", "szybkościowy", "techniczny", "gibkościowy", "interwałowy", "kondycyjny", "zwinności", "ogólnorozwojowy" };
-        double poniedzialekCzas, wtorekCzas, srodaCzas, czwartekCzas, piatekCzas, sobotaCzas, niedzielaCzas, sumaCzas, sredniCzas;
+        int poniedzialekCzas, wtorekCzas, srodaCzas, czwartekCzas, piatekCzas, sobotaCzas, niedzielaCzas, sumaCzas, sredniCzas;
         int poniedzialekTyp, wtorekTyp, srodaTyp, czwartekTyp, piatekTyp, sobotaTyp, niedzielaTyp;
         int iloscTrenTydz=0;
         double wagaPom, kaloriePom;
@@ -39,6 +41,7 @@ namespace Aplikacja
         {
             InitializeComponent();
             Bindowanie();
+            czyszczenieTreningow();
         }
 
         public void Bindowanie()
@@ -150,7 +153,7 @@ namespace Aplikacja
             {
                 try
                 {
-                    poniedzialekCzas = double.Parse(poniedzialekCzasTextbox.Text.Trim());
+                    poniedzialekCzas = int.Parse(poniedzialekCzasTextbox.Text.Trim());
                 }
                 catch (Exception)
                 {
@@ -163,7 +166,7 @@ namespace Aplikacja
             {
                 try
                 {
-                    wtorekCzas = double.Parse(wtorekCzasTextbox.Text.Trim());
+                    wtorekCzas = int.Parse(wtorekCzasTextbox.Text.Trim());
                 }
                 catch (Exception)
                 {
@@ -176,7 +179,7 @@ namespace Aplikacja
             {
                 try
                 {
-                    srodaCzas = double.Parse(srodaCzasTextbox.Text.Trim());
+                    srodaCzas = int.Parse(srodaCzasTextbox.Text.Trim());
                 }
                 catch (Exception)
                 {
@@ -190,7 +193,7 @@ namespace Aplikacja
             {
                 try
                 {
-                    czwartekCzas = double.Parse(czwartekCzasTextbox.Text.Trim());
+                    czwartekCzas = int.Parse(czwartekCzasTextbox.Text.Trim());
                 }
                 catch (Exception)
                 {
@@ -203,7 +206,7 @@ namespace Aplikacja
             {
                 try
                 {
-                    piatekCzas = double.Parse(piatekCzasTextbox.Text.Trim());
+                    piatekCzas = int.Parse(piatekCzasTextbox.Text.Trim());
                 }
                 catch (Exception)
                 {
@@ -216,7 +219,7 @@ namespace Aplikacja
             {
                 try
                 {
-                    sobotaCzas = double.Parse(sobotaCzasTextbox.Text.Trim());
+                    sobotaCzas = int.Parse(sobotaCzasTextbox.Text.Trim());
                 }
                 catch (Exception)
                 {
@@ -229,7 +232,7 @@ namespace Aplikacja
             {
                 try
                 {
-                    niedzielaCzas = double.Parse(niedzielaCzasTextbox.Text.Trim());
+                    niedzielaCzas = int.Parse(niedzielaCzasTextbox.Text.Trim());
                 }
                 catch (Exception)
                 {
@@ -269,6 +272,9 @@ namespace Aplikacja
 
             if (startDatapicker.SelectedDate == null) walidacja = walidacja + " \nNie wybrałeś daty początkowej";
             if (koniecDatapicker.SelectedDate == null) walidacja = walidacja + " \nNie wybrałeś daty końcowej";
+            if (startDatapicker.SelectedDate > koniecDatapicker.SelectedDate) walidacja = walidacja + "\nData początkowa jest późniejsza niż końcowa. Zmień date końcową na poprawną.";
+            if (startDatapicker.SelectedDate < DateTime.Now.AddDays(-1)) walidacja = walidacja + "\nTrening może się zaczynać najwcześniej od dzisiaj. Zmień date początkową.";
+            if (startDatapicker.SelectedDate != null && koniecDatapicker.SelectedDate != null && znajdzTrening()) walidacja = walidacja + "\nW podanym okresie jest już zapisany trening. Wybierz inny okres.";
            
             //TRZEBA DODAC SPRAWDZENIE CZY KONCOWA JEST POZNIEJ NIZ POCZATKOWA
             if (walidacja == "")
@@ -529,5 +535,115 @@ namespace Aplikacja
             }
             else niedzielaCzasTextbox.IsEnabled = true;
         }
+
+        private void zapiszButton_Click(object sender, RoutedEventArgs e)
+        {
+            DateTime start = startDatapicker.SelectedDate.GetValueOrDefault();
+            DateTime koniec = koniecDatapicker.SelectedDate.GetValueOrDefault();
+
+            //zapis treningu do bazy
+            trening.Czas_Tydzien = sumaCzas;
+            trening.Srednia_Dzienna = sredniCzas;
+            trening.Ilosc_Tydzien = iloscTrenTydz;
+            trening.ID_Uzytkownika = uzytkownik.ID;
+            trening.Data_Rozpoczecia = start;
+            trening.Data_Zakonczenia = koniec;
+            trening.Czestotliwosc = czestotliwoscPodLabel.Content.ToString();
+
+            db.Treningi.Add(trening);
+            db.SaveChanges();
+
+            //zapis poszczególnych dni do bazy
+            for (DateTime dzien = start; dzien <= koniec; dzien = dzien.AddDays(1))
+            {
+                if (dzien.DayOfWeek == DayOfWeek.Monday)
+                {
+                    dzienTren.Cwiczenie = treningPoniedzialekLabel.Content.ToString();
+                    dzienTren.Czas = poniedzialekCzas;
+                    dzienTren.Data = dzien;
+                    dzienTren.ID_Treningu = trening.Id;
+                }
+                if (dzien.DayOfWeek == DayOfWeek.Tuesday)
+                {
+                    dzienTren.Cwiczenie = treningWtorekLabel.Content.ToString();
+                    dzienTren.Czas = wtorekCzas;
+                    dzienTren.Data = dzien;
+                    dzienTren.ID_Treningu = trening.Id;
+                }
+                if (dzien.DayOfWeek == DayOfWeek.Wednesday)
+                {
+                    dzienTren.Cwiczenie = treningSrodaLabel.Content.ToString();
+                    dzienTren.Czas = srodaCzas;
+                    dzienTren.Data = dzien;
+                    dzienTren.ID_Treningu = trening.Id;
+                }
+                if (dzien.DayOfWeek == DayOfWeek.Thursday)
+                {
+                    dzienTren.Cwiczenie = treningCzwartekLabel.Content.ToString();
+                    dzienTren.Czas = czwartekCzas;
+                    dzienTren.Data = dzien;
+                    dzienTren.ID_Treningu = trening.Id;
+                }
+                if (dzien.DayOfWeek == DayOfWeek.Friday)
+                {
+                    dzienTren.Cwiczenie = treningPiatekLabel.Content.ToString();
+                    dzienTren.Czas = piatekCzas;
+                    dzienTren.Data = dzien;
+                    dzienTren.ID_Treningu = trening.Id;
+                }
+                if (dzien.DayOfWeek == DayOfWeek.Saturday)
+                {
+                    dzienTren.Cwiczenie = treningSobotaLabel.Content.ToString();
+                    dzienTren.Czas = poniedzialekCzas;
+                    dzienTren.Data = dzien;
+                    dzienTren.ID_Treningu = trening.Id;
+                }
+                if (dzien.DayOfWeek == DayOfWeek.Saturday)
+                {
+                    dzienTren.Cwiczenie = treningNiedzielaLabel.Content.ToString();
+                    dzienTren.Czas = niedzielaCzas;
+                    dzienTren.Data = dzien;
+                    dzienTren.ID_Treningu = trening.Id;
+                }
+                db.DzienTreningowy.Add(dzienTren);
+                db.SaveChanges();
+            }
+            zapiszButton.IsEnabled = false;
+            string msg = "Trening został poprawnie zapisany do kalendarza.";
+            MessageBox.Show(msg, "Informacja", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        private bool znajdzTrening()
+        {
+            var treningi = uzytkownik.Treningi.ToList();
+            DateTime dataPocz = startDatapicker.SelectedDate.GetValueOrDefault();
+            DateTime dataKon = koniecDatapicker.SelectedDate.GetValueOrDefault();
+            foreach (Treningi szukany in treningi)
+            {
+                if (szukany.Data_Rozpoczecia <= dataPocz && szukany.Data_Zakonczenia >= dataPocz || szukany.Data_Rozpoczecia <= dataKon && szukany.Data_Zakonczenia >= dataKon)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private void czyszczenieTreningow()
+        {
+            var treningi = uzytkownik.Treningi.ToList();
+            DateTime data = DateTime.Now;
+            foreach (Treningi rekord in treningi)
+            {
+                if (rekord.Data_Zakonczenia < data.AddMonths(-1))
+                {
+                    db.DzienTreningowy.RemoveRange(db.DzienTreningowy.Where(m => m.ID_Treningu == rekord.Id));
+                    db.Treningi.Remove(rekord);
+                }
+            }
+            db.SaveChanges();
+        }
+
+
+
     }
 }

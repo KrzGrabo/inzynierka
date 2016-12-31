@@ -12,25 +12,23 @@ namespace Aplikacja
     using System;
     using System.Collections.Generic;
     
-    public partial class Diety
+    public partial class Treningi
     {
-        public Diety()
+        public Treningi()
         {
-            this.Spis_Posilkow = new HashSet<Spis_Posilkow>();
+            this.DzienTreningowy = new HashSet<DzienTreningowy>();
         }
     
         public int Id { get; set; }
-        public Nullable<int> Zapotrzebowanie { get; set; }
-        public Nullable<double> Bialko { get; set; }
-        public Nullable<double> Weglowodany { get; set; }
-        public Nullable<double> Tluszcz { get; set; }
-        public Nullable<double> Kalorycznosc { get; set; }
-        public Nullable<int> Ilosc_Posilkow { get; set; }
         public Nullable<System.DateTime> Data_Rozpoczecia { get; set; }
         public Nullable<System.DateTime> Data_Zakonczenia { get; set; }
+        public Nullable<int> Srednia_Dzienna { get; set; }
+        public Nullable<int> Czas_Tydzien { get; set; }
+        public Nullable<int> Ilosc_Tydzien { get; set; }
+        public string Czestotliwosc { get; set; }
         public int ID_Uzytkownika { get; set; }
     
+        public virtual ICollection<DzienTreningowy> DzienTreningowy { get; set; }
         public virtual Uzytkownicy Uzytkownicy { get; set; }
-        public virtual ICollection<Spis_Posilkow> Spis_Posilkow { get; set; }
     }
 }

@@ -117,8 +117,14 @@
     <Compile Include="Dziennik.xaml.cs">
       <DependentUpon>Dziennik.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EdytorDnia.xaml.cs">
-      <DependentUpon>EdytorDnia.xaml</DependentUpon>
+    <Compile Include="DzienTreningowy.cs">
+      <DependentUpon>BazaDanych.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EdytorPosilkow.xaml.cs">
+      <DependentUpon>EdytorPosilkow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EdytorTreningu.xaml.cs">
+      <DependentUpon>EdytorTreningu.xaml</DependentUpon>
     </Compile>
     <Compile Include="Historia_Danych.cs">
       <DependentUpon>BazaDanych.tt</DependentUpon>
@@ -193,6 +199,9 @@
     <Compile Include="Trening.xaml.cs">
       <DependentUpon>Trening.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Treningi.cs">
+      <DependentUpon>BazaDanych.tt</DependentUpon>
+    </Compile>
     <Compile Include="Uzytkownicy.cs">
       <DependentUpon>BazaDanych.tt</DependentUpon>
     </Compile>
@@ -208,7 +217,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="EdytorDnia.xaml">
+    <Page Include="EdytorPosilkow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EdytorTreningu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
