@@ -349,7 +349,7 @@ namespace Aplikacja
             db.Diety.Add(dieta);
             db.SaveChanges();
             zapiszButton.IsEnabled = false;
-            string msg = "Dieta zapisana poprawnie.";
+            string msg = "Dieta została zapisana poprawnie do kalendarza.";
             MessageBox.Show(msg, "Informacja", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
@@ -374,7 +374,7 @@ namespace Aplikacja
             DateTime data = DateTime.Now;
             foreach (Diety rekord in diety)
             {
-                if (rekord.Data_Zakonczenia < data.AddDays(-1))
+                if (rekord.Data_Zakonczenia < data.AddMonths(-1))
                 {
                     db.Spis_Posilkow.RemoveRange(db.Spis_Posilkow.Where(m => m.ID_Diety == rekord.Id));
                     db.Diety.Remove(rekord);
