@@ -84,7 +84,7 @@ namespace Aplikacja
             }
             if (walidacja == "")
             {
-                wynikLabel.Content = Spalanie(waga,czas).ToString();
+                wynikLabel.Content = Spalanie(waga,czas).ToString()+" kcal";
             }
             else
             {

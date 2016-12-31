@@ -23,18 +23,92 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
-                 </Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Label Content="{Binding}" Grid.Column="0" Grid.Row="0" x:Name="bmiLabel" Grid.ColumnSpan="2" />
-                <Label Content="{Binding}" Grid.Row="1" x:Name="tluszczLabel" Grid.ColumnSpan="2"/>
-                <Label Content="{Binding}" Grid.Row="2" x:Name="whrLabel" Grid.ColumnSpan="2"  />
-                <Label Content="{Binding}" Grid.Column="0" Grid.Row="3" x:Name="wagaLabel" Grid.ColumnSpan="2" />
-            </Grid>
+                    <Label ToolTipService.ShowDuration="24000" ToolTipService.IsEnabled="False" Content="{Binding}" Grid.Column="0" Grid.Row="0" x:Name="bmiLabel" Grid.ColumnSpan="2" >
+                        <Label.ToolTip>
+                            <StackPanel>
+                                <TextBlock FontWeight="Bold" FontSize="14" Margin="1,1,1,4" Text="BMI"/>
+                                <TextBlock TextWrapping="WrapWithOverflow" FontSize="12">
+                                    Wskaźnik masy ciała (ang. Body Mass Index (BMI)) – współczynnik powstały przez podzielenie masy ciała podanej w kilogramach przez kwadrat wysokości podanej w metrach. Klasyfikacja (zakres wartości) wskaźnika BMI została opracowana wyłącznie dla dorosłych i nie może być stosowana u dzieci. Dla oceny prawidłowego rozwoju dziecka wykorzystuje się siatki centylowe, które powinny być dostosowane dla danej populacji.
+                                    Oznaczanie wskaźnika masy ciała ma znaczenie w ocenie zagrożenia chorobami związanymi z nadwagą i otyłością, np. cukrzycą, chorobą niedokrwienną serca, miażdżycą. Podwyższona wartość BMI związana jest ze zwiększonym ryzykiem wystąpienia takich chorób.
+                                    <LineBreak />
+                                    Dla osób dorosłych wartość BMI wskazuje na:
+                                    <LineBreak />
+                                    do 18,5 – niedowagę
+                                    <LineBreak />
+                                    18,5–24,99 – wartość prawidłową
+                                    <LineBreak />
+                                    ≥ 25,0 – nadwagę
+                                    <LineBreak />
+                                    BMI jest bardzo prosty w użyciu, jednak nie uwzględnia on indywidualnej budowy ciała. Jest dosyć niedokładnym wskaźnikiem niedowagi i nadwagi oraz ryzyk chorób z nimi związanych. Kulturyści mogą mieć BMI wskazujące na skrajną otyłość, posiadając jednocześnie bardzo mało tkanki tłuszczowej. Z drugiej strony, BMI zupełnie zdrowych, szczupłych i wysokich lekkoatletów może wskazywać na skrajną niedowagę (np. BMI Yohanna Diniza przy wzroście 185 cm i wadze 59 kg wyniesie 17,24). Związek między wielkością wskaźnika a ryzykiem chorób różni się między populacjami o różnych proporcjach ciała. I tak wśród Azjatów ryzyko cukrzycy jest znacząco wyższe przy niższych wartościach BMI. Zawartość tłuszczu w organizmie jest też wyższa u kobiet, niż u mężczyzn przy normalnej masie ciała. W przypadku kobiet tkanka tłuszczowa odpowiada za płodność i dojrzewanie płciowe.
+                                    <LineBreak />
+                                    Źródło: https://pl.wikipedia.org/wiki/Wska%C5%BAnik_masy_cia%C5%82a (licencja: CC-BY-SA 3.0)
+                                </TextBlock>
+                            </StackPanel>
+                        </Label.ToolTip>
+                    </Label>
+                    <Label ToolTipService.ShowDuration="24000" ToolTipService.IsEnabled="False"  Content="{Binding}" Grid.Row="1" x:Name="tluszczLabel" Grid.ColumnSpan="2">
+                    <Label.ToolTip>
+                        <StackPanel>
+                            <TextBlock FontWeight="Bold" FontSize="14" Margin="1,1,1,4" Text="Poziom tłuszczu"/>
+                            <TextBlock TextWrapping="WrapWithOverflow" FontSize="12">
+                                Poziom tłuszczu wskazuje na procentowy udział masy tłuszczowej w całkowitej masie ciała       <LineBreak />
+                                Tabela norm poziomu tkanki tłuszczowej u Kobiet<LineBreak />
+                                Opis/rodzaj	Kobiety	Mężczyźni<LineBreak />
+                                Podstawowy tłuszcz	10-13%	2-5%<LineBreak />
+                                Sportowiec	14-20%	6-13%<LineBreak />
+                                Dobra kondycja	21-24%	14-17%<LineBreak />
+                                Średnia kondycja	25-31%	18-24%<LineBreak />
+                                Otyły	32%+	25%+<LineBreak />
+                            </TextBlock>
+                        </StackPanel>
+                    </Label.ToolTip>
+                    </Label>
+                    <Label ToolTipService.ShowDuration="24000" ToolTipService.IsEnabled="False" Content="{Binding}" Grid.Row="2" x:Name="whrLabel" Grid.ColumnSpan="2"  >
+                        <Label.ToolTip>
+                            <StackPanel>
+                                <TextBlock FontWeight="Bold" FontSize="14" Margin="1,1,1,4" Text="Poziom tłuszczu"/>
+                                <TextBlock TextWrapping="WrapWithOverflow" FontSize="12">
+                                    WHR (ang. waist-hip ratio) – jest współczynnikiem powstałym przez podzielenie obwodu talii przez obwód bioder (pomiary dokonywane w dowolnej jednostce miar). WHR stanowi wskaźnik dystrybucji tkanki tłuszczowej w ciele człowieka i jest wyznacznikiem określającym rodzaj sylwetki ciała (sylwetka w kształcie gruszki bądź jabłka) oraz typ otyłości (otyłość brzuszna bądź pośladkowo-udowa).
+                                    <LineBreak />
+                                    W celu obliczenia wartości współczynnika WHR, należy uprzednio dokonać pomiaru obwodu talii i bioder. Pomiarów tych należy dokonać możliwie dokładnie np. przy użyciu taśmy do pomiarów antropometrycznych, liniowych zaopatrzonych w dynamometrem i w ściśle określonym miejscu ciała. Obliczenie WHR przeprowadza się zgodnie z poniższym wzorem.
+                                    <LineBreak />
+                                    Obwodu talii należy dokonać w połowie odległości między dolnym brzegiem (łukiem) żeber, a górnym brzegiem grzebienia kości biodrowej. Natomiast pomiaru obwodu bioder dokonuje się prowadząc miarkę przez największą wypukłość mięśni pośladkowych, poniżej talerzy biodrowych.<LineBreak />
+                                    Poprawnie wyznaczone obwody pozwalają na obliczenie wartości wskaźnika WHR. Na jego podstawie można dokonać identyfikacji typu otyłości:
+                                    <LineBreak />
+                                    Otyłość androidalną, brzuszną (typu 'jabłko') rozpoznajemy, gdy WHR jest większy lub równy 0,8 u kobiet lub 1,0 u mężczyzn.<LineBreak />
+                                    Otyłość gynoidalną, pośladkowo-udową (typu 'gruszka') rozpoznajemy, gdy WHR jest niższy niż 0,8 u kobiet lub 1,0 u mężczyzn.<LineBreak />
+                                    Według psychologów ewolucyjnych WHR jest miarodajnym, liczbowym wskaźnikiem atrakcyjności fizycznej kobiet w oczach mężczyzn. W większości kultur za najbardziej atrakcyjny uważany jest kobiecy kształt o WHR = 0,7. Obserwacje te potwierdzają badania w których wykazano, że na widok nagich kobiet, posiadających WHR na poziomie 0,7 dochodzi do aktywacji w mózgu mężczyzn ośrodka przyjemności. Przypuszcza się iż jest to powiązane z nieświadomym ocenianiem potencjału płodności kobiety przez mężczyznę, gdyż kobiety o szerokiej miednicy znacznie łatwiej przechodzą ciążę i poród.<LineBreak />
+                                    Źródło: https://pl.wikipedia.org/wiki/Waist-hip_ratio (na licencji CC-BY-SA 3.0)
+                                </TextBlock>
+                            </StackPanel>
+                        </Label.ToolTip>
+
+                    </Label>
+                    <Label ToolTipService.ShowDuration="24000" ToolTipService.IsEnabled="False" Content="{Binding}" Grid.Column="0" Grid.Row="3" x:Name="wagaLabel" Grid.ColumnSpan="2">
+                        <Label.ToolTip>
+                            <StackPanel>
+                                <TextBlock FontWeight="Bold" FontSize="14" Margin="1,1,1,4" Text="Idealna waga wg Broca"/>
+                                <TextBlock TextWrapping="WrapWithOverflow" FontSize="12">
+                                        Obserwacja lekarza pochodzącego z Francji, Pierra Broca który podczas badań na żołnierzach w XIX wieku stwierdził że przeciętna masa ciała wynosi wzrost(w cm) odjąć 100. Aktualnie modifikuje się ten wzór mnożąc go przez odpowiedni współczynniki<LineBreak />
+                                        wzór Broca dla kobiet<LineBreak />
+                                        należna masa ciała [kg] = (wzrost [cm] – 100) x 0,85<LineBreak />
+                                        wzór Broca dla mężczyzn<LineBreak />
+                                        należna masa ciała [kg] = (wzrost [cm] – 100) x 0,90<LineBreak />
+                                        Wynik jest miarodajny dla osób pomiędzy 155 a 195 centymetrów wzrostu.
+                                </TextBlock>
+                            </StackPanel>
+                        </Label.ToolTip>
+
+                    </Label>
+                </Grid>
         </GroupBox>
         <TextBlock TextWrapping="WrapWithOverflow" x:Name="opisTextblock" Text="{Binding}" Grid.ColumnSpan="2"/>
         <WrapPanel Grid.Row="2">
