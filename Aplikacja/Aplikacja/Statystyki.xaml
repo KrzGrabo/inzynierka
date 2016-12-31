@@ -5,6 +5,12 @@
         Title="Statystyki" Height="300" Width="100">
     <Grid>
         <TabControl>
+            <TabControl.Background>
+            <LinearGradientBrush EndPoint="0.5,1"  MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                <GradientStop Color="#FFF3F3F3"/>
+                <GradientStop Color="#FF7DCFE8" Offset="1"/>
+            </LinearGradientBrush>
+            </TabControl.Background>
             <TabItem Header="Profil">
                 <ScrollViewer HorizontalScrollBarVisibility="Visible">
                     <StackPanel>

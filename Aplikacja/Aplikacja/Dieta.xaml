@@ -4,6 +4,12 @@
         Title="Dieta" Height="400" Width="450" FontSize="14" WindowStartupLocation="CenterScreen">
     <Grid>
         <TabControl x:Name="oknoTabcontrol">
+            <TabControl.Background>
+                <LinearGradientBrush EndPoint="0.5,1"  MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="#FFF3F3F3"/>
+                    <GradientStop Color="#FF7DCFE8" Offset="1"/>
+                </LinearGradientBrush>
+            </TabControl.Background>
             <TabItem Header="Krok I" x:Name="krok1Tab">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -35,7 +41,7 @@
                         <Image Source="Ikonki/1482266010_Info.png" Height="25" Margin="1" ToolTip="Wybierz swoją płeć z listy."/>
                         <Label Content="Płeć:" />
                     </WrapPanel>
-                    
+
                     <ComboBox Grid.Column="1" x:Name="plecCombo" Grid.Row="3">
                         <ComboBoxItem>Mężczyzna</ComboBoxItem>
                         <ComboBoxItem>Kobieta</ComboBoxItem>
@@ -48,8 +54,8 @@
                         <TextBox Grid.Column="1" Grid.Row="4" x:Name="zapotrzebowanieTextbox" KeyDown="WalidacjaTextboxow"/>
 
 
-                    <Button Content="Pobierz dane z profilu" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" x:Name="mojedaneButton" Click="mojedaneButton_Click" />
-                    <Button Content="Dalej" Grid.Row="5" Grid.ColumnSpan="2"  x:Name="dalej1Button" Click="dalej1Button_Click" />
+                    <Button Background="AliceBlue" Content="Pobierz dane z profilu" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" x:Name="mojedaneButton" Click="mojedaneButton_Click" />
+                    <Button Background="AliceBlue" Content="Dalej" Grid.Row="5" Grid.ColumnSpan="2"  x:Name="dalej1Button" Click="dalej1Button_Click" />
 
                 </Grid>
 
@@ -108,13 +114,13 @@
                         <Image Source="Ikonki/1482266010_Info.png" Height="25" Margin="1" ToolTip="Wybierz co ma być źródłem energii w diecie.(przesuwanie w lewo daje niższy udział węglowodanów, przy większym tłuszczów. Analogicznie dla przesuwania suwaka w prawo)"/>
                         <Label Content="Proporcje źródła energi:"  />
                     </WrapPanel>
-                   
-                    <Button Margin="5" Content="co wybrać?" Grid.Row="3"  Grid.Column="1" x:Name="porownanieButton" Click="porownanieButton_Click" />
+
+                    <Button Background="AliceBlue" Margin="5" Content="co wybrać?" Grid.Row="3"  Grid.Column="1" x:Name="porownanieButton" Click="porownanieButton_Click" />
                     <Slider Maximum="95" Minimum="5"  Value="50" Grid.ColumnSpan="2" Grid.Row="4" x:Name="podzialSlider" TickPlacement="Both"  TickFrequency="10" IsSnapToTickEnabled="True" ValueChanged="podzialSlider_ValueChanged"  />
                     <Label x:Name="podzialLabel" Content="{Binding}" Grid.Row="5" HorizontalAlignment="Center" Grid.ColumnSpan="2"/>
                     <Label Margin="5" Grid.ColumnSpan="2" Content="węglowodany : tłuszcze    " HorizontalAlignment="Center" Grid.Row="6"/>
-                    <Button Content="Powrót" Grid.Row="7"  Grid.Column="0" x:Name="powrot2Button" Click="powrot2Button_Click" />
-                    <Button Content="Dalej" Grid.Row="7" Grid.Column="1"  x:Name="dalej2Button" Click="dalej2Button_Click" />
+                    <Button Background="AliceBlue" Content="Powrót" Grid.Row="7"  Grid.Column="0" x:Name="powrot2Button" Click="powrot2Button_Click" />
+                    <Button Background="AliceBlue" Content="Dalej" Grid.Row="7" Grid.Column="1"  x:Name="dalej2Button" Click="dalej2Button_Click" />
 
                 </Grid>
 
@@ -165,8 +171,8 @@
                         <ComboBoxItem>6</ComboBoxItem>
                     </ComboBox>
 
-                    <Button Content="Powrót" Grid.Row="4"  Grid.Column="0" x:Name="powrot3Button" Click="powrot3Button_Click" />
-                    <Button Content="Dalej" Grid.Row="4" Grid.Column="1"  x:Name="dalej3Button" Click="dalej3Button_Click" />
+                    <Button Background="AliceBlue" Content="Powrót" Grid.Row="4"  Grid.Column="0" x:Name="powrot3Button" Click="powrot3Button_Click" />
+                    <Button Background="AliceBlue" Content="Dalej" Grid.Row="4" Grid.Column="1"  x:Name="dalej3Button" Click="dalej3Button_Click" />
 
                 </Grid>
             </TabItem>
@@ -188,8 +194,8 @@
 
                     </Grid.RowDefinitions>
                     <Label x:Name="opis4Label" Content="Wszystko dane zostały wprowadzone poprawnie." Grid.ColumnSpan="4"/>
-                    <Button Content="Stwórz dietę" x:Name="obliczButton" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1"  Click="obliczButton_Click"/>
-                    <ProgressBar Minimum="0" Maximum="100" Grid.Row="2" Grid.ColumnSpan="4" Name="pbStatus" Height="22" />
+                    <Button Background="AliceBlue" Content="Stwórz dietę" x:Name="obliczButton" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1"  Click="obliczButton_Click"/>
+                    <ProgressBar Background="AliceBlue" Minimum="0" Maximum="100" Grid.Row="2" Grid.ColumnSpan="4" Name="pbStatus" Height="22" />
                     <GroupBox Grid.Row="3" Grid.ColumnSpan="4" Header="Podsumowanie" >
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -218,7 +224,7 @@
                         
                         <!--<TextBlock TextWrapping="WrapWithOverflow" Text="{Binding}" x:Name="wynikiTextbox"/>-->
                     </GroupBox>
-                    <Button Content="Zapisz dietę do kalendarza" x:Name="zapiszButton" Click="zapiszButton_Click" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="4"  />
+                    <Button Background="AliceBlue" Content="Zapisz dietę do kalendarza" x:Name="zapiszButton" Click="zapiszButton_Click" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="4"  />
 
                 </Grid>
             </TabItem>
