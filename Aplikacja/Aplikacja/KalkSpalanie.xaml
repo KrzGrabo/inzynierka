@@ -8,6 +8,12 @@
     </Window.Resources>
     <ScrollViewer>
         <Grid DataContext="{StaticResource spalanieViewSource}">
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1"  MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="#FFF3F3F3"/>
+                    <GradientStop Color="#FF7DCFE8" Offset="1"/>
+                </LinearGradientBrush>
+            </Grid.Background>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -39,7 +45,7 @@
             <TextBox x:Name="czasTextbox" Grid.Column="2" Grid.Row="2" KeyDown="czasTextbox_KeyDown"/>
             <TextBox x:Name="wagaTextbox" Grid.Row="1" Grid.Column="1" KeyDown="wagaTextbox_KeyDown"/>
             <ComboBox Grid.Column="1" Grid.Row="3" x:Name="aktywnosciCombo" ItemsSource="{Binding}" DisplayMemberPath="Aktywnosc" />
-            <Button x:Name="obliczButton" Grid.Row="4" Grid.ColumnSpan="2" Content="Oblicz" Click="obliczButton_Click"  />
+            <Button Background="AliceBlue" x:Name="obliczButton" Grid.Row="4" Grid.ColumnSpan="2" Content="Oblicz" Click="obliczButton_Click"  />
             <Label Content="Spalone kalorie:" Grid.Row="5"/>
             <Label x:Name="wynikLabel"  Content="0" Grid.Row="5" Grid.Column="1"/>
         </Grid>

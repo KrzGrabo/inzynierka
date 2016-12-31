@@ -34,6 +34,16 @@
           <Property Name="Data_Zakonczenia" Type="date" />
           <Property Name="ID_Uzytkownika" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="DzienTreningowy">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Data" Type="date" />
+          <Property Name="Cwiczenie" Type="varchar" MaxLength="40" />
+          <Property Name="Czas" Type="int" />
+          <Property Name="ID_Treningu" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Historia Danych">
           <Key>
             <PropertyRef Name="Id" />
@@ -104,6 +114,19 @@
           <Property Name="Dawkowanie" Type="varchar" MaxLength="100" />
           <Property Name="Dzialanie" Type="varchar" MaxLength="100" />
         </EntityType>
+        <EntityType Name="Treningi">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Data_Rozpoczecia" Type="date" />
+          <Property Name="Data_Zakonczenia" Type="date" />
+          <Property Name="Srednia_Dzienna" Type="int" />
+          <Property Name="Czas_Tydzien" Type="int" />
+          <Property Name="Ilosc_Tydzien" Type="int" />
+          <Property Name="Czestotliwosc" Type="varchar" MaxLength="30" />
+          <Property Name="ID_Uzytkownika" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Uzytkownicy">
           <Key>
             <PropertyRef Name="ID" />
@@ -122,6 +145,18 @@
             </Principal>
             <Dependent Role="Diety">
               <PropertyRef Name="ID_Uzytkownika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DzienTren__ID_Tr__370627FE">
+          <End Role="Treningi" Type="Self.Treningi" Multiplicity="1" />
+          <End Role="DzienTreningowy" Type="Self.DzienTreningowy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Treningi">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DzienTreningowy">
+              <PropertyRef Name="ID_Treningu" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -173,6 +208,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Treningi__ID_Uzy__3429BB53">
+          <End Role="Uzytkownicy" Type="Self.Uzytkownicy" Multiplicity="1" />
+          <End Role="Treningi" Type="Self.Treningi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uzytkownicy">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Treningi">
+              <PropertyRef Name="ID_Uzytkownika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Uzytkowni__Id_Pr__25869641">
           <End Role="Dane" Type="Self.Dane" Multiplicity="0..1" />
           <End Role="Uzytkownicy" Type="Self.Uzytkownicy" Multiplicity="*" />
@@ -188,6 +235,7 @@
         <EntityContainer Name="BazaDanychModelStoreContainer">
           <EntitySet Name="Dane" EntityType="Self.Dane" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Diety" EntityType="Self.Diety" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DzienTreningowy" EntityType="Self.DzienTreningowy" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Historia Danych" EntityType="Self.Historia Danych" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Kategorie" EntityType="Self.Kategorie" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Posilek" EntityType="Self.Posilek" Schema="dbo" store:Type="Tables" />
@@ -195,10 +243,15 @@
           <EntitySet Name="Spalanie" EntityType="Self.Spalanie" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Spis_Posilkow" EntityType="Self.Spis_Posilkow" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Suplementy" EntityType="Self.Suplementy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Treningi" EntityType="Self.Treningi" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Uzytkownicy" EntityType="Self.Uzytkownicy" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Diety__ID_Uzytko__4F47C5E3" Association="Self.FK__Diety__ID_Uzytko__4F47C5E3">
             <End Role="Uzytkownicy" EntitySet="Uzytkownicy" />
             <End Role="Diety" EntitySet="Diety" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DzienTren__ID_Tr__370627FE" Association="Self.FK__DzienTren__ID_Tr__370627FE">
+            <End Role="Treningi" EntitySet="Treningi" />
+            <End Role="DzienTreningowy" EntitySet="DzienTreningowy" />
           </AssociationSet>
           <AssociationSet Name="FK__Historia __ID_Pr__0880433F" Association="Self.FK__Historia __ID_Pr__0880433F">
             <End Role="Dane" EntitySet="Dane" />
@@ -215,6 +268,10 @@
           <AssociationSet Name="FK__Spis_Posi__ID_Po__220B0B18" Association="Self.FK__Spis_Posi__ID_Po__220B0B18">
             <End Role="Posilek" EntitySet="Posilek" />
             <End Role="Spis_Posilkow" EntitySet="Spis_Posilkow" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Treningi__ID_Uzy__3429BB53" Association="Self.FK__Treningi__ID_Uzy__3429BB53">
+            <End Role="Uzytkownicy" EntitySet="Uzytkownicy" />
+            <End Role="Treningi" EntitySet="Treningi" />
           </AssociationSet>
           <AssociationSet Name="FK__Uzytkowni__Id_Pr__25869641" Association="Self.FK__Uzytkowni__Id_Pr__25869641">
             <End Role="Dane" EntitySet="Dane" />
@@ -235,6 +292,7 @@
           <Property Name="ID_Profilu" Type="Int32" />
           <NavigationProperty Name="Dane" Relationship="BazaDanychModel.FK__Uzytkowni__Id_Pr__4F47C5E3" FromRole="Uzytkownicy" ToRole="Dane" />
           <NavigationProperty Name="Diety" Relationship="BazaDanychModel.FK__Diety__ID_Uzytko__4F47C5E3" FromRole="Uzytkownicy" ToRole="Diety" />
+          <NavigationProperty Name="Treningi" Relationship="BazaDanychModel.FK__Treningi__ID_Uzy__3429BB53" FromRole="Uzytkownicy" ToRole="Treningi" />
           </EntityType>
         <EntityContainer Name="BazaDanychEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Uzytkownicy" EntityType="Self.Uzytkownicy" />
@@ -271,6 +329,16 @@
             <End Role="Spis_Posilkow" EntitySet="Spis_Posilkow" />
           </AssociationSet>
           <EntitySet Name="Spalanie" EntityType="BazaDanychModel.Spalanie" />
+          <EntitySet Name="DzienTreningowy" EntityType="BazaDanychModel.DzienTreningowy" />
+          <EntitySet Name="Treningi" EntityType="BazaDanychModel.Treningi" />
+          <AssociationSet Name="FK__DzienTren__ID_Tr__370627FE" Association="BazaDanychModel.FK__DzienTren__ID_Tr__370627FE">
+            <End Role="Treningi" EntitySet="Treningi" />
+            <End Role="DzienTreningowy" EntitySet="DzienTreningowy" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Treningi__ID_Uzy__3429BB53" Association="BazaDanychModel.FK__Treningi__ID_Uzy__3429BB53">
+            <End Role="Uzytkownicy" EntitySet="Uzytkownicy" />
+            <End Role="Treningi" EntitySet="Treningi" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="Dane">
           <Key>
@@ -453,6 +521,56 @@
           <Property Name="Aktywnosc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MET" Type="Double" />
         </EntityType>
+        <EntityType Name="DzienTreningowy">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Data" Type="DateTime" Precision="0" />
+          <Property Name="Cwiczenie" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Czas" Type="Int32" />
+          <Property Name="ID_Treningu" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Treningi" Relationship="BazaDanychModel.FK__DzienTren__ID_Tr__370627FE" FromRole="DzienTreningowy" ToRole="Treningi" />
+        </EntityType>
+        <EntityType Name="Treningi">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Data_Rozpoczecia" Type="DateTime" Precision="0" />
+          <Property Name="Data_Zakonczenia" Type="DateTime" Precision="0" />
+          <Property Name="Srednia_Dzienna" Type="Int32" />
+          <Property Name="Czas_Tydzien" Type="Int32" />
+          <Property Name="Ilosc_Tydzien" Type="Int32" />
+          <Property Name="Czestotliwosc" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ID_Uzytkownika" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DzienTreningowy" Relationship="BazaDanychModel.FK__DzienTren__ID_Tr__370627FE" FromRole="Treningi" ToRole="DzienTreningowy" />
+          <NavigationProperty Name="Uzytkownicy" Relationship="BazaDanychModel.FK__Treningi__ID_Uzy__3429BB53" FromRole="Treningi" ToRole="Uzytkownicy" />
+        </EntityType>
+        <Association Name="FK__DzienTren__ID_Tr__370627FE">
+          <End Type="BazaDanychModel.Treningi" Role="Treningi" Multiplicity="1" />
+          <End Type="BazaDanychModel.DzienTreningowy" Role="DzienTreningowy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Treningi">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DzienTreningowy">
+              <PropertyRef Name="ID_Treningu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Treningi__ID_Uzy__3429BB53">
+          <End Type="BazaDanychModel.Uzytkownicy" Role="Uzytkownicy" Multiplicity="1" />
+          <End Type="BazaDanychModel.Treningi" Role="Treningi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uzytkownicy">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Treningi">
+              <PropertyRef Name="ID_Uzytkownika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -573,6 +691,31 @@
               <MappingFragment StoreEntitySet="Spalanie">
                 <ScalarProperty Name="MET" ColumnName="MET" />
                 <ScalarProperty Name="Aktywnosc" ColumnName="Aktywnosc" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DzienTreningowy">
+            <EntityTypeMapping TypeName="BazaDanychModel.DzienTreningowy">
+              <MappingFragment StoreEntitySet="DzienTreningowy">
+                <ScalarProperty Name="ID_Treningu" ColumnName="ID_Treningu" />
+                <ScalarProperty Name="Czas" ColumnName="Czas" />
+                <ScalarProperty Name="Cwiczenie" ColumnName="Cwiczenie" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Treningi">
+            <EntityTypeMapping TypeName="BazaDanychModel.Treningi">
+              <MappingFragment StoreEntitySet="Treningi">
+                <ScalarProperty Name="ID_Uzytkownika" ColumnName="ID_Uzytkownika" />
+                <ScalarProperty Name="Czestotliwosc" ColumnName="Czestotliwosc" />
+                <ScalarProperty Name="Ilosc_Tydzien" ColumnName="Ilosc_Tydzien" />
+                <ScalarProperty Name="Czas_Tydzien" ColumnName="Czas_Tydzien" />
+                <ScalarProperty Name="Srednia_Dzienna" ColumnName="Srednia_Dzienna" />
+                <ScalarProperty Name="Data_Zakonczenia" ColumnName="Data_Zakonczenia" />
+                <ScalarProperty Name="Data_Rozpoczecia" ColumnName="Data_Rozpoczecia" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

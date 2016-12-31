@@ -3,6 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 Title="Informacje o programie" Height="400" Width="400" Icon="Ikonki\ikona.png" WindowStartupLocation="CenterOwner" ResizeMode="NoResize" FontSize="14">
     <Grid Margin="5" >
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1"  MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                <GradientStop Color="#FFF3F3F3"/>
+                <GradientStop Color="#FF7DCFE8" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="150"/>
             <ColumnDefinition Width="Auto"/>

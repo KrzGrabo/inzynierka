@@ -4,7 +4,13 @@
         Title="KalkZapotrzebowanie" WindowStartupLocation="CenterScreen"  FontSize="14" Height="400" Width="400">
     <ScrollViewer>
         <Grid>
-        <Grid.ColumnDefinitions>
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1"  MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="#FFF3F3F3"/>
+                    <GradientStop Color="#FF7DCFE8" Offset="1"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
@@ -22,7 +28,7 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <TextBlock TextWrapping="WrapWithOverflow" Text="{Binding}" x:Name="opisLabel" Grid.ColumnSpan="2"/>
-        <Button Content="Pobierz dane z profilu" Grid.Row="1" Grid.ColumnSpan="2" x:Name="daneButton" Click="daneButton_Click"/>
+            <Button Background="AliceBlue" Content="Pobierz dane z profilu" Grid.Row="1" Grid.ColumnSpan="2" x:Name="daneButton" Click="daneButton_Click"/>
       
         <WrapPanel Grid.Row="2">
             <Image Source="Ikonki/1482266010_Info.png" Height="25" Margin="1" ToolTip="Wpisz swoją wagę w kilogramach. Podana wartość musi być liczbowa i należeć do zakresu (30, 300)."/>
@@ -61,7 +67,7 @@
             <ComboBoxItem>Wysoka</ComboBoxItem>
             <ComboBoxItem>Bardzo wysoka</ComboBoxItem>
         </ComboBox>
-        <Button Content="Oblicz" Grid.Row="8" Grid.ColumnSpan="2" x:Name="obliczButton" Click="obliczButton_Click" />
+            <Button Background="AliceBlue" Content="Oblicz" Grid.Row="8" Grid.ColumnSpan="2" x:Name="obliczButton" Click="obliczButton_Click" />
 
         <WrapPanel Grid.Row="7">
             <Image Source="Ikonki/1482266010_Info.png" Height="25" Margin="1" ToolTip="Wybierz swój somatotyp z listy(jeśli nie wiesz co wybrać odwiedź stronę: http://www.fabrykasily.pl/treningi/somatotypy-sprawdz-jaki-posiadasz)."/>
@@ -75,7 +81,7 @@
         </ComboBox>
         <TextBlock TextWrapping="WrapWithOverflow" Text="Twoje zapotrzebowanie energetyczne:" Grid.Row="9"/>
         <Label Content="0 kcal" Grid.Row="9" Grid.Column="1" Name="wynikLabel" />
-        <Button Content="Przenieś zapotrzebowanie" Grid.Row="10" Grid.ColumnSpan="2" x:Name="dietaButton" Click="dietaButton_Click" />
+            <Button Background="AliceBlue" Content="Przenieś zapotrzebowanie" Grid.Row="10" Grid.ColumnSpan="2" x:Name="dietaButton" Click="dietaButton_Click" />
     </Grid>
     </ScrollViewer>
 

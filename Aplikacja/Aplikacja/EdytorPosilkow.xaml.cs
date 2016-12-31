@@ -17,7 +17,7 @@ namespace Aplikacja
     /// <summary>
     /// Interaction logic for EdytorDnia.xaml
     /// </summary>
-    public partial class EdytorDnia : Window
+    public partial class EdytorPosilkow : Window
     {
 
         BazaDanychEntities db = new BazaDanychEntities();
@@ -26,9 +26,10 @@ namespace Aplikacja
         Diety dieta = new Diety();
         Spis_Posilkow spis = new Spis_Posilkow();
         DateTime wybranaData = new DateTime();
+        int ilosc_wybranych = 0;
         bool walidacja = true;
 
-        public EdytorDnia()
+        public EdytorPosilkow()
         {
             InitializeComponent();
         }
@@ -51,10 +52,12 @@ namespace Aplikacja
             bialkoLabel.Content = ((int)dieta.Bialko).ToString();
             weglowodanyLabel.Content = ((int)dieta.Weglowodany).ToString();
             tluszczeLabel.Content = ((int)dieta.Tluszcz).ToString();
+            posilkiLabel.Content = dieta.Ilosc_Posilkow.ToString();
         }
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs  e)
         {
+            ilosc_wybranych = 0;
             int kalorie = (int)dieta.Zapotrzebowanie;
             int bialko = (int)dieta.Bialko;
             int weglowodany = (int) dieta.Weglowodany;
@@ -65,6 +68,7 @@ namespace Aplikacja
                 bialko = bialko - (int)posilek.Bialko;
                 weglowodany = weglowodany - (int)posilek.Weglowodany;
                 tluszcz = tluszcz - (int)posilek.Tluszcz;
+                ilosc_wybranych++;
             }
 
             if (kalorie < 0 || bialko < 0 || weglowodany < 0 || tluszcz < 0)
@@ -76,6 +80,9 @@ namespace Aplikacja
             bialkoLabel.Content = bialko.ToString();
             weglowodanyLabel.Content = weglowodany.ToString();
             tluszczeLabel.Content = tluszcz.ToString();
+
+            if (ilosc_wybranych <= dieta.Ilosc_Posilkow)
+                posilkiLabel.Content = (dieta.Ilosc_Posilkow - ilosc_wybranych).ToString();
         }
 
         private void zapiszButton_Click(object sender, RoutedEventArgs e)
@@ -88,6 +95,11 @@ namespace Aplikacja
             else if(potrawyBox.SelectedItems.Count == 0)
             {
                 string msg = "Nie wybrano żadnych posiłków.";
+                MessageBox.Show(msg, "Uwaga", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
+            else if(ilosc_wybranych > dieta.Ilosc_Posilkow)
+            {
+                string msg = "Przekroczyłeś dopuszczalną ilość posiłków. Wybierz ich mniejszą ilość.";
                 MessageBox.Show(msg, "Uwaga", MessageBoxButton.OK, MessageBoxImage.Exclamation);
             }
             else
@@ -118,6 +130,13 @@ namespace Aplikacja
                 }
             }
 
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            PlanDnia plan = new PlanDnia();
+            plan.przekazDane(wybranaData);
+            plan.Show();
         }
 
     }

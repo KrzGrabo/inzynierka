@@ -59,7 +59,7 @@ namespace Aplikacja
             double waga=0;
             int indeks=aktywnosciCombo.SelectedIndex;
             double czas=0;
-            double aktywnosc = 0;
+
             try
             {
                 waga = double.Parse(wagaTextbox.Text.Trim());

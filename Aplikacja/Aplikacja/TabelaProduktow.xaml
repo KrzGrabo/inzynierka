@@ -9,7 +9,13 @@
     </Window.Resources>
     <ScrollViewer>
     <Grid DataContext="{StaticResource kategorieViewSource}">
-        <Grid.ColumnDefinitions>
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1"  MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="#FFF3F3F3"/>
+                    <GradientStop Color="#FF1CA4CD" Offset="1"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -19,6 +25,14 @@
 
         <ComboBox Margin="5"  x:Name="kategoriaCombobox" Grid.Row="0" TextSearch.TextPath = "nazwa" ItemsSource="{Binding}"  SelectionChanged="kategoriaCombobox_SelectionChanged" DisplayMemberPath="Nazwa"/>
         <DataGrid Margin="10" ItemsSource="{Binding Source={StaticResource produktyViewSource}}" Grid.Row="1" AutoGenerateColumns="False" >
+                <DataGrid.Background>
+
+                    <LinearGradientBrush EndPoint="0.5,1"  MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                        <GradientStop Color="#FFF3F3F3"/>
+                        <GradientStop Color="#FF7DCFE8" Offset="1"/>
+                    </LinearGradientBrush>
+
+                </DataGrid.Background>
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Nazwa" Binding="{Binding Nazwa}" Width="auto" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Białko" Binding="{Binding Bialko}" Width="auto" IsReadOnly="True"/>

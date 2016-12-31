@@ -4,7 +4,13 @@
         Title="KalkWaga" FontSize="14" Height="400" Width="400">
     <ScrollViewer>
     <Grid>
-        <Grid.ColumnDefinitions>
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1"  MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="#FFF3F3F3"/>
+                    <GradientStop Color="#FF7DCFE8" Offset="1"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
@@ -149,8 +155,8 @@
 
   
         <TextBox Grid.Column="1" x:Name="biodraTextbox" Grid.Row="6" KeyDown="WalidacjaTextboxow"/>
-        <Button Content="Pobierz dane z profilu" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" x:Name="mojedaneButton" Click="mojedaneButton_Click" />
-        <Button Content="Oblicz" Grid.Row="7" Grid.ColumnSpan="2"  x:Name="obliczButton" Click="obliczButton_Click"/>
+            <Button Background="AliceBlue" Content="Pobierz dane z profilu" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" x:Name="mojedaneButton" Click="mojedaneButton_Click" />
+            <Button Background="AliceBlue" Content="Oblicz" Grid.Row="7" Grid.ColumnSpan="2"  x:Name="obliczButton" Click="obliczButton_Click"/>
     </Grid>
     </ScrollViewer>
 </Window>

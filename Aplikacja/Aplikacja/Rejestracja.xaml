@@ -3,36 +3,43 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Rejestracja" Height="250" Width="300">
     <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1"  MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                <GradientStop Color="#FFF3F3F3"/>
+                <GradientStop Color="#FF7DCFE8" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <Label Margin="10" Content="Login" Grid.Row="0"/>
-        <TextBox Margin="10" x:Name="loginTextbox" Grid.Row="0" Grid.Column="1"/>
-        <Label Margin="10" Content="Hasło" Grid.Row="1"/>
-        <PasswordBox Margin="10" x:Name="hasloTextbox" Grid.Row="1" Grid.Column="1" PasswordChar="*" />
+        <Label Margin="10" Content="Login" Grid.Row="1"/>
+        <TextBox Margin="10" x:Name="loginTextbox" Grid.Row="1" Grid.Column="1"/>
+        <Label Margin="10" Content="Hasło" Grid.Row="2"/>
+        <PasswordBox Margin="10" x:Name="hasloTextbox" Grid.Row="2" Grid.Column="1" PasswordChar="*" />
         
-        <Label Margin="10" Content="Powtórz hasło" Grid.Row="2"/>
-        <PasswordBox Margin="10" x:Name="haslo2Textbox" Grid.Row="2" Grid.Column="1" PasswordChar="*" />
+        <Label  Content="Powtórz hasło" Grid.Row="3"/>
+        <PasswordBox  x:Name="haslo2Textbox" Grid.Row="3" Grid.Column="1" PasswordChar="*" />
 
-        <Button x:Name="powrotButton" Grid.Column="0" Grid.Row="7" Margin="10,20,10,15" Click="powrotButton_Click"  >
+        <Button Background="AliceBlue" x:Name="powrotButton" Grid.Column="0" Grid.Row="4"  Click="powrotButton_Click"  >
             <StackPanel Orientation="Horizontal">
                 <!--<Image Source="Zasoby/save2.ico" Height="20" Margin="1"/>-->
                 <TextBlock><Run Text=" Powrót "/></TextBlock>
             </StackPanel>
         </Button>
 
-        <Button x:Name="rejestracjaButton" Grid.Column="1" Grid.Row="7" Margin="10,20,10,15" Click="rejestracjaButton_Click"  >
+        <Button Background="AliceBlue" x:Name="rejestracjaButton" Grid.Column="1" Grid.Row="4" Click="rejestracjaButton_Click"  >
             <StackPanel Orientation="Horizontal">
                 <!--<Image Source="Zasoby/save2.ico" Height="20" Margin="1"/>-->
-                <TextBlock><Run Text=" Zarejesruj się "/></TextBlock>
+                <TextBlock><Run Text=" Zarejestruj się "/></TextBlock>
             </StackPanel>
         </Button>
     </Grid>

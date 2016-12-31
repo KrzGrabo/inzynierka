@@ -17,6 +17,7 @@ namespace Aplikacja
         public Uzytkownicy()
         {
             this.Diety = new HashSet<Diety>();
+            this.Treningi = new HashSet<Treningi>();
         }
     
         public int ID { get; set; }
@@ -26,5 +27,6 @@ namespace Aplikacja
     
         public virtual Dane Dane { get; set; }
         public virtual ICollection<Diety> Diety { get; set; }
+        public virtual ICollection<Treningi> Treningi { get; set; }
     }
 }
