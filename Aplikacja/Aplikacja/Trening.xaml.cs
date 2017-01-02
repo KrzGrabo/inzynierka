@@ -36,6 +36,7 @@ namespace Aplikacja
         int poniedzialekCzas, wtorekCzas, srodaCzas, czwartekCzas, piatekCzas, sobotaCzas, niedzielaCzas, sumaCzas, sredniCzas;
         int poniedzialekTyp, wtorekTyp, srodaTyp, czwartekTyp, piatekTyp, sobotaTyp, niedzielaTyp;
         int iloscTrenTydz=0;
+        DateTime? a, b;
         double wagaPom, kaloriePom;
         public Trening()
         {
@@ -281,10 +282,7 @@ namespace Aplikacja
             {
                 podsumowanieTab.IsEnabled = true;
                 krok3Tab.IsEnabled = false;
-                oknoTabcontrol.SelectedIndex = 3;
-                
-                this.Height = 800;
-                this.Width = 800;
+                oknoTabcontrol.SelectedIndex = 3;               
             }
             else
             {
@@ -314,6 +312,7 @@ namespace Aplikacja
             }
             else
             {
+                a = date;
                 // ... No need to display the time
                 dataPocz = date.Value.ToShortDateString();
             }
@@ -332,6 +331,7 @@ namespace Aplikacja
             }
             else
             {
+                b = date;
                 // ... No need to display the time.
                 dataKon = date.Value.ToShortDateString();
             }
@@ -357,6 +357,12 @@ namespace Aplikacja
             treningPiatekLabel.Content = typyTrening[piatekCombo.SelectedIndex];
             treningSobotaLabel.Content = typyTrening[sobotaCombo.SelectedIndex];
             treningNiedzielaLabel.Content = typyTrening[niedzielaCombo.SelectedIndex];
+            dlugoscCykluPodLabel.Content = "";
+          ///ciągle mi coś nie trybi
+            //TimeSpan? ileDni;
+            //ileDni = b - a;
+            //double ileDni2;
+            //ileDni2 = (b - a).Days;
 
             if (poniedzialekCombo.SelectedIndex > 0)
             {
@@ -409,21 +415,21 @@ namespace Aplikacja
                 if (iloscTrenTydz > 3) 
                 {
                     czestotliwoscPodLabel.Content = "Wysoka";
-                    czestotliwoscPodLabel.Foreground = Brushes.Yellow;
+                    czestotliwoscPodLabel.Foreground = Brushes.Gold;
                 }
                 else
                 {
                     if (iloscTrenTydz == 3) 
                     {
                         czestotliwoscPodLabel.Content = "Średnia";
-                        czestotliwoscPodLabel.Foreground = Brushes.SpringGreen;
+                        czestotliwoscPodLabel.Foreground = Brushes.MediumAquamarine;
                     }
                     else
                     {
                         if (iloscTrenTydz<3 && iloscTrenTydz>0)
                         {
                             czestotliwoscPodLabel.Content = "Niska";
-                            czestotliwoscPodLabel.Foreground = Brushes.SlateBlue;
+                            czestotliwoscPodLabel.Foreground = Brushes.Navy;
                         }
                         else czestotliwoscPodLabel.Content = "Brak treningów";
                     }
@@ -440,21 +446,21 @@ namespace Aplikacja
                 if (sumaCzas > 550)
                 {
                     dlugoscPodLabel.Content = "Wysoka";
-                    dlugoscPodLabel.Foreground = Brushes.Yellow;
+                    dlugoscPodLabel.Foreground = Brushes.Gold;
                 }
                 else
                 {
                     if (sumaCzas  > 240)
                     {
                         dlugoscPodLabel.Content = "Średnia";
-                        dlugoscPodLabel.Foreground = Brushes.SpringGreen;
+                        dlugoscPodLabel.Foreground = Brushes.MediumAquamarine;
                     }
                     else
                     {
-                        if (sumaCzas > 150)
+                        if (sumaCzas > 0)
                         {
                             dlugoscPodLabel.Content = "Niska";
-                            dlugoscPodLabel.Foreground = Brushes.SlateBlue;
+                            dlugoscPodLabel.Foreground = Brushes.Navy;
                         }
                         else
                         {

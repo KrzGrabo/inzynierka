@@ -26,12 +26,16 @@ namespace Aplikacja
         public Rejestracja()
         {
             InitializeComponent();
+            Bindowanie();
         }
 
+        public void Bindowanie()
+        {
+            infoLabel.Text = "Zarejestruj się aby uzyskać dostęp do aplikacji. To proste- wystarczy, że podasz login i hasło.";
+        }
         private void powrotButton_Click(object sender, RoutedEventArgs e)
         {
-            Intro intro = new Intro();
-            intro.Show();
+            this.Close();
         }
 
         private void rejestracjaButton_Click(object sender, RoutedEventArgs e)

@@ -1,7 +1,7 @@
 ﻿<Window x:Class="Aplikacja.Suplementacja"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Suplementacja" Height="400" Width="400" FontSize="14" Cursor="Hand" WindowStartupLocation="CenterScreen">
+        Title="Suplementacja" Icon="Ikonki\ikona.png" Height="400" Width="400" FontSize="14" Cursor="Hand" WindowStartupLocation="CenterScreen">
     <ScrollViewer>
             <Grid>
             <Grid.Background>
@@ -25,17 +25,17 @@
 
                 </Grid.RowDefinitions>
 
-                <TextBlock x:Name="opis1Label" Text="{Binding}" TextWrapping="WrapWithOverflow" Grid.ColumnSpan="2"/>
+                <TextBlock x:Name="opis1Label" Margin="5" Text="{Binding}" TextWrapping="WrapWithOverflow" Grid.ColumnSpan="2"/>
                 <!--<Label Content="waga:"   Grid.Row="2"/>
                 <TextBox x:Name="wagaTextbox"  Grid.Column="1"  Grid.Row="2" KeyDown="WalidacjaTextboxow"/>-->
 
                 
-        <WrapPanel Grid.Row="1">
+        <WrapPanel Margin="5" Grid.Row="1">
             <Image Source="Ikonki/1482266010_Info.png" Height="25" Margin="1" ToolTip="Wybierz swój cel treningowy/dietetyczny z listy."/>
             <Label Content="Cel:" Grid.Row="1"/>
         </WrapPanel>
 
-        <ComboBox Grid.Column="1" x:Name="celCombo" Grid.Row="1">
+            <ComboBox Margin="5" MaxHeight="25" Grid.Column="1" x:Name="celCombo" Grid.Row="1">
                     <ComboBoxItem>Witalność / Zdrowie</ComboBoxItem>
                     <ComboBoxItem>Masa mięśniowa</ComboBoxItem>
                     <ComboBoxItem>Odchudzanie</ComboBoxItem>
@@ -44,43 +44,43 @@
                     <ComboBoxItem>Pobudzenie / Stymulacja</ComboBoxItem>
                 </ComboBox>
 
-        <WrapPanel Grid.Row="2">
+            <WrapPanel Margin="5" Grid.Row="2">
             <Image Source="Ikonki/1482266010_Info.png" Height="25" Margin="1" ToolTip="Wybierz stopień umięśnienia swojego ciała z listy."/>
             <Label Content="Umięśnienie:" Grid.Row="2" />
         </WrapPanel>
-   
-                <ComboBox Grid.Column="1" x:Name="poziomMiesniCombo" Grid.Row="2"  >
+
+            <ComboBox Margin="5" MaxHeight="25" Grid.Column="1" x:Name="poziomMiesniCombo" Grid.Row="2"  >
                     <ComboBoxItem>Niski</ComboBoxItem>
                     <ComboBoxItem>Średni</ComboBoxItem>
                     <ComboBoxItem>Wysoki</ComboBoxItem>
                     <ComboBoxItem>Bardzo wysoki</ComboBoxItem>
                 </ComboBox>
 
-        <WrapPanel Grid.Row="3">
+            <WrapPanel Margin="5" Grid.Row="3">
             <Image Source="Ikonki/1482266010_Info.png" Height="25" Margin="1" ToolTip="Wybierz poziom zatłuszczenia swojego ciała z listy."/>
             <Label Content="Zatłuszczenie:" Grid.Row="3" />
         </WrapPanel>
-  
-                <ComboBox Grid.Column="1" x:Name="poziomTluszczuCombo" Grid.Row="3" >
+
+            <ComboBox Margin="5" MaxHeight="25" Grid.Column="1" x:Name="poziomTluszczuCombo" Grid.Row="3" >
                     <ComboBoxItem>Niski</ComboBoxItem>
                     <ComboBoxItem>Średni</ComboBoxItem>
                     <ComboBoxItem>Wysoki</ComboBoxItem>
                     <ComboBoxItem>Bardzo wysoki</ComboBoxItem>
                 </ComboBox>
 
-        <WrapPanel Grid.Row="4">
+            <WrapPanel Margin="5" Grid.Row="4">
             <Image Source="Ikonki/1482266010_Info.png" Height="25" Margin="1" ToolTip="Wybierz swój staż treningowy z listy."/>
             <Label Content="Staż:" Grid.Row="4" />
         </WrapPanel>
-      
-                <ComboBox Grid.Column="1" x:Name="stazCombo" Grid.Row="4"  >
+
+            <ComboBox Margin="5" MaxHeight="25" Grid.Column="1" x:Name="stazCombo" Grid.Row="4"  >
                     <ComboBoxItem>Początkujący</ComboBoxItem>
                     <ComboBoxItem>Średnio-zaawansowany</ComboBoxItem>
                     <ComboBoxItem>Zaawansowany</ComboBoxItem>
                 
                 </ComboBox>
-            <Button Background="AliceBlue" Content="Dobierz suplementacje" Grid.Row="5" Grid.ColumnSpan="2"  x:Name="okButton" Click="okButton_Click"/>
-                <GroupBox Grid.ColumnSpan="2" Grid.Row="6" Header="Propozycje">
+            <Button Margin="5" MaxWidth="200" Background="AliceBlue" Content="Dobierz suplementacje" Grid.Row="5" Grid.ColumnSpan="2"  x:Name="okButton" Click="okButton_Click"/>
+            <GroupBox Margin="5" Grid.ColumnSpan="2" Grid.Row="6" Header="Propozycje">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="2*"/>
@@ -107,9 +107,9 @@
                         </ListBox.ItemTemplate>
                  
                     </ListBox>
-                    <Button Background="AliceBlue" Grid.Column="1" Height="100" Width="100" x:Name="infoButton" Grid.Row="2" VerticalAlignment="Center" ToolTip="Info" Click="infoButton_Click" >
+                    <Button Background="AliceBlue" Grid.Column="1" Height="100" Width="100" x:Name="infoButton" Grid.Row="2" VerticalAlignment="Center" ToolTip="Kompendium wiedzy o suplementach" Click="infoButton_Click" >
                             <StackPanel Orientation="Horizontal">
-                        <Image Source="Ikonki/pill-and-tablet.png" Margin="1"/>
+                            <Image Height="95" Width="95" Source="Ikonki/pill-and-tablet2.png" Margin="1"/>
 
                             </StackPanel>
                         </Button>

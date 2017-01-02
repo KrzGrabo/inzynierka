@@ -27,7 +27,7 @@ namespace Aplikacja
 
         private void Bindowanie()
         {
-            opis.Text = "Lorem ipsum sialalala";
+            opis.Text = "Michał Kuś i Wiktor Czarnecki są studentami ostatniego semestru studiów inżynierskich na kierunku Informatyka, wchodzącego w skład wydziału 'Elektronika, Telekomunikacja i Informatyka' na Politechnice Gdańskiej. ";
 
         }
     }

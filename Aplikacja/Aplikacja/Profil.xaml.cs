@@ -204,5 +204,7 @@ namespace Aplikacja
                 przypisaneDane.Plec = "K";
             }
         }
+
+
     }
 }

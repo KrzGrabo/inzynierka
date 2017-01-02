@@ -26,7 +26,7 @@ namespace Aplikacja
         }
 
         private void Bindowanie(){
-            opis.Text = "Lorem ipsum sialalala";
+            opis.Text = "Celem projektu jest przygotowanie aplikacji desktopowej, będącej narzędziem dla sportowców, pozwalającym im na indywidualny dobór i planowanie aktywności takich jak trening, dieta i regeneracja, a także zbieranie zmieniających się parametrów/danych użytkownika oraz jego wyników, dzięki czemu możliwe będzie monitorowanie rozwoju, a także wizualizacja statystyk. Tak uzyskane dane będą służyć doborowi jeszcze lepszego reżimu treningowego i około-treningowego. Aplikacja ma za zadanie pokryć jak najwięcej potrzebnych klientowi funkcji (między innymi: kalkulator kalorii, baza produktów spożywczych, modele diet, reżimy treningowe plus szczegółowy opis ich poszczególnych elementów, lista zalecanych suplementów, funkcja dziennika treningowego, moduł statystyk) dzięki czemu stałaby się dla użytkownika kompleksowym instrumentem do zarządzania aktywnościami związanymi ze sportem w jego życiu.Ikony/Obrazki z menu i przycisków wykorzystane z zasobów: http://www.flaticon.com/packs/healthly-lifestyle Designed by Freepik and distributed by Flaticon";
 
         }
     }
