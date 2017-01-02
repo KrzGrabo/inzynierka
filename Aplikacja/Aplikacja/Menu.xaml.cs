@@ -24,11 +24,7 @@ namespace Aplikacja
             InitializeComponent();
         }
 
-        private void pomocButton_Click(object sender, RoutedEventArgs e)
-        {
-            Pomoc pomoc = new Pomoc();
-            pomoc.Show();
-        }
+       
 
         private void wylogujButton_Click(object sender, RoutedEventArgs e)
         {

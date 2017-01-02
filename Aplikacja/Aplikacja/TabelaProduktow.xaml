@@ -2,12 +2,12 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:Aplikacja" mc:Ignorable="d" x:Class="Aplikacja.TabelaProduktow"
-        Title="TabelaProduktow" Height="500" Width="400" Loaded="Window_Loaded">
+        Title="Tabela produktów spożywczych" Icon="Ikonki\ikona.png" Height="500" Width="400" WindowState="Maximized" Loaded="Window_Loaded">
     <Window.Resources>
         <CollectionViewSource x:Key="kategorieViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Kategorie}, CreateList=True}"/>
         <CollectionViewSource x:Key="produktyViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Produkty}, CreateList=True}"/>
     </Window.Resources>
-    <ScrollViewer>
+    <!--<ScrollViewer VerticalScrollBarVisibility="Visible">-->
     <Grid DataContext="{StaticResource kategorieViewSource}">
             <Grid.Background>
                 <LinearGradientBrush EndPoint="0.5,1"  MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
@@ -20,11 +20,11 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="750"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <ComboBox Margin="5"  x:Name="kategoriaCombobox" Grid.Row="0" TextSearch.TextPath = "nazwa" ItemsSource="{Binding}"  SelectionChanged="kategoriaCombobox_SelectionChanged" DisplayMemberPath="Nazwa"/>
-        <DataGrid Margin="10" ItemsSource="{Binding Source={StaticResource produktyViewSource}}" Grid.Row="1" AutoGenerateColumns="False" >
+        <ComboBox Margin="5" MaxHeight="25"  x:Name="kategoriaCombobox" Grid.Row="0" TextSearch.TextPath = "nazwa" ItemsSource="{Binding}"  SelectionChanged="kategoriaCombobox_SelectionChanged" DisplayMemberPath="Nazwa"/>
+        <DataGrid VerticalScrollBarVisibility="Visible" Margin="10" ItemsSource="{Binding Source={StaticResource produktyViewSource}}" Grid.Row="1" AutoGenerateColumns="False" >
                 <DataGrid.Background>
 
                     <LinearGradientBrush EndPoint="0.5,1"  MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
@@ -34,13 +34,13 @@
 
                 </DataGrid.Background>
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Nazwa" Binding="{Binding Nazwa}" Width="auto" IsReadOnly="True"/>
-                <DataGridTextColumn Header="Białko" Binding="{Binding Bialko}" Width="auto" IsReadOnly="True"/>
-                <DataGridTextColumn Header="Tłuszcze" Binding="{Binding Tluszcze}" Width="auto" IsReadOnly="True"/>
-                <DataGridTextColumn Header="Węglowodany" Binding="{Binding Węglodowany}" Width="auto" IsReadOnly="True"/>
-                <DataGridTextColumn Header="Wartość Energetyczna" Binding="{Binding Wartosc_Energetyczna}" Width="auto" IsReadOnly="True"/>
+                <DataGridTextColumn Header=" Nazwa produktu " Binding="{Binding Nazwa}" Width="auto" IsReadOnly="True"/>
+                <DataGridTextColumn Header=" Ilość białka[g]/100g produktu " Binding="{Binding Bialko}" Width="auto" IsReadOnly="True"/>
+                    <DataGridTextColumn Header=" Ilość tłuszczu[g]/100g produktu " Binding="{Binding Tluszcze}" Width="auto" IsReadOnly="True"/>
+                    <DataGridTextColumn Header=" Ilość węglowodanów[g]/100g produktu " Binding="{Binding Węglodowany}" Width="auto" IsReadOnly="True"/>
+                    <DataGridTextColumn Header=" Wartość energetyczna[kcal]/100g produktu " Binding="{Binding Wartosc_Energetyczna}" Width="auto" IsReadOnly="True"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
-    </ScrollViewer>
+    <!--</ScrollViewer>-->
 </Window>

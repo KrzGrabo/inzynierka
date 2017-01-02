@@ -188,8 +188,7 @@ namespace Aplikacja
                 podsumowanieTab.IsEnabled = true;
                 krok3Tab.IsEnabled = false;
                 oknoTabcontrol.SelectedIndex = 3;
-                this.Height = 600;
-                this.Width = 600;
+                this.Width = 700;
             }
             else
             {
@@ -304,7 +303,7 @@ namespace Aplikacja
             string zapotrzebowanieObliczone = Math.Round(zapotrzebowanie, 0).ToString();
             zapotrzebowaniePodLabel.Content = zapotrzebowanieObliczone;
             
-            string kalorieObliczone = Math.Round(kaloriePom, 0).ToString() + "  (kalorie z białka: " + Math.Round(kalorieBialko, 0) + ";  kalorie z tłuszczów: " + Math.Round(kalorieTluszcz, 0) + ";  kalorie z węglowodanów: " + Math.Round(kalorieWeglowodany, 0) + ")";
+            string kalorieObliczone = Math.Round(kaloriePom, 0).ToString() + "  (z białka: " + Math.Round(kalorieBialko, 0) + "; z tłuszczów: " + Math.Round(kalorieTluszcz, 0) + "; z węglowodanów: " + Math.Round(kalorieWeglowodany, 0) + ")";
             kaloriePodLabel.Content = kalorieObliczone;
 
             string bialkoObliczone = Math.Round(bialkoPom, 0).ToString() + "    (" + Math.Round(bialkoNaKg, 2).ToString() + " gram/kilogram masy ciała)";

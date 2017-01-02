@@ -156,9 +156,6 @@
     <Compile Include="PlanDnia.xaml.cs">
       <DependentUpon>PlanDnia.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pomoc.xaml.cs">
-      <DependentUpon>Pomoc.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Porownanie.xaml.cs">
       <DependentUpon>Porownanie.xaml</DependentUpon>
     </Compile>
@@ -268,10 +265,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pomoc.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Porownanie.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -352,59 +345,18 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Ikonki\abdominal-exercises.png" />
-    <Resource Include="Ikonki\arms-extender.png" />
-    <Resource Include="Ikonki\athletic-strap.png" />
-    <Resource Include="Ikonki\bar-exercising.png" />
-    <Resource Include="Ikonki\barbell-bench-press.png" />
-    <Resource Include="Ikonki\barbell-weightlifting.png" />
     <Resource Include="Ikonki\bench-press-weightlifting.png" />
-    <Resource Include="Ikonki\big-stopwatch.png" />
     <Resource Include="Ikonki\broccoli-porcion.png" />
     <Resource Include="Ikonki\carrot-and-apple.png" />
-    <Resource Include="Ikonki\chest-and-legs-exercises.png" />
-    <Resource Include="Ikonki\chest-expander.png" />
-    <Resource Include="Ikonki\chest-expanders.png" />
-    <Resource Include="Ikonki\dumbbells-bar.png" />
-    <Resource Include="Ikonki\dumbbells-exercise.png" />
-    <Resource Include="Ikonki\exercise-bike.png" />
-    <Resource Include="Ikonki\exercise-hang-bar.png" />
-    <Resource Include="Ikonki\exercising-dumbbell.png" />
-    <Resource Include="Ikonki\exercising-with-gymnastic-ball.png" />
-    <Resource Include="Ikonki\female-sportwear.png" />
-    <Resource Include="Ikonki\fitness-bracelet.png" />
-    <Resource Include="Ikonki\gymnastic-ball.png" />
-    <Resource Include="Ikonki\iron-shoot.png" />
     <Resource Include="Ikonki\lifting-barbell.png" />
-    <Resource Include="Ikonki\lifting-dumbbells.png" />
     <Resource Include="Ikonki\lifting-weight-with-right-arm.png" />
-    <Resource Include="Ikonki\little-dumbbell.png" />
-    <Resource Include="Ikonki\man-swimming.png" />
-    <Resource Include="Ikonki\mat-for-fitness.png" />
     <Resource Include="Ikonki\measuring-tape.png" />
     <Resource Include="Ikonki\phytonutrients.png" />
-    <Resource Include="Ikonki\pill-and-tablet.png" />
-    <Resource Include="Ikonki\power-ball.png" />
     <Resource Include="Ikonki\protein-shake.png" />
-    <Resource Include="Ikonki\pushups-exercises.png" />
-    <Resource Include="Ikonki\riding-bicycle.png" />
-    <Resource Include="Ikonki\rings-exercises.png" />
     <Resource Include="Ikonki\running-treadmill.png" />
-    <Resource Include="Ikonki\simulator-for-press.png" />
     <Resource Include="Ikonki\skipping-rope-1.png" />
-    <Resource Include="Ikonki\skipping-rope.png" />
-    <Resource Include="Ikonki\sport-gloves.png" />
-    <Resource Include="Ikonki\sport-shoe.png" />
     <Resource Include="Ikonki\sport-watch.png" />
-    <Resource Include="Ikonki\stick-man-hoop.png" />
-    <Resource Include="Ikonki\stretching-leg-exercise.png" />
-    <Resource Include="Ikonki\tightening-bar.png" />
-    <Resource Include="Ikonki\training-apparatus.png" />
     <Resource Include="Ikonki\weighing-scale.png" />
-    <Resource Include="Ikonki\weight-drive.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Ikonki\big-stopwatch2.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Ikonki\ikona.png" />
@@ -456,8 +408,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DependentUpon>BazaDanych.mdf</DependentUpon>
     </Content>
+    <Resource Include="Ikonki\iron-shoot2.png" />
+    <Resource Include="Ikonki\pill-and-tablet2.png" />
     <Resource Include="Ikonki\1482266010_Info.png" />
-    <Resource Include="Ikonki\1482194166_Info.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

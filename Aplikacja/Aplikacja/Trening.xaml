@@ -1,7 +1,7 @@
 ﻿<Window x:Class="Aplikacja.Trening"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Trening" Height="400" Width="450" FontSize="14" WindowStartupLocation="CenterScreen">
+        Title="Trening" Height="400" Icon="Ikonki\ikona.png" Width="450" FontSize="14" WindowStartupLocation="CenterScreen">
     <Grid>
         
         <TabControl x:Name="oknoTabcontrol">
@@ -32,49 +32,49 @@
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
-                    <StackPanel Grid.ColumnSpan="2">
+                    <StackPanel Grid.ColumnSpan="2" Margin="5">
                         <Label x:Name="opis1Label" Content="{Binding}" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
                         <TextBlock TextWrapping="WrapWithOverflow" Text="{Binding}" x:Name="opis1Textblock"/>
                     </StackPanel>
-                    <WrapPanel Grid.Row="2">
+                    <WrapPanel Margin="5" Grid.Row="2">
 
                         <Image Source="Ikonki/1482266010_Info.png" Height="25" Margin="1" ToolTip="Podaj swoją wagę w kilogramach. Wartość liczbowa z zakresu 30-300."/>
 
                         <Label Content="Waga:"/>
 
                     </WrapPanel>
-                    <TextBox x:Name="wagaTextbox"  Grid.Column="1"  Grid.Row="2" KeyDown="WalidacjaTextboxow"/>
+                    <TextBox Margin="5" MaxHeight="23" x:Name="wagaTextbox"  Grid.Column="1"  Grid.Row="2" KeyDown="WalidacjaTextboxow"/>
 
-                    <WrapPanel Grid.Row="3">
+                    <WrapPanel Margin="5" Grid.Row="3">
                         <Image Source="Ikonki/1482266010_Info.png" Height="25" Margin="1" ToolTip="Wybierz swoją płeć z listy."/>
                         <Label Content="Płeć:" />
                     </WrapPanel>
 
-                    <ComboBox Grid.Column="1" x:Name="plecCombo" Grid.Row="3">
+                    <ComboBox Margin="5" MaxHeight="25" Grid.Column="1" x:Name="plecCombo" Grid.Row="3">
                         <ComboBoxItem>Mężczyzna</ComboBoxItem>
                         <ComboBoxItem>Kobieta</ComboBoxItem>
                     </ComboBox>
-                    <WrapPanel Grid.Row="4">
+                    <WrapPanel Margin="5" Grid.Row="4">
                         <Image Source="Ikonki/1482266010_Info.png" Height="25" Margin="1" ToolTip="Wpisz swoje zapotrzebowanie energetyczne[kcal]. Wartość liczbowa z zakresu 500-10000"/>
 
                         <Label  Content="Zapotrzebowanie:" />
                     </WrapPanel>
-                    <TextBox Grid.Column="1" Grid.Row="4" x:Name="zapotrzebowanieTextbox" KeyDown="WalidacjaTextboxow"/>
+                    <TextBox Margin="5" MaxHeight="23" Grid.Column="1" Grid.Row="4" x:Name="zapotrzebowanieTextbox" KeyDown="WalidacjaTextboxow"/>
 
-                    <WrapPanel Grid.Row="5">
+                    <WrapPanel Margin="5" Grid.Row="5">
                         <Image Source="Ikonki/1482266010_Info.png" Height="25" Margin="1" ToolTip="Wybierz z listy długość swojego stażu treningowego(jednostką są lata)."/>
 
                         <Label  Content="Staż:" />
                     </WrapPanel>
-                    <ComboBox Grid.Column="1" x:Name="stazCombo" Grid.Row="5">
+                    <ComboBox Margin="5" MaxHeight="25" Grid.Column="1" x:Name="stazCombo" Grid.Row="5">
                         <ComboBoxItem>0-0.5</ComboBoxItem>
                         <ComboBoxItem>0.5-2</ComboBoxItem>
                         <ComboBoxItem>2-5</ComboBoxItem>
                         <ComboBoxItem>5-10</ComboBoxItem>
                         <ComboBoxItem>>10</ComboBoxItem>
                     </ComboBox>
-                    <Button Background="AliceBlue" Content="Pobierz dane z profilu" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" x:Name="mojedaneButton" Click="mojedaneButton_Click" />
-                    <Button Background="AliceBlue" Content="Dalej" Grid.Row="6" Grid.ColumnSpan="2"  x:Name="dalej1Button" Click="dalej1Button_Click" />
+                    <Button MaxWidth="200" Margin="5" Background="AliceBlue" Content="Pobierz dane z profilu" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" x:Name="mojedaneButton" Click="mojedaneButton_Click" />
+                    <Button MaxWidth="200" Margin="5" Background="AliceBlue" Content="Dalej" Grid.Row="6" Grid.ColumnSpan="2"  x:Name="dalej1Button" Click="dalej1Button_Click" />
 
                 </Grid>
 
@@ -83,7 +83,7 @@
 
             <TabItem Header="Krok II" x:Name="krok2Tab" IsEnabled="False">
 
-
+                <ScrollViewer>
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -102,54 +102,55 @@
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
-                    <StackPanel Grid.ColumnSpan="2">
+                    <StackPanel  Margin="5"  Grid.ColumnSpan="2">
                         <Label x:Name="opis2aLabel" Content="{Binding}" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
                         <TextBlock x:Name="opis2Label" Text="{Binding}" Grid.ColumnSpan="2"/>
                     </StackPanel>
-                    <WrapPanel Grid.Row="1">
+                    <WrapPanel  Margin="5"  Grid.Row="1">
                         <Image Source="Ikonki/1482266010_Info.png" Height="25" Margin="1" ToolTip="Poniżej wylistowana jest lista dni tygodnia. Do każdego dnia przypisz odpowiadający ci trening."/>
                         <Label Content="Dzień:"   />
                     </WrapPanel>
-                    <WrapPanel Grid.Row="1" Grid.Column="1">
+                    <WrapPanel  Margin="5"  Grid.Row="1" Grid.Column="1">
                         <Image Source="Ikonki/1482266010_Info.png" Height="25" Margin="1" ToolTip="W poniszych combobox'ach wylistowane są typy treningów dostępnych do wyboru."/>
                         <Label Content="Trening:"   />
                     </WrapPanel>
-                    <WrapPanel Grid.Row="1" Grid.Column="2">
+                    <WrapPanel  Margin="5"  Grid.Row="1" Grid.Column="2">
                         <Image Source="Ikonki/1482266010_Info.png" Height="25" Margin="1" ToolTip="Podaj średni czas trwania jednostki treningowej(w minutach)."/>
                         <Label Content="Czas:"   />
                     </WrapPanel>
 
-                    <Label Content="Poniedziałek:" Grid.Row="2"/>
-                    <ComboBox Grid.Column="1" SelectedIndex="0" x:Name="poniedzialekCombo" Grid.Row="2" ItemsSource="{Binding}" SelectionChanged="zmianaTrening_SelectionChanged"/>
-                    <TextBox Grid.Column="2" IsEnabled="False" Text="0" x:Name="poniedzialekCzasTextbox" KeyDown="WalidacjaTextboxow" Grid.Row="2" />
+                    <Label  Margin="5" Content="Poniedziałek:" Grid.Row="2"/>
+                    <ComboBox Margin="5" MaxHeight="25" Grid.Column="1" SelectedIndex="0" x:Name="poniedzialekCombo" Grid.Row="2" ItemsSource="{Binding}" SelectionChanged="zmianaTrening_SelectionChanged"/>
+                    <TextBox Margin="5" MaxHeight="23" Grid.Column="2" IsEnabled="False" Text="0" x:Name="poniedzialekCzasTextbox" KeyDown="WalidacjaTextboxow" Grid.Row="2" />
 
-                    <Label Content="Wtorek:" Grid.Row="3"/>
-                    <ComboBox Grid.Column="1" SelectedIndex="0"  x:Name="wtorekCombo" Grid.Row="3" ItemsSource="{Binding}" SelectionChanged="wtorekCombo_SelectionChanged"/>
-                    <TextBox Grid.Column="2" IsEnabled="False" Text="0"  x:Name="wtorekCzasTextbox" KeyDown="WalidacjaTextboxow" Grid.Row="3" />
+                    <Label  Margin="5" Content="Wtorek:" Grid.Row="3"/>
+                    <ComboBox Margin="5" MaxHeight="25" Grid.Column="1" SelectedIndex="0"  x:Name="wtorekCombo" Grid.Row="3" ItemsSource="{Binding}" SelectionChanged="wtorekCombo_SelectionChanged"/>
+                    <TextBox Margin="5" MaxHeight="23" Grid.Column="2" IsEnabled="False" Text="0"  x:Name="wtorekCzasTextbox" KeyDown="WalidacjaTextboxow" Grid.Row="3" />
 
-                    <Label Content="Środa:" Grid.Row="4"/>
-                    <ComboBox Grid.Column="1" SelectedIndex="0"  x:Name="srodaCombo" Grid.Row="4" ItemsSource="{Binding}" SelectionChanged="srodaCombo_SelectionChanged"/>
-                    <TextBox Grid.Column="2" IsEnabled="False" Text="0"  x:Name="srodaCzasTextbox" KeyDown="WalidacjaTextboxow" Grid.Row="4" />
+                    <Label  Margin="5"  Content="Środa:" Grid.Row="4"/>
+                    <ComboBox Margin="5" MaxHeight="25" Grid.Column="1" SelectedIndex="0"  x:Name="srodaCombo" Grid.Row="4" ItemsSource="{Binding}" SelectionChanged="srodaCombo_SelectionChanged"/>
+                    <TextBox Margin="5" MaxHeight="23" Grid.Column="2" IsEnabled="False" Text="0"  x:Name="srodaCzasTextbox" KeyDown="WalidacjaTextboxow" Grid.Row="4" />
 
-                    <Label Content="Czwartek:" Grid.Row="5"/>
-                    <ComboBox Grid.Column="1" SelectedIndex="0"  x:Name="czwartekCombo" Grid.Row="5" ItemsSource="{Binding}" SelectionChanged="czwartekCombo_SelectionChanged"/>
-                    <TextBox Grid.Column="2" IsEnabled="False" Text="0"  x:Name="czwartekCzasTextbox" KeyDown="WalidacjaTextboxow" Grid.Row="5" />
+                    <Label Margin="5" Content="Czwartek:" Grid.Row="5"/>
+                    <ComboBox Margin="5" MaxHeight="25" Grid.Column="1" SelectedIndex="0"  x:Name="czwartekCombo" Grid.Row="5" ItemsSource="{Binding}" SelectionChanged="czwartekCombo_SelectionChanged"/>
+                    <TextBox Margin="5" MaxHeight="23" Grid.Column="2" IsEnabled="False" Text="0"  x:Name="czwartekCzasTextbox" KeyDown="WalidacjaTextboxow" Grid.Row="5" />
 
-                    <Label Content="Piątek:" Grid.Row="6"/>
-                    <ComboBox Grid.Column="1" SelectedIndex="0"  x:Name="piatekCombo" Grid.Row="6" ItemsSource="{Binding}" SelectionChanged="piatekCombo_SelectionChanged"/>
-                    <TextBox Grid.Column="2" IsEnabled="False" Text="0"  x:Name="piatekCzasTextbox" KeyDown="WalidacjaTextboxow" Grid.Row="6" />
+                    <Label Margin="5"  Content="Piątek:" Grid.Row="6"/>
+                    <ComboBox Margin="5" MaxHeight="25" Grid.Column="1" SelectedIndex="0"  x:Name="piatekCombo" Grid.Row="6" ItemsSource="{Binding}" SelectionChanged="piatekCombo_SelectionChanged"/>
+                    <TextBox Margin="5" MaxHeight="23" Grid.Column="2" IsEnabled="False" Text="0"  x:Name="piatekCzasTextbox" KeyDown="WalidacjaTextboxow" Grid.Row="6" />
 
-                    <Label Content="Sobota:" Grid.Row="7"/>
-                    <ComboBox Grid.Column="1" SelectedIndex="0"  x:Name="sobotaCombo" Grid.Row="7" ItemsSource="{Binding}" SelectionChanged="sobotaCombo_SelectionChanged"/>
-                    <TextBox Grid.Column="2" IsEnabled="False" Text="0"  x:Name="sobotaCzasTextbox" KeyDown="WalidacjaTextboxow" Grid.Row="7" />
+                    <Label Margin="5" Content="Sobota:" Grid.Row="7"/>
+                    <ComboBox Margin="5" MaxHeight="25" Grid.Column="1" SelectedIndex="0"  x:Name="sobotaCombo" Grid.Row="7" ItemsSource="{Binding}" SelectionChanged="sobotaCombo_SelectionChanged"/>
+                    <TextBox Margin="5" MaxHeight="23" Grid.Column="2" IsEnabled="False" Text="0"  x:Name="sobotaCzasTextbox" KeyDown="WalidacjaTextboxow" Grid.Row="7" />
 
-                    <Label Content="Niedziela:" Grid.Row="8"/>
-                    <ComboBox Grid.Column="1" SelectedIndex="0"  x:Name="niedzielaCombo" Grid.Row="8" ItemsSource="{Binding}" SelectionChanged="niedzielaCombo_SelectionChanged"/>
-                    <TextBox Grid.Column="2" IsEnabled="False" Text="0"  x:Name="niedzielaCzasTextbox" KeyDown="WalidacjaTextboxow" Grid.Row="8" />
+                    <Label Margin="5" Content="Niedziela:" Grid.Row="8"/>
+                    <ComboBox Margin="5" MaxHeight="25" Grid.Column="1" SelectedIndex="0"  x:Name="niedzielaCombo" Grid.Row="8" ItemsSource="{Binding}" SelectionChanged="niedzielaCombo_SelectionChanged"/>
+                    <TextBox Margin="5" MaxHeight="23" Grid.Column="2" IsEnabled="False" Text="0"  x:Name="niedzielaCzasTextbox" KeyDown="WalidacjaTextboxow" Grid.Row="8" />
 
-                    <Button Content="Powrót" Grid.Row="9"  Grid.Column="0" x:Name="powrot2Button" Click="powrot2Button_Click" />
-                    <Button Content="Dalej" Grid.Row="9" Grid.Column="2"  x:Name="dalej2Button" Click="dalej2Button_Click" />
+                    <Button Background="AliceBlue"  MaxWidth="200" Margin="5" Content="Powrót" Grid.Row="9"  Grid.Column="0" x:Name="powrot2Button" Click="powrot2Button_Click" />
+                    <Button Background="AliceBlue" MaxWidth="200" Margin="5" Content="Dalej" Grid.Row="9" Grid.Column="2"  x:Name="dalej2Button" Click="dalej2Button_Click" />
                 </Grid>
+                </ScrollViewer>
             </TabItem>
 
 
@@ -168,22 +169,22 @@
 
                     </Grid.RowDefinitions>
 
-                    <StackPanel Grid.ColumnSpan="2">
+                    <StackPanel Margin="5" Grid.ColumnSpan="2">
                         <Label x:Name="opis3aLabel" Content="{Binding}" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
                         <TextBlock x:Name="opis3Label" Text="{Binding}" Grid.ColumnSpan="2"/>
                     </StackPanel>
-                    <WrapPanel Grid.Row="1">
+                    <WrapPanel Margin="5" Grid.Row="1">
                         <Image Source="Ikonki/1482266010_Info.png" Height="25" Margin="1" ToolTip="Wybierz datę rozpoczęcia cyklu treningowego."/>
                         <Label Content="Początek cyklu" Grid.Row="1"/>
                     </WrapPanel>
 
-                    <DatePicker  Grid.Row="1" Grid.Column="1" x:Name="startDatapicker"  SelectedDateChanged="startDatapicker_SelectedDateChanged"/>
-                    <WrapPanel Grid.Row="2">
+                    <DatePicker Margin="5" Grid.Row="1" Grid.Column="1" x:Name="startDatapicker"  SelectedDateChanged="startDatapicker_SelectedDateChanged"/>
+                    <WrapPanel Margin="5" Grid.Row="2">
                         <Image Source="Ikonki/1482266010_Info.png" Height="25" Margin="1" ToolTip="Wybierz datę zakończenia cyklu trenignowego."/>
                         <Label Content="Zakończenie cyklu" Grid.Row="2"/>
                     </WrapPanel>
 
-                    <DatePicker  Grid.Row="2" Grid.Column="1" x:Name="koniecDatapicker"  SelectedDateChanged="koniecDatapicker_SelectedDateChanged"/>
+                    <DatePicker Margin="5"  Grid.Row="2" Grid.Column="1" x:Name="koniecDatapicker"  SelectedDateChanged="koniecDatapicker_SelectedDateChanged"/>
                     <!--<WrapPanel Grid.Row="3">
                         <Image Source="Ikonki/1482266010_Info.png" Height="25" Margin="1" ToolTip="Podaj średni czas(w minutach) jednej jednostki treningowej."/>
                         <Label Content="Czas treningu:" Grid.Row="3"/>
@@ -191,8 +192,8 @@
 
                     <TextBox x:Name="czasTextbox" Grid.Column="1" Grid.Row="3"/>-->
 
-                    <Button Content="Powrót" Grid.Row="4"  Grid.Column="0" x:Name="powrot3Button" Click="powrot3Button_Click" />
-                    <Button Content="Dalej" Grid.Row="4" Grid.Column="1"  x:Name="dalej3Button" Click="dalej3Button_Click" />
+                    <Button Background="AliceBlue" MaxWidth="200" Margin="5" Content="Powrót" Grid.Row="4"  Grid.Column="0" x:Name="powrot3Button" Click="powrot3Button_Click" />
+                    <Button Background="AliceBlue" MaxWidth="200" Margin="5" Content="Dalej" Grid.Row="4" Grid.Column="1"  x:Name="dalej3Button" Click="dalej3Button_Click" />
 
                 </Grid>
 
@@ -214,11 +215,12 @@
                         <RowDefinition Height="auto"/>
 
                     </Grid.RowDefinitions>
-                    <Label x:Name="opis4Label" Content="Wszystko dane zostały wprowadzone poprawnie." Grid.ColumnSpan="4"/>
-                    <Button Content="Stwórz trening" x:Name="obliczButton" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1"  Click="obliczButton_Click"/>
-                    <ProgressBar Minimum="0" Maximum="100" Grid.Row="2" Grid.ColumnSpan="4" Name="pbStatus" Height="22" />
+                    <Label Margin="5" x:Name="opis4Label" Content="Wszystko dane zostały wprowadzone poprawnie." Grid.ColumnSpan="4"/>
+                    <Button Background="AliceBlue" MaxWidth="200" Margin="5" Content="Stwórz trening" x:Name="obliczButton" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1"  Click="obliczButton_Click"/>
+                    <ProgressBar  Background="AliceBlue" Margin="5" Minimum="0" Maximum="100" Grid.Row="2" Grid.ColumnSpan="4" Name="pbStatus" Height="22" />
                     <GroupBox Grid.Row="3" Grid.ColumnSpan="4" Header="Podsumowanie" >
-                        <Grid>
+                        <ScrollViewer VerticalScrollBarVisibility="Visible">
+                            <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="auto"/>
                                 <ColumnDefinition/>
@@ -229,7 +231,7 @@
                             </Grid.RowDefinitions>
 
                             <GroupBox Grid.Row="3" Grid.ColumnSpan="4" Header="Rozkład tygodniowy"  >
-                                <Grid ShowGridLines="True">
+                                                     <Grid ShowGridLines="True">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition/>
                                         <ColumnDefinition/>
@@ -245,9 +247,9 @@
                                         <RowDefinition/>
                                         <RowDefinition/>
                                     </Grid.RowDefinitions>
-                                    <Label FontStyle="Oblique" Content="dzień tygodnia" Grid.Row="0"/>
-                                    <Label FontStyle="Oblique" Content="trening" Grid.Row="1"/>
-                                    <Label FontStyle="Oblique" Content="długość treningu" Grid.Row="2"/>
+                                        <Label  FontWeight="SemiBold" FontStyle="Oblique" Content="dzień tygodnia" Grid.Row="0"/>
+                                        <Label FontWeight="SemiBold" FontStyle="Oblique" Content="trening" Grid.Row="1"/>
+                                        <Label FontWeight="SemiBold" FontStyle="Oblique" Content="długość treningu" Grid.Row="2"/>
 
                                     <Label FontStyle="Italic" Content="Poniedziałek" Grid.Column="1"/>
                                     <Label FontStyle="Italic" Content="Wtorek" Grid.Column="2"/>
@@ -275,8 +277,9 @@
 
 
                                 </Grid>
-                               
                                 
+
+
                             </GroupBox>
                             <StackPanel Grid.Column="0">
                                 <Label Content="Średni dzienny czas treningu:"/>
@@ -299,10 +302,10 @@
                                 <Label x:Name="koniecPodLabel" Content="x" HorizontalAlignment="Right" />
                             </StackPanel>
                         </Grid>
-
+                        </ScrollViewer>
                         <!--<TextBlock TextWrapping="WrapWithOverflow" Text="{Binding}" x:Name="wynikiTextbox"/>-->
                     </GroupBox>
-                    <Button Content="Zapisz trening do kalendarza" x:Name="zapiszButton" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="4" Click="zapiszButton_Click"  />
+                    <Button Background="AliceBlue"  MaxWidth="200" Margin="5" Content="Zapisz trening do kalendarza" x:Name="zapiszButton" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="4" Click="zapiszButton_Click"  />
 
                 </Grid>
             </TabItem>

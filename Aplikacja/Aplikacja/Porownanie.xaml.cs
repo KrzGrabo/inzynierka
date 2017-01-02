@@ -22,6 +22,14 @@ namespace Aplikacja
         public Porownanie()
         {
             InitializeComponent();
+            Bindowanie();
         }
+
+        public void Bindowanie()
+        {
+            strona.Navigate("http://www.wpf-tutorial.com");
+        }
+
+        
     }
 }

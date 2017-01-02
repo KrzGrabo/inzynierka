@@ -1,8 +1,14 @@
 ﻿<Window x:Class="Aplikacja.Autorzy"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-Title="Informacje o autorach" Height="400" Width="400" Icon="Ikonki\ikona.png" WindowStartupLocation="CenterOwner" ResizeMode="NoResize" FontSize="14">
+Title="Informacje o autorach" Icon="Ikonki\ikona.png" Height="400" Width="400"  WindowStartupLocation="CenterOwner" ResizeMode="NoResize" FontSize="14">
     <Grid Margin="5" >
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1"  MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                <GradientStop Color="#FFF3F3F3"/>
+                <GradientStop Color="#FF7DCFE8" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="150"/>
             <ColumnDefinition Width="Auto"/>
@@ -18,7 +24,7 @@ Title="Informacje o autorach" Height="400" Width="400" Icon="Ikonki\ikona.png" W
         <TextBlock Grid.Row="0" Padding="10" Grid.Column="1" Text="Autorzy:" TextWrapping="WrapWithOverflow"/>
 
         <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" Source="Ikonki/eti_logo.png" Stretch="Uniform" />
-        <TextBlock Grid.Row="0" Grid.Column="2" Text="Wiktor Czarnecki, Krzysztof Grabowski, Michał Kuś" Padding="5" TextWrapping="WrapWithOverflow"/>
+        <TextBlock Grid.Row="0" Grid.Column="2" Text="Wiktor Czarnecki, Michał Kuś" Padding="5" TextWrapping="WrapWithOverflow"/>
         <GroupBox Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="2" Padding="5" Header="Informacje o autorach:">
             <ScrollViewer>
                 <TextBlock x:Name="opis" Text="{Binding}"  TextWrapping="WrapWithOverflow"/>
