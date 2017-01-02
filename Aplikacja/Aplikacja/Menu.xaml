@@ -163,18 +163,17 @@
                 </StackPanel>
             </Button.ToolTip>
         </Button>
-        <Button ToolTipService.ShowDuration="24000" Background="AliceBlue" Grid.Column="2" x:Name="dane5Button" Grid.Row="3"  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3">
+
+        <Button ToolTipService.ShowDuration="24000" Background="AliceBlue" Grid.Column="2" x:Name="planDniaButton" Grid.Row="3"  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3"  Click="planDniaButton_Click">
             <StackPanel Orientation="Horizontal">
                 <Image Source="Ikonki/big-stopwatch.png" Margin="1"/>
                 
             </StackPanel>
             <Button.ToolTip>
                 <StackPanel>
-                    <TextBlock FontWeight="Bold" FontSize="16" Margin="1,1,1,4" Text="Dziennik"/>
+                    <TextBlock FontWeight="Bold" FontSize="16" Margin="1,1,1,4" Text="Plan Dnia"/>
                     <TextBlock FontSize="14">
-                       'Dziennik' jest sercem aplikacji, to w tym oknie będziesz monitorował swój reżim,
-                        <LineBreak />
-                       a także aktualizował informację na temat swoich postępów i wyników.
+                       Plan Dnia pokazuje Twoją diete oraz trening na dzisiejszy dzień.
                     </TextBlock>
                 </StackPanel>
             </Button.ToolTip>

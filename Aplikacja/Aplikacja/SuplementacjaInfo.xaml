@@ -40,7 +40,7 @@
         <TextBlock Grid.Row="2" Grid.Column="2" Text="{Binding Dzialanie, Source={StaticResource suplementyViewSource}}" Padding="5" TextWrapping="WrapWithOverflow"/>
         <GroupBox Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="2" Padding="5" Header="Opis:">
             <ScrollViewer>
-                <TextBlock x:Name="opis" Text="{Binding}"  TextWrapping="WrapWithOverflow"/>
+                <TextBlock x:Name="opis" Text="{Binding Opis}"  TextWrapping="WrapWithOverflow"/>
             </ScrollViewer>
         </GroupBox>
     </Grid>
