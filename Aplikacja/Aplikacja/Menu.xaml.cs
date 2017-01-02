@@ -106,6 +106,16 @@ namespace Aplikacja
             okno.Show();
         }
 
+        private void planDniaButton_Click(object sender, RoutedEventArgs e)
+        {
+            PlanDnia okno = new PlanDnia();
+            DateTime data = DateTime.Now;
+            TimeSpan time = new TimeSpan(0,0,0);
+            data = data.Date + time;
+            okno.przekazDane(data);
+            okno.Show();
+        }
+
 
    
     }

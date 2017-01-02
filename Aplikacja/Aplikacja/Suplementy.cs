@@ -18,5 +18,6 @@ namespace Aplikacja
         public string Nazwa { get; set; }
         public string Dawkowanie { get; set; }
         public string Dzialanie { get; set; }
+        public string Opis { get; set; }
     }
 }

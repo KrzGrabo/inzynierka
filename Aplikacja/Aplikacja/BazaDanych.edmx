@@ -113,6 +113,7 @@
           <Property Name="Nazwa" Type="varchar" MaxLength="30" />
           <Property Name="Dawkowanie" Type="varchar" MaxLength="100" />
           <Property Name="Dzialanie" Type="varchar" MaxLength="100" />
+          <Property Name="Opis" Type="text" />
         </EntityType>
         <EntityType Name="Treningi">
           <Key>
@@ -465,6 +466,7 @@
           <Property Name="Nazwa" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Dawkowanie" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Dzialanie" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Opis" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Posilek">
           <Key>
@@ -657,6 +659,7 @@
           <EntitySetMapping Name="Suplementy">
             <EntityTypeMapping TypeName="BazaDanychModel.Suplementy">
               <MappingFragment StoreEntitySet="Suplementy">
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
                 <ScalarProperty Name="Dzialanie" ColumnName="Dzialanie" />
                 <ScalarProperty Name="Dawkowanie" ColumnName="Dawkowanie" />
                 <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
