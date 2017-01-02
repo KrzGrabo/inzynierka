@@ -211,7 +211,10 @@
                                 <Label Content="Tłuszcz w twojej diecie[g]:"/>
                                 <Label Content="Kaloryczność twojej diety[kcal]:"/>
                                 <Label Content="Ilość posiłków:" />
-                                <Label Content="Długość cyklu dietetycznego: "/>
+                                    <Label Content="Początek cyklu treningowego: "/>
+                                    <Label Content="Koniec cyklu treningowego: "/>
+
+                                    <Label Content="Długość cyklu dietetycznego: "/>
                             </StackPanel>
                             <StackPanel Grid.Column="1">
                                 <Label x:Name="zapotrzebowaniePodLabel" Content="x" HorizontalAlignment="Right"/>
@@ -220,7 +223,9 @@
                                 <Label x:Name="tluszczPodLabel" Content="x" HorizontalAlignment="Right" />
                                 <Label x:Name="kaloriePodLabel" Content="x" HorizontalAlignment="Right" />
                                 <Label x:Name="posilkiPodLabel" Content="x" HorizontalAlignment="Right" />
-                                <Label x:Name="okresPodLabel" Content="x" HorizontalAlignment="Right" />
+                                    <Label x:Name="poczatekPodLabel" Content="x" HorizontalAlignment="Right" />
+                                    <Label x:Name="koniecPodLabel" Content="x" HorizontalAlignment="Right" />
+                                    <Label x:Name="okresPodLabel" Content="x" HorizontalAlignment="Right" />
                             </StackPanel>
                               
                         </Grid>

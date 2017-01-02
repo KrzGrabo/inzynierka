@@ -43,6 +43,7 @@ namespace Aplikacja
         //ile kalori dostarczamy z poczegolnych makroskladnikow
         double bialkoNaKg, tluszczNaKg, weglowodanyNaKg;
         //ile danego makroskladnika na kg masy ciala
+
         private void Bindowanie()
         {
             opis1Label.Content = "Kreator diety- krok I";
@@ -318,6 +319,9 @@ namespace Aplikacja
             double temp= kaloriePom/iloscPosilkow;
             string posilkiObliczone = iloscPosilkow.ToString() + "    ( średnio " + Math.Round(temp, 0).ToString() + " kalorii na posiłek)";
             posilkiPodLabel.Content = posilkiObliczone;
+            koniecPodLabel.Content = dataKon.ToShortDateString();
+            poczatekPodLabel.Content = dataPocz.ToShortDateString();
+            ////tutej trzeba by ten okres wyliczyc i podpiac okresPodLabel.Content=ileDni?
             // string tekst = "Twoje zapotrzebowanie to: " + zapotrzebowanie.ToString() + " Kaloryczność twojej diety to: " + kaloriePom.ToString() + " Ilość białka w twojej diecie: " + bialkoPom.ToString() + " (to " + Math.Round(kalorieBialko, 2).ToString() + " kalorii)" + " Ilość tluszczu w twojej diecie: " + Math.Round(tluszczePom, 2).ToString() + " (to " + kalorieTluszcz.ToString() + " kalorii)" + " Ilość weglowodanow w twojej diecie: " + weglowodanyPom.ToString() + " (to " + kalorieWeglowodany.ToString() + " kalorii)";
             //MessageBox.Show(tekst);
         }

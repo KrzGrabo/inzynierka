@@ -357,13 +357,14 @@ namespace Aplikacja
             treningPiatekLabel.Content = typyTrening[piatekCombo.SelectedIndex];
             treningSobotaLabel.Content = typyTrening[sobotaCombo.SelectedIndex];
             treningNiedzielaLabel.Content = typyTrening[niedzielaCombo.SelectedIndex];
-            dlugoscCykluPodLabel.Content = "";
-          ///ciągle mi coś nie trybi
+            koniecPodLabel.Content = dataKon;
+            poczatekPodLabel.Content = dataPocz;
+            ///ciągle mi coś nie trybi dlugoscCykluPodLabel.content=ileDni?
             //TimeSpan? ileDni;
             //ileDni = b - a;
             //double ileDni2;
             //ileDni2 = (b - a).Days;
-
+            
             if (poniedzialekCombo.SelectedIndex > 0)
             {
                 czasPoniedzialekLabel.Content = poniedzialekCzas + " min";

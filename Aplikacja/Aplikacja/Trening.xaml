@@ -231,7 +231,8 @@
                             </Grid.RowDefinitions>
 
                             <GroupBox Grid.Row="3" Grid.ColumnSpan="4" Header="Rozkład tygodniowy"  >
-                                                     <Grid ShowGridLines="True">
+                                    <ScrollViewer HorizontalScrollBarVisibility="Visible">                    
+                                <Grid ShowGridLines="True">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition/>
                                         <ColumnDefinition/>
@@ -277,30 +278,32 @@
 
 
                                 </Grid>
-                                
+                                    </ScrollViewer>
 
 
-                            </GroupBox>
+                                </GroupBox>
                             <StackPanel Grid.Column="0">
                                 <Label Content="Średni dzienny czas treningu:"/>
                                 <Label Content="Sumaryczny czas treningów w tygodniu:" />
                                 <Label Content="Ilość treningów na tydzień:"/>
                                 <Label Content="Częstotliwość treningów:"/>
                                 <Label Content="Sumaryczna długość treningów:"/>
-                                <Label Content="Długość cyklu treningowego: "/>
+                                
                                 <Label Content="Początek cyklu treningowego: "/>
                                 <Label Content="Koniec cyklu treningowego: "/>
-                            </StackPanel>
+                                    <Label Content="Długość cyklu treningowego: "/>
+                                </StackPanel>
                             <StackPanel Grid.Column="1">
                                 <Label x:Name="sredniczasPodLabel" Content="x" HorizontalAlignment="Right"/>
                                 <Label x:Name="sumczasPodLabel" Content="x" HorizontalAlignment="Right" />
                                 <Label x:Name="iloscPodLabel" Content="x" HorizontalAlignment="Right" />
                                 <Label x:Name="czestotliwoscPodLabel" Content="x" HorizontalAlignment="Right" />
                                 <Label x:Name="dlugoscPodLabel" Content="x" HorizontalAlignment="Right" />
-                                <Label x:Name="dlugoscCykluPodLabel" Content="x" HorizontalAlignment="Right" />
-                                <Label x:Name="poczatekPodLabel" Content="x" HorizontalAlignment="Right" />
+                                    <Label x:Name="poczatekPodLabel" Content="x" HorizontalAlignment="Right" />
                                 <Label x:Name="koniecPodLabel" Content="x" HorizontalAlignment="Right" />
-                            </StackPanel>
+                                    <Label x:Name="dlugoscCykluPodLabel" Content="x" HorizontalAlignment="Right" />
+
+                                </StackPanel>
                         </Grid>
                         </ScrollViewer>
                         <!--<TextBlock TextWrapping="WrapWithOverflow" Text="{Binding}" x:Name="wynikiTextbox"/>-->
