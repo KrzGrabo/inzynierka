@@ -25,6 +25,12 @@ namespace Aplikacja
         public TabelaProduktow()
         {
             InitializeComponent();
+            Bindowanie();
+        }
+
+        public void Bindowanie()
+        {
+            opisLabel.Text = "W oknie 'Tabela produktów spożywczych' masz możliwość przeglądania makroelementów i kaloryczności licznej grupy skategoryzowanych produktów.";
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
