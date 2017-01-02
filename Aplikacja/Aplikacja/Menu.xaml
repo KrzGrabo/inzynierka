@@ -3,8 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Menu" Height="650" Width="600" WindowStartupLocation="CenterScreen" >
     <Grid>
-        
-            <Grid.ColumnDefinitions>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1"  MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                <GradientStop Color="#FFF3F3F3"/>
+                <GradientStop Color="#FF7DCFE8" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -23,11 +28,12 @@
             <MenuItem Header="Informacje">
                 <MenuItem x:Name="oprogramieButton" Header="O programie" Click="oprogramieButton_Click" />
                 <MenuItem x:Name="oautorachButton" Header="O autorach" Click="oautorachButton_Click" />
+                <MenuItem x:Name="pomocButton" Header="Pomoc" Click="pomocButton_Click"/>
             </MenuItem>
-            <MenuItem x:Name="pomocButton" Header="Pomoc" Click="pomocButton_Click"/>
+            
         </Menu>
 
-        <Button ToolTipService.ShowDuration="24000" Grid.Column="0" x:Name="kalkulatoryButton" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3"   Click="kalkulatoryButton_Click">
+        <Button Background="AliceBlue" ToolTipService.ShowDuration="24000" Grid.Column="0" x:Name="kalkulatoryButton" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3"   Click="kalkulatoryButton_Click">
             <StackPanel Orientation="Horizontal">
                 <Image Source="Ikonki/iron-shoot.png" Margin="1"/>
             </StackPanel>
@@ -42,7 +48,7 @@
                 </StackPanel>
             </Button.ToolTip>
         </Button>
-        <Button ToolTipService.ShowDuration="24000" Grid.Column="1" x:Name="dietaButton" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3"  Click="dietaButton_Click">
+        <Button Background="PowderBlue"  ToolTipService.ShowDuration="24000" Grid.Column="1" x:Name="dietaButton" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3"  Click="dietaButton_Click">
 
             <Button.ToolTip>
                 <StackPanel>
@@ -59,7 +65,7 @@
          
             </StackPanel>
         </Button>
-        <Button ToolTipService.ShowDuration="24000" Grid.Column="2" x:Name="suplementacjaButton" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3"  Click="suplementacjaButton_Click">
+        <Button Background="AliceBlue" ToolTipService.ShowDuration="24000" Grid.Column="2" x:Name="suplementacjaButton" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3"  Click="suplementacjaButton_Click">
             <StackPanel Orientation="Horizontal">
                 <Image Source="Ikonki/phytonutrients.png" Margin="1"/>
             
@@ -76,7 +82,7 @@
                 </StackPanel>
             </Button.ToolTip>
         </Button>
-        <Button ToolTipService.ShowDuration="24000" Grid.Column="0" x:Name="profilButton" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3"  Click="profilButton_Click">
+        <Button Background="PowderBlue"  ToolTipService.ShowDuration="24000" Grid.Column="0" x:Name="profilButton" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3"  Click="profilButton_Click">
             <StackPanel Orientation="Horizontal">
                 <Image Source="Ikonki/measuring-tape.png" Margin="1"/>
              
@@ -93,7 +99,7 @@
                 </StackPanel>
             </Button.ToolTip>
         </Button>
-        <Button ToolTipService.ShowDuration="24000" Grid.Column="1" x:Name="treningButton" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3"  Click="treningButton_Click">
+        <Button Background="AliceBlue" ToolTipService.ShowDuration="24000" Grid.Column="1" x:Name="treningButton" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3"  Click="treningButton_Click">
             <StackPanel Orientation="Horizontal">
                 <Image Source="Ikonki/bench-press-weightlifting.png" Margin="1"/>
           
@@ -109,7 +115,7 @@
                 </StackPanel>
             </Button.ToolTip>
         </Button>
-        <Button ToolTipService.ShowDuration="24000" Grid.Column="2" x:Name="statystykiButton" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3"  Click="statystykiButton_Click">
+        <Button Background="PowderBlue"  ToolTipService.ShowDuration="24000" Grid.Column="2" x:Name="statystykiButton" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3"  Click="statystykiButton_Click">
             <StackPanel Orientation="Horizontal">
                 <Image Source="Ikonki/running-treadmill.png" Margin="1"/>
      
@@ -125,7 +131,7 @@
                 </StackPanel>
             </Button.ToolTip>
         </Button>
-        <Button ToolTipService.ShowDuration="24000" Grid.Column="0" x:Name="produktySpozywczeButton" Grid.Row="3"  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3"   Click="produktySpozywczeButton_Click">
+        <Button Background="AliceBlue" ToolTipService.ShowDuration="24000" Grid.Column="0" x:Name="produktySpozywczeButton" Grid.Row="3"  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3"   Click="produktySpozywczeButton_Click">
             <StackPanel Orientation="Horizontal">
                 <Image Source="Ikonki/broccoli-porcion.png" Margin="1"/>
              
@@ -141,7 +147,7 @@
                 </StackPanel>
             </Button.ToolTip>
         </Button>
-        <Button ToolTipService.ShowDuration="24000" Grid.Column="1" x:Name="dziennikButton" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3"   Click="dziennikButton_Click">
+        <Button Background="PowderBlue"  ToolTipService.ShowDuration="24000" Grid.Column="1" x:Name="dziennikButton" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3"   Click="dziennikButton_Click">
             <StackPanel Orientation="Horizontal">
                 <Image Source="Ikonki/sport-watch.png" Margin="1"/>
              
@@ -157,7 +163,8 @@
                 </StackPanel>
             </Button.ToolTip>
         </Button>
-        <Button ToolTipService.ShowDuration="24000" Grid.Column="2" x:Name="planDniaButton" Grid.Row="3"  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3"  Click="planDniaButton_Click">
+
+        <Button ToolTipService.ShowDuration="24000" Background="AliceBlue" Grid.Column="2" x:Name="planDniaButton" Grid.Row="3"  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="3"  Click="planDniaButton_Click">
             <StackPanel Orientation="Horizontal">
                 <Image Source="Ikonki/big-stopwatch.png" Margin="1"/>
                 

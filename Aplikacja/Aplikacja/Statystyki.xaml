@@ -5,8 +5,14 @@
         Title="Statystyki" Height="300" Width="100">
     <Grid>
         <TabControl>
+            <TabControl.Background>
+            <LinearGradientBrush EndPoint="0.5,1"  MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                <GradientStop Color="#FFF3F3F3"/>
+                <GradientStop Color="#FF7DCFE8" Offset="1"/>
+            </LinearGradientBrush>
+            </TabControl.Background>
             <TabItem Header="Profil">
-                <ScrollViewer>
+                <ScrollViewer HorizontalScrollBarVisibility="Visible">
                     <StackPanel>
                         <chartingToolkit:Chart  Name="columnChart" >
                             <chartingToolkit:ColumnSeries DependentValuePath="numerek" IndependentValuePath="nazwa" ItemsSource="{Binding}" />
@@ -19,12 +25,12 @@
             </TabItem>
             
             <TabItem Header="Dieta">
-                <ScrollViewer>
+                <ScrollViewer HorizontalScrollBarVisibility="Visible">
                 </ScrollViewer>
             </TabItem>
             
             <TabItem Header="Trening">
-                <ScrollViewer>
+                <ScrollViewer HorizontalScrollBarVisibility="Visible">
                 </ScrollViewer>
             </TabItem>
         </TabControl>

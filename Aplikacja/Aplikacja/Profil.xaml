@@ -6,6 +6,7 @@
     <Window.Resources>
         <ControlTemplate x:Key="errorTemplate">
             <DockPanel LastChildFill="true">
+                
                 <Border Background="OrangeRed" DockPanel.Dock="right"
         			Margin="3,0,0,0" Width="20" Height="20" CornerRadius="5"
         			ToolTip="{Binding AdornedElement.(Validation.Errors)[0].ErrorContent, ElementName=adoner}">
@@ -29,7 +30,13 @@
     </Window.Resources>
     <ScrollViewer>
     <Grid DataContext="{StaticResource daneViewSource}">
-        <Grid.ColumnDefinitions>
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1"  MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="#FFF3F3F3"/>
+                    <GradientStop Color="#FF7DCFE8" Offset="1"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
@@ -106,14 +113,14 @@
             <ComboBoxItem Content="Kobieta"/>
         </ComboBox>
 
-        <Button x:Name="okButton" Grid.Column="0" Grid.Row="9" Margin="10,10,10,15" Click="okButton_Click"  >
+            <Button Background="AliceBlue" x:Name="okButton" Grid.Column="0" Grid.Row="9" Margin="10,10,10,15" Click="okButton_Click"  >
             <StackPanel Orientation="Horizontal">
                 <!--<Image Source="Zasoby/save2.ico" Height="20" Margin="1"/>-->
                 <TextBlock><Run Text=" Zapisz "/></TextBlock>
             </StackPanel>
         </Button>
 
-        <Button x:Name="anulujButton" Grid.Column="1" Grid.Row="9" Margin="10,10,10,15" Click="anulujButton_Click"  >
+            <Button Background="AliceBlue" x:Name="anulujButton" Grid.Column="1" Grid.Row="9" Margin="10,10,10,15" Click="anulujButton_Click"  >
             <StackPanel Orientation="Horizontal">
                 <!--<Image Source="Zasoby/save2.ico" Height="20" Margin="1"/>-->
                 <TextBlock><Run Text=" Anuluj "/></TextBlock>
