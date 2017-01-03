@@ -87,7 +87,7 @@ namespace Aplikacja
             
                 try
                 {
-                    wiekTest = int.Parse(wzrostTextbox.Text.Trim());
+                    wiekTest = int.Parse(wiekTextbox.Text.Trim());
                 }
                 catch (Exception)
                 {

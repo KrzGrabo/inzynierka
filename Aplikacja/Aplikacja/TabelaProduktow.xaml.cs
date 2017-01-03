@@ -55,5 +55,14 @@ namespace Aplikacja
             produktyViewSource.Source = danaKategoria.Produkty.ToList();
         }
 
+        private void szukajButton_Click(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Data.CollectionViewSource produktyViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("produktyViewSource")));
+            Kategorie kat = dane.Kategorie.Where(m => m.ID.Equals(kategoriaCombobox.SelectedIndex + 1)).FirstOrDefault();
+            string fraza = szukajTextbox.Text;
+            var produkty = kat.Produkty.Where(m => m.Nazwa.Contains(fraza));
+            produktyViewSource.Source = produkty.ToList();
+        }
+
     }
 }
