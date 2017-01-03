@@ -1,5 +1,6 @@
 ﻿<Window x:Class="Aplikacja.Dieta"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+       xml:lang="pl"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Kreator Diety" Icon="Ikonki\ikona.png" Height="400" Width="450" FontSize="14" WindowStartupLocation="CenterScreen">
     <Grid>
@@ -11,6 +12,7 @@
                 </LinearGradientBrush>
             </TabControl.Background>
             <TabItem Header="Krok I" x:Name="krok1Tab">
+              <ScrollViewer>
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -58,12 +60,12 @@
                     <Button MaxWidth="200" Margin="5" Background="AliceBlue" Content="Dalej" Grid.Row="5" Grid.ColumnSpan="2"  x:Name="dalej1Button" Click="dalej1Button_Click" />
 
                 </Grid>
-
+                    </ScrollViewer>
             </TabItem>
 
             <TabItem Header="Krok II" x:Name="krok2Tab" IsEnabled="False">
-
-                <Grid>
+                <ScrollViewer>
+                    <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
@@ -80,7 +82,7 @@
                     </Grid.RowDefinitions>
                     <StackPanel Margin="5" Grid.ColumnSpan="2">
                         <Label x:Name="opis2aLabel" Content="{Binding}" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
-                        <TextBlock x:Name="opis2Label" Text="{Binding}" Grid.ColumnSpan="2"/>
+                        <TextBlock x:Name="opis2Label" TextWrapping="WrapWithOverflow" Text="{Binding}" Grid.ColumnSpan="2"/>
                     </StackPanel>
                     <WrapPanel Margin="5" Grid.Row="1">
                         <Image Source="Ikonki/1482266010_Info.png" Height="25" Margin="1" ToolTip="Wybierz swoją cel dietetyczny z listy."/>
@@ -123,11 +125,12 @@
                     <Button Margin="5" MaxWidth="200" Background="AliceBlue" Content="Dalej" Grid.Row="7" Grid.Column="1"  x:Name="dalej2Button" Click="dalej2Button_Click" />
 
                 </Grid>
-
+                    </ScrollViewer>
             </TabItem>
 
             <TabItem Header="Krok III" x:Name="krok3Tab" IsEnabled="False">
-                <Grid>
+                <ScrollViewer>
+                    <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
@@ -143,20 +146,20 @@
 
                     <StackPanel Margin="5" Grid.ColumnSpan="2">
                         <Label x:Name="opis3aLabel" Content="{Binding}" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
-                        <TextBlock x:Name="opis3Label" Text="{Binding}" Grid.ColumnSpan="2"/>
+                        <TextBlock x:Name="opis3Label" TextWrapping="WrapWithOverflow" Text="{Binding}" Grid.ColumnSpan="2"/>
                     </StackPanel>
                     <WrapPanel Margin="5" Grid.Row="1">
                         <Image Source="Ikonki/1482266010_Info.png" Height="25" Margin="1" ToolTip="Wybierz datę rozpoczęcia cyklu dietetycznego."/>
                         <Label Content="Początek diety" Grid.Row="1"/>
                     </WrapPanel>
                    
-                    <DatePicker Margin="5" MaxHeight="23"  Grid.Row="1" Grid.Column="1" x:Name="startDatapicker"  SelectedDateChanged="startDatapicker_SelectedDateChanged"/>
+                    <DatePicker Margin="5" MaxHeight="25"  Grid.Row="1" Grid.Column="1" x:Name="startDatapicker"  SelectedDateChanged="startDatapicker_SelectedDateChanged"/>
                     <WrapPanel Margin="5" Grid.Row="2">
                         <Image Source="Ikonki/1482266010_Info.png" Height="25" Margin="1" ToolTip="Wybierz datę zakończenia cyklu dietetycznego."/>
                         <Label Content="Zakończenie diety" Grid.Row="2"/>
                     </WrapPanel>
 
-                    <DatePicker Margin="5" MaxHeight="23"  Grid.Row="2" Grid.Column="1" x:Name="koniecDatapicker"  SelectedDateChanged="koniecDatapicker_SelectedDateChanged"/>
+                    <DatePicker Margin="5" MaxHeight="25"  Grid.Row="2" Grid.Column="1" x:Name="koniecDatapicker"  SelectedDateChanged="koniecDatapicker_SelectedDateChanged"/>
                     <WrapPanel Margin="5" Grid.Row="3">
                         <Image Source="Ikonki/1482266010_Info.png" Height="25" Margin="1" ToolTip="Wybierz preferowaną ilość posiłków na dzień."/>
                         <Label Content="Liczba posiłków:" Grid.Row="3"/>
@@ -175,6 +178,7 @@
                     <Button Margin="5" MaxWidth="200" Background="AliceBlue" Content="Dalej" Grid.Row="4" Grid.Column="1"  x:Name="dalej3Button" Click="dalej3Button_Click" />
 
                 </Grid>
+                    </ScrollViewer>
             </TabItem>
 
             <TabItem Header="Podsumowanie" x:Name="podsumowanieTab" IsEnabled="False">

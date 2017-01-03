@@ -68,6 +68,14 @@ namespace Aplikacja
 
         }
 
+        private int obliczCykl()
+        {
+            DateTime dataPocz = startDatapicker.SelectedDate.GetValueOrDefault();
+            DateTime dataKon = koniecDatapicker.SelectedDate.GetValueOrDefault();
+            double cykl = (dataKon - dataPocz).TotalDays;
+            return (int)cykl + 1;
+        }
+
         public void Algorytm()
         {
             double pozostaleKalorie, ileBialka ;
@@ -321,6 +329,7 @@ namespace Aplikacja
             posilkiPodLabel.Content = posilkiObliczone;
             koniecPodLabel.Content = dataKon.ToShortDateString();
             poczatekPodLabel.Content = dataPocz.ToShortDateString();
+            okresPodLabel.Content = obliczCykl().ToString();
             ////tutej trzeba by ten okres wyliczyc i podpiac okresPodLabel.Content=ileDni?
             // string tekst = "Twoje zapotrzebowanie to: " + zapotrzebowanie.ToString() + " Kaloryczność twojej diety to: " + kaloriePom.ToString() + " Ilość białka w twojej diecie: " + bialkoPom.ToString() + " (to " + Math.Round(kalorieBialko, 2).ToString() + " kalorii)" + " Ilość tluszczu w twojej diecie: " + Math.Round(tluszczePom, 2).ToString() + " (to " + kalorieTluszcz.ToString() + " kalorii)" + " Ilość weglowodanow w twojej diecie: " + weglowodanyPom.ToString() + " (to " + kalorieWeglowodany.ToString() + " kalorii)";
             //MessageBox.Show(tekst);

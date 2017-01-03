@@ -12,13 +12,15 @@
                 </LinearGradientBrush>
             </TabControl.Background>
             <TabItem Header="Krok I" x:Name="krok1Tab">
-                <TabItem.Background>
+            
+                    <TabItem.Background>
                     <LinearGradientBrush EndPoint="0.5,1"  MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
                         <GradientStop Color="#FFF3F3F3"/>
                         <GradientStop Color="#FF1CA4CD" Offset="1"/>
                     </LinearGradientBrush>
                 </TabItem.Background>
-                <Grid>
+                <ScrollViewer>
+                    <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
@@ -77,7 +79,7 @@
                     <Button MaxWidth="200" Margin="5" Background="AliceBlue" Content="Dalej" Grid.Row="6" Grid.ColumnSpan="2"  x:Name="dalej1Button" Click="dalej1Button_Click" />
 
                 </Grid>
-
+                    </ScrollViewer>
             </TabItem>
 
 
@@ -102,9 +104,9 @@
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
-                    <StackPanel  Margin="5"  Grid.ColumnSpan="2">
-                        <Label x:Name="opis2aLabel" Content="{Binding}" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
-                        <TextBlock x:Name="opis2Label" Text="{Binding}" Grid.ColumnSpan="2"/>
+                    <StackPanel  Margin="5"  Grid.ColumnSpan="3">
+                        <Label x:Name="opis2aLabel" Content="{Binding}" VerticalAlignment="Center" />
+                        <TextBlock TextWrapping="WrapWithOverflow" x:Name="opis2Label" Text="{Binding}"/>
                     </StackPanel>
                     <WrapPanel  Margin="5"  Grid.Row="1">
                         <Image Source="Ikonki/1482266010_Info.png" Height="25" Margin="1" ToolTip="Poniżej wylistowana jest lista dni tygodnia. Do każdego dnia przypisz odpowiadający ci trening."/>
@@ -155,7 +157,8 @@
 
 
             <TabItem Header="Krok III" x:Name="krok3Tab" IsEnabled="False" Height="23" VerticalAlignment="Bottom">
-                <Grid>
+                <ScrollViewer>
+                    <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
@@ -171,7 +174,7 @@
 
                     <StackPanel Margin="5" Grid.ColumnSpan="2">
                         <Label x:Name="opis3aLabel" Content="{Binding}" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
-                        <TextBlock x:Name="opis3Label" Text="{Binding}" Grid.ColumnSpan="2"/>
+                        <TextBlock x:Name="opis3Label" TextWrapping="WrapWithOverflow" Text="{Binding}" Grid.ColumnSpan="2"/>
                     </StackPanel>
                     <WrapPanel Margin="5" Grid.Row="1">
                         <Image Source="Ikonki/1482266010_Info.png" Height="25" Margin="1" ToolTip="Wybierz datę rozpoczęcia cyklu treningowego."/>
@@ -196,7 +199,7 @@
                     <Button Background="AliceBlue" MaxWidth="200" Margin="5" Content="Dalej" Grid.Row="4" Grid.Column="1"  x:Name="dalej3Button" Click="dalej3Button_Click" />
 
                 </Grid>
-
+                    </ScrollViewer>
             </TabItem>
 
             <TabItem Header="Podsumowanie" x:Name="podsumowanieTab" IsEnabled="False">
@@ -231,7 +234,7 @@
                             </Grid.RowDefinitions>
 
                             <GroupBox Grid.Row="3" Grid.ColumnSpan="4" Header="Rozkład tygodniowy"  >
-                                    <ScrollViewer HorizontalScrollBarVisibility="Visible">                    
+                                    <ScrollViewer HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Hidden">                    
                                 <Grid ShowGridLines="True">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition/>

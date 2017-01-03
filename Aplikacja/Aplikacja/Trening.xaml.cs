@@ -317,7 +317,13 @@ namespace Aplikacja
                 dataPocz = date.Value.ToShortDateString();
             }
         }
-
+        private int obliczCykl()
+        {
+            DateTime dataPocz = startDatapicker.SelectedDate.GetValueOrDefault();
+            DateTime dataKon = koniecDatapicker.SelectedDate.GetValueOrDefault();
+            double cykl = (dataKon - dataPocz).TotalDays;
+            return (int)cykl + 1;
+        }
         private void koniecDatapicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             // ... Get DatePicker reference.
@@ -359,6 +365,7 @@ namespace Aplikacja
             treningNiedzielaLabel.Content = typyTrening[niedzielaCombo.SelectedIndex];
             koniecPodLabel.Content = dataKon;
             poczatekPodLabel.Content = dataPocz;
+            dlugoscCykluPodLabel.Content = obliczCykl().ToString();
             ///ciągle mi coś nie trybi dlugoscCykluPodLabel.content=ileDni?
             //TimeSpan? ileDni;
             //ileDni = b - a;

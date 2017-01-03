@@ -53,7 +53,7 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
   
-        <TextBlock TextWrapping="WrapWithOverflow" Grid.ColumnSpan="2" Text="Oto twój profil, uzupełnij dane w celu pełnego uaktywnienia wszystkich modułów."/>
+        <TextBlock Margin="5"  TextWrapping="WrapWithOverflow" Grid.ColumnSpan="2" Text="Oto twój profil, uzupełnij dane w celu pełnego uaktywnienia wszystkich modułów."/>
             <WrapPanel Margin="5" Grid.Row="1">
                 <Image Source="Ikonki/1482266010_Info.png" Height="25" Margin="1" ToolTip="Ustalony przez ciebie login(podczas rejestracji), raz wybrany nie może zostać zmieniony."/>
                 <Label Content="Login" Grid.Row="1"/>

@@ -2,15 +2,22 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:Aplikacja" mc:Ignorable="d" x:Class="Aplikacja.PlanDnia"
-        Title="PlanDnia" Height="360" Width="330" Loaded="Window_Loaded">
+        Title="PlanDnia" FontSize="14" Height="500" Width="500" Loaded="Window_Loaded">
     <Window.Resources>
         <CollectionViewSource x:Key="spis_PosilkowViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Spis_Posilkow}, CreateList=True}"/>
         <CollectionViewSource x:Key="posilekViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Posilek}, CreateList=True}"/>
     </Window.Resources>
+    <ScrollViewer>
     <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1"  MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                <GradientStop Color="#FFF3F3F3"/>
+                <GradientStop Color="#FF7DCFE8" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
+            
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -18,26 +25,96 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
+
         </Grid.RowDefinitions>
 
-        <Label Margin="10" Content="Twoje dzisiejsze posiłki: " Grid.Row="0"/>
-        <Label Margin="10" x:Name="brakDiety" Content="Brak ustalonej diety. Przejdź do modułu diety i wyznacz diete. " Grid.Row="1"/>
-        <ListView Grid.Row="1" x:Name="posilkiList"  DisplayMemberPath="Potrawa" ItemsSource="{Binding Source={StaticResource posilekViewSource}}" SelectionMode="Single"/>
-        <Button Content="Edytuj posiłki na dany dzień" x:Name="edytujPosilkiButton" Grid.Row="2" Click="edytujPosilkiButton_Click"  />
+        <TextBlock Margin="5" x:Name="opisLabel" TextWrapping="WrapWithOverflow"  Grid.Row="0"/>
+        <GroupBox Margin="5" Grid.Row="1"  Header="Dieta" >
+         
+                <Grid>
 
-        <Label Margin="10" Content="Twój trening na dziś: " Grid.Row="3"/>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Column="0">
+                        <Label Content="Dzień cyklu dietetycznego:"/>
+                        <Label Content="Białko [g]:"/>
+                        <Label Content="Węglowodany [g]:"/>
+                        <Label Content="Tłuszcz [g]:"/>
+                        <Label Content="Kalorie [kcal]:"/>
+                        <Label Content="Ilość posiłków:" />
+                    </StackPanel>
+                    <StackPanel Grid.Column="1">
+                        <Label x:Name="dzienDietyLabel" Content="x" HorizontalAlignment="Right" />
+                        <Label x:Name="bialkoPodLabel" Content="x" HorizontalAlignment="Right" />
+                        <Label x:Name="weglowodanyPodLabel" Content="x" HorizontalAlignment="Right" />
+                        <Label x:Name="tluszczPodLabel" Content="x" HorizontalAlignment="Right" />
+                        <Label x:Name="kaloriePodLabel" Content="x" HorizontalAlignment="Right" />
+                        <Label x:Name="posilkiPodLabel" Content="x" HorizontalAlignment="Right" />
+                    </StackPanel>
+                        <Button Margin="5" Background="AliceBlue" MinWidth="200" Content="Jadłospis" ToolTip="Skomponuj jadłospis pod wytyczne" HorizontalAlignment="Center" Grid.ColumnSpan="2" x:Name="edytujPosilkiButton" Grid.Row="2" Click="edytujPosilkiButton_Click"  />
+                </Grid>
+     
 
-        <Label Margin="10" x:Name="brakTreningu" Content="Brak ustalonego treningu. Przejdź do modułu treningow i wyznacz trening. " Grid.Row="4"/>
-        <Label Margin="10" x:Name="cwiczenieLabel" Content="Rodzaj ćwiczenia: " Grid.Row="4"/>
-        <Label Margin="10" x:Name="cwiczenieLabel1"  Grid.Row="4" Grid.Column="1"/>
+        </GroupBox>
+        <GroupBox Grid.Row="2"  Header="Trening" >
+          
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
 
-        <Label Margin="10" x:Name="czasLabel" Content="Czas: " Grid.Row="5"/>
-        <Label Margin="10" x:Name="czasLabel1"  Grid.Row="5" Grid.Column="1"/>
 
-        <Button Content="Edytuj trening na dany dzień" x:Name="edytujTreningButton" Grid.Row="6" Click="edytujTreningButton_Click" />
+                    <StackPanel Grid.Column="0">
+                        <Label Content="Dzień cyklu treningowego:"/>
+                        <Label Content="Dzisiejszy trening:" />
+                        <Label Content="Przybliżony czas treningu:"/>
+
+                    </StackPanel>
+                    <StackPanel Grid.Column="1">
+                        <Label x:Name="dzienTreninguPodLabel" Content="x" HorizontalAlignment="Right"/>
+                        <Label x:Name="treningPodLabel" Content="x" HorizontalAlignment="Right" />
+                        <Label x:Name="czasTrenPodLabel" Content="x" HorizontalAlignment="Right" />
+
+                    </StackPanel>
+                </Grid>
+         
+
+        </GroupBox>
+
+            <GroupBox Grid.Row="3"  Header="Profil" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Margin="5" Grid.ColumnSpan="2" Text="Jeśli nastąpiły zmiany w twoim profilu(np. waga lub obwody) zaktualizuj dane- pozwoli to na monitorowanie zmian twojego ciała." TextWrapping="WrapWithOverflow"/>
+                        <Button Margin="5" Background="AliceBlue" MaxWidth="200" Grid.ColumnSpan="2" Content="Aktualizacja profilu" x:Name="edytujProfilButton" Grid.Row="2" Click="edytujProfilButton_Click"  />
+
+                    </Grid>
+   
+
+        </GroupBox>
+
+        <ListView Grid.Row="4" x:Name="posilkiList"  DisplayMemberPath="Potrawa" ItemsSource="{Binding Source={StaticResource posilekViewSource}}" SelectionMode="Single"/>     
+       
+        <!--<Button Content="Edytuj trening na dany dzień" x:Name="edytujTreningButton" Grid.Row="6" Click="edytujTreningButton_Click" />-->
 
 
     </Grid>
+    </ScrollViewer>
 </Window>
