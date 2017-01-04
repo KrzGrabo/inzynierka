@@ -65,14 +65,14 @@
           <Property Name="ID" Type="int" Nullable="false" />
           <Property Name="Nazwa" Type="nvarchar" MaxLength="100" />
         </EntityType>
-        <EntityType Name="Posilek">
+        <EntityType Name="Posilki">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Potrawa" Type="nvarchar" MaxLength="300" />
           <Property Name="Kalorycznosc" Type="float" />
-          <Property Name="BiaLko" Type="float" />
+          <Property Name="Bialko" Type="float" />
           <Property Name="Weglowodany" Type="float" />
           <Property Name="Tluszcz" Type="float" />
         </EntityType>
@@ -96,13 +96,16 @@
           <Property Name="Aktywnosc" Type="nvarchar" MaxLength="50" />
           <Property Name="MET" Type="float" />
         </EntityType>
-        <EntityType Name="Spis_Posilkow">
+        <EntityType Name="Spozycie">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Data" Type="date" />
-          <Property Name="ID_Posilku" Type="int" Nullable="false" />
+          <Property Name="Bialko" Type="float" />
+          <Property Name="Weglowodany" Type="float" />
+          <Property Name="Tluszcz" Type="float" />
+          <Property Name="Kalorie" Type="float" />
           <Property Name="ID_Diety" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Suplementy">
@@ -113,7 +116,7 @@
           <Property Name="Nazwa" Type="varchar" MaxLength="30" />
           <Property Name="Dawkowanie" Type="varchar" MaxLength="100" />
           <Property Name="Dzialanie" Type="varchar" MaxLength="100" />
-          <Property Name="Opis" Type="text" />
+          <Property Name="Opis" Type="ntext" />
         </EntityType>
         <EntityType Name="Treningi">
           <Key>
@@ -185,27 +188,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Spis_Posi__ID_Di__2116E6DF">
+        <Association Name="FK__Spozycie__ID_Die__5A4F643B">
           <End Role="Diety" Type="Self.Diety" Multiplicity="1" />
-          <End Role="Spis_Posilkow" Type="Self.Spis_Posilkow" Multiplicity="*" />
+          <End Role="Spozycie" Type="Self.Spozycie" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Diety">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Spis_Posilkow">
+            <Dependent Role="Spozycie">
               <PropertyRef Name="ID_Diety" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Spis_Posi__ID_Po__220B0B18">
-          <End Role="Posilek" Type="Self.Posilek" Multiplicity="1" />
-          <End Role="Spis_Posilkow" Type="Self.Spis_Posilkow" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Posilek">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Spis_Posilkow">
-              <PropertyRef Name="ID_Posilku" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -239,10 +230,10 @@
           <EntitySet Name="DzienTreningowy" EntityType="Self.DzienTreningowy" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Historia Danych" EntityType="Self.Historia Danych" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Kategorie" EntityType="Self.Kategorie" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Posilek" EntityType="Self.Posilek" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Posilki" EntityType="Self.Posilki" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Produkty" EntityType="Self.Produkty" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Spalanie" EntityType="Self.Spalanie" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Spis_Posilkow" EntityType="Self.Spis_Posilkow" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Spozycie" EntityType="Self.Spozycie" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Suplementy" EntityType="Self.Suplementy" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Treningi" EntityType="Self.Treningi" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Uzytkownicy" EntityType="Self.Uzytkownicy" Schema="dbo" store:Type="Tables" />
@@ -262,13 +253,9 @@
             <End Role="Kategorie" EntitySet="Kategorie" />
             <End Role="Produkty" EntitySet="Produkty" />
           </AssociationSet>
-          <AssociationSet Name="FK__Spis_Posi__ID_Di__2116E6DF" Association="Self.FK__Spis_Posi__ID_Di__2116E6DF">
+          <AssociationSet Name="FK__Spozycie__ID_Die__5A4F643B" Association="Self.FK__Spozycie__ID_Die__5A4F643B">
             <End Role="Diety" EntitySet="Diety" />
-            <End Role="Spis_Posilkow" EntitySet="Spis_Posilkow" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Spis_Posi__ID_Po__220B0B18" Association="Self.FK__Spis_Posi__ID_Po__220B0B18">
-            <End Role="Posilek" EntitySet="Posilek" />
-            <End Role="Spis_Posilkow" EntitySet="Spis_Posilkow" />
+            <End Role="Spozycie" EntitySet="Spozycie" />
           </AssociationSet>
           <AssociationSet Name="FK__Treningi__ID_Uzy__3429BB53" Association="Self.FK__Treningi__ID_Uzy__3429BB53">
             <End Role="Uzytkownicy" EntitySet="Uzytkownicy" />
@@ -319,16 +306,6 @@
             <End Role="Diety" EntitySet="Diety" />
           </AssociationSet>
           <EntitySet Name="Suplementy" EntityType="BazaDanychModel.Suplementy" />
-          <EntitySet Name="Posilek" EntityType="BazaDanychModel.Posilek" />
-          <EntitySet Name="Spis_Posilkow" EntityType="BazaDanychModel.Spis_Posilkow" />
-          <AssociationSet Name="FK__Spis_Posi__ID_Di__7CD98669" Association="BazaDanychModel.FK__Spis_Posi__ID_Di__7CD98669">
-            <End Role="Diety" EntitySet="Diety" />
-            <End Role="Spis_Posilkow" EntitySet="Spis_Posilkow" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Spis_Posi__ID_Po__7DCDAAA2" Association="BazaDanychModel.FK__Spis_Posi__ID_Po__7DCDAAA2">
-            <End Role="Posilek" EntitySet="Posilek" />
-            <End Role="Spis_Posilkow" EntitySet="Spis_Posilkow" />
-          </AssociationSet>
           <EntitySet Name="Spalanie" EntityType="BazaDanychModel.Spalanie" />
           <EntitySet Name="DzienTreningowy" EntityType="BazaDanychModel.DzienTreningowy" />
           <EntitySet Name="Treningi" EntityType="BazaDanychModel.Treningi" />
@@ -340,6 +317,12 @@
             <End Role="Uzytkownicy" EntitySet="Uzytkownicy" />
             <End Role="Treningi" EntitySet="Treningi" />
           </AssociationSet>
+          <EntitySet Name="Spozycie" EntityType="BazaDanychModel.Spozycie" />
+          <AssociationSet Name="FK__Spozycie__ID_Die__5A4F643B" Association="BazaDanychModel.FK__Spozycie__ID_Die__5A4F643B">
+            <End Role="Diety" EntitySet="Diety" />
+            <End Role="Spozycie" EntitySet="Spozycie" />
+          </AssociationSet>
+          <EntitySet Name="Posilki" EntityType="BazaDanychModel.Posilki" />
           </EntityContainer>
         <EntityType Name="Dane">
           <Key>
@@ -444,7 +427,7 @@
           <Property Name="Data_Zakonczenia" Type="DateTime" Precision="0" />
           <Property Name="ID_Uzytkownika" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Uzytkownicy" Relationship="BazaDanychModel.FK__Diety__ID_Uzytko__4F47C5E3" FromRole="Diety" ToRole="Uzytkownicy" />
-          <NavigationProperty Name="Spis_Posilkow" Relationship="BazaDanychModel.FK__Spis_Posi__ID_Di__7CD98669" FromRole="Diety" ToRole="Spis_Posilkow" />
+          <NavigationProperty Name="Spozycie" Relationship="BazaDanychModel.FK__Spozycie__ID_Die__5A4F643B" FromRole="Diety" ToRole="Spozycie" />
         </EntityType>
         <Association Name="FK__Diety__ID_Uzytko__4F47C5E3">
           <End Type="BazaDanychModel.Uzytkownicy" Role="Uzytkownicy" Multiplicity="1" />
@@ -466,55 +449,8 @@
           <Property Name="Nazwa" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Dawkowanie" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Dzialanie" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Opis" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Opis" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="Posilek">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Potrawa" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="Kalorycznosc" Type="Double" />
-          <Property Name="Bialko" Type="Double" />
-          <Property Name="Weglowodany" Type="Double" />
-          <Property Name="Tluszcz" Type="Double" />
-          <NavigationProperty Name="Spis_Posilkow" Relationship="BazaDanychModel.FK__Spis_Posi__ID_Po__7DCDAAA2" FromRole="Posilek" ToRole="Spis_Posilkow" />
-        </EntityType>
-        <EntityType Name="Spis_Posilkow">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Data" Type="DateTime" Precision="0" />
-          <Property Name="ID_Posilku" Type="Int32" Nullable="false" />
-          <Property Name="ID_Diety" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Diety" Relationship="BazaDanychModel.FK__Spis_Posi__ID_Di__7CD98669" FromRole="Spis_Posilkow" ToRole="Diety" />
-          <NavigationProperty Name="Posilek" Relationship="BazaDanychModel.FK__Spis_Posi__ID_Po__7DCDAAA2" FromRole="Spis_Posilkow" ToRole="Posilek" />
-        </EntityType>
-        <Association Name="FK__Spis_Posi__ID_Di__7CD98669">
-          <End Type="BazaDanychModel.Diety" Role="Diety" Multiplicity="1" />
-          <End Type="BazaDanychModel.Spis_Posilkow" Role="Spis_Posilkow" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Diety">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Spis_Posilkow">
-              <PropertyRef Name="ID_Diety" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Spis_Posi__ID_Po__7DCDAAA2">
-          <End Type="BazaDanychModel.Posilek" Role="Posilek" Multiplicity="1" />
-          <End Type="BazaDanychModel.Spis_Posilkow" Role="Spis_Posilkow" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Posilek">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Spis_Posilkow">
-              <PropertyRef Name="ID_Posilku" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="Spalanie">
           <Key>
             <PropertyRef Name="Id" />
@@ -573,6 +509,42 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Spozycie">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Data" Type="DateTime" Precision="0" />
+          <Property Name="Bialko" Type="Double" />
+          <Property Name="Weglowodany" Type="Double" />
+          <Property Name="Tluszcz" Type="Double" />
+          <Property Name="Kalorie" Type="Double" />
+          <Property Name="ID_Diety" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Diety" Relationship="BazaDanychModel.FK__Spozycie__ID_Die__5A4F643B" FromRole="Spozycie" ToRole="Diety" />
+        </EntityType>
+        <Association Name="FK__Spozycie__ID_Die__5A4F643B">
+          <End Type="BazaDanychModel.Diety" Role="Diety" Multiplicity="1" />
+          <End Type="BazaDanychModel.Spozycie" Role="Spozycie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Diety">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Spozycie">
+              <PropertyRef Name="ID_Diety" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Posilki">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Potrawa" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Kalorycznosc" Type="Double" />
+          <Property Name="Bialko" Type="Double" />
+          <Property Name="Weglowodany" Type="Double" />
+          <Property Name="Tluszcz" Type="Double" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -667,28 +639,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Posilek">
-            <EntityTypeMapping TypeName="BazaDanychModel.Posilek">
-              <MappingFragment StoreEntitySet="Posilek">
-                <ScalarProperty Name="Tluszcz" ColumnName="Tluszcz" />
-                <ScalarProperty Name="Weglowodany" ColumnName="Weglowodany" />
-                <ScalarProperty Name="Bialko" ColumnName="BiaLko" />
-                <ScalarProperty Name="Kalorycznosc" ColumnName="Kalorycznosc" />
-                <ScalarProperty Name="Potrawa" ColumnName="Potrawa" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Spis_Posilkow">
-            <EntityTypeMapping TypeName="BazaDanychModel.Spis_Posilkow">
-              <MappingFragment StoreEntitySet="Spis_Posilkow">
-                <ScalarProperty Name="ID_Diety" ColumnName="ID_Diety" />
-                <ScalarProperty Name="ID_Posilku" ColumnName="ID_Posilku" />
-                <ScalarProperty Name="Data" ColumnName="Data" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Spalanie">
             <EntityTypeMapping TypeName="BazaDanychModel.Spalanie">
               <MappingFragment StoreEntitySet="Spalanie">
@@ -719,6 +669,31 @@
                 <ScalarProperty Name="Srednia_Dzienna" ColumnName="Srednia_Dzienna" />
                 <ScalarProperty Name="Data_Zakonczenia" ColumnName="Data_Zakonczenia" />
                 <ScalarProperty Name="Data_Rozpoczecia" ColumnName="Data_Rozpoczecia" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Spozycie">
+            <EntityTypeMapping TypeName="BazaDanychModel.Spozycie">
+              <MappingFragment StoreEntitySet="Spozycie">
+                <ScalarProperty Name="ID_Diety" ColumnName="ID_Diety" />
+                <ScalarProperty Name="Kalorie" ColumnName="Kalorie" />
+                <ScalarProperty Name="Tluszcz" ColumnName="Tluszcz" />
+                <ScalarProperty Name="Weglowodany" ColumnName="Weglowodany" />
+                <ScalarProperty Name="Bialko" ColumnName="Bialko" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Posilki">
+            <EntityTypeMapping TypeName="BazaDanychModel.Posilki">
+              <MappingFragment StoreEntitySet="Posilki">
+                <ScalarProperty Name="Tluszcz" ColumnName="Tluszcz" />
+                <ScalarProperty Name="Weglowodany" ColumnName="Weglowodany" />
+                <ScalarProperty Name="Bialko" ColumnName="Bialko" />
+                <ScalarProperty Name="Kalorycznosc" ColumnName="Kalorycznosc" />
+                <ScalarProperty Name="Potrawa" ColumnName="Potrawa" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

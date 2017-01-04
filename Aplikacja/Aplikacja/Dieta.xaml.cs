@@ -388,7 +388,7 @@ namespace Aplikacja
             {
                 if (rekord.Data_Zakonczenia < data.AddMonths(-1))
                 {
-                    db.Spis_Posilkow.RemoveRange(db.Spis_Posilkow.Where(m => m.ID_Diety == rekord.Id));
+                    db.Spozycie.RemoveRange(db.Spozycie.Where(m => m.ID_Diety == rekord.Id));
                     db.Diety.Remove(rekord);
                 }
             }
