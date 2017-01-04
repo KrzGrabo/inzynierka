@@ -12,14 +12,13 @@ namespace Aplikacja
     using System;
     using System.Collections.Generic;
     
-    public partial class Spis_Posilkow
+    public partial class Posilki
     {
         public int Id { get; set; }
-        public Nullable<System.DateTime> Data { get; set; }
-        public int ID_Posilku { get; set; }
-        public int ID_Diety { get; set; }
-    
-        public virtual Diety Diety { get; set; }
-        public virtual Posilek Posilek { get; set; }
+        public string Potrawa { get; set; }
+        public Nullable<double> Kalorycznosc { get; set; }
+        public Nullable<double> Bialko { get; set; }
+        public Nullable<double> Weglowodany { get; set; }
+        public Nullable<double> Tluszcz { get; set; }
     }
 }

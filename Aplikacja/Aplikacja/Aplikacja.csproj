@@ -159,7 +159,7 @@
     <Compile Include="Porownanie.xaml.cs">
       <DependentUpon>Porownanie.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Posilek.cs">
+    <Compile Include="Posilki.cs">
       <DependentUpon>BazaDanych.tt</DependentUpon>
     </Compile>
     <Compile Include="Produkty.cs">
@@ -178,7 +178,7 @@
     <Compile Include="Spalanie.cs">
       <DependentUpon>BazaDanych.tt</DependentUpon>
     </Compile>
-    <Compile Include="Spis_Posilkow.cs">
+    <Compile Include="Spozycie.cs">
       <DependentUpon>BazaDanych.tt</DependentUpon>
     </Compile>
     <Compile Include="Statystyki.xaml.cs">

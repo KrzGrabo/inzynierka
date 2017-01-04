@@ -26,7 +26,6 @@ namespace Aplikacja
         DateTime wybranaData = new DateTime();
         Diety dieta = new Diety();
         Treningi trening = new Treningi();
-        List<Posilek> posilki = new List<Posilek>();
 
 
         public PlanDnia()
@@ -40,22 +39,31 @@ namespace Aplikacja
         {
             string datowa=wybranaData.ToLongDateString();
             opisLabel.Text = "Twój plan na " + datowa;
-            //DateTime now = DateTime.Now;
-           // DateTime poczDieta = dieta.Data_Rozpoczecia;         dzień cyklu dietetycznego/treningowego      <----- tu generalnie chcialem wstawic do stringa "[numer dnia cyklu]/[ilość dni w całym cyklu]"
-            //DateTime konDieta = dieta.Data_Zakonczenia;
-        //    double dlugoscCyklu = (dieta.Data_Zakonczenia - dieta.Data_Rozpoczecia).TotalDays;
-            if (dieta.Id != 0)
+            double dlugoscCyklu;
+
+            if (dieta != null)
             {
+                DateTime poczDieta = dieta.Data_Rozpoczecia.GetValueOrDefault();         //dzień cyklu dietetycznego/treningowego      <----- tu generalnie chcialem wstawic do stringa "[numer dnia cyklu]/[ilość dni w całym cyklu]"
+                dlugoscCyklu = (wybranaData - poczDieta).TotalDays + 1;
+
                 bialkoPodLabel.Content = dieta.Bialko.ToString();
                 kaloriePodLabel.Content = dieta.Kalorycznosc.ToString();
                 tluszczPodLabel.Content = dieta.Tluszcz.ToString();
                 weglowodanyPodLabel.Content = dieta.Weglowodany.ToString();
                 posilkiPodLabel.Content = dieta.Ilosc_Posilkow.ToString();
+                dzienDietyLabel.Content = dlugoscCyklu.ToString();
             }
-///walidacja czy jest trening
-           /// treningPodLabel.Content=trening.typ podpiecie nazwy treningu
-            /// czasTrenPodLabel.Content=trening.czas podpiecie czasu treningu
-        
+
+            if (trening != null)
+            {
+                DzienTreningowy dzien = db.DzienTreningowy.Where(m => m.Data == wybranaData).FirstOrDefault();
+                DateTime poczTren = trening.Data_Rozpoczecia.GetValueOrDefault();
+                dlugoscCyklu = (wybranaData - poczTren).TotalDays + 1;
+
+                treningPodLabel.Content = dzien.Cwiczenie;
+                czasTrenPodLabel.Content = dzien.Czas;
+                dzienTreninguPodLabel.Content = dlugoscCyklu.ToString();
+            }
         }
 
         public void przekazDane(DateTime data)
@@ -70,13 +78,15 @@ namespace Aplikacja
             trening = null;
             znajdzDiete();
             znajdzTrening();
+           
             Bindowanie();
-            
-            System.Windows.Data.CollectionViewSource posilekViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("posilekViewSource")));
+
+            /*System.Windows.Data.CollectionViewSource posilekViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("posilekViewSource")));
             // Load data by setting the CollectionViewSource.Source property:
             // posilekViewSource.Source = [generic data source]
             if (dieta != null)
             {
+                Bindowanie();
            //     brakDiety.Visibility = Visibility.Hidden;
                 pobierzPosilki();
                 posilekViewSource.Source = posilki;
@@ -95,22 +105,12 @@ namespace Aplikacja
             else
             {
               
-            }
+            }*/
 
         }
-
-        private void pobierzPosilki()
-        {
-            foreach (Spis_Posilkow rekord in db.Spis_Posilkow.Where(m => m.Data == wybranaData))
-            {
-                posilki.Add(db.Posilek.Where(m => m.Id == rekord.ID_Posilku).FirstOrDefault());
-            }
-        }
-
         private void pobierzTrening()
         {
-            DzienTreningowy trening = db.DzienTreningowy.Where(m => m.Data == wybranaData).FirstOrDefault();
-          
+            DzienTreningowy trening = db.DzienTreningowy.Where(m => m.Data == wybranaData).FirstOrDefault();     
         }
 
         private void edytujPosilkiButton_Click(object sender, RoutedEventArgs e)

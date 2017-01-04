@@ -24,7 +24,6 @@ namespace Aplikacja
         int id = Sesja.ZwrocId();
         Uzytkownicy uzytkownik = new Uzytkownicy();
         Diety dieta = new Diety();
-        Spis_Posilkow spis = new Spis_Posilkow();
         DateTime wybranaData = new DateTime();
         int ilosc_wybranych = 0;
         bool walidacja = true;
@@ -44,7 +43,7 @@ namespace Aplikacja
             System.Windows.Data.CollectionViewSource posilekViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("posilekViewSource")));
             // Load data by setting the CollectionViewSource.Source property:
             // posilekViewSource.Source = [generic data source]
-            posilekViewSource.Source = db.Posilek.ToList();
+            posilekViewSource.Source = db.Posilki.ToList();
             uzytkownik = db.Uzytkownicy.Where(m => m.ID.Equals(id)).FirstOrDefault();
             znajdzDiete();
 
@@ -62,7 +61,7 @@ namespace Aplikacja
             int bialko = (int)dieta.Bialko;
             int weglowodany = (int) dieta.Weglowodany;
             int tluszcz = (int)dieta.Tluszcz;
-            foreach (Posilek posilek in potrawyBox.SelectedItems)
+            foreach (Posilki posilek in potrawyBox.SelectedItems)
             {
                 kalorie = kalorie - (int)posilek.Kalorycznosc;
                 bialko = bialko - (int)posilek.Bialko;
@@ -104,7 +103,7 @@ namespace Aplikacja
             }
             else
             {
-                db.Spis_Posilkow.RemoveRange(db.Spis_Posilkow.Where(m => m.Data == wybranaData));
+               /* db.Spis_Posilkow.RemoveRange(db.Spis_Posilkow.Where(m => m.Data == wybranaData));
 
                 foreach (Posilek posilek in potrawyBox.SelectedItems)
                 {
@@ -113,7 +112,7 @@ namespace Aplikacja
                     spis.ID_Posilku = posilek.Id;
                     db.Spis_Posilkow.Add(spis);
                     db.SaveChanges();
-                }
+                }*/
                 string msg = "Posiłki zostały poprawnie zapisane.";
                 MessageBox.Show(msg, "Informacja", MessageBoxButton.OK, MessageBoxImage.Information);
             }

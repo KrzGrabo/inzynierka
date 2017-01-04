@@ -16,7 +16,7 @@ namespace Aplikacja
     {
         public Diety()
         {
-            this.Spis_Posilkow = new HashSet<Spis_Posilkow>();
+            this.Spozycie = new HashSet<Spozycie>();
         }
     
         public int Id { get; set; }
@@ -31,6 +31,6 @@ namespace Aplikacja
         public int ID_Uzytkownika { get; set; }
     
         public virtual Uzytkownicy Uzytkownicy { get; set; }
-        public virtual ICollection<Spis_Posilkow> Spis_Posilkow { get; set; }
+        public virtual ICollection<Spozycie> Spozycie { get; set; }
     }
 }

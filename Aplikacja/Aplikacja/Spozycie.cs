@@ -12,20 +12,16 @@ namespace Aplikacja
     using System;
     using System.Collections.Generic;
     
-    public partial class Posilek
+    public partial class Spozycie
     {
-        public Posilek()
-        {
-            this.Spis_Posilkow = new HashSet<Spis_Posilkow>();
-        }
-    
         public int Id { get; set; }
-        public string Potrawa { get; set; }
-        public Nullable<double> Kalorycznosc { get; set; }
+        public Nullable<System.DateTime> Data { get; set; }
         public Nullable<double> Bialko { get; set; }
         public Nullable<double> Weglowodany { get; set; }
         public Nullable<double> Tluszcz { get; set; }
+        public Nullable<double> Kalorie { get; set; }
+        public int ID_Diety { get; set; }
     
-        public virtual ICollection<Spis_Posilkow> Spis_Posilkow { get; set; }
+        public virtual Diety Diety { get; set; }
     }
 }

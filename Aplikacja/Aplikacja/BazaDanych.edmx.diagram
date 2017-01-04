@@ -16,15 +16,14 @@
         <EntityTypeShape EntityType="BazaDanychModel.Diety" Width="1.5" PointX="0.625" PointY="1" />
         <AssociationConnector Association="BazaDanychModel.FK__Diety__ID_Uzytko__4F47C5E3" />
         <EntityTypeShape EntityType="BazaDanychModel.Suplementy" Width="1.5" PointX="9.5" PointY="8.125" />
-        <EntityTypeShape EntityType="BazaDanychModel.Posilek" Width="1.5" PointX="0.875" PointY="8.125" />
-        <EntityTypeShape EntityType="BazaDanychModel.Spis_Posilkow" Width="1.5" PointX="0.75" PointY="5.25" />
-        <AssociationConnector Association="BazaDanychModel.FK__Spis_Posi__ID_Di__7CD98669" />
-        <AssociationConnector Association="BazaDanychModel.FK__Spis_Posi__ID_Po__7DCDAAA2" />
         <EntityTypeShape EntityType="BazaDanychModel.Spalanie" Width="1.5" PointX="9.625" PointY="5.25" />
-        <EntityTypeShape EntityType="BazaDanychModel.DzienTreningowy" Width="1.5" PointX="3.75" PointY="8.5" />
+        <EntityTypeShape EntityType="BazaDanychModel.DzienTreningowy" Width="1.75" PointX="3.75" PointY="8.5" />
         <EntityTypeShape EntityType="BazaDanychModel.Treningi" Width="1.5" PointX="3.75" PointY="4.75" />
         <AssociationConnector Association="BazaDanychModel.FK__DzienTren__ID_Tr__370627FE" />
         <AssociationConnector Association="BazaDanychModel.FK__Treningi__ID_Uzy__3429BB53" />
+        <EntityTypeShape EntityType="BazaDanychModel.Spozycie" Width="1.5" PointX="0.75" PointY="5.125" />
+        <AssociationConnector Association="BazaDanychModel.FK__Spozycie__ID_Die__5A4F643B" />
+        <EntityTypeShape EntityType="BazaDanychModel.Posilki" Width="1.5" PointX="1" PointY="8.5" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

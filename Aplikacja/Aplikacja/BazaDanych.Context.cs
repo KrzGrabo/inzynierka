@@ -32,10 +32,10 @@ namespace Aplikacja
         public virtual DbSet<Produkty> Produkty { get; set; }
         public virtual DbSet<Diety> Diety { get; set; }
         public virtual DbSet<Suplementy> Suplementy { get; set; }
-        public virtual DbSet<Posilek> Posilek { get; set; }
-        public virtual DbSet<Spis_Posilkow> Spis_Posilkow { get; set; }
         public virtual DbSet<Spalanie> Spalanie { get; set; }
         public virtual DbSet<DzienTreningowy> DzienTreningowy { get; set; }
         public virtual DbSet<Treningi> Treningi { get; set; }
+        public virtual DbSet<Spozycie> Spozycie { get; set; }
+        public virtual DbSet<Posilki> Posilki { get; set; }
     }
 }
