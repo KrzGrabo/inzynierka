@@ -10,7 +10,7 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Imie" Type="varchar" MaxLength="30" />
+          <Property Name="Imie" Type="nvarchar" MaxLength="30" />
           <Property Name="Wiek" Type="int" />
           <Property Name="Plec" Type="varchar" MaxLength="30" />
           <Property Name="Waga" Type="float" />
@@ -136,7 +136,7 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Login" Type="varchar" MaxLength="30" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" />
           <Property Name="Haslo" Type="varchar" MaxLength="200" />
           <Property Name="Id_Profilu" Type="int" />
         </EntityType>
@@ -275,7 +275,7 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Login" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Haslo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="ID_Profilu" Type="Int32" />
           <NavigationProperty Name="Dane" Relationship="BazaDanychModel.FK__Uzytkowni__Id_Pr__4F47C5E3" FromRole="Uzytkownicy" ToRole="Dane" />
@@ -329,7 +329,7 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Imie" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Imie" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="Wiek" Type="Int32" />
           <Property Name="Plec" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Waga" Type="Double" />

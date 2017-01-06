@@ -31,6 +31,8 @@ namespace Aplikacja
         {
             InitializeComponent();
             Bindowanie();
+            uzytkownik = db.Uzytkownicy.Where(m => m.ID.Equals(id)).FirstOrDefault();
+            przypisaneDane = uzytkownik.Dane;
         }
 
         private void obliczButton_Click(object sender, RoutedEventArgs e)
@@ -148,20 +150,26 @@ namespace Aplikacja
 
         private void mojedaneButton_Click(object sender, RoutedEventArgs e)
         {
-           uzytkownik = db.Uzytkownicy.Where(m => m.ID.Equals(id)).FirstOrDefault();
-           przypisaneDane = uzytkownik.Dane;
-           string plec = przypisaneDane.Plec;
-           double aktWaga = przypisaneDane.Waga.GetValueOrDefault(), 
-               wzrost = przypisaneDane.Wzrost.GetValueOrDefault(), 
-               aktPas = przypisaneDane.Obwod_Pasa.GetValueOrDefault(), 
-               aktBiodra = przypisaneDane.Obwod_Bioder.GetValueOrDefault();
+           if (przypisaneDane != null)
+           {
+               string plec = przypisaneDane.Plec;
+               double aktWaga = przypisaneDane.Waga.GetValueOrDefault(),
+                   wzrost = przypisaneDane.Wzrost.GetValueOrDefault(),
+                   aktPas = przypisaneDane.Obwod_Pasa.GetValueOrDefault(),
+                   aktBiodra = przypisaneDane.Obwod_Bioder.GetValueOrDefault();
 
-           if (plec == "M") plecCombo.SelectedIndex = 0;
-           else plecCombo.SelectedIndex = 1;
-           wagaTextbox.Text = aktWaga.ToString();
-           wzrostTextbox.Text = wzrost.ToString();
-           pasTextbox.Text = aktPas.ToString();
-           biodraTextbox.Text = aktBiodra.ToString();
+               if (plec == "M") plecCombo.SelectedIndex = 0;
+               else plecCombo.SelectedIndex = 1;
+               wagaTextbox.Text = aktWaga.ToString();
+               wzrostTextbox.Text = wzrost.ToString();
+               pasTextbox.Text = aktPas.ToString();
+               biodraTextbox.Text = aktBiodra.ToString();
+           }
+           else
+           {
+               string msg = "Brak danych profilowych. Przejdź do modułu Twoje Dane i uzupełnił swoje dane.";
+               MessageBox.Show(msg, "Uwaga", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+           }
         }
 
         private double BmiFun(double waga, double wzrost)

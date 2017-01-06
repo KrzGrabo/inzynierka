@@ -25,6 +25,7 @@ namespace Aplikacja
         Uzytkownicy uzytkownik = new Uzytkownicy();
         Historia_Danych historia = new Historia_Danych();
         public static string data;
+
         public ProfilHistoryczny()
         {
             InitializeComponent();
@@ -41,9 +42,6 @@ namespace Aplikacja
 
         private void okButton_Click(object sender, RoutedEventArgs e)
         {
-
-            ///OGARNIJ CZY SOBIE TO DOBRZE ZAPISUJESZ BO POPRAWIELEM WALIDACJE
-            zapiszDane();
 
             string walid = "";
             double wzrostTest = -1, wagaTest = -1, pasTest = -1, biodraTest = -1;
@@ -102,6 +100,18 @@ namespace Aplikacja
 
             if (walid == "")
             {
+                if (uzytkownik.ID_Profilu != null)
+                {
+                    zapiszHistorie();
+                }
+                zapiszDane();
+                if (uzytkownik != null && uzytkownik.ID_Profilu == null)
+                {
+                    db.Dane.Add(przypisaneDane);
+                    uzytkownik.ID_Profilu = przypisaneDane.ID;
+                }
+
+                db.SaveChanges();
                 MessageBox.Show("Aktualizacja przeprowadzona poprawnie.");
                 this.Close();
             }
@@ -133,19 +143,6 @@ namespace Aplikacja
             db.Historia_Danych.Add(historia);
             db.SaveChanges();
         }
-
-        private void zapiszPlec()
-        {
-            if (plecCombo.SelectedIndex == 0)
-            {
-                przypisaneDane.Plec = "M";
-            }
-            else if (plecCombo.SelectedIndex == 1)
-            {
-                przypisaneDane.Plec = "K";
-            }
-        }
-
 
 
         private void WalidacjaTextboxow(object sender, KeyEventArgs e)

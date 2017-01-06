@@ -29,8 +29,9 @@
         </Grid.RowDefinitions>
         <TextBlock TextWrapping="WrapWithOverflow" Text="{Binding}" x:Name="opisLabel" Grid.ColumnSpan="2"/>
             <Button MaxWidth="200" Margin="5" Background="AliceBlue" Content="Pobierz dane z profilu" Grid.Row="1" Grid.ColumnSpan="2" x:Name="daneButton" Click="daneButton_Click"/>
-      
-        <WrapPanel Margin="5" Grid.Row="2">
+
+
+            <WrapPanel Margin="5" Grid.Row="2">
             <Image Source="Ikonki/1482266010_Info.png" Height="25" Margin="1" ToolTip="Wpisz swoją wagę w kilogramach. Podana wartość musi być liczbowa i należeć do zakresu (30, 300)."/>
             <Label Content="Waga:"   Grid.Row="2"/>
         </WrapPanel>
