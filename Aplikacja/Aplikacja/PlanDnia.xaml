@@ -99,16 +99,14 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                     <TextBlock Margin="5" Grid.ColumnSpan="2" Text="Jeśli nastąpiły zmiany w twoim profilu(np. waga lub obwody) zaktualizuj dane- pozwoli to na monitorowanie zmian twojego ciała." TextWrapping="WrapWithOverflow"/>
-                        <Button Margin="5" Background="AliceBlue" MaxWidth="200" Grid.ColumnSpan="2" Content="Aktualizacja profilu" x:Name="edytujProfilButton" Grid.Row="2" Click="edytujProfilButton_Click"  />
+                    <Button Margin="5" Background="AliceBlue" MaxWidth="200" Grid.ColumnSpan="2" Content="Aktualizacja profilu" x:Name="edytujProfilButton" Grid.Row="2" Click="edytujProfilButton_Click"  />
 
-                    </Grid>
-   
+                </Grid>
 
-        </GroupBox>
 
-        <ListView Grid.Row="4" x:Name="posilkiList"  DisplayMemberPath="Potrawa" ItemsSource="{Binding Source={StaticResource posilekViewSource}}" SelectionMode="Single"/>     
-       
-        <!--<Button Content="Edytuj trening na dany dzień" x:Name="edytujTreningButton" Grid.Row="6" Click="edytujTreningButton_Click" />-->
+            </GroupBox>
+
+            <!--<Button Content="Edytuj trening na dany dzień" x:Name="edytujTreningButton" Grid.Row="6" Click="edytujTreningButton_Click" />-->
 
 
     </Grid>

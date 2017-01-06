@@ -38,7 +38,7 @@ namespace Aplikacja
             opisLabel.Text = "Kalkulator zapotrzebowania wyliczy twoje zapotrzebowanie energetyczne. Uzupełnij wszystkie pola aby uzyskać wynik.";
             wynikLabel.Content = "0";
             uzytkownik = db.Uzytkownicy.Where(m => m.ID.Equals(id)).FirstOrDefault();
-            przypisaneDane = uzytkownik.Dane;
+            przypisaneDane = uzytkownik.Dane.FirstOrDefault();
         }
                    
         private void daneButton_Click(object sender, RoutedEventArgs e)
@@ -144,6 +144,8 @@ namespace Aplikacja
                 }
                 przypisaneDane.Zapotrzebowanie = zapotrzebowanko;
                 db.SaveChanges();
+                string msg = "Zapotrzebowanie zostało poprawnie dodane do twoich danych.";
+                MessageBox.Show(msg, "Informacja", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {

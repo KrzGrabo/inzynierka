@@ -30,7 +30,7 @@ namespace Aplikacja
         public Nullable<System.DateTime> Data_Zakonczenia { get; set; }
         public int ID_Uzytkownika { get; set; }
     
-        public virtual Uzytkownicy Uzytkownicy { get; set; }
         public virtual ICollection<Spozycie> Spozycie { get; set; }
+        public virtual Uzytkownicy Uzytkownicy { get; set; }
     }
 }

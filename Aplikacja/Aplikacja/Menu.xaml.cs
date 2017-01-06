@@ -19,6 +19,14 @@ namespace Aplikacja
     /// </summary>
     public partial class Menu : Window
     {
+
+        BazaDanychEntities db = new BazaDanychEntities();
+        int id = Sesja.ZwrocId();
+        Uzytkownicy uzytkownik = new Uzytkownicy();
+        Diety dieta = new Diety();
+        Treningi trening = new Treningi();
+        DateTime data = new DateTime();
+
         public Menu()
         {
             InitializeComponent();
@@ -104,14 +112,53 @@ namespace Aplikacja
 
         private void planDniaButton_Click(object sender, RoutedEventArgs e)
         {
-            PlanDnia okno = new PlanDnia();
-            DateTime data = DateTime.Now;
+            DateTime now = DateTime.Now;
             TimeSpan time = new TimeSpan(0,0,0);
-            data = data.Date + time;
-            okno.przekazDane(data);
-            okno.Show();
+            now = now.Date + time;
+            data = now;
+
+            dieta = null;
+            trening = null;
+            znajdzDiete();
+            znajdzTrening();
+
+            if (dieta == null && trening == null)
+            {
+                string msg = "Brak diety lub treningu na dany dzień, przejdź do odpowiednich modułów, aby ustalić plan na diete lub trening.";
+                MessageBox.Show(msg, "Uwaga", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
+            else
+            {
+                PlanDnia okno = new PlanDnia();
+                okno.przekazDane(data);
+                okno.Show();
+            }
         }
 
+
+        private void znajdzDiete()
+        {
+            var diety = uzytkownik.Diety.ToList();
+            foreach (Diety szukana in diety)
+            {
+                if (szukana.Data_Rozpoczecia <= data && szukana.Data_Zakonczenia >= data)
+                {
+                    dieta = szukana;
+                }
+            }
+        }
+
+        private void znajdzTrening()
+        {
+            var treningi = uzytkownik.Treningi.ToList();
+            foreach (Treningi szukany in treningi)
+            {
+                if (szukany.Data_Rozpoczecia <= data && szukany.Data_Zakonczenia >= data)
+                {
+                    trening = szukany;
+                }
+            }
+        }
 
    
     }

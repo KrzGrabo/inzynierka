@@ -36,7 +36,7 @@ namespace Aplikacja
             Bindowanie();
             czyszczenieDiet();
             uzytkownik = db.Uzytkownicy.Where(m => m.ID.Equals(id)).FirstOrDefault();
-            przypisaneDane = uzytkownik.Dane;
+            przypisaneDane = uzytkownik.Dane.FirstOrDefault();
         }
         int iloscPosilkow;
         double wagaPom=0, kaloriePom=0, bialkoPom, weglowodanyPom, tluszczePom, podzialPom;
