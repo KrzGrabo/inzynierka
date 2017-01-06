@@ -43,6 +43,8 @@ namespace Aplikacja
             InitializeComponent();
             Bindowanie();
             czyszczenieTreningow();
+            uzytkownik = db.Uzytkownicy.Where(m => m.ID.Equals(id)).FirstOrDefault();
+            przypisaneDane = uzytkownik.Dane;
         }
 
         public void Bindowanie()
@@ -105,16 +107,21 @@ namespace Aplikacja
 
         private void mojedaneButton_Click(object sender, RoutedEventArgs e)
         {
-            uzytkownik = db.Uzytkownicy.Where(m => m.ID.Equals(id)).FirstOrDefault();
-            przypisaneDane = uzytkownik.Dane;
-            double aktWaga = przypisaneDane.Waga.GetValueOrDefault(),
-                 wiek = przypisaneDane.Wiek.GetValueOrDefault();
-            zapotrzebowanie = przypisaneDane.Zapotrzebowanie.GetValueOrDefault();
+            if (przypisaneDane != null)
+            {
+                double aktWaga = przypisaneDane.Waga.GetValueOrDefault(),
+                     wiek = przypisaneDane.Wiek.GetValueOrDefault();
+                zapotrzebowanie = przypisaneDane.Zapotrzebowanie.GetValueOrDefault();
 
-            ustawPlec();
-            wagaTextbox.Text = aktWaga.ToString();
-            zapotrzebowanieTextbox.Text = zapotrzebowanie.ToString();
-            // wiekTextbox.Text = wiek.ToString();
+                ustawPlec();
+                wagaTextbox.Text = aktWaga.ToString();
+                zapotrzebowanieTextbox.Text = zapotrzebowanie.ToString();
+            }
+            else
+            {
+                string msg = "Brak danych profilowych. Przejdź do modułu Twoje Dane i uzupełnił swoje dane.";
+                MessageBox.Show(msg, "Uwaga", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
         }
 
         private void WalidacjaTextboxow(object sender, KeyEventArgs e)
@@ -277,7 +284,6 @@ namespace Aplikacja
             if (startDatapicker.SelectedDate < DateTime.Now.AddDays(-1)) walidacja = walidacja + "\nTrening może się zaczynać najwcześniej od dzisiaj. Zmień date początkową.";
             if (startDatapicker.SelectedDate != null && koniecDatapicker.SelectedDate != null && znajdzTrening()) walidacja = walidacja + "\nW podanym okresie jest już zapisany trening. Wybierz inny okres.";
            
-            //TRZEBA DODAC SPRAWDZENIE CZY KONCOWA JEST POZNIEJ NIZ POCZATKOWA
             if (walidacja == "")
             {
                 podsumowanieTab.IsEnabled = true;
