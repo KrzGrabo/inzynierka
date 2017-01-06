@@ -3,10 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:Aplikacja" mc:Ignorable="d" x:Class="Aplikacja.PlanDnia"
         Title="PlanDnia" FontSize="14" Height="500" Width="500" Loaded="Window_Loaded">
-    <Window.Resources>
-        <CollectionViewSource x:Key="spis_PosilkowViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Spis_Posilkow}, CreateList=True}"/>
-        <CollectionViewSource x:Key="posilekViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Posilek}, CreateList=True}"/>
-    </Window.Resources>
+ 
     <ScrollViewer>
     <Grid>
         <Grid.Background>
@@ -30,38 +27,60 @@
 
         <TextBlock Margin="5" x:Name="opisLabel" TextWrapping="WrapWithOverflow"  Grid.Row="0"/>
         <GroupBox Margin="5" Grid.Row="1"  Header="Dieta" >
-         
+                <ScrollViewer HorizontalScrollBarVisibility="Visible">
                 <Grid>
 
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <StackPanel Grid.Column="0">
-                        <Label Content="Dzień cyklu dietetycznego:"/>
+                    <StackPanel Grid.Column="0" Margin="5">
+                            <Label Content="Plan dietetyczny" FontSize="16" FontWeight="Bold" />
+                            <Label Content="Dzień cyklu dietetycznego:"/>
                         <Label Content="Białko [g]:"/>
                         <Label Content="Węglowodany [g]:"/>
                         <Label Content="Tłuszcz [g]:"/>
                         <Label Content="Kalorie [kcal]:"/>
                         <Label Content="Ilość posiłków:" />
                     </StackPanel>
-                    <StackPanel Grid.Column="1">
-                        <Label x:Name="dzienDietyLabel" Content="x" HorizontalAlignment="Right" />
+                        <StackPanel Grid.Column="1" Margin="5">
+                            <Label Content=""/>
+                            <Label x:Name="dzienDietyLabel" Content="x" HorizontalAlignment="Right" />
                         <Label x:Name="bialkoPodLabel" Content="x" HorizontalAlignment="Right" />
                         <Label x:Name="weglowodanyPodLabel" Content="x" HorizontalAlignment="Right" />
                         <Label x:Name="tluszczPodLabel" Content="x" HorizontalAlignment="Right" />
                         <Label x:Name="kaloriePodLabel" Content="x" HorizontalAlignment="Right" />
                         <Label x:Name="posilkiPodLabel" Content="x" HorizontalAlignment="Right" />
                     </StackPanel>
-                        <Button Margin="5" Background="AliceBlue" MinWidth="200" Content="Jadłospis" ToolTip="Skomponuj jadłospis pod wytyczne" HorizontalAlignment="Center" Grid.ColumnSpan="2" x:Name="edytujPosilkiButton" Grid.Row="2" Click="edytujPosilkiButton_Click"  />
+                        <StackPanel Grid.Column="2" Margin="5">
+                            <Label Content="Rzezczywiste spożycie" FontSize="16" FontWeight="Bold" />
+                            <Label Content="Dzień cyklu dietetycznego:"/>
+                            <Label Content="Białko [g]:"/>
+                            <Label Content="Węglowodany [g]:"/>
+                            <Label Content="Tłuszcz [g]:"/>
+                            <Label Content="Kalorie [kcal]:"/>
+                            <Label Content="Ilość posiłków:" />
+                        </StackPanel>
+                        <StackPanel Grid.Column="3" Margin="5">
+                            <Label Content=""/>
+                            <Label x:Name="dzienzRzDietyLabel" Content="x" HorizontalAlignment="Right" />
+                            <Label x:Name="bialkoRzPodLabel" Content="x" HorizontalAlignment="Right" />
+                            <Label x:Name="weglowodanyRzPodLabel" Content="x" HorizontalAlignment="Right" />
+                            <Label x:Name="tluszczPodRzLabel" Content="x" HorizontalAlignment="Right" />
+                            <Label x:Name="kaloriePodRzLabel" Content="x" HorizontalAlignment="Right" />
+                            <Label x:Name="posilkiPodRzLabel" Content="x" HorizontalAlignment="Right" />
+                        </StackPanel>
+                        <Button Margin="5" Background="AliceBlue" MinWidth="200" Content="Jadłospis" ToolTip="Skomponuj jadłospis pod wytyczne" HorizontalAlignment="Center" Grid.Column="2" Grid.ColumnSpan="2" x:Name="edytujPosilkiButton" Grid.Row="2" Click="edytujPosilkiButton_Click"  />
                 </Grid>
-     
 
-        </GroupBox>
+                </ScrollViewer>
+            </GroupBox>
         <GroupBox Grid.Row="2"  Header="Trening" >
           
                 <Grid>
@@ -110,9 +129,7 @@
 
         </GroupBox>
 
-        <ListView Grid.Row="4" x:Name="posilkiList"  DisplayMemberPath="Potrawa" ItemsSource="{Binding Source={StaticResource posilekViewSource}}" SelectionMode="Single"/>     
-       
-        <!--<Button Content="Edytuj trening na dany dzień" x:Name="edytujTreningButton" Grid.Row="6" Click="edytujTreningButton_Click" />-->
+      <!--<Button Content="Edytuj trening na dany dzień" x:Name="edytujTreningButton" Grid.Row="6" Click="edytujTreningButton_Click" />-->
 
 
     </Grid>
