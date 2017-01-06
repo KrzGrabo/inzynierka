@@ -37,20 +37,28 @@ namespace Aplikacja
         {
             opisLabel.Text = "Kalkulator zapotrzebowania wyliczy twoje zapotrzebowanie energetyczne. Uzupełnij wszystkie pola aby uzyskać wynik.";
             wynikLabel.Content = "0";
+            uzytkownik = db.Uzytkownicy.Where(m => m.ID.Equals(id)).FirstOrDefault();
+            przypisaneDane = uzytkownik.Dane;
         }
                    
         private void daneButton_Click(object sender, RoutedEventArgs e)
         {
-            uzytkownik = db.Uzytkownicy.Where(m => m.ID.Equals(id)).FirstOrDefault();
-            przypisaneDane = uzytkownik.Dane;
-            double aktWaga = przypisaneDane.Waga.GetValueOrDefault(),
-                 wzrost = przypisaneDane.Wzrost.GetValueOrDefault(),
-                 wiek = przypisaneDane.Wiek.GetValueOrDefault();
+            if (przypisaneDane != null)
+            {
+                double aktWaga = przypisaneDane.Waga.GetValueOrDefault(),
+                     wzrost = przypisaneDane.Wzrost.GetValueOrDefault(),
+                     wiek = przypisaneDane.Wiek.GetValueOrDefault();
 
-            ustawPlec();
-            wagaTextbox.Text = aktWaga.ToString();
-            wzrostTextbox.Text = wzrost.ToString();
-            wiekTextbox.Text = wiek.ToString();
+                ustawPlec();
+                wagaTextbox.Text = aktWaga.ToString();
+                wzrostTextbox.Text = wzrost.ToString();
+                wiekTextbox.Text = wiek.ToString();
+            }
+            else
+            {
+                string msg = "Brak danych profilowych. Przejdź do modułu Twoje Dane i uzupełnił swoje dane.";
+                MessageBox.Show(msg, "Uwaga", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
         }
 
         private void obliczButton_Click(object sender, RoutedEventArgs e)
@@ -128,12 +136,20 @@ namespace Aplikacja
 
         private void dietaButton_Click(object sender, RoutedEventArgs e)
         {
-            if (przypisaneDane.Zapotrzebowanie != null)
+            if (przypisaneDane != null)
             {
-                zapiszHistorie();
+                if (przypisaneDane.Zapotrzebowanie != null)
+                {
+                    zapiszHistorie();
+                }
+                przypisaneDane.Zapotrzebowanie = zapotrzebowanko;
+                db.SaveChanges();
             }
-            przypisaneDane.Zapotrzebowanie = zapotrzebowanko;
-            db.SaveChanges();
+            else
+            {
+                string msg = "Brak danych profilowych. Przejdź do modułu Twoje Dane i uzupełnił swoje dane.";
+                MessageBox.Show(msg, "Uwaga", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
         }
 
         private void zapiszHistorie()

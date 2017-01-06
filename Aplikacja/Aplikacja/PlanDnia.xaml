@@ -3,10 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:Aplikacja" mc:Ignorable="d" x:Class="Aplikacja.PlanDnia"
         Title="PlanDnia" FontSize="14" Height="500" Width="500" Loaded="Window_Loaded">
-    <Window.Resources>
-        <CollectionViewSource x:Key="spis_PosilkowViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Spis_Posilkow}, CreateList=True}"/>
-        <CollectionViewSource x:Key="posilekViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Posilek}, CreateList=True}"/>
-    </Window.Resources>
     <ScrollViewer>
     <Grid>
         <Grid.Background>

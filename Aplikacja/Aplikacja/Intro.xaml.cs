@@ -62,9 +62,14 @@ namespace Aplikacja
                     Sesja.UstawId(szukanyUzytkwonik.ID);
                     this.Close();
                 }
-                else
+                else if (szukanyUzytkwonik == null)
                 {
-                    walidacja = "Nie ma takiego użytkownika";
+                    walidacja = "Nie ma takiego użytkownika.";
+                    MessageBox.Show(walidacja, "Uwaga", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                }
+                else if (hasher.VerifyHashedPassword(szukanyUzytkwonik.Haslo, uzytkownik.Haslo) == PasswordVerificationResult.Failed)
+                {
+                    walidacja = "Podane hasło jest nieprawidłowe.";
                     MessageBox.Show(walidacja, "Uwaga", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 }
             }

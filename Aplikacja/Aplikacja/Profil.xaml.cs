@@ -41,9 +41,6 @@ namespace Aplikacja
         private void okButton_Click(object sender, RoutedEventArgs e)
         {
 
-            ///OGARNIJ CZY SOBIE TO DOBRZE ZAPISUJESZ BO POPRAWIELEM WALIDACJE
-            zapiszDane();
-
                 string walid = "";
                 double wzrostTest = -1, wagaTest = -1, pasTest = -1, biodraTest = -1;
                 int wiekTest = -1;
@@ -105,7 +102,7 @@ namespace Aplikacja
                     {
                         zapiszHistorie();
                     }
-
+                    zapiszDane();
                     if (uzytkownik != null && uzytkownik.ID_Profilu == null)
                     {
                         db.Dane.Add(przypisaneDane);
@@ -113,7 +110,8 @@ namespace Aplikacja
                     }
 
                     db.SaveChanges();
-                    this.Close();
+                    string msg = "Dane profilowe zostały poprawnie zapisane.";
+                    MessageBox.Show(msg, "Informacja", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 else
                 {
@@ -142,19 +140,6 @@ namespace Aplikacja
             db.Historia_Danych.Add(historia);
             db.SaveChanges();
         }
-
-        private void zapiszPlec()
-        {
-            if (plecCombo.SelectedIndex == 0)
-            {
-                przypisaneDane.Plec = "M";
-            }
-            else if (plecCombo.SelectedIndex == 1)
-            {
-                przypisaneDane.Plec = "K";
-            }
-        }
-
 
 
         private void WalidacjaTextboxow(object sender, KeyEventArgs e)

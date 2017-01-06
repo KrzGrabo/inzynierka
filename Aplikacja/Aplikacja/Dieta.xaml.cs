@@ -35,6 +35,8 @@ namespace Aplikacja
             InitializeComponent();
             Bindowanie();
             czyszczenieDiet();
+            uzytkownik = db.Uzytkownicy.Where(m => m.ID.Equals(id)).FirstOrDefault();
+            przypisaneDane = uzytkownik.Dane;
         }
         int iloscPosilkow;
         double wagaPom=0, kaloriePom=0, bialkoPom, weglowodanyPom, tluszczePom, podzialPom;
@@ -58,14 +60,6 @@ namespace Aplikacja
             {
                // wynikLabel.Content = zapotrzebowanie.ToString();
             }
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            KalkZapotrzebowanie menu = new KalkZapotrzebowanie();
-
-            menu.Show();
-
         }
 
         private int obliczCykl()
@@ -242,8 +236,8 @@ namespace Aplikacja
 
         private void mojedaneButton_Click(object sender, RoutedEventArgs e)
         {
-            uzytkownik = db.Uzytkownicy.Where(m => m.ID.Equals(id)).FirstOrDefault();
-            przypisaneDane = uzytkownik.Dane;
+            if (przypisaneDane != null)
+            {
             double aktWaga = przypisaneDane.Waga.GetValueOrDefault(),
                  wzrost = przypisaneDane.Wzrost.GetValueOrDefault(),
                  wiek = przypisaneDane.Wiek.GetValueOrDefault();
@@ -252,6 +246,12 @@ namespace Aplikacja
             ustawPlec();
             wagaTextbox.Text = aktWaga.ToString();
             zapotrzebowanieTextbox.Text = zapotrzebowanie.ToString();
+            }
+            else
+            {
+                string msg = "Brak danych profilowych. Przejdź do modułu Twoje Dane i uzupełnił swoje dane.";
+                MessageBox.Show(msg, "Uwaga", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
         }
 
         private void porownanieButton_Click(object sender, RoutedEventArgs e)
@@ -386,7 +386,7 @@ namespace Aplikacja
             DateTime data = DateTime.Now;
             foreach (Diety rekord in diety)
             {
-                if (rekord.Data_Zakonczenia < data.AddMonths(-1))
+                if (rekord.Data_Zakonczenia < data.AddMonths(-6))
                 {
                     db.Spozycie.RemoveRange(db.Spozycie.Where(m => m.ID_Diety == rekord.Id));
                     db.Diety.Remove(rekord);
