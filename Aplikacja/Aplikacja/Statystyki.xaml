@@ -15,13 +15,13 @@
                 <ScrollViewer HorizontalScrollBarVisibility="Visible">
                     <StackPanel>
                         <chartingToolkit:Chart  x:Name="pasChart" Title="Pie Series Demo" VerticalAlignment="Top" >
-                            <chartingToolkit:LineSeries ItemsSource="{Binding}" DependentValuePath="numerek" IndependentValuePath="nazwa"/>
+                            <chartingToolkit:LineSeries ItemsSource="{Binding}" DependentValuePath="wartosc" IndependentValuePath="data"/>
                         </chartingToolkit:Chart>
                         <chartingToolkit:Chart  x:Name="biodraChart" Title="Pie Series Demo" VerticalAlignment="Top" >
-                            <chartingToolkit:LineSeries ItemsSource="{Binding}" DependentValuePath="numerek" IndependentValuePath="nazwa"/>
+                            <chartingToolkit:LineSeries ItemsSource="{Binding}" DependentValuePath="wartosc" IndependentValuePath="data"/>
                         </chartingToolkit:Chart>
                         <chartingToolkit:Chart  x:Name="wagaChart" Title="Pie Series Demo" VerticalAlignment="Top" >
-                            <chartingToolkit:LineSeries ItemsSource="{Binding}" DependentValuePath="numerek" IndependentValuePath="nazwa"/>
+                            <chartingToolkit:LineSeries ItemsSource="{Binding}" DependentValuePath="wartosc" IndependentValuePath="data"/>
                         </chartingToolkit:Chart>
                     </StackPanel>
                 </ScrollViewer>
@@ -31,7 +31,7 @@
                 <ScrollViewer HorizontalScrollBarVisibility="Visible">
                     <StackPanel>
                         <chartingToolkit:Chart  x:Name="dietaChart" Title="Pie Series Demo" VerticalAlignment="Top" >
-                            <chartingToolkit:PieSeries ItemsSource="{Binding}" DependentValuePath="numerek" IndependentValuePath="nazwa"/>
+                            <chartingToolkit:PieSeries ItemsSource="{Binding}" DependentValuePath="wartosc" IndependentValuePath="data"/>
                         </chartingToolkit:Chart>
                     </StackPanel>
                 </ScrollViewer>
@@ -41,7 +41,7 @@
                 <ScrollViewer HorizontalScrollBarVisibility="Visible">
                     <StackPanel>
                         <chartingToolkit:Chart  x:Name="treningChart" >
-                            <chartingToolkit:ColumnSeries DependentValuePath="numerek" IndependentValuePath="nazwa" ItemsSource="{Binding}" />
+                            <chartingToolkit:ColumnSeries DependentValuePath="wartosc" IndependentValuePath="data" ItemsSource="{Binding}" />
                         </chartingToolkit:Chart>
                     </StackPanel>
                 </ScrollViewer>

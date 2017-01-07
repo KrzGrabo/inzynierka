@@ -57,9 +57,9 @@ namespace Aplikacja
                 var szukanyUzytkwonik = db.Uzytkownicy.Where(m => m.Login.Equals(uzytkownik.Login)).FirstOrDefault();
                 if (szukanyUzytkwonik != null && hasher.VerifyHashedPassword(szukanyUzytkwonik.Haslo, uzytkownik.Haslo) == PasswordVerificationResult.Success)
                 {
+                    Sesja.UstawId(szukanyUzytkwonik.ID);
                     Menu menu = new Menu();
                     menu.Show();
-                    Sesja.UstawId(szukanyUzytkwonik.ID);
                     this.Close();
                 }
                 else if (szukanyUzytkwonik == null)

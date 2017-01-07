@@ -30,6 +30,7 @@ namespace Aplikacja
         public Menu()
         {
             InitializeComponent();
+            uzytkownik = db.Uzytkownicy.Where(m => m.ID.Equals(id)).FirstOrDefault();
         }
 
        
