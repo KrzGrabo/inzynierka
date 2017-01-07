@@ -16,6 +16,7 @@ namespace Aplikacja
     {
         public Uzytkownicy()
         {
+            this.Dane = new HashSet<Dane>();
             this.Diety = new HashSet<Diety>();
             this.Treningi = new HashSet<Treningi>();
         }
@@ -23,9 +24,8 @@ namespace Aplikacja
         public int ID { get; set; }
         public string Login { get; set; }
         public string Haslo { get; set; }
-        public Nullable<int> ID_Profilu { get; set; }
     
-        public virtual Dane Dane { get; set; }
+        public virtual ICollection<Dane> Dane { get; set; }
         public virtual ICollection<Diety> Diety { get; set; }
         public virtual ICollection<Treningi> Treningi { get; set; }
     }

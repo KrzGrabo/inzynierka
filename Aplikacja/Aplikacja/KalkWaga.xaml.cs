@@ -32,7 +32,7 @@ namespace Aplikacja
             InitializeComponent();
             Bindowanie();
             uzytkownik = db.Uzytkownicy.Where(m => m.ID.Equals(id)).FirstOrDefault();
-            przypisaneDane = uzytkownik.Dane;
+            przypisaneDane = uzytkownik.Dane.FirstOrDefault();
         }
 
         private void obliczButton_Click(object sender, RoutedEventArgs e)

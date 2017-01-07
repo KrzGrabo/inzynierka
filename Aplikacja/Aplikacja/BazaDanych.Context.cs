@@ -25,9 +25,6 @@ namespace Aplikacja
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Uzytkownicy> Uzytkownicy { get; set; }
-        public virtual DbSet<Dane> Dane { get; set; }
-        public virtual DbSet<Historia_Danych> Historia_Danych { get; set; }
         public virtual DbSet<Kategorie> Kategorie { get; set; }
         public virtual DbSet<Produkty> Produkty { get; set; }
         public virtual DbSet<Diety> Diety { get; set; }
@@ -37,5 +34,8 @@ namespace Aplikacja
         public virtual DbSet<Treningi> Treningi { get; set; }
         public virtual DbSet<Spozycie> Spozycie { get; set; }
         public virtual DbSet<Posilki> Posilki { get; set; }
+        public virtual DbSet<Dane> Dane { get; set; }
+        public virtual DbSet<Historia_Danych> Historia_Danych { get; set; }
+        public virtual DbSet<Uzytkownicy> Uzytkownicy { get; set; }
     }
 }

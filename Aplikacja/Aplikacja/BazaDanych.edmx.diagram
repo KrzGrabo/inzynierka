@@ -5,25 +5,25 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="fefe58f2fb094629b23e313914b3391a" Name="Diagram1" ZoomLevel="86">
-        <EntityTypeShape EntityType="BazaDanychModel.Uzytkownicy" Width="1.5" PointX="3.625" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="BazaDanychModel.Dane" Width="1.5" PointX="6.875" PointY="1" />
-        <EntityTypeShape EntityType="BazaDanychModel.Historia_Danych" Width="1.5" PointX="10" PointY="1.25" />
-        <AssociationConnector Association="BazaDanychModel.FK__Historia___ID_Pr__503BEA1C" />
-        <AssociationConnector Association="BazaDanychModel.FK__Uzytkowni__Id_Pr__4F47C5E3" />
         <EntityTypeShape EntityType="BazaDanychModel.Kategorie" Width="1.5" PointX="6.875" PointY="4.5" />
         <EntityTypeShape EntityType="BazaDanychModel.Produkty" Width="1.5" PointX="6.875" PointY="7.875" />
         <AssociationConnector Association="BazaDanychModel.FK__Produkty__ID_Kat__6383C8BA" />
         <EntityTypeShape EntityType="BazaDanychModel.Diety" Width="1.5" PointX="0.625" PointY="1" />
-        <AssociationConnector Association="BazaDanychModel.FK__Diety__ID_Uzytko__4F47C5E3" />
         <EntityTypeShape EntityType="BazaDanychModel.Suplementy" Width="1.5" PointX="9.5" PointY="8.125" />
         <EntityTypeShape EntityType="BazaDanychModel.Spalanie" Width="1.5" PointX="9.625" PointY="5.25" />
         <EntityTypeShape EntityType="BazaDanychModel.DzienTreningowy" Width="1.75" PointX="3.75" PointY="8.5" />
         <EntityTypeShape EntityType="BazaDanychModel.Treningi" Width="1.5" PointX="3.75" PointY="4.75" />
         <AssociationConnector Association="BazaDanychModel.FK__DzienTren__ID_Tr__370627FE" />
-        <AssociationConnector Association="BazaDanychModel.FK__Treningi__ID_Uzy__3429BB53" />
         <EntityTypeShape EntityType="BazaDanychModel.Spozycie" Width="1.5" PointX="0.75" PointY="5.125" />
         <AssociationConnector Association="BazaDanychModel.FK__Spozycie__ID_Die__5A4F643B" />
         <EntityTypeShape EntityType="BazaDanychModel.Posilki" Width="1.5" PointX="1" PointY="8.5" />
+        <EntityTypeShape EntityType="BazaDanychModel.Dane" Width="1.5" PointX="6.875" PointY="0.5" />
+        <EntityTypeShape EntityType="BazaDanychModel.Historia_Danych" Width="1.5" PointX="9.75" PointY="0.5" />
+        <EntityTypeShape EntityType="BazaDanychModel.Uzytkownicy" Width="1.5" PointX="4.125" PointY="1.125" />
+        <AssociationConnector Association="BazaDanychModel.FK__Dane__ID_Uzytkow__119F9925" />
+        <AssociationConnector Association="BazaDanychModel.FK__Historia___ID_Pr__0880433F" />
+        <AssociationConnector Association="BazaDanychModel.FK__Diety__ID_Uzytko__4F47C5E3" />
+        <AssociationConnector Association="BazaDanychModel.FK__Treningi__ID_Uzy__3429BB53" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
