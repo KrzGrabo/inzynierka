@@ -45,13 +45,21 @@ namespace Aplikacja
             {
                 DateTime poczDieta = dieta.Data_Rozpoczecia.GetValueOrDefault();         //dzień cyklu dietetycznego/treningowego      <----- tu generalnie chcialem wstawic do stringa "[numer dnia cyklu]/[ilość dni w całym cyklu]"
                 dlugoscCyklu = (wybranaData - poczDieta).TotalDays + 1;
-
+      
                 bialkoPodLabel.Content = dieta.Bialko.ToString();
                 kaloriePodLabel.Content = dieta.Kalorycznosc.ToString();
                 tluszczPodLabel.Content = dieta.Tluszcz.ToString();
                 weglowodanyPodLabel.Content = dieta.Weglowodany.ToString();
                 posilkiPodLabel.Content = dieta.Ilosc_Posilkow.ToString();
                 dzienDietyLabel.Content = dlugoscCyklu.ToString();
+
+                ///TU ZBINDOWAĆ RZECZYWISTE SPORZYCIE
+                //bialkoRzPodLabel.Content = X.ToString();
+                //kaloriePodRzLabel.Content = X.ToString();
+                //tluszczPodRzLabel.Content = X.ToString();
+                //weglowodanyRzPodLabel.Content = X.ToString();
+                posilkiPodRzLabel.Content = dieta.Ilosc_Posilkow.ToString();
+                dzienzRzDietyLabel.Content = dlugoscCyklu.ToString();
             }
 
             if (trening != null)
