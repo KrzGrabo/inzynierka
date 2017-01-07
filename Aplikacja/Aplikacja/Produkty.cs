@@ -16,10 +16,10 @@ namespace Aplikacja
     {
         public int ID { get; set; }
         public string Nazwa { get; set; }
-        public string Bialko { get; set; }
-        public string Tluszcze { get; set; }
-        public string Węglodowany { get; set; }
-        public string Wartosc_Energetyczna { get; set; }
+        public Nullable<double> Bialko { get; set; }
+        public Nullable<double> Tluszcze { get; set; }
+        public Nullable<double> Węglodowany { get; set; }
+        public Nullable<double> Wartosc_Energetyczna { get; set; }
         public int ID_Kategori { get; set; }
     
         public virtual Kategorie Kategorie { get; set; }
