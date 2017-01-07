@@ -335,6 +335,7 @@
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Dane.datasource" />
     <None Include="Properties\DataSources\Kategorie.datasource" />
+    <None Include="Properties\DataSources\Posilki.datasource" />
     <None Include="Properties\DataSources\Produkty.datasource" />
     <None Include="Properties\DataSources\Spalanie.datasource" />
     <None Include="Properties\DataSources\Suplementy.datasource" />

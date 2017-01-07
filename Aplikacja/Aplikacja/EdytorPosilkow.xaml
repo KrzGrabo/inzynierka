@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:Aplikacja" mc:Ignorable="d" x:Class="Aplikacja.EdytorPosilkow"
         Title="EdytorDnia" Icon="Ikonki\ikona.png" WindowStartupLocation="CenterScreen" FontSize="14" Height="500" Width="500" Loaded="Window_Loaded" Closed="Window_Closed">
     <Window.Resources>
-        <CollectionViewSource x:Key="posilekViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Posilek}, CreateList=True}"/>
+        <CollectionViewSource x:Key="posilekViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Posilki}, CreateList=True}"/>
     </Window.Resources>
     <Grid DataContext="{StaticResource posilekViewSource}">
         <Grid.ColumnDefinitions>

@@ -53,13 +53,18 @@ namespace Aplikacja
                 posilkiPodLabel.Content = dieta.Ilosc_Posilkow.ToString();
                 dzienDietyLabel.Content = dlugoscCyklu.ToString();
 
-                ///TU ZBINDOWAĆ RZECZYWISTE SPORZYCIE
-                //bialkoRzPodLabel.Content = X.ToString();
-                //kaloriePodRzLabel.Content = X.ToString();
-                //tluszczPodRzLabel.Content = X.ToString();
-                //weglowodanyRzPodLabel.Content = X.ToString();
-                posilkiPodRzLabel.Content = dieta.Ilosc_Posilkow.ToString();
-                dzienzRzDietyLabel.Content = dlugoscCyklu.ToString();
+                Spozycie spozycie = dieta.Spozycie.Where(m => m.Data == wybranaData).FirstOrDefault();
+
+                if (spozycie != null)
+                {
+                    ///TU ZBINDOWAĆ RZECZYWISTE SPORZYCIE
+                    bialkoRzPodLabel.Content = spozycie.Bialko.ToString();
+                    kaloriePodRzLabel.Content = spozycie.Kalorie.ToString();
+                    tluszczPodRzLabel.Content = spozycie.Tluszcz.ToString();
+                    weglowodanyRzPodLabel.Content = spozycie.Weglowodany.ToString();
+                    posilkiPodRzLabel.Content = dieta.Ilosc_Posilkow.ToString();
+                    dzienzRzDietyLabel.Content = dlugoscCyklu.ToString();
+                }
             }
 
             if (trening != null)
