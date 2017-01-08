@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+﻿﻿<?xml version="1.0" encoding="utf-8"?>
 <edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
   <!-- EF Runtime content -->
   <edmx:Runtime>
@@ -306,14 +306,11 @@
             <End Role="Uzytkownicy" EntitySet="Uzytkownicy" />
             <End Role="Treningi" EntitySet="Treningi" />
           </AssociationSet>
-<<<<<<< HEAD
-=======
           <EntitySet Name="Produkty" EntityType="BazaDanychModel.Produkty" />
           <AssociationSet Name="FK__Produkty__ID_Kat__2B0A656D" Association="BazaDanychModel.FK__Produkty__ID_Kat__2B0A656D">
             <End Role="Kategorie" EntitySet="Kategorie" />
             <End Role="Produkty" EntitySet="Produkty" />
           </AssociationSet>
->>>>>>> master
           </EntityContainer>
         <EntityType Name="Kategorie">
           <Key>
@@ -523,8 +520,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-<<<<<<< HEAD
-=======
         <EntityType Name="Produkty">
           <Key>
             <PropertyRef Name="ID" />
@@ -550,7 +545,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
->>>>>>> master
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -691,8 +685,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-<<<<<<< HEAD
-=======
           <EntitySetMapping Name="Produkty">
             <EntityTypeMapping TypeName="BazaDanychModel.Produkty">
               <MappingFragment StoreEntitySet="Produkty">
@@ -706,7 +698,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
->>>>>>> master
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
