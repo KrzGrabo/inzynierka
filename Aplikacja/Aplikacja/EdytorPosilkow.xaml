@@ -2,46 +2,139 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:Aplikacja" mc:Ignorable="d" x:Class="Aplikacja.EdytorPosilkow"
-        Title="EdytorDnia" Icon="Ikonki\ikona.png" WindowStartupLocation="CenterScreen" FontSize="14" Height="500" Width="500" Loaded="Window_Loaded" Closed="Window_Closed">
+        Title="Rzeczywiste spożycie" Icon="Ikonki\ikona.png" WindowStartupLocation="CenterScreen" FontSize="14" Height="500" Width="750" Loaded="Window_Loaded" Closed="Window_Closed">
     <Window.Resources>
         <CollectionViewSource x:Key="posilekViewSource" d:DesignSource="{d:DesignInstance {x:Type local:Posilki}, CreateList=True}"/>
     </Window.Resources>
-    <Grid DataContext="{StaticResource posilekViewSource}">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-        </Grid.RowDefinitions>
+    <ScrollViewer>
+        <Grid DataContext="{StaticResource posilekViewSource}">
 
-        <Label Margin="10" Content="Wybierz posiłki na dany dzień: " Grid.Row="0"/>
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1"  MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="#FFF3F3F3"/>
+                    <GradientStop Color="#FF7DCFE8" Offset="1"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
 
-        <ListBox Grid.Row="1" Name="potrawyBox" SelectionChanged="ListBox_SelectionChanged" SelectionMode="Multiple" DisplayMemberPath="Potrawa" ItemsSource="{Binding}">
-        </ListBox>
+            <TextBlock Margin="5" x:Name="opisLabel" TextWrapping="WrapWithOverflow" Text="{Binding}" Grid.Row="0"/>
+            <ComboBox Margin="5" MaxHeight="25" SelectedIndex="0" Grid.Column="1" Grid.Row="0" x:Name="wyborCombo" SelectionChanged="wyborCombo_SelectionChanged">
+                <ComboBoxItem Content="Wpisanie ręczne             "/>
+                <ComboBoxItem Content="Wybór przez tabelę produktów"/>
+            </ComboBox>
 
-        <Label Margin="10" Content="Pozostała ilość kalorii: " Grid.Row="2"/>
-        <Label Margin="10" x:Name="kalorieLabel"  Grid.Row="2" Grid.Column="1"/>
+            <GroupBox Header="Ręcznie"  Margin="5" Grid.Row="1">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
 
-        <Label Margin="10" Content="Pozostała ilość białka: " Grid.Row="3"/>
-        <Label Margin="10" x:Name="bialkoLabel"  Grid.Row="3" Grid.Column="1"/>
 
-        <Label Margin="10" Content="Pozostała ilość węglowodanów: " Grid.Row="4"/>
-        <Label Margin="10" x:Name="weglowodanyLabel"  Grid.Row="4" Grid.Column="1"/>
+                    <StackPanel Grid.Column="0" Margin="5">
+                        <Label Content="Ilość białka[g]:"/>
+                        <Label Content="Ilość tłuszczu[g]:" />
+                        <Label Content="Ilość węglowodanów[g]:"/>
+                        <Label Content=""/>
+                        <Label Content="Kaloryczność[kcal]"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Margin="5">
+                        <TextBox x:Name="bialkoReczneTextBox" Margin="4"  HorizontalAlignment="Right" MinWidth="100" KeyDown="walidacjaTextBox_KeyDown"/>
+                        <TextBox x:Name="tluszczReczneTextBox" Margin="4" HorizontalAlignment="Right" MinWidth="100"  KeyDown="walidacjaTextBox_KeyDown"/>
+                        <TextBox x:Name="weglowodanyRecznePodTextBox" Margin="4" HorizontalAlignment="Right" MinWidth="100"  KeyDown="walidacjaTextBox_KeyDown" />
+                        <Button Background="AliceBlue" MaxWidth="200" Content="  Przelicz na kalorie  " Margin="5,5,5,0" x:Name="przeliczKalorieButton" Click="przeliczKalorieButton_Click"/>
+                        <TextBox x:Name="kalorieRecznePodTextBox" Margin="4" IsEnabled="False" HorizontalAlignment="Right" MinWidth="100" />
+                    </StackPanel>
+                </Grid>
+            </GroupBox>
 
-        <Label Margin="10" Content="Pozostała ilość tłuszczów: " Grid.Row="5"/>
-        <Label Margin="10" x:Name="tluszczeLabel"  Grid.Row="5" Grid.Column="1"/>
-        
-        <Label Margin="10" Content="Pozostała ilość posiłków: " Grid.Row="6"/>
-        <Label Margin="10" x:Name="posilkiLabel"  Grid.Row="6" Grid.Column="1"/>
+            <GroupBox Header="Automatycznie" Margin="5" Grid.Row="1" Grid.Column="1">
 
-        <Button Content="Zapisz posiłki na dany dzień" x:Name="zapiszButton" Grid.Row="7" Grid.ColumnSpan="2" Margin="122,45.4,124.6,0.4" Grid.RowSpan="2" Click="zapiszButton_Click"  />
-    </Grid>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <ListBox Width="300" IsEnabled="False" HorizontalAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Visible" Grid.Row="0" Name="potrawyBox" Grid.ColumnSpan="2" Height="100" SelectionChanged="ListBox_SelectionChanged" SelectionMode="Multiple" DisplayMemberPath="Potrawa" ItemsSource="{Binding}">
+                    </ListBox>
+
+                    <StackPanel Grid.Column="0" Grid.Row="1" Margin="5">
+                        <Label Content="Ilość białka[g]:"/>
+                        <Label Content="Ilość tłuszczu[g]:" />
+                        <Label Content="Ilość węglowodanów[g]:"/>
+                        <Label Content="Kaloryczność[kcal]"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Grid.Row="1" Margin="5">
+                        <TextBox x:Name="bialkoAutoTextBox" Margin="4" IsEnabled="False"  HorizontalAlignment="Right" MinWidth="100" KeyDown="walidacjaTextBox_KeyDown"/>
+                        <TextBox x:Name="tluszczAutoTextBox" Margin="4" IsEnabled="False" HorizontalAlignment="Right" MinWidth="100"  KeyDown="walidacjaTextBox_KeyDown"/>
+                        <TextBox x:Name="weglowodanyAutoTextBox" Margin="4" IsEnabled="False" HorizontalAlignment="Right" MinWidth="100"  KeyDown="walidacjaTextBox_KeyDown" />
+                        <TextBox x:Name="kalorieAutoTextBox" Margin="4" IsEnabled="False" HorizontalAlignment="Right" MinWidth="100" />
+                    </StackPanel>
+                </Grid>
+            </GroupBox>
+
+            <Button Margin="5" MaxWidth="200" Background="AliceBlue" Content="Zakończ dodawanie" x:Name="zakonczButton" Grid.Row="6" Grid.ColumnSpan="2" Click="zakonczButton_Click"  />
+
+            <Button Margin="5" MaxWidth="200" Content="Zapisz spożycie" x:Name="zapiszButton" Grid.Row="10" Grid.ColumnSpan="2" Background="AliceBlue"  Click="zapiszButton_Click"  />
+
+            <GroupBox Header="Podumowanie" Grid.ColumnSpan="2" Margin="5" Grid.Row="7">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+
+                    <StackPanel Grid.Column="0" Margin="5">
+                        <Label Content="Ilość białka[g]:"/>
+                        <Label Content="Ilość tłuszczu[g]:" />
+                        <Label Content="Ilość węglowodanów[g]:"/>
+                        <Label Content="Kaloryczność[kcal]"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Margin="5">
+                        <Label x:Name="bialkoPodLabel" Content="0" />
+                        <Label x:Name="tluszczPodLabel" Content="0"/>
+                        <Label x:Name="weglowodanyPodLabel" Content="0"  />
+                        <Label x:Name="kaloriePodLabel" Content="0"  />
+                    </StackPanel>
+                    <StackPanel Grid.Column="2" Margin="5">
+                        <Label x:Name="bialkoRoznicaPodLabel" Content="0" />
+                        <Label x:Name="tluszczRoznicaPodLabel" Content="0" />
+                        <Label x:Name="weglowodanyRoznicaPodLabel" Content="0"  />
+                        <Label x:Name="kalorieRoznicaPodLabel" Content="0"  />
+                    </StackPanel>
+                </Grid>
+            </GroupBox>
+        </Grid>
+    </ScrollViewer>
 </Window>

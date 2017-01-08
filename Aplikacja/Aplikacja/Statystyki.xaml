@@ -2,7 +2,7 @@
         xmlns:chartingToolkit="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Statystyki"  Icon="Ikonki\ikona.png" FontSize="14" Height="600" Width="500">
+        Title="Statystyki"  Icon="Ikonki\ikona.png" FontSize="14" Height="600" Width="800">
     <Grid>
         <TabControl>
             <TabControl.Background>
@@ -12,9 +12,9 @@
                 </LinearGradientBrush>
             </TabControl.Background>
             <TabItem Header="Profil">
-                <ScrollViewer HorizontalScrollBarVisibility="Visible">
+                <ScrollViewer >
                     <StackPanel>
-                        <Label Margin="5" Content="Statystyki twojego profilu(parametrów)"/>
+                        <TextBlock TextWrapping="WrapWithOverflow" Margin="5"  Text="Statystyki twojego profilu(parametrów). Najedź kursorem na interesujący cię punkt na wykresie aby uzyskać jego dokładną wartość w podpowiedzi."/>
                         <chartingToolkit:Chart Margin="5"  x:Name="pasChart" Title="Zmiana obwodu pasa na przestrzeni czasu" VerticalAlignment="Top" >
                             <chartingToolkit:LineSeries Title="obwód[cm]" ItemsSource="{Binding}" DependentValuePath="wartosc" IndependentValuePath="data"/>
                         </chartingToolkit:Chart>
@@ -29,10 +29,10 @@
             </TabItem>
 
             <TabItem Header="Dieta">
-                <ScrollViewer HorizontalScrollBarVisibility="Visible">
+                <ScrollViewer>
                     <StackPanel>
-                        <Label Margin="5" Content="Statystki dietetyczne dla twojego aktualnego cyklu."/>
-                        <Label Margin="5" x:Name="kalorieLabel" Content="Suma kalorii: "/>
+                        <TextBlock TextWrapping="WrapWithOverflow" Margin="5" Text="Statystki dietetyczne dla twojego aktualnego cyklu. Najedź kursorem na interesujący cię punkt na wykresie aby uzyskać jego dokładną wartość w podpowiedzi."/>
+                        <Label Margin="5" x:Name="kalorieLabel" Content="{Binding}"/>
                         <chartingToolkit:Chart Margin="5" Title="Ilość makroelementów w diecie"  x:Name="dieta2Chart" >
                             <chartingToolkit:ColumnSeries Title="ilość skkadnika[g]" DependentValuePath="wartosc" IndependentValuePath="nazwa" ItemsSource="{Binding}" />
                         </chartingToolkit:Chart>
@@ -44,9 +44,9 @@
             </TabItem>
 
             <TabItem Header="Trening">
-                <ScrollViewer HorizontalScrollBarVisibility="Visible">
+                <ScrollViewer>
                     <StackPanel>
-                        <Label Margin="5" Content="Statystki treningowe dla twojego aktualnego cyklu."/>
+                        <TextBlock TextWrapping="WrapWithOverflow" Margin="5" Text="Statystki treningowe dla twojego aktualnego cyklu. Najedź kursorem na interesujący cię punkt na wykresie aby uzyskać jego dokładną wartość w podpowiedzi."/>
                         <chartingToolkit:Chart Margin="5" Title="Sumaryczny czas treningów podczas cyklu"  x:Name="treningChart" >
                             <chartingToolkit:ColumnSeries Title="czas treningu[minuty]" DependentValuePath="czas" IndependentValuePath="typ" ItemsSource="{Binding}" />
                         </chartingToolkit:Chart>

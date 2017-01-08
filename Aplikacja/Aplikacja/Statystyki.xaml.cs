@@ -118,15 +118,33 @@ namespace Aplikacja
         private void ustawDiete()
         {
             znajdzDiete();
-            List<dietaStat> dietaStat = new List<dietaStat>();
-            dietaStat.Add(new dietaStat() { nazwa = "Kalorie", wartosc = (int)dieta.Kalorycznosc.GetValueOrDefault() });
-            dietaStat.Add(new dietaStat() { nazwa = "Tłuszcz", wartosc = (int)dieta.Tluszcz.GetValueOrDefault() });
-            dietaStat.Add(new dietaStat() { nazwa = "Węglowodany", wartosc = (int)dieta.Weglowodany.GetValueOrDefault() });
-            dietaStat.Add(new dietaStat() { nazwa = "Białko", wartosc = (int)dieta.Bialko.GetValueOrDefault() });
-            
-            //waga użytkownika
-            int waga = (int)dane.Waga.GetValueOrDefault();
 
+            List<dietaStat> dietaStat = new List<dietaStat>();
+            List<dietaStat2> dietaStat2 = new List<dietaStat2>();
+            double bialko, tluszcz, wegle;
+            tluszcz = (double)dieta.Tluszcz.GetValueOrDefault();
+            wegle = (double)dieta.Weglowodany.GetValueOrDefault();
+            bialko = (double)dieta.Bialko.GetValueOrDefault();
+            double waga = (double)dane.Waga.GetValueOrDefault();
+
+            double tluszczWp = tluszcz*9;
+            double bialkoWp = bialko*4;
+            double wegleWp = wegle*4;
+            
+           // dietaStat.Add(new dietaStat() { nazwa = "Kalorie", wartosc = (int)dieta.Kalorycznosc.GetValueOrDefault() });
+            dietaStat.Add(new dietaStat() { nazwa = "Tłuszcz", wartosc = (int)tluszcz });
+            dietaStat.Add(new dietaStat() { nazwa = "Węglowodany", wartosc = (int)wegle });
+            dietaStat.Add(new dietaStat() { nazwa = "Białko", wartosc = (int)bialko });
+
+            dietaStat2.Add(new dietaStat2() { nazwa = "Tłuszcz", wartosc = (int)tluszczWp });
+            dietaStat2.Add(new dietaStat2() { nazwa = "Węglowodany", wartosc = (int)wegleWp });
+            dietaStat2.Add(new dietaStat2() { nazwa = "Białko", wartosc = (int)bialkoWp });
+
+            int kcal = (int)dieta.Kalorycznosc.GetValueOrDefault();
+            kalorieLabel.Content = "Dzienna suma kalorii podczas cyklu: " + kcal.ToString();
+            //waga użytkownika
+
+            dietaChart.DataContext = dietaStat2;
             dieta2Chart.DataContext = dietaStat;
 
         }
@@ -173,6 +191,11 @@ namespace Aplikacja
     }
 
     public class dietaStat
+    {
+        public string nazwa { get; set; }
+        public int wartosc { get; set; }
+    }
+    public class dietaStat2
     {
         public string nazwa { get; set; }
         public int wartosc { get; set; }

@@ -75,7 +75,7 @@
                             <Label x:Name="kaloriePodRzLabel" Content="x" HorizontalAlignment="Right" />
                             <Label x:Name="posilkiPodRzLabel" Content="x" HorizontalAlignment="Right" />
                         </StackPanel>
-                        <Button Margin="5" Background="AliceBlue" MinWidth="200" Content="Jadłospis" ToolTip="Skomponuj jadłospis pod wytyczne" HorizontalAlignment="Center" Grid.Column="2" Grid.ColumnSpan="2" x:Name="edytujPosilkiButton" Grid.Row="2" Click="edytujPosilkiButton_Click"  />
+                        <Button Margin="5" Background="AliceBlue" MinWidth="200" Content="Rzeczywiste spożycie" ToolTip="Skomponuj jadłospis pod wytyczne lub wpisz składniki ręcznie" HorizontalAlignment="Center" Grid.Column="2" Grid.ColumnSpan="2" x:Name="edytujPosilkiButton" Grid.Row="2" Click="edytujPosilkiButton_Click"  />
                 </Grid>
 
                 </ScrollViewer>
