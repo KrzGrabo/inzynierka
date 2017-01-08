@@ -14,15 +14,15 @@ namespace Aplikacja
     
     public partial class Historia_Danych
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public Nullable<System.DateTime> Data { get; set; }
         public Nullable<int> Wiek { get; set; }
         public Nullable<double> Waga { get; set; }
         public Nullable<double> Wzrost { get; set; }
         public Nullable<double> Obwod_Pasa { get; set; }
         public Nullable<double> Obwod_Bioder { get; set; }
-        public int ID_Profilu { get; set; }
         public Nullable<double> Zapotrzebowanie { get; set; }
+        public int ID_Profilu { get; set; }
     
         public virtual Dane Dane { get; set; }
     }

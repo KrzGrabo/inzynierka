@@ -32,7 +32,7 @@ namespace Aplikacja
             uzytkownik = db.Uzytkownicy.Where(m => m.ID.Equals(id)).FirstOrDefault();
             loginTextbox.Text = uzytkownik.Login;
 
-            if (uzytkownik != null && uzytkownik.ID_Profilu != null)
+            if (uzytkownik != null && uzytkownik.Dane.FirstOrDefault() != null)
             {
                 wczytajDane();
             }
@@ -98,15 +98,15 @@ namespace Aplikacja
 
                 if (walid == "")
                 {
-                    if (uzytkownik.ID_Profilu != null)
+                    if (uzytkownik.Dane.FirstOrDefault() != null)
                     {
                         zapiszHistorie();
                     }
                     zapiszDane();
-                    if (uzytkownik != null && uzytkownik.ID_Profilu == null)
+                    if (uzytkownik != null && uzytkownik.Dane.FirstOrDefault() == null)
                     {
                         db.Dane.Add(przypisaneDane);
-                        uzytkownik.ID_Profilu = przypisaneDane.ID;
+                        przypisaneDane.ID_Uzytkownika = uzytkownik.ID;
                     }
 
                     db.SaveChanges();
@@ -152,8 +152,7 @@ namespace Aplikacja
 
         private void wczytajDane()
         {
-            int id_profilu = uzytkownik.ID_Profilu.GetValueOrDefault();
-            przypisaneDane = db.Dane.Where(m => m.ID.Equals(id_profilu)).FirstOrDefault();
+            przypisaneDane = uzytkownik.Dane.FirstOrDefault();
             imieTextbox.Text = przypisaneDane.Imie;
             wiekTextbox.Text = przypisaneDane.Wiek.ToString();
             wagaTextbox.Text = przypisaneDane.Waga.ToString();

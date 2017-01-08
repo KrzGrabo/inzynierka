@@ -44,7 +44,7 @@ namespace Aplikacja
             Bindowanie();
             czyszczenieTreningow();
             uzytkownik = db.Uzytkownicy.Where(m => m.ID.Equals(id)).FirstOrDefault();
-            przypisaneDane = uzytkownik.Dane;
+            przypisaneDane = uzytkownik.Dane.FirstOrDefault();
         }
 
         public void Bindowanie()
@@ -618,7 +618,7 @@ namespace Aplikacja
                     dzienTren.Data = dzien;
                     dzienTren.ID_Treningu = trening.Id;
                 }
-                if (dzien.DayOfWeek == DayOfWeek.Saturday)
+                if (dzien.DayOfWeek == DayOfWeek.Sunday)
                 {
                     dzienTren.Cwiczenie = treningNiedzielaLabel.Content.ToString();
                     dzienTren.Czas = niedzielaCzas;
