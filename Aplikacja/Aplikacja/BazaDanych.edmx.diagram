@@ -22,8 +22,11 @@
         <AssociationConnector Association="BazaDanychModel.FK__Historia___ID_Pr__0880433F" />
         <AssociationConnector Association="BazaDanychModel.FK__Diety__ID_Uzytko__4F47C5E3" />
         <AssociationConnector Association="BazaDanychModel.FK__Treningi__ID_Uzy__3429BB53" />
+<<<<<<< HEAD
+=======
         <EntityTypeShape EntityType="BazaDanychModel.Produkty" Width="1.5" PointX="7" PointY="7.5" />
         <AssociationConnector Association="BazaDanychModel.FK__Produkty__ID_Kat__2B0A656D" />
+>>>>>>> master
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
