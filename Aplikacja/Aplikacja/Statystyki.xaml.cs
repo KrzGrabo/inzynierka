@@ -25,58 +25,127 @@ namespace Aplikacja
         Uzytkownicy uzytkownik = new Uzytkownicy();
         Diety dieta = new Diety();
         Treningi trening = new Treningi();
-        List<Historia_Danych> historia = new List<Historia_Danych>();
-        List<DateTime> datyHist = new List<DateTime>();
-        List<double> wagaHist = new List<double>();
+        Dane dane = new Dane();
 
 
         public Statystyki()
         {
             InitializeComponent();
             uzytkownik = db.Uzytkownicy.Where(m => m.ID.Equals(id)).FirstOrDefault();
+            dane = uzytkownik.Dane.FirstOrDefault();
             Bindowanie();
         }
         public void Bindowanie()
         {
-            pobieranieHistorii();
 
-            List<obwodPasaStat> dana = new List<obwodPasaStat>();
-            dana.Add(new obwodPasaStat() { data = "nazwa", wartosc = 2 });
-            dana.Add(new obwodPasaStat() { data = "n21azwa", wartosc = 3 });
-            dana.Add(new obwodPasaStat() { data = "na21232zwa", wartosc = 5 });
-            dana.Add(new obwodPasaStat() { data = "naz3232wa", wartosc = 1 });
-
-            List<wagaStat> waga = new List<wagaStat>();
-            for (int i = 0; i < historia.Count; i++ )
-            {
-                waga.Add(new wagaStat() { data = datyHist.ElementAt(i).ToShortDateString(), wartosc = wagaHist.ElementAt(i) });
-            }
-
-
-            dietaChart.DataContext = dana;
-            pasChart.DataContext = dana;
-            wagaChart.DataContext = waga;
-            biodraChart.DataContext = dana;
-            treningChart.DataContext = dana;
-
+            ustawProfil();
+            ustawTrening();
+            ustawDiete();
 
         }
 
-        private void pobieranieHistorii()
+        private void ustawProfil()
         {
-            Dane dane = uzytkownik.Dane.FirstOrDefault();
-            historia = dane.Historia_Danych.ToList();
+            List<obwodPasaStat> obwod1 = new List<obwodPasaStat>();
+            List<obwodBioderStat> obwod2 = new List<obwodBioderStat>();
+            List<wagaStat> waga = new List<wagaStat>();
+            Historia_Danych historia = new Historia_Danych();
+            List<Historia_Danych> calaHist = dane.Historia_Danych.ToList();
 
-            foreach(Historia_Danych hist in historia)
+            for (int i = 0; i < dane.Historia_Danych.Count; i++)
             {
-                datyHist.Add(hist.Data.GetValueOrDefault());
-                wagaHist.Add(hist.Waga.GetValueOrDefault());
+                historia = calaHist.ElementAt(i);
+                string dataHist = historia.Data.GetValueOrDefault().ToShortDateString();
+                double wagaHist = historia.Waga.GetValueOrDefault();
+                double obwodBiod = historia.Obwod_Bioder.GetValueOrDefault();
+                double obwodPasa = historia.Obwod_Pasa.GetValueOrDefault();
+                waga.Add(new wagaStat() { data = dataHist, wartosc = wagaHist });
+                obwod1.Add(new obwodPasaStat() { data = dataHist, wartosc = obwodPasa });
+                obwod2.Add(new obwodBioderStat() { data = dataHist, wartosc = obwodBiod });
             }
 
+            wagaChart.DataContext = waga;
+            pasChart.DataContext = obwod1;
+            biodraChart.DataContext = obwod2;
+        }
+
+        private void ustawTrening()
+        {
+            znajdzTrening();
+            List<DzienTreningowy> dzienTren = trening.DzienTreningowy.ToList();
+            List<treningiStat> trenStat = new List<treningiStat>();
+            string[] typyTrening = { "siłowy", "wytrzymałościowy", "szybkościowy", "techniczny", "gibkościowy", "interwałowy", "kondycyjny", "zwinności", "ogólnorozwojowy" };
+            int[] czasy = new int[typyTrening.Length];
+
+            foreach(DzienTreningowy dzien in dzienTren)
+            {
+                for(int i = 0; i<typyTrening.Length; i++)
+                {
+                    if(dzien.Cwiczenie == typyTrening[i])
+                    {
+                        czasy[i] += dzien.Czas.GetValueOrDefault();
+                    }
+
+                }
+            }
+
+            for(int i = 0; i<typyTrening.Length; i++)
+            {
+                trenStat.Add(new treningiStat() { typ = typyTrening[i], czas = czasy[i] });
+            }
+
+            treningChart.DataContext = trenStat;
         }
 
 
-        ////NAJPIERW TRZEBA DATY(chyba bo nie wiem jak on to posortuje) DO STRINGOW PRZEKONWERTOWAC DOPIERO POTEM WRZUCAC DO STRINGOW W KLASACH, CHOCIAŻ NIE WIEM
+        private void znajdzTrening()
+        {
+            DateTime now = DateTime.Now;
+            TimeSpan time = new TimeSpan(0, 0, 0);
+            now = now.Date + time;
+            DateTime data = now;
+            var treningi = uzytkownik.Treningi.ToList();
+
+            foreach (Treningi szukany in treningi)
+            {
+                if (szukany.Data_Rozpoczecia <= data && szukany.Data_Zakonczenia >= data)
+                {
+                    trening = szukany;
+                }
+            }
+        }
+
+        private void ustawDiete()
+        {
+            znajdzDiete();
+            List<dietaStat> dietaStat = new List<dietaStat>();
+            dietaStat.Add(new dietaStat() { nazwa = "Kalorie", wartosc = (int)dieta.Kalorycznosc.GetValueOrDefault() });
+            dietaStat.Add(new dietaStat() { nazwa = "Tłuszcz", wartosc = (int)dieta.Tluszcz.GetValueOrDefault() });
+            dietaStat.Add(new dietaStat() { nazwa = "Węglowodany", wartosc = (int)dieta.Weglowodany.GetValueOrDefault() });
+            dietaStat.Add(new dietaStat() { nazwa = "Białko", wartosc = (int)dieta.Bialko.GetValueOrDefault() });
+            
+            //waga użytkownika
+            int waga = (int)dane.Waga.GetValueOrDefault();
+
+            dieta2Chart.DataContext = dietaStat;
+
+        }
+
+        private void znajdzDiete()
+        {
+            DateTime now = DateTime.Now;
+            TimeSpan time = new TimeSpan(0, 0, 0);
+            now = now.Date + time;
+            DateTime data = now;
+            var diety = uzytkownik.Diety.ToList();
+            foreach (Diety szukana in diety)
+            {
+                if (szukana.Data_Rozpoczecia <= data && szukana.Data_Zakonczenia >= data)
+                {
+                    dieta = szukana;
+                }
+            }
+        }
 
     }
     public class obwodPasaStat
@@ -100,12 +169,12 @@ namespace Aplikacja
     public class treningiStat
     {
         public string typ { get; set; }
-        public double czas { get; set; }
+        public int czas { get; set; }
     }
 
     public class dietaStat
     {
         public string nazwa { get; set; }
-        public int numerek { get; set; }
+        public int wartosc { get; set; }
     }
 }

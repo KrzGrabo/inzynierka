@@ -6,10 +6,10 @@
     <Grid>
         <TabControl>
             <TabControl.Background>
-            <LinearGradientBrush EndPoint="0.5,1"  MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
-                <GradientStop Color="#FFF3F3F3"/>
-                <GradientStop Color="#FF7DCFE8" Offset="1"/>
-            </LinearGradientBrush>
+                <LinearGradientBrush EndPoint="0.5,1"  MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="#FFF3F3F3"/>
+                    <GradientStop Color="#FF7DCFE8" Offset="1"/>
+                </LinearGradientBrush>
             </TabControl.Background>
             <TabItem Header="Profil">
                 <ScrollViewer HorizontalScrollBarVisibility="Visible">
@@ -27,28 +27,28 @@
                     </StackPanel>
                 </ScrollViewer>
             </TabItem>
-            
+
             <TabItem Header="Dieta">
                 <ScrollViewer HorizontalScrollBarVisibility="Visible">
                     <StackPanel>
                         <Label Margin="5" Content="Statystki dietetyczne dla twojego aktualnego cyklu."/>
                         <Label Margin="5" x:Name="kalorieLabel" Content="Suma kalorii: "/>
                         <chartingToolkit:Chart Margin="5" Title="Ilość makroelementów w diecie"  x:Name="dieta2Chart" >
-                            <chartingToolkit:ColumnSeries Title="ilość skkadnika[g]" DependentValuePath="wartosc" IndependentValuePath="data" ItemsSource="{Binding}" />
+                            <chartingToolkit:ColumnSeries Title="ilość skkadnika[g]" DependentValuePath="wartosc" IndependentValuePath="nazwa" ItemsSource="{Binding}" />
                         </chartingToolkit:Chart>
                         <chartingToolkit:Chart Margin="5" x:Name="dietaChart" Title="Procentowy rozkład kalorii pomiędzy makroelementy" VerticalAlignment="Top" >
-                            <chartingToolkit:PieSeries ItemsSource="{Binding}" DependentValuePath="wartosc" IndependentValuePath="data"/>
+                            <chartingToolkit:PieSeries ItemsSource="{Binding}" DependentValuePath="wartosc" IndependentValuePath="nazwa"/>
                         </chartingToolkit:Chart>
                     </StackPanel>
                 </ScrollViewer>
             </TabItem>
-            
+
             <TabItem Header="Trening">
                 <ScrollViewer HorizontalScrollBarVisibility="Visible">
                     <StackPanel>
                         <Label Margin="5" Content="Statystki treningowe dla twojego aktualnego cyklu."/>
                         <chartingToolkit:Chart Margin="5" Title="Sumaryczny czas treningów podczas cyklu"  x:Name="treningChart" >
-                            <chartingToolkit:ColumnSeries Title="czas treningu[minuty]" DependentValuePath="wartosc" IndependentValuePath="data" ItemsSource="{Binding}" />
+                            <chartingToolkit:ColumnSeries Title="czas treningu[minuty]" DependentValuePath="czas" IndependentValuePath="typ" ItemsSource="{Binding}" />
                         </chartingToolkit:Chart>
                     </StackPanel>
                 </ScrollViewer>

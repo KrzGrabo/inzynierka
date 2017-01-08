@@ -41,7 +41,7 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Data" Type="date" />
-          <Property Name="Cwiczenie" Type="varchar" MaxLength="40" />
+          <Property Name="Cwiczenie" Type="nvarchar" MaxLength="40" />
           <Property Name="Czas" Type="int" />
           <Property Name="ID_Treningu" Type="int" Nullable="false" />
         </EntityType>
@@ -81,12 +81,12 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="int" Nullable="false" />
           <Property Name="Nazwa" Type="nvarchar" MaxLength="200" />
-          <Property Name="Bialko" Type="varchar" MaxLength="30" />
-          <Property Name="Tluszcze" Type="varchar" MaxLength="30" />
-          <Property Name="Węglodowany" Type="varchar" MaxLength="30" />
-          <Property Name="Wartosc_Energetyczna" Type="varchar" MaxLength="30" />
+          <Property Name="Bialko" Type="float" />
+          <Property Name="Tluszcze" Type="float" />
+          <Property Name="Węglodowany" Type="float" />
+          <Property Name="Wartosc_Energetyczna" Type="float" />
           <Property Name="ID_Kategori" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Spalanie">
@@ -114,9 +114,9 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Nazwa" Type="varchar" MaxLength="30" />
-          <Property Name="Dawkowanie" Type="varchar" MaxLength="100" />
-          <Property Name="Dzialanie" Type="varchar" MaxLength="100" />
+          <Property Name="Nazwa" Type="nvarchar" MaxLength="30" />
+          <Property Name="Dawkowanie" Type="nvarchar" MaxLength="100" />
+          <Property Name="Dzialanie" Type="nvarchar" MaxLength="100" />
           <Property Name="Opis" Type="ntext" />
         </EntityType>
         <EntityType Name="Treningi">
@@ -129,7 +129,7 @@
           <Property Name="Srednia_Dzienna" Type="int" />
           <Property Name="Czas_Tydzien" Type="int" />
           <Property Name="Ilosc_Tydzien" Type="int" />
-          <Property Name="Czestotliwosc" Type="varchar" MaxLength="30" />
+          <Property Name="Czestotliwosc" Type="nvarchar" MaxLength="30" />
           <Property Name="ID_Uzytkownika" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Uzytkownicy">
@@ -272,11 +272,6 @@
       <Schema Namespace="BazaDanychModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="BazaDanychEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Kategorie" EntityType="BazaDanychModel.Kategorie" />
-          <EntitySet Name="Produkty" EntityType="BazaDanychModel.Produkty" />
-          <AssociationSet Name="FK__Produkty__ID_Kat__6383C8BA" Association="BazaDanychModel.FK__Produkty__ID_Kat__6383C8BA">
-            <End Role="Kategorie" EntitySet="Kategorie" />
-            <End Role="Produkty" EntitySet="Produkty" />
-          </AssociationSet>
           <EntitySet Name="Diety" EntityType="BazaDanychModel.Diety" />
           <EntitySet Name="Suplementy" EntityType="BazaDanychModel.Suplementy" />
           <EntitySet Name="Spalanie" EntityType="BazaDanychModel.Spalanie" />
@@ -311,6 +306,14 @@
             <End Role="Uzytkownicy" EntitySet="Uzytkownicy" />
             <End Role="Treningi" EntitySet="Treningi" />
           </AssociationSet>
+<<<<<<< HEAD
+=======
+          <EntitySet Name="Produkty" EntityType="BazaDanychModel.Produkty" />
+          <AssociationSet Name="FK__Produkty__ID_Kat__2B0A656D" Association="BazaDanychModel.FK__Produkty__ID_Kat__2B0A656D">
+            <End Role="Kategorie" EntitySet="Kategorie" />
+            <End Role="Produkty" EntitySet="Produkty" />
+          </AssociationSet>
+>>>>>>> master
           </EntityContainer>
         <EntityType Name="Kategorie">
           <Key>
@@ -318,33 +321,8 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" />
           <Property Name="Nazwa" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Produkty" Relationship="BazaDanychModel.FK__Produkty__ID_Kat__6383C8BA" FromRole="Kategorie" ToRole="Produkty" />
+          <NavigationProperty Name="Produkty" Relationship="BazaDanychModel.FK__Produkty__ID_Kat__2B0A656D" FromRole="Kategorie" ToRole="Produkty" />
         </EntityType>
-        <EntityType Name="Produkty">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nazwa" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Bialko" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="Tluszcze" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="Węglodowany" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="Wartosc_Energetyczna" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="ID_Kategori" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Kategorie" Relationship="BazaDanychModel.FK__Produkty__ID_Kat__6383C8BA" FromRole="Produkty" ToRole="Kategorie" />
-        </EntityType>
-        <Association Name="FK__Produkty__ID_Kat__6383C8BA">
-          <End Type="BazaDanychModel.Kategorie" Role="Kategorie" Multiplicity="1" />
-          <End Type="BazaDanychModel.Produkty" Role="Produkty" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kategorie">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Produkty">
-              <PropertyRef Name="ID_Kategori" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="Diety">
           <Key>
             <PropertyRef Name="Id" />
@@ -367,9 +345,9 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Nazwa" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="Dawkowanie" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Dzialanie" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Nazwa" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Dawkowanie" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Dzialanie" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Opis" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Spalanie">
@@ -386,7 +364,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Data" Type="DateTime" Precision="0" />
-          <Property Name="Cwiczenie" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Cwiczenie" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
           <Property Name="Czas" Type="Int32" />
           <Property Name="ID_Treningu" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Treningi" Relationship="BazaDanychModel.FK__DzienTren__ID_Tr__370627FE" FromRole="DzienTreningowy" ToRole="Treningi" />
@@ -401,7 +379,7 @@
           <Property Name="Srednia_Dzienna" Type="Int32" />
           <Property Name="Czas_Tydzien" Type="Int32" />
           <Property Name="Ilosc_Tydzien" Type="Int32" />
-          <Property Name="Czestotliwosc" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Czestotliwosc" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="ID_Uzytkownika" Type="Int32" Nullable="false" />
           <NavigationProperty Name="DzienTreningowy" Relationship="BazaDanychModel.FK__DzienTren__ID_Tr__370627FE" FromRole="Treningi" ToRole="DzienTreningowy" />
           <NavigationProperty Name="Uzytkownicy" Relationship="BazaDanychModel.FK__Treningi__ID_Uzy__3429BB53" FromRole="Treningi" ToRole="Uzytkownicy" />
@@ -545,6 +523,34 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+<<<<<<< HEAD
+=======
+        <EntityType Name="Produkty">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Nazwa" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Bialko" Type="Double" />
+          <Property Name="Tluszcze" Type="Double" />
+          <Property Name="Węglodowany" Type="Double" />
+          <Property Name="Wartosc_Energetyczna" Type="Double" />
+          <Property Name="ID_Kategori" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Kategorie" Relationship="BazaDanychModel.FK__Produkty__ID_Kat__2B0A656D" FromRole="Produkty" ToRole="Kategorie" />
+        </EntityType>
+        <Association Name="FK__Produkty__ID_Kat__2B0A656D">
+          <End Type="BazaDanychModel.Kategorie" Role="Kategorie" Multiplicity="1" />
+          <End Type="BazaDanychModel.Produkty" Role="Produkty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategorie">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Produkty">
+              <PropertyRef Name="ID_Kategori" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+>>>>>>> master
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -554,19 +560,6 @@
           <EntitySetMapping Name="Kategorie">
             <EntityTypeMapping TypeName="BazaDanychModel.Kategorie">
               <MappingFragment StoreEntitySet="Kategorie">
-                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Produkty">
-            <EntityTypeMapping TypeName="BazaDanychModel.Produkty">
-              <MappingFragment StoreEntitySet="Produkty">
-                <ScalarProperty Name="ID_Kategori" ColumnName="ID_Kategori" />
-                <ScalarProperty Name="Wartosc_Energetyczna" ColumnName="Wartosc_Energetyczna" />
-                <ScalarProperty Name="Węglodowany" ColumnName="Węglodowany" />
-                <ScalarProperty Name="Tluszcze" ColumnName="Tluszcze" />
-                <ScalarProperty Name="Bialko" ColumnName="Bialko" />
                 <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
@@ -698,6 +691,22 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+<<<<<<< HEAD
+=======
+          <EntitySetMapping Name="Produkty">
+            <EntityTypeMapping TypeName="BazaDanychModel.Produkty">
+              <MappingFragment StoreEntitySet="Produkty">
+                <ScalarProperty Name="ID_Kategori" ColumnName="ID_Kategori" />
+                <ScalarProperty Name="Wartosc_Energetyczna" ColumnName="Wartosc_Energetyczna" />
+                <ScalarProperty Name="Węglodowany" ColumnName="Węglodowany" />
+                <ScalarProperty Name="Tluszcze" ColumnName="Tluszcze" />
+                <ScalarProperty Name="Bialko" ColumnName="Bialko" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+>>>>>>> master
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
