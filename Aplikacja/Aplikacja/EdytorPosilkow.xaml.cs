@@ -25,6 +25,7 @@ namespace Aplikacja
         Uzytkownicy uzytkownik = new Uzytkownicy();
         Diety dieta = new Diety();
         DateTime wybranaData = new DateTime();
+        Spozycie spozycie = new Spozycie();
         int ilosc_wybranych = 0;
         bool walidacja = true, sprawdzacz = false;
 
@@ -37,6 +38,7 @@ namespace Aplikacja
         {
             InitializeComponent();
             Bindowanie();
+            uzytkownik = db.Uzytkownicy.Where(m => m.ID.Equals(id)).FirstOrDefault();
         }
 
         public void Bindowanie()
@@ -59,11 +61,6 @@ namespace Aplikacja
             uzytkownik = db.Uzytkownicy.Where(m => m.ID.Equals(id)).FirstOrDefault();
             znajdzDiete();
             sprawdzacz = true;
-            //kalorieLabel.Content = dieta.Zapotrzebowanie;
-            //bialkoLabel.Content = ((int)dieta.Bialko).ToString();
-            //weglowodanyLabel.Content = ((int)dieta.Weglowodany).ToString();
-            //tluszczeLabel.Content = ((int)dieta.Tluszcz).ToString();
-            //posilkiLabel.Content = dieta.Ilosc_Posilkow.ToString();
         }
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -91,7 +88,25 @@ namespace Aplikacja
 
         private void zapiszButton_Click(object sender, RoutedEventArgs e)
         {
+            if (db.Spozycie.Where(m => m.Data == wybranaData).FirstOrDefault() != null)
+            {
+               spozycie = db.Spozycie.Where(m => m.Data == wybranaData).FirstOrDefault();
+            }
 
+            spozycie.Data = wybranaData;
+            spozycie.Bialko = bialkoReal;
+            spozycie.ID_Diety = dieta.Id;
+            spozycie.Kalorie = kalorieReal;
+            spozycie.Tluszcz = tluszczeReal;
+            spozycie.Weglowodany = wegleReal;
+
+            if (db.Spozycie.Where(m => m.Data == wybranaData).FirstOrDefault() == null)
+            {
+                db.Spozycie.Add(spozycie);
+            }
+            db.SaveChanges();
+            string msg = "Spożycie na dany dzień zostało zapisane poprawnie.";
+            MessageBox.Show(msg, "Informacja", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void znajdzDiete()

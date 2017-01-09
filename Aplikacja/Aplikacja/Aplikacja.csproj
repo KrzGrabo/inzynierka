@@ -123,9 +123,6 @@
     <Compile Include="EdytorPosilkow.xaml.cs">
       <DependentUpon>EdytorPosilkow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EdytorTreningu.xaml.cs">
-      <DependentUpon>EdytorTreningu.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Historia_Danych.cs">
       <DependentUpon>BazaDanych.tt</DependentUpon>
     </Compile>
@@ -218,10 +215,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="EdytorPosilkow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="EdytorTreningu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -133,6 +133,7 @@ namespace Aplikacja
             try
             {
                 kaloriePom = double.Parse(zapotrzebowanieTextbox.Text.Trim());
+                zapotrzebowanie = double.Parse(zapotrzebowanieTextbox.Text.Trim());
             }
             catch (Exception)
             {
@@ -238,14 +239,14 @@ namespace Aplikacja
         {
             if (przypisaneDane != null)
             {
-            double aktWaga = przypisaneDane.Waga.GetValueOrDefault(),
-                 wzrost = przypisaneDane.Wzrost.GetValueOrDefault(),
-                 wiek = przypisaneDane.Wiek.GetValueOrDefault();
-            zapotrzebowanie = przypisaneDane.Zapotrzebowanie.GetValueOrDefault();
+                double  aktWaga = przypisaneDane.Waga.GetValueOrDefault(),
+                        wzrost = przypisaneDane.Wzrost.GetValueOrDefault(),
+                        wiek = przypisaneDane.Wiek.GetValueOrDefault();
+                        zapotrzebowanie = przypisaneDane.Zapotrzebowanie.GetValueOrDefault();
 
-            ustawPlec();
-            wagaTextbox.Text = aktWaga.ToString();
-            zapotrzebowanieTextbox.Text = zapotrzebowanie.ToString();
+                ustawPlec();
+                wagaTextbox.Text = aktWaga.ToString();
+                zapotrzebowanieTextbox.Text = zapotrzebowanie.ToString();
             }
             else
             {
