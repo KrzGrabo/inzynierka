@@ -37,10 +37,23 @@ namespace Aplikacja
         }
         public void Bindowanie()
         {
+            dieta = null;
+            trening = null;
+            znajdzTrening();
+            znajdzDiete();
 
-            ustawProfil();
-            ustawTrening();
-            ustawDiete();
+            if (dane != null)
+            {
+                ustawProfil();
+            }
+            if (trening != null)
+            {
+                ustawTrening();
+            }
+            if (dieta != null)
+            {
+                ustawDiete();
+            }
 
         }
 
@@ -71,7 +84,6 @@ namespace Aplikacja
 
         private void ustawTrening()
         {
-            znajdzTrening();
             List<DzienTreningowy> dzienTren = trening.DzienTreningowy.ToList();
             List<treningiStat> trenStat = new List<treningiStat>();
             string[] typyTrening = { "siłowy", "wytrzymałościowy", "szybkościowy", "techniczny", "gibkościowy", "interwałowy", "kondycyjny", "zwinności", "ogólnorozwojowy" };
@@ -117,15 +129,12 @@ namespace Aplikacja
 
         private void ustawDiete()
         {
-            znajdzDiete();
-
             List<dietaStat> dietaStat = new List<dietaStat>();
             List<dietaStat2> dietaStat2 = new List<dietaStat2>();
             double bialko, tluszcz, wegle;
             tluszcz = (double)dieta.Tluszcz.GetValueOrDefault();
             wegle = (double)dieta.Weglowodany.GetValueOrDefault();
             bialko = (double)dieta.Bialko.GetValueOrDefault();
-            double waga = (double)dane.Waga.GetValueOrDefault();
 
             double tluszczWp = tluszcz*9;
             double bialkoWp = bialko*4;

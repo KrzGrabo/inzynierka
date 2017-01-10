@@ -45,11 +45,11 @@ namespace Aplikacja
             {
                 DateTime poczDieta = dieta.Data_Rozpoczecia.GetValueOrDefault();         //dzień cyklu dietetycznego/treningowego      <----- tu generalnie chcialem wstawic do stringa "[numer dnia cyklu]/[ilość dni w całym cyklu]"
                 dlugoscCyklu = (wybranaData - poczDieta).TotalDays + 1;
-      
-                bialkoPodLabel.Content = dieta.Bialko.ToString();
-                kaloriePodLabel.Content = dieta.Kalorycznosc.ToString();
-                tluszczPodLabel.Content = dieta.Tluszcz.ToString();
-                weglowodanyPodLabel.Content = dieta.Weglowodany.ToString();
+
+                bialkoPodLabel.Content = String.Format("{0:N2}", dieta.Bialko);
+                kaloriePodLabel.Content = String.Format("{0:N2}", dieta.Kalorycznosc);
+                tluszczPodLabel.Content = String.Format("{0:N2}", dieta.Tluszcz);
+                weglowodanyPodLabel.Content = String.Format("{0:N2}", dieta.Weglowodany);
                 posilkiPodLabel.Content = dieta.Ilosc_Posilkow.ToString();
                 dzienDietyLabel.Content = dlugoscCyklu.ToString();
 
@@ -58,10 +58,10 @@ namespace Aplikacja
                 if (spozycie != null)
                 {
                     ///TU ZBINDOWAĆ RZECZYWISTE SPORZYCIE
-                    bialkoRzPodLabel.Content = spozycie.Bialko.ToString();
-                    kaloriePodRzLabel.Content = spozycie.Kalorie.ToString();
-                    tluszczPodRzLabel.Content = spozycie.Tluszcz.ToString();
-                    weglowodanyRzPodLabel.Content = spozycie.Weglowodany.ToString();
+                    bialkoRzPodLabel.Content = String.Format("{0:N2}", spozycie.Bialko);
+                    kaloriePodRzLabel.Content = String.Format("{0:N2}", spozycie.Kalorie);
+                    tluszczPodRzLabel.Content = String.Format("{0:N2}", spozycie.Tluszcz);
+                    weglowodanyRzPodLabel.Content = String.Format("{0:N2}", spozycie.Weglowodany);
                     posilkiPodRzLabel.Content = dieta.Ilosc_Posilkow.ToString();
                     dzienzRzDietyLabel.Content = dlugoscCyklu.ToString();
                 }
@@ -93,37 +93,6 @@ namespace Aplikacja
             znajdzTrening();
            
             Bindowanie();
-
-            /*System.Windows.Data.CollectionViewSource posilekViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("posilekViewSource")));
-            // Load data by setting the CollectionViewSource.Source property:
-            // posilekViewSource.Source = [generic data source]
-            if (dieta != null)
-            {
-                Bindowanie();
-           //     brakDiety.Visibility = Visibility.Hidden;
-                pobierzPosilki();
-                posilekViewSource.Source = posilki;
-            }
-            else
-            {
-           //     posilkiList.Visibility = Visibility.Hidden;
-                edytujPosilkiButton.IsEnabled = false;
-
-            }
-            if(trening != null)
-            {
-                
-                pobierzTrening();
-            }
-            else
-            {
-              
-            }*/
-
-        }
-        private void pobierzTrening()
-        {
-            DzienTreningowy trening = db.DzienTreningowy.Where(m => m.Data == wybranaData).FirstOrDefault();     
         }
 
         private void edytujPosilkiButton_Click(object sender, RoutedEventArgs e)
@@ -132,15 +101,6 @@ namespace Aplikacja
                 edytorPos.przekazDane(wybranaData);
                 this.Close();
                 edytorPos.Show();
-        }
-
-        private void edytujTreningButton_Click(object sender, RoutedEventArgs e)
-        {
-            //EdytorTreningu edytorTren = new EdytorTreningu();
-            //edytorTren.przekazDane(wybranaData);
-            //this.Close();
-            //edytorTren.Show();
-            MessageBox.Show(wybranaData.ToLongDateString());
         }
 
         private void znajdzDiete()
