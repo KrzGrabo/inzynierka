@@ -35,7 +35,7 @@
             <TextBox Margin="5" MaxHeight="23" Grid.Column="1" Grid.Row="2" x:Name="ciezarTextbox" KeyDown="ciezarTextbox_KeyDown"  />
             <ComboBox Margin="5" MaxHeight="25" Grid.Column="1" ItemsSource="{Binding}" Grid.Row="1" x:Name="powtorzeniaCombo" />
         <Button Margin="5" MaxWidth="200" Background="AliceBlue" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Content="Oblicz" x:Name="obliczButton" Click="obliczButton_Click" />
-        <TextBlock Margin="5" Text="Twój rekord(jedno maksymalne powtórzenie) to:" TextWrapping="WrapWithOverflow" Grid.Row="4"/>
+        <TextBlock Margin="5" Text="Twój rekord (jedno maksymalne powtórzenie) to:" TextWrapping="WrapWithOverflow" Grid.Row="4"/>
         <TextBlock Margin="5" TextWrapping="WrapWithOverflow" Text="0 kg" Grid.Row="4" Grid.Column="1" x:Name="wynikLabel" />
     </Grid>
     </ScrollViewer>

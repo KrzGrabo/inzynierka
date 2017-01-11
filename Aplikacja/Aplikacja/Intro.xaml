@@ -1,7 +1,7 @@
 ﻿<Window x:Class="Aplikacja.Intro"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Appka" Icon="Ikonki\ikona.png" Height="300" Width="300" FontSize="14" WindowStartupLocation="CenterScreen" >
+        Title="Aplikacja" Icon="Ikonki\ikona.png" Height="300" Width="300" FontSize="14" WindowStartupLocation="CenterScreen" >
     <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1"  MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
@@ -44,7 +44,7 @@
         </GroupBox>
         <Label Margin="5"   Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right">
             <Label.Content>
-                <AccessText TextWrapping="Wrap" Text="Nie masz jeszcze sowjego profilu?! zarejestruj się: "/>
+                <AccessText TextWrapping="Wrap" Text="Nie masz jeszcze swojego profilu?! zarejestruj się: "/>
             </Label.Content>
         </Label>
         <Button MaxHeight="23" MaxWidth="200" Background="AliceBlue" x:Name="rejestracjaButton" Grid.Column="1" Grid.Row="2" Margin="5"  Click="rejestracjaButton_Click" >

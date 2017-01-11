@@ -27,7 +27,7 @@ namespace Aplikacja
 
         public void Bindowanie()
         {
-            opis1Label.Text = "Dzięki temu modułowi dopasujesz suplementację, która pomoże ci w osięgnięciu określonych celów. Wprowadź wymagane dane w celu otrzymania spersonalizowanego wyniku. W celu uzyskania kompleksowych informacji na temat wybranych produktów, użyj przycisku znajdującego się na prawo od listy propozycji.";
+            opis1Label.Text = "Dzięki temu modułowi dopasujesz suplementację, która pomoże ci w osięgnięciu określonych celów. Wprowadź wymagane dane aby otrzymać spersonalizowany wyniku. W celu uzyskania kompleksowych informacji na temat wybranych produktów, wciśnij przycisk znajdujący się na prawo od listy propozycji.";
         }
 
         public class Suple

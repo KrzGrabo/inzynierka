@@ -172,7 +172,7 @@
                 <StackPanel>
                     <TextBlock FontWeight="Bold" FontSize="16" Margin="1,1,1,4" Text="Plan Dnia"/>
                     <TextBlock FontSize="14">
-                       'Plan dnia' pokazuje twoje dzisiejsze zadania(treningowe i dietetyczne).
+                       'Plan dnia' pokazuje twoje dzisiejsze zadania (treningowe i dietetyczne).
                     </TextBlock>
                 </StackPanel>
             </Button.ToolTip>

@@ -108,25 +108,25 @@ namespace Aplikacja
 
                 if (wagaBool == true && wzrostBool == true)
                 {
-                    bmiLabel.Content = "Twoje BMI to: " + String.Format("{0:N2}",BmiFun(waga, wzrost));
+                    bmiLabel.Content = "BMI to: " + String.Format("{0:N2}",BmiFun(waga, wzrost));
                 }
                 else bmiLabel.Content = "Aby wylicz swoje BMI, musisz uzupełnić pola: płeć, waga, wzrost";
 
                 if (wzrostBool == true)
                 {
-                    wagaLabel.Content = "Twoja idealna waga to: " + IdealnaWagaFun(plec, wzrost);
+                    wagaLabel.Content = "Idealna waga to: " + IdealnaWagaFun(plec, wzrost);
                 }
                 else wagaLabel.Content = "Aby wylicz swoją idealną wagę, musisz uzupełnić pola: płeć, wzrost";
 
                 if (pasBool == true && biodraBool == true)
                 {
-                    whrLabel.Content = "Twoje WHR to: " + WhrFun(biodra, pas);
+                    whrLabel.Content = "WHR to: " + WhrFun(biodra, pas);
                 }
                 else whrLabel.Content = "Aby wylicz swoje WHR, musisz uzupełnić pola: płeć, obwód pasa, obwód bioder";
 
                 if (wagaBool == true && pasBool == true)
                 {
-                    tluszczLabel.Content = "Twój poziom tłuszczu to: " + String.Format("{0:N2}", TluszczFun(plec, waga, pas)) + "%";
+                    tluszczLabel.Content = "Poziom tłuszczu to: " + String.Format("{0:N2}", TluszczFun(plec, waga, pas)) + "%";
                 }
                 else tluszczLabel.Content = "Aby wylicz swój poziom tłuszczu, musisz uzupełnić pola: płeć, waga, obwód pasa";
                 ToolTipService.SetIsEnabled(bmiLabel, true);
@@ -144,7 +144,7 @@ namespace Aplikacja
 
         private void Bindowanie()
         {
-            opisTextblock.Text = "Kalkulator wagi, korzystając z listy wejściowych danych, oblicza kilka wskaźników opisujących ciało. Ze względu na brak możliwości szczegółowego zbadania ciała użytkownika(tylko poprzez wprowadzone do interfejsu wartości liczbowe) wyniki mogą nieznacznie odbiegać od rzeczywistych wartości. Poszczególne wskaźniki są opisane w szczegółowy sposób niżej- w sekcji 'wyniki'. Uzupełnij wszystkie pola aby uzyskać wyniki.";
+            opisTextblock.Text = "Kalkulator wagi, korzystając z listy wejściowych danych, oblicza kilka wskaźników opisujących ciało. Ze względu na brak możliwości szczegółowego zbadania ciała użytkownika, a tylko poprzez wprowadzone do interfejsu wartości liczbowe, wyniki mogą nieznacznie odbiegać od rzeczywistych wartości. Poszczególne wskaźniki są opisane w szczegółowy sposób niżej- w sekcji 'wyniki'. Uzupełnij wszystkie pola aby uzyskać wyniki.";
         
         }
 
