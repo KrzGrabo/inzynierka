@@ -43,7 +43,7 @@ namespace Aplikacja
 
         public void Bindowanie()
         {
-            opisLabel.Text = "Tutaj możesz zapisać swoje rzeczywiste spożycie danego dnia, wybierz czy chcesz wprowadzić te wartości ręcznie, czy skorzystać z tabeli porduktów spożywczych z narzędziem zliczania kalorii";
+            opisLabel.Text = "Tutaj możesz zapisać swoje rzeczywiste spożycie dla danego dnia, wybierz czy chcesz wprowadzić te wartości ręcznie, czy skorzystać z tabeli porduktów spożywczych (z narzędziem automatycznego zliczania kalorii).";
         }
 
         public void przekazDane(DateTime data)

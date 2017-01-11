@@ -47,6 +47,11 @@ namespace Aplikacja
             double wzrostTest = -1, wagaTest = -1, pasTest = -1, biodraTest = -1;
             int wiekTest = -1;
 
+
+            if (plecCombo.SelectedIndex == -1)
+            {
+                walid = "\nNie wybrałeś swojej płci z listy";
+            }
             try
             {
                 wzrostTest = double.Parse(wzrostTextbox.Text.Trim());

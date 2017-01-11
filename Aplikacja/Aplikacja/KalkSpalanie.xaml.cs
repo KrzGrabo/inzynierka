@@ -33,7 +33,7 @@ namespace Aplikacja
 
         private void Opis()
         {
-            opisLabel.Text = "'Kalkulator spalania kalorii' pozwala na obliczenie ilości spalonych kalorii podczas różnych aktywności. Wyniki mogą w małym stopniu odbiegać od wartości rzeczywistych. Aby otrzymać wynik uzupełnij swoje dane i wybierz jedną z dostępnych aktywności.";
+            opisLabel.Text = "'Kalkulator spalania kalorii' pozwala na obliczenie ilości spalonych kalorii podczas różnych aktywności. Wyniki mogą w niewielkim stopniu odbiegać od wartości rzeczywistych. Aby otrzymać wynik uzupełnij swoje dane i wybierz jedną z dostępnych aktywności.";
         }
 
 

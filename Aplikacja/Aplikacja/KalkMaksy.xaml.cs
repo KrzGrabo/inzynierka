@@ -31,7 +31,7 @@ namespace Aplikacja
         private void Bindowanie()
         {
             powtorzeniaCombo.ItemsSource = powtorzenia.ToList();
-            opisLabel.Text = "'Kalkulator maksymalnego powtórzenia' umożliwia oszacowanie maksymalnego powtórzenia na podstawie kilku powtórzeń z lżejszym obciążeniem. Rzeczywista wartość może nieznacznie różnic się od wyświetlonego wyniku(do 5%). Aby skorzystać z kalkulatora wprowadź ciężar obciążenia, a następnie ilość poprawnych powtórzeń danego ćwiczenia(działa dla każdego ćwiczenia), które jesteś w stanie z nim wykonać. ";
+            opisLabel.Text = "'Kalkulator maksymalnego powtórzenia' umożliwia oszacowanie maksymalnego powtórzenia na podstawie kilku powtórzeń, z lżejszym obciążeniem. Rzeczywista wartość może nieznacznie różnić się od wyświetlonego wyniku(do 5%). Aby skorzystać z kalkulatora wprowadź ciężar obciążenia, a następnie ilość poprawnych powtórzeń danego ćwiczenia(działa dla każdego ćwiczenia), które jesteś w stanie z nim wykonać. ";
            
         }
 

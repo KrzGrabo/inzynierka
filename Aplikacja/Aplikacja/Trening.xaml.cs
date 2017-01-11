@@ -58,11 +58,11 @@ namespace Aplikacja
             niedzielaCombo.ItemsSource = typyTrening;
 
             opis1Label.Content = "Kreator treningu- krok I";
-            opis1Textblock.Text = "Kreator treningu dopasuje, dostosowany pod twoje cele i preferencje cykl treningowy. Następnie będziesz miał możliwość dodania go do bazy w wybranym przedziale czasowym. Postępuj zgodnie z poleceniami w kolejnych krokach, w pierwszym uzupełnij podstawowe dane, na których będzie bazować kreator.";
+            opis1Textblock.Text = "Kreator treningu dopasuje, dostosowany pod twoje cele i preferencje cykl treningowy. Następnie będziesz miał możliwość dodania go do bazy na wybranym przedziale czasowym. Postępuj zgodnie z poleceniami w kolejnych krokach, w pierwszym uzupełnij podstawowe dane, na których będzie bazować kreator.";
             opis2aLabel.Content = "Kreator treningu- krok II";
             opis3aLabel.Content = "Kreator treningu- krok III";
-            opis2Label.Text = "W drugim kroku uzupełnij swój plan tygodnia. Do każdego dnia dobierz odpowiadający typ treningu(jeśli jest to dzień nietreningowy, pozostaw opcję odpoczynek). Dodatkowo dobierz przewidywany czas treningu.";
-            opis3Label.Text = "Trzeci krok skupia się na technicznych aspektach cyklu- wybierz na jaki okres planujesz cykl.";
+            opis2Label.Text = "W drugim kroku uzupełnij swój plan tygodnia. Do każdego dnia dobierz odpowiadający typ treningu (jeśli jest to dzień nietreningowy, pozostaw opcję odpoczynek). Dodatkowo wpisz przewidywany czas treningu.";
+            opis3Label.Text = "Trzeci krok skupia się na technicznych aspektach- wybierz na jaki okres planujesz cykl.";
 
         }
 

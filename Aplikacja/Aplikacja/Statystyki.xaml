@@ -14,7 +14,7 @@
             <TabItem Header="Profil">
                 <ScrollViewer >
                     <StackPanel>
-                        <TextBlock TextWrapping="WrapWithOverflow" Margin="5"  Text="Statystyki twojego profilu(parametrów). Najedź kursorem na interesujący cię punkt na wykresie aby uzyskać jego dokładną wartość w podpowiedzi."/>
+                        <TextBlock TextWrapping="WrapWithOverflow" Margin="5"  Text="Statystyki twojego profilu (parametrów). Najedź kursorem na interesujący cię punkt na wykresie aby uzyskać jego dokładną wartość w podpowiedzi."/>
                         <chartingToolkit:Chart Margin="5"  x:Name="pasChart" Title="Zmiana obwodu pasa na przestrzeni czasu" VerticalAlignment="Top" >
                             <chartingToolkit:LineSeries Title="obwód[cm]" ItemsSource="{Binding}" DependentValuePath="wartosc" IndependentValuePath="data"/>
                         </chartingToolkit:Chart>

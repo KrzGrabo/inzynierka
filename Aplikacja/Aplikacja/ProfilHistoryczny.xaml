@@ -54,7 +54,7 @@
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
 
-            <TextBlock Margin="5" TextWrapping="WrapWithOverflow" Grid.ColumnSpan="2" Text="Oto twój aktualny profil, wprowadź aktualne(na dzisiejszy dzień) parametry." />
+            <TextBlock Margin="5" TextWrapping="WrapWithOverflow" Grid.ColumnSpan="2" Text="Oto twój aktualny profil, wprowadź aktualne (na dzisiejszy dzień) parametry." />
 
             <WrapPanel Margin="5" Grid.Row="1">
                 <Image Source="Ikonki/1482266010_Info.png" Height="25" Margin="1" ToolTip="Data przeprowadzanej aktualizacji"/>
