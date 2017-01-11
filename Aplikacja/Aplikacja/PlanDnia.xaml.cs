@@ -31,8 +31,7 @@ namespace Aplikacja
         public PlanDnia()
         {
             InitializeComponent();
-            uzytkownik = db.Uzytkownicy.Where(m => m.ID.Equals(id)).FirstOrDefault();
-            
+            uzytkownik = db.Uzytkownicy.Where(m => m.ID.Equals(id)).FirstOrDefault();       
         }
 
         public void Bindowanie()
@@ -91,6 +90,8 @@ namespace Aplikacja
             trening = null;
             znajdzDiete();
             znajdzTrening();
+            if (dieta == null)
+                edytujPosilkiButton.IsEnabled = false;
            
             Bindowanie();
         }
